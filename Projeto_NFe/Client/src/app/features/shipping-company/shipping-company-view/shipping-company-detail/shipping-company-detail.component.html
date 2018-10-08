@@ -1,0 +1,70 @@
+<div class="feature-view-tab__content">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <span class="feature-view__title">Dados Cadastrais</span>
+                        </div>
+                    </div>
+                    <div class="feature-view__group">
+                        <div class="row">
+                            <div class="col-sm-6 feature-view__body">
+                                <div>
+                                    <span class="feature-view__label">Nome Fantasia</span>
+                                </div>
+                                <div class="truncate feature-view__value">
+                                    <span title="{{ shippingCompany?.businessName }}" class="feature-view__value">
+                                        {{ shippingCompany?.businessName }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 feature-view__body">
+                                <div>
+                                    <span class="feature-view__label">Razão Social</span>
+                                </div>
+                                <div class="truncate feature-view__value">
+                                    <span title="{{ shippingCompany?.corporateName }}" class="feature-view__value">
+                                        {{ shippingCompany?.corporateName }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 feature-view__body">
+                                <div>
+                                    <span class="feature-view__label">Incrição Estadual</span>
+                                </div>
+                                <div class="truncate feature-view__value">
+                                    <span title="{{ shippingCompany?.stateRegistration }}" class="feature-view__value">
+                                        {{ shippingCompany?.stateRegistration }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 feature-view__body">
+                                <div>
+                                    <span class="feature-view__label">{{ documentType }}</span>
+                                </div>
+                                <div class="truncate feature-view__value">
+                                    <span title="{{ documentNumber }}" class="feature-view__value">
+                                        {{ documentNumber }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 feature-view__content">
+            <ndd-address-detail [address]=address></ndd-address-detail>
+        </div>
+    </div>
+</div>
+<div class="feature-view-tab__footer">
+    <button class="ndd-ng-button ndd-ng-button--primary" (click)="onEdit()">Editar</button>
+    <button class="ndd-ng-button ndd-ng-button--cancel" (click)="redirect()">Voltar</button>
+</div>
+<div class="ndd-ng-spinner__spinner" *ngIf="isLoading"></div>
+<div class="ndd-ng-spinner__color" *ngIf="isLoading"></div>
