@@ -28,7 +28,7 @@ namespace Projeto_NFe.Infra.PDF.Features.Addressees
             Address.Country = addressee.Address.Country;
             Id = addressee.Id;
             StateRegistration = addressee.StateRegistration;
-            Name = addressee.Name;
+            Name = addressee.BusinessName;
             CorporateName = addressee.CorporateName;
             PersonType = addressee.PersonType;
         }

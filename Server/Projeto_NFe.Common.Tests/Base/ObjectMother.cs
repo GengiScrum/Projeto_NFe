@@ -361,7 +361,7 @@ namespace Projeto_NFe.Common.Tests
         {
             Addressee addressee = new Addressee();
 
-            addressee.Name = "Bruno Barba";
+            addressee.BusinessName = "Bruno Barba";
             addressee.Address = AddressValid();
             addressee.Cpf = "12345678901";
             addressee.PersonType = EnumPersonType.PessoaFisica;
@@ -374,7 +374,8 @@ namespace Projeto_NFe.Common.Tests
             Addressee addressee = new Addressee();
 
             addressee.Id = 1;
-            addressee.Name = "Bruno Barba";
+            addressee.BusinessName = "Bruno Barba";
+            addressee.CorporateName = "Bruno Barba ltda";
             addressee.Address = AddressValid();
             addressee.Cpf = "12345678901";
             addressee.PersonType = EnumPersonType.PessoaFisica;
@@ -387,7 +388,7 @@ namespace Projeto_NFe.Common.Tests
             Addressee addressee = new Addressee();
 
             addressee.Id = 1;
-            addressee.Name = "Bruno Barba";
+            addressee.BusinessName = "Bruno Barba";
             addressee.CorporateName = "Bruno Barba";
             addressee.Address = AddressValid();
             addressee.Cnpj = "12345678901234";
@@ -402,7 +403,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Comprador",
+                BusinessName = "Comprador",
                 Address = address,
                 Cpf = "12345678901",
                 PersonType = EnumPersonType.PessoaFisica
@@ -414,7 +415,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Let",
+                BusinessName = "Let",
                 Address = address,
                 Cpf = "12345678901",
                 PersonType = EnumPersonType.PessoaFisica
@@ -426,7 +427,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                BusinessName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 Address = address,
                 Cpf = "12345678901",
                 PersonType = EnumPersonType.PessoaFisica
@@ -437,7 +438,7 @@ namespace Projeto_NFe.Common.Tests
         {
             return new Addressee
             {
-                Name = "Leticia",
+                BusinessName = "Leticia",
                 Address = address,
                 Cpf = "12345678901",
                 PersonType = EnumPersonType.PessoaFisica
@@ -449,7 +450,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Letícia",
+                BusinessName = "Letícia",
                 Address = address,
                 Cpf = "1234567",
                 PersonType = EnumPersonType.PessoaFisica
@@ -461,7 +462,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Letícia",
+                BusinessName = "Letícia",
                 Address = address,
                 Cpf = "123vfd456gyh90",
                 PersonType = EnumPersonType.PessoaFisica
@@ -473,7 +474,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Letícia",
+                BusinessName = "Letícia",
                 Cpf = "12345678901",
                 PersonType = EnumPersonType.PessoaFisica
             };
@@ -484,7 +485,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Letícia",
+                BusinessName = "Letícia",
                 Address = address,
                 Cpf = "12345678901",
                 Cnpj = "12345678901234",
@@ -497,7 +498,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Letícia",
+                BusinessName = "Letícia",
                 CorporateName = "Empresa Ltda",
                 Address = address,
                 Cpf = "12345678901",
@@ -510,7 +511,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Letícia",
+                BusinessName = "Letícia",
                 Address = address,
                 StateRegistration = "123435235235324",
                 Cpf = "12345678901",
@@ -523,7 +524,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Lenew",
+                BusinessName = "Lenew",
                 CorporateName = "Notebooks",
                 StateRegistration = "128398213791",
                 Address = address,
@@ -536,7 +537,7 @@ namespace Projeto_NFe.Common.Tests
         {
             return new Addressee
             {
-                Name = "Name",
+                BusinessName = "Name",
                 CorporateName = "Letícia Ltda",
                 StateRegistration = "128398213791",
                 Address = address,
@@ -550,7 +551,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Name",
+                BusinessName = "Name",
                 CorporateName = "Le",
                 StateRegistration = "128398213791",
                 Address = address,
@@ -564,7 +565,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Name",
+                BusinessName = "Name",
                 CorporateName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 StateRegistration = "128398213791",
                 Address = address,
@@ -578,7 +579,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Name",
+                BusinessName = "Name",
                 CorporateName = "Letícia Ltda",
                 StateRegistration = "128398213791",
                 Cnpj = "12345678901234",
@@ -591,7 +592,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Name",
+                BusinessName = "Name",
                 CorporateName = "Leticia Ltda",
                 StateRegistration = "128398213791",
                 Address = address,
@@ -605,7 +606,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Name",
+                BusinessName = "Name",
                 CorporateName = "Leticia Ltda",
                 StateRegistration = "128398213791",
                 Address = address,
@@ -619,7 +620,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Name",
+                BusinessName = "Name",
                 CorporateName = "Letícia Ltda",
                 Address = address,
                 Cnpj = "12345678901234",
@@ -632,7 +633,7 @@ namespace Projeto_NFe.Common.Tests
             return new Addressee
             {
                 Id = 1,
-                Name = "Name",
+                BusinessName = "Name",
                 CorporateName = "Letícia Ltda",
                 StateRegistration = "128398213791",
                 Address = address,
@@ -648,7 +649,7 @@ namespace Projeto_NFe.Common.Tests
             {
                 Id = 1,
                 CorporateName = "Letícia Ltda",
-                Name = "Leticia",
+                BusinessName = "Leticia",
                 StateRegistration = "128398213791",
                 Address = address,
                 Cnpj = "12345678901234",
