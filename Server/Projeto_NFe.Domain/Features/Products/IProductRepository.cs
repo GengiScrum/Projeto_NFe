@@ -9,8 +9,8 @@ namespace Projeto_NFe.Domain.Features.Products
     public interface IProductRepository
     {
         Product Add(Product product);
-        Product Update(Product product);
-        void Remove(int id);
+        bool Update(Product product);
+        bool Remove(int id);
         Product GetById(int id);
         IEnumerable<Product> GetAll();
     }

@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Invoices\InvoiceConfiguration.cs" />
+    <Compile Include="Features\Invoices\InvoiceRepository.cs" />
     <Compile Include="Features\Issuers\IssuerConfiguration.cs" />
     <Compile Include="Features\Issuers\IssuerRepository.cs" />
     <Compile Include="Features\ShippingCompanies\ShippingCompanyConfiguration.cs" />

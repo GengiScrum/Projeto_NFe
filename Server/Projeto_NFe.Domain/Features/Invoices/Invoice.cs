@@ -15,11 +15,21 @@ namespace Projeto_NFe.Domain.Features.Invoices
     public class Invoice
     {
         public int Id { get; set; }
+
+        public int IssuerId { get; set; }
         public Issuer Issuer { get; set; }
+
+        public int ShippingCompanyId { get; set; }
         public ShippingCompany ShippingCompany { get; set; }
+
+        public int AddresseeId { get; set; }
         public Addressee Addressee { get; set; }
-        public IEnumerable<ProductSold> Products { get; set; }
+
+        public virtual IEnumerable<ProductSold> Products { get; set; }
+
+        public int  InvoiceTaxId { get; set; }
         public InvoiceTax Tax { get; set; }
+
         public string OperationNature { get; set; }
         public DateTime IssueDate { get; set; }
         public DateTime EntryDate { get; set; }

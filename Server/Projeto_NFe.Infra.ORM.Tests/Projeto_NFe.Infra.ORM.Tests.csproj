@@ -75,6 +75,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Invoices\InvoiceRepositoryTests.cs" />
     <Compile Include="Features\Issuers\IssuerRepositoryTests.cs" />
     <Compile Include="Features\ShippingCompanies\ShippingCompanyRepositoryTests.cs" />
     <Compile Include="Context\FakeDbContext.cs" />

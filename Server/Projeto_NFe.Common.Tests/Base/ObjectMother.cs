@@ -813,7 +813,7 @@ namespace Projeto_NFe.Common.Tests
             Invoice invoice = new Invoice();
             invoice.OperationNature = "Venda";
             invoice.EntryDate = DateTime.Now;
-            invoice.AcessKey = "BAJDSA0123IU43I249206954";
+            invoice.AcessKey = "111111111111111111111111";
             return invoice;
         }
 
@@ -846,15 +846,15 @@ namespace Projeto_NFe.Common.Tests
             return invoice;
         }
 
-        public static Invoice InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId()
+        public static Invoice InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId(int issuerId, int addresseeId, int shippingCompanyId)
         {
             Invoice invoice = new Invoice();
             invoice.OperationNature = "Venda";
             invoice.EntryDate = DateTime.Now;
             invoice.AcessKey = "BAJDSA0123IU43I249206954";
-            invoice.Issuer = IssuerValidWithIdAndWithAddress();
-            invoice.Addressee = AddresseeValidWithIdWithAddress();
-            invoice.ShippingCompany = ShippingCompanyValidWithIdWithAddress();
+            invoice.IssuerId = issuerId;
+            invoice.AddresseeId = addresseeId;
+            invoice.ShippingCompanyId = shippingCompanyId;
             invoice.Products = new List<ProductSold>() { ProductSoldValidWithId() };
             return invoice;
         }

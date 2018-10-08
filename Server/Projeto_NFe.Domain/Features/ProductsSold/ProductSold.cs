@@ -15,6 +15,7 @@ namespace Projeto_NFe.Domain.Features.ProductsSold
         public double Amount => GetByIdAmount();
         public ProductTax Tax { get; set; }
 
+        public int InvoiceId { get; set; }
         public override void Validate()
         {
             //if (Quantity < 1)
