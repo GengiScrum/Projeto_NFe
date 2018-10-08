@@ -9,9 +9,10 @@ namespace Projeto_NFe.Domain.Features.Addressees
     public interface IAddresseeRepository
     {
         Addressee Add(Addressee addressee);
-        Addressee Update(Addressee addressee);
-        void Remove(int id);
+        bool Update(Addressee addressee);
+        bool Remove(int id);
         Addressee GetById(int id);
-        IEnumerable<Addressee> GetAll();
+        IQueryable<Addressee> GetAll();
+        IQueryable<Addressee> GetAll(int quantity);
     }
 }

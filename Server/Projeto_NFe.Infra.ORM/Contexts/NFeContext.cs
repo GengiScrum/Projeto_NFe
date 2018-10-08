@@ -1,4 +1,5 @@
-﻿using Projeto_NFe.Domain.Features.Issuers;
+﻿using Projeto_NFe.Domain.Features.Addressees;
+using Projeto_NFe.Domain.Features.Issuers;
 using Projeto_NFe.Domain.Features.ShippingCompanies;
 using Projeto_NFe.Infra.ORM.Initializer;
 using System;
@@ -23,6 +24,7 @@ namespace Projeto_NFe.Infra.ORM.Contexts
 
         public DbSet<ShippingCompany> ShippingCompanies { get; set; }
         public DbSet<Issuer> Issuers { get; set; }
+        public DbSet<Addressee> Addressees { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
