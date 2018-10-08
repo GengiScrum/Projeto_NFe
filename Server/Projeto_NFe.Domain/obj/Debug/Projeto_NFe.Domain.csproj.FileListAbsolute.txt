@@ -1,0 +1,12 @@
+C:\Users\ndduser\Desktop\Exemplos\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\bin\Debug\Projeto_NFe.Domain.dll
+C:\Users\ndduser\Desktop\Exemplos\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\bin\Debug\Projeto_NFe.Domain.pdb
+C:\Users\ndduser\Desktop\Exemplos\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.csprojAssemblyReference.cache
+C:\Users\ndduser\Desktop\Exemplos\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ndduser\Desktop\Exemplos\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.dll
+C:\Users\ndduser\Desktop\Exemplos\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.pdb
+C:\Users\ndduser\Desktop\Gengiscrum\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\bin\Debug\Projeto_NFe.Domain.dll
+C:\Users\ndduser\Desktop\Gengiscrum\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\bin\Debug\Projeto_NFe.Domain.pdb
+C:\Users\ndduser\Desktop\Gengiscrum\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.csprojAssemblyReference.cache
+C:\Users\ndduser\Desktop\Gengiscrum\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ndduser\Desktop\Gengiscrum\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.dll
+C:\Users\ndduser\Desktop\Gengiscrum\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.pdb

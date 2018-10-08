@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="95c0bedb-734c-4b23-806b-98692c29ef0e" ChangeDateTime="05/29/2018 18:47:07">
+    <Property Name="ElementName" Value="[dbo].[TBProjeto_NFe.DominioEmitida].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBProjeto_NFe.DominioEmitida]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id_Projeto_NFe.DominioEmitida" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3a7e0e44-0953-4bf0-bbd4-7aa8c0bb9cbb" ChangeDateTime="05/29/2018 18:48:05">
+    <Property Name="ElementName" Value="[dbo].[TBProjeto_NFe.DominioEmitida].[DataEmissao]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBProjeto_NFe.DominioEmitida]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DataEntrada" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d2e6e097-9e7e-407a-a36b-f4f71753ee5e" ChangeDateTime="05/29/2018 19:01:05">
+    <Property Name="ElementName" Value="[dbo].[TBProdutoVendidoProjeto_NFe.DominioEmitida].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBProdutoVendidoProjeto_NFe.DominioEmitida]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id_ProdutoVendidoProjeto_NFe.DominioEmitida" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7a259ac6-96e7-4ebe-a9a2-cc50e7738a13" ChangeDateTime="05/29/2018 19:07:29">
+    <Property Name="ElementName" Value="[dbo].[TBProduto].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBProduto]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id_Produto" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2bedf429-9d18-4bd2-8f5a-d6649f7fec85" ChangeDateTime="05/29/2018 19:18:40">
+    <Property Name="ElementName" Value="[dbo].[TBDestinatario].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBDestinatario]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id_Destinatario" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="332906ea-bf58-42b1-b400-2955f48c125f" ChangeDateTime="05/29/2018 19:22:53">
+    <Property Name="ElementName" Value="[dbo].[TBImpostoProjeto_NFe.Dominio].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBImpostoProjeto_NFe.Dominio]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id_ImpostoProjeto_NFe.Dominio" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2ef92b4c-4d28-4704-a53b-a10f6cddd6ef" ChangeDateTime="05/29/2018 19:29:04">
+    <Property Name="ElementName" Value="[dbo].[TBProjeto_NFe.Dominio].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBProjeto_NFe.Dominio]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id_Projeto_NFe.Dominio" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="06342491-081a-4bfe-864d-a6d2469d8f6a" ChangeDateTime="05/29/2018 19:31:02">
+    <Property Name="ElementName" Value="[dbo].[TBProjeto_NFe.Dominio].[Transportador_Id_Transportador]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBProjeto_NFe.Dominio]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Transportador_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="89b4e16e-cdf5-4f95-857c-837ee6546a37" ChangeDateTime="05/29/2018 19:31:09">
+    <Property Name="ElementName" Value="[dbo].[TBProjeto_NFe.Dominio].[Detinatario_Id_Destinatario]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBProjeto_NFe.Dominio]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Detinatario_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8c6a48ad-88c7-46ae-9bb6-8ec49ee04c4c" ChangeDateTime="05/29/2018 19:31:12">
+    <Property Name="ElementName" Value="[dbo].[TBProjeto_NFe.Dominio].[ImpostoProjeto_NFe.Dominio_Id_ImpostoProjeto_NFe.Dominio]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBProjeto_NFe.Dominio]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ImpostoProjeto_NFe.Dominio_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6fdbc623-3acb-4554-8edb-1c8cd0b5d7bc" ChangeDateTime="05/29/2018 19:35:07">
+    <Property Name="ElementName" Value="[dbo].[TBProjeto_NFe.Dominio].[Detinatario_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBProjeto_NFe.Dominio]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Destinatario_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5363b82e-f6a7-4570-a60d-78bd86ef3832" ChangeDateTime="05/29/2018 19:38:11">
+    <Property Name="ElementName" Value="[dbo].[TBProdutoVendido].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TBProdutoVendido]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id_ProdutoVendido" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fc0901d6-ec98-45c3-9d4d-00a38eb6ca38" ChangeDateTime="05/29/2018 19:41:11">
+    <Property Name="ElementName" Value="[dbo].[FK_TBProdutoVendido_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[TBProdutoVendido]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_TBProdutoVendido_To_TBProjeto_NFe.Dominio]" />
+  </Operation>
+</Operations>

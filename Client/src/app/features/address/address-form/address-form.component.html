@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="feature-view__title">Endereço</span>
+            </div>
+        </div>
+        <form [formGroup]="form">
+            <div class="row feature-view__group">
+                <div class="col-sm-6 feature-view__body">
+                    <div>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('country')">País *</span>
+                    </div>
+                    <input formControlName="country" class="form__input" type="text" [class.form__input__border-red]="getFormError('country')">
+                    <div *ngIf="getFormError('country')">
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('country')">Campo requerido</span>
+                    </div>
+                </div>
+                <div class="col-sm-6 feature-view__body">
+                    <div>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('state')">Estado *</span>
+                    </div>
+                    <input formControlName="state" class="form__input" type="text" [class.form__input__border-red]="getFormError('state')">
+                    <div *ngIf="getFormError('state')">
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('state')">Campo requerido</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row feature-view__group">
+                <div class="col-sm-6 feature-view__body">
+                    <div>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('city')">Cidade *</span>
+                    </div>
+                    <input formControlName="city" class="form__input" type="text" [class.form__input__border-red]="getFormError('city')">
+                    <div *ngIf="getFormError('city')">
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('city')">Campo requerido</span>
+                    </div>
+                </div>
+                <div class="col-sm-6 feature-view__body">
+                    <div>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('neighborhood')">Bairro *</span>
+                    </div>
+                    <input formControlName="neighborhood" class="form__input" type="text" [class.form__input__border-red]="getFormError('neighborhood')">
+                    <div *ngIf="getFormError('neighborhood')">
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('neighborhood')">Campo requerido</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row feature-view__group">
+                <div class="col-sm-9 feature-view__body">
+                    <div>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('streetName')">Logradouro *</span>
+                    </div>
+                    <input formControlName="streetName" class="form__input" type="text" [class.form__input__border-red]="getFormError('streetName')">
+                    <div *ngIf="getFormError('streetName')">
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('streetName')">Campo requerido</span>
+                    </div>
+                </div>
+                <div class="col-sm-3 feature-view__body">
+                    <div>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('number')">Número *</span>
+                    </div>
+                    <input formControlName="number" class="form__input" type="text" [class.form__input__border-red]="getFormError('number')">
+                    <div *ngIf="getFormError('number')">
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('number')">Campo requerido</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
