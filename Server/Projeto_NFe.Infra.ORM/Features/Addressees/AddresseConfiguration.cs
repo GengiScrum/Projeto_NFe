@@ -14,9 +14,11 @@ namespace Projeto_NFe.Infra.ORM.Features.Addressees
         {
             ToTable("TBAddressee");
             HasKey(e => e.Id);
-            Property(a => a.Cnpj).HasMaxLength(40).IsRequired();
-            Property(a => a.StateRegistration).HasMaxLength(40).IsRequired();
-            Property(a => a.CorporateName).HasMaxLength(40).IsRequired();
+            Property(a => a.Cnpj).HasMaxLength(40).IsOptional();
+            Property(a => a.Cpf).HasMaxLength(40).IsOptional();
+            Property(a => a.StateRegistration).HasMaxLength(40).IsOptional();
+            Property(a => a.CorporateName).HasMaxLength(40).IsOptional();
+            Property(a => a.BusinessName).HasMaxLength(40).IsRequired();
             Property(a => a.Address.Country).HasMaxLength(40).HasColumnName("Country").IsRequired();
             Property(a => a.Address.State).HasMaxLength(40).HasColumnName("State").IsRequired();
             Property(a => a.Address.City).HasMaxLength(40).HasColumnName("City").IsRequired();

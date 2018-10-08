@@ -47,3 +47,6 @@ C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.ORM\obj\D
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.ORM\obj\Debug\Projeto_NFe.Infra.ORM.csproj.CopyComplete
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.ORM\obj\Debug\Projeto_NFe.Infra.ORM.dll
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.ORM\obj\Debug\Projeto_NFe.Infra.ORM.pdb
+C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.ORM\obj\Debug\Projeto_NFe.Infra.ORM.Migrations.NFeContext_V2.resources
+C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.ORM\obj\Debug\Projeto_NFe.Infra.ORM.Migrations.NFeContext_V21.resources
+C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.ORM\obj\Debug\Projeto_NFe.Infra.ORM.Migrations.NFeContext_V22.resources

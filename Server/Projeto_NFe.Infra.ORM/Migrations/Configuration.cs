@@ -5,7 +5,7 @@ namespace Projeto_NFe.Infra.ORM.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Projeto_NFe.Infra.ORM.Contexts.NFeContext>
+    public class Configuration : DbMigrationsConfiguration<Projeto_NFe.Infra.ORM.Contexts.NFeContext>
     {
         public Configuration()
         {
