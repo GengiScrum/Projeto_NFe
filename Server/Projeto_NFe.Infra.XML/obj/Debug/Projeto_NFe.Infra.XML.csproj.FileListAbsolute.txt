@@ -25,12 +25,3 @@ C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\D
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.csproj.CopyComplete
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.dll
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.pdb
-C:\Users\bruno\Desktop\Projeto_NFe\Server\Projeto_NFe.Infra.XML\bin\Debug\Projeto_NFe.Infra.XML.dll
-C:\Users\bruno\Desktop\Projeto_NFe\Server\Projeto_NFe.Infra.XML\bin\Debug\Projeto_NFe.Infra.XML.pdb
-C:\Users\bruno\Desktop\Projeto_NFe\Server\Projeto_NFe.Infra.XML\bin\Debug\Projeto_NFe.Domain.dll
-C:\Users\bruno\Desktop\Projeto_NFe\Server\Projeto_NFe.Infra.XML\bin\Debug\Projeto_NFe.Domain.pdb
-C:\Users\bruno\Desktop\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.csprojAssemblyReference.cache
-C:\Users\bruno\Desktop\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.csproj.CoreCompileInputs.cache
-C:\Users\bruno\Desktop\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.csproj.CopyComplete
-C:\Users\bruno\Desktop\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.dll
-C:\Users\bruno\Desktop\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.pdb

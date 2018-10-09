@@ -77,7 +77,6 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             _mockAddresseeRepository.Verify(er => er.Update(addressee), Times.Once);
             updateAddressee.Should().BeTrue();
         }
-
         [Test]
         public void Addressee_Service_Update_DeveTratarNaoEncontrado()
         {
