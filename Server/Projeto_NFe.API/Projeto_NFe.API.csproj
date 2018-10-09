@@ -159,6 +159,7 @@
     <Compile Include="Controllers\Base\ApiControllerBase.cs" />
     <Compile Include="Controllers\Base\I18nController.cs" />
     <Compile Include="Controllers\Base\PublicController.cs" />
+    <Compile Include="Controllers\Products\ProductsController.cs" />
     <Compile Include="Controllers\ShippingCompanies\ShippingCompaniesControllerController.cs" />
     <Compile Include="Exceptions\ExceptionPayload.cs" />
     <Compile Include="Extensions\ExceptionHandlingExtensions.cs" />

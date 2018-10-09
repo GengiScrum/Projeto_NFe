@@ -53,6 +53,8 @@
     <Compile Include="Features\Addressees\AddresseeRepository.cs" />
     <Compile Include="Features\Issuers\IssuerConfiguration.cs" />
     <Compile Include="Features\Issuers\IssuerRepository.cs" />
+    <Compile Include="Features\Products\ProductConfiguration.cs" />
+    <Compile Include="Features\Products\ProductRepository.cs" />
     <Compile Include="Features\ShippingCompanies\ShippingCompanyConfiguration.cs" />
     <Compile Include="Features\ShippingCompanies\ShippingCompanyRepository.cs" />
     <Compile Include="Contexts\DbContextFactory.cs" />
