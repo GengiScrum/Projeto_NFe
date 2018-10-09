@@ -38,7 +38,7 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         public void Invoice_Service_Add_Sucessfully()
         {
             //Cenário
-            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId();
+            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId(1, 1, 1);
             _mockInvoiceRepository.Setup(nfr => nfr.Add(_invoice)).Returns(_invoice);
 
             //Ação
@@ -70,7 +70,7 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         public void Invoice_Service_Update_ShouldThrowIdentifierUndefinedException()
         {
             //Cenário
-            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId();
+            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId(1, 1, 1);
             _mockInvoiceRepository.Setup(nfr => nfr.Update(_invoice)).Returns(_invoice);
 
             //Ação
@@ -119,7 +119,7 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         public void Invoice_Service_GetById_ShouldThrowIdentifierUndefinedException()
         {
             //Cenário
-            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId();
+            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId(1, 1, 1);
             _mockInvoiceRepository.Setup(nfr => nfr.GetById(_invoice.Id)).Returns(_invoice);
 
             //Ação
@@ -206,7 +206,7 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         public void Invoice_Service_Remove_ShouldThrowIdentifierUndefinedException()
         {
             //Cenário
-            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId();
+            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId(1, 1, 1);
             _mockInvoiceRepository.Setup(nfr => nfr.Remove(_invoice.Id));
 
             //Ação
@@ -259,7 +259,7 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         public void Invoice_Service_Issue_ShouldThrowIdentifierUndefinedException()
         {
             //Cenário
-            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId();
+            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId(1, 1, 1);
             _mockInvoiceRepository.Setup(nfr => nfr.Remove(_invoice.Id));
             _mockIssuedInvoiceRepository.Setup(nfer => nfer.Add(_invoice));
 

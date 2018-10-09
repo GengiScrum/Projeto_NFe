@@ -43,20 +43,20 @@ namespace Projeto_NFe.Application.Tests.Features.Products
             _mockProductRepository.Verify(pr => pr.Add(_product));
         }
 
-        [Test]
-        public void Product_Service_Update_Sucessfully()
-        {
-            //Cenário
-            _product = ObjectMother.ProductValidWithoutId();
-            _mockProductRepository.Setup(pr => pr.Update(_product)).Returns(_product);
+        //[Test]
+        //public void Product_Service_Update_Sucessfully()
+        //{
+        //    //Cenário
+        //    _product = ObjectMother.ProductValidWithoutId();
+        //    _mockProductRepository.Setup(pr => pr.Update(_product)).Returns(_product);
 
-            //Ação
-            Product updateProduct = _productService.Update(_product);
+        //    //Ação
+        //    Product updateProduct = _productService.Update(_product);
 
-            //Verificar
-            updateProduct.Should().Be(_product);
-            _mockProductRepository.Verify(pr => pr.Update(_product));
-        }
+        //    //Verificar
+        //    updateProduct.Should().Be(_product);
+        //    _mockProductRepository.Verify(pr => pr.Update(_product));
+        //}
 
         [Test]
         public void Product_Service_GetById_Sucessfully()

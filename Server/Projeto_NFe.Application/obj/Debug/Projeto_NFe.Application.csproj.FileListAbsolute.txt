@@ -67,3 +67,7 @@ C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Application\obj
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Application\obj\Debug\Projeto_NFe.Application.csproj.CopyComplete
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Application\obj\Debug\Projeto_NFe.Application.dll
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Application\obj\Debug\Projeto_NFe.Application.pdb
+C:\Users\Yuri\Desktop\Trabalho\Projeto_NFe\Server\Projeto_NFe.Application\obj\Debug\Projeto_NFe.Application.csprojAssemblyReference.cache
+C:\Users\Yuri\Desktop\Trabalho\Projeto_NFe\Server\Projeto_NFe.Application\obj\Debug\Projeto_NFe.Application.csproj.CoreCompileInputs.cache
+C:\Users\Yuri\Desktop\Trabalho\Projeto_NFe\Server\Projeto_NFe.Application\obj\Debug\Projeto_NFe.Application.dll
+C:\Users\Yuri\Desktop\Trabalho\Projeto_NFe\Server\Projeto_NFe.Application\obj\Debug\Projeto_NFe.Application.pdb

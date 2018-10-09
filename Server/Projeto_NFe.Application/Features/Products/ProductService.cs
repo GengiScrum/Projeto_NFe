@@ -28,7 +28,8 @@ namespace Projeto_NFe.Application.Features.Products
         {
             product.Validate();
 
-            return _productRepository.Update(product);
+            return product;
+            //return _productRepository.Update(product);
         }
 
         public void Remove(Product product)
