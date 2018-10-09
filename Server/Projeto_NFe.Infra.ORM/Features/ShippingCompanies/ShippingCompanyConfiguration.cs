@@ -12,21 +12,21 @@ namespace Projeto_NFe.Infra.ORM.Features.ShippingCompanies
     {
         public ShippingCompanyConfiguration()
         {
-            this.ToTable("TBShippingCompany");
-            this.HasKey(t => t.Id);
-            this.Property(t => t.Name).HasMaxLength(40);
-            this.Property(t => t.CorporateName).HasMaxLength(40);
-            this.Property(t => t.StateRegistration).HasMaxLength(40);
-            this.Property(t => t.Cpf).HasMaxLength(15);
-            this.Property(t => t.Cnpj).HasMaxLength(19);
-            this.Property(t => t.PersonType).IsRequired();
-            this.Property(t => t.ShippingResponsability).IsRequired();
-            this.Property(t => t.Address.Country).HasColumnName("County").IsRequired().HasMaxLength(40);
-            this.Property(t => t.Address.State).HasColumnName("State").IsRequired().HasMaxLength(40);
-            this.Property(t => t.Address.City).HasColumnName("City").IsRequired().HasMaxLength(40);
-            this.Property(t => t.Address.Neighborhood).HasColumnName("Neighborhood").IsRequired().HasMaxLength(40);
-            this.Property(t => t.Address.StreetName).HasColumnName("StreetName").IsRequired().HasMaxLength(40);
-            this.Property(t => t.Address.Number).HasColumnName("Number").IsRequired();
+            ToTable("TBShippingCompany");
+            HasKey(t => t.Id);
+            Property(t => t.Name).HasMaxLength(40);
+            Property(t => t.CorporateName).HasMaxLength(40);
+            Property(t => t.StateRegistration).HasMaxLength(40);
+            Property(t => t.Cpf).HasMaxLength(15);
+            Property(t => t.Cnpj).HasMaxLength(19);
+            Property(t => t.PersonType).IsRequired();
+            Property(t => t.ShippingResponsability).IsRequired();
+            Property(t => t.Address.Country).HasColumnName("Country").IsRequired().HasMaxLength(40);
+            Property(t => t.Address.State).HasColumnName("State").IsRequired().HasMaxLength(40);
+            Property(t => t.Address.City).HasColumnName("City").IsRequired().HasMaxLength(40);
+            Property(t => t.Address.Neighborhood).HasColumnName("Neighborhood").IsRequired().HasMaxLength(40);
+            Property(t => t.Address.StreetName).HasColumnName("StreetName").IsRequired().HasMaxLength(40);
+            Property(t => t.Address.Number).HasColumnName("Number").IsRequired();
         }
     }
 }

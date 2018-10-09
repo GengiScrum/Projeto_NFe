@@ -92,7 +92,7 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             //Cenario
             _address = ObjectMother.AddressValid();
             _addressee = ObjectMother.AddresseePessoaFisicaValida(_address);
-            _repository.Setup(r => r.Update(_addressee)).Returns(_addressee);
+            _repository.Setup(r => r.Update(_addressee)).Returns(true);
 
             //Ação
             _AddresseeEsperada = _service.Update(_addressee);
@@ -111,7 +111,7 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             //Cenario
             _address = ObjectMother.AddressValid();
             _addressee = ObjectMother.AddresseePessoaJuridicaValida(_address);
-            _repository.Setup(r => r.Update(_addressee)).Returns(_addressee);
+            _repository.Setup(r => r.Update(_addressee)).Returns(true);
 
             //Ação
             _AddresseeEsperada = _service.Update(_addressee);
@@ -163,7 +163,7 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             _address = ObjectMother.AddressValid();
             _addressee = ObjectMother.AddresseePessoaJuridicaValida(_address);
             listaAddressee.Add(_addressee);
-            _repository.Setup(r => r.GetAll()).Returns(listaAddressee);
+            _repository.Setup(r => r.GetAll()).Returns(listaAddressee as IQueryable<Addressee>);
 
             //Ação
             var listaEsperada = _service.GetAll();

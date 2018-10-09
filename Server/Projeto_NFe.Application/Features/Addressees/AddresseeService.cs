@@ -27,7 +27,7 @@ namespace Projeto_NFe.Application.Features.Addressees
         {
             if (addressee.Id == 0) throw new IdentifierUndefinedException();
             addressee.Validate();
-            return _repository.Update(addressee);
+            return addressee;//_repository.Update(addressee);
         }
 
         public void Remove(Addressee addressee)

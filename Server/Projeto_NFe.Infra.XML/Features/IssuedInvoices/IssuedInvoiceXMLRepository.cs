@@ -50,7 +50,7 @@ namespace Projeto_NFe.Infra.XML.Features.IssuedInvoices
                         CnpjAddressee = invoiceEmitida.Addressee.Cnpj,
                         CpfAddressee = invoiceEmitida.Addressee.Cpf,
                         StateRegistration = invoiceEmitida.Addressee.StateRegistration,
-                        Name = (invoiceEmitida.Addressee.PersonType == EnumPersonType.PessoaFisica) ? invoiceEmitida.Addressee.Name : invoiceEmitida.Addressee.CorporateName,
+                        Name = (invoiceEmitida.Addressee.PersonType == EnumPersonType.PessoaFisica) ? invoiceEmitida.Addressee.BusinessName : invoiceEmitida.Addressee.CorporateName,
                         enderDest = new AddressModel
                         {
                             Neighborhood = invoiceEmitida.Addressee.Address.Neighborhood,

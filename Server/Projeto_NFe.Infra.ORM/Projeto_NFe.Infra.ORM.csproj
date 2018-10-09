@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="Features\Invoices\InvoiceConfiguration.cs" />
     <Compile Include="Features\Invoices\InvoiceRepository.cs" />
+    <Compile Include="Features\Addressees\AddresseConfiguration.cs" />
+    <Compile Include="Features\Addressees\AddresseeRepository.cs" />
     <Compile Include="Features\Issuers\IssuerConfiguration.cs" />
     <Compile Include="Features\Issuers\IssuerRepository.cs" />
     <Compile Include="Features\ShippingCompanies\ShippingCompanyConfiguration.cs" />
@@ -61,6 +63,18 @@
     <Compile Include="Migrations\201810051945380_NFeContext_V1.cs" />
     <Compile Include="Migrations\201810051945380_NFeContext_V1.Designer.cs">
       <DependentUpon>201810051945380_NFeContext_V1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810082013086_NFeContext_V2.cs" />
+    <Compile Include="Migrations\201810082013086_NFeContext_V2.Designer.cs">
+      <DependentUpon>201810082013086_NFeContext_V2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810082037564_NFeContext_V2.1.cs" />
+    <Compile Include="Migrations\201810082037564_NFeContext_V2.1.Designer.cs">
+      <DependentUpon>201810082037564_NFeContext_V2.1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810082049411_NFeContext_V2.2.cs" />
+    <Compile Include="Migrations\201810082049411_NFeContext_V2.2.Designer.cs">
+      <DependentUpon>201810082049411_NFeContext_V2.2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,6 +92,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810051945380_NFeContext_V1.resx">
       <DependentUpon>201810051945380_NFeContext_V1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810082013086_NFeContext_V2.resx">
+      <DependentUpon>201810082013086_NFeContext_V2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810082037564_NFeContext_V2.1.resx">
+      <DependentUpon>201810082037564_NFeContext_V2.1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810082049411_NFeContext_V2.2.resx">
+      <DependentUpon>201810082049411_NFeContext_V2.2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
