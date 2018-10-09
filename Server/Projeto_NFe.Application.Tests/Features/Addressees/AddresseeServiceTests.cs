@@ -11,198 +11,168 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projeto_NFe.Application.Tests.Initializer;
 
 namespace Projeto_NFe.Application.Tests.Features.Addressees
 {
     [TestFixture]
-    public class AddresseeServiceTests
+    public class AddresseeServiceTests : TestServiceBase
     {
-        Addressee _addressee;
-        Addressee _AddresseeEsperada;
-        AddresseeService _service;
-        Mock<IAddresseeRepository> _repository;
-        Address _address;
+        IAddresseeService _addresseeService;
+        Mock<IAddresseeRepository> _mockAddresseeRepository;
 
         [SetUp]
         public void Initialize()
         {
-            _addressee = new Addressee();
-            _AddresseeEsperada = new Addressee();
-            _repository = new Mock<IAddresseeRepository>();
-            _service = new AddresseeService(_repository.Object);
-            _address = new Address();
-        }
-        #region Add Pessoa Fisica
-        [Test]
-        public void Addressee_Service_Add_PessoaFisica_Sucessfully()
-        {
-            //Cenario
-            _address = ObjectMother.AddressValid();
-            _addressee = ObjectMother.AddresseePessoaFisicaValida(_address);
-            _repository.Setup(r => r.Add(_addressee)).Returns(_addressee);
-
-            //Ação
-            _AddresseeEsperada = _service.Add(_addressee);
-
-            //Verificar
-            _AddresseeEsperada.Should().NotBeNull();
-            _AddresseeEsperada.Id.Should().Be(_addressee.Id);
-            _repository.Verify(r => r.Add(_addressee));
-        }
-        #endregion
-
-        #region Add Pessoa Juridica
-        [Test]
-        public void Addressee_Service_Add_PessoaJuridica_Sucessfully()
-        {
-            //Cenario
-            _address = ObjectMother.AddressValid();
-            _addressee = ObjectMother.AddresseePessoaJuridicaValida(_address);
-            _repository.Setup(r => r.Add(_addressee)).Returns(_addressee);
-
-            //Ação
-            _AddresseeEsperada = _service.Add(_addressee);
-
-            //Verificar
-            _AddresseeEsperada.Should().NotBeNull();
-            _AddresseeEsperada.Id.Should().Be(_addressee.Id);
-            _repository.Verify(r => r.Add(_addressee));
-        }
-        #endregion
-
-        [Test]
-        public void Addressee_Service_Update_ShouldThrowIdentifierUndefinedException()
-        {
-            //Cenario
-            _address = ObjectMother.AddressValid();
-            _addressee = ObjectMother.AddresseePessoaFisicaWithIdInvalid(_address);
-
-            //Ação
-            Action act = () => _service.Update(_addressee);
-
-            //Verificar
-            act.Should().Throw<IdentifierUndefinedException>();
-            _repository.VerifyNoOtherCalls();
-        }
-
-        #region Update Pessoa Fisica
-        [Test]
-        public void Addressee_Service_Update_PessoaFisica_Sucessfully()
-        {
-            //Cenario
-            _address = ObjectMother.AddressValid();
-            _addressee = ObjectMother.AddresseePessoaFisicaValida(_address);
-            _repository.Setup(r => r.Update(_addressee)).Returns(true);
-
-            //Ação
-            _AddresseeEsperada = _service.Update(_addressee);
-
-            //Verificar
-            _AddresseeEsperada.Should().NotBeNull();
-            _AddresseeEsperada.Id.Should().Be(_addressee.Id);
-            _repository.Verify(r => r.Update(_addressee));
-        }               
-        #endregion
-
-        #region Update Pessoa Juridica
-        [Test]
-        public void Addressee_Service_Update_PessoaJuridica_Sucessfully()
-        {
-            //Cenario
-            _address = ObjectMother.AddressValid();
-            _addressee = ObjectMother.AddresseePessoaJuridicaValida(_address);
-            _repository.Setup(r => r.Update(_addressee)).Returns(true);
-
-            //Ação
-            _AddresseeEsperada = _service.Update(_addressee);
-
-            //Verificar
-            _AddresseeEsperada.Should().NotBeNull();
-            _AddresseeEsperada.Id.Should().Be(_addressee.Id);
-            _repository.Verify(r => r.Update(_addressee));
-        }        
-        #endregion
-
-        [Test]
-        public void Addressee_Service_GetById_Sucessfully()
-        {
-            //Cenario
-            _address = ObjectMother.AddressValid();
-            _addressee = ObjectMother.AddresseePessoaJuridicaValida(_address);
-            _repository.Setup(r => r.GetById(_addressee.Id)).Returns(_addressee);
-
-            //Ação
-            _AddresseeEsperada = _service.GetById(_addressee);
-
-            //Verificar
-            _AddresseeEsperada.Should().NotBeNull();
-            _AddresseeEsperada.Id.Should().Be(_addressee.Id);
-            _repository.Verify(r => r.GetById(_addressee.Id));
+            _mockAddresseeRepository = new Mock<IAddresseeRepository>();
+            _addresseeService = new AddresseeService(_mockAddresseeRepository.Object);
         }
 
         [Test]
-        public void Addressee_Service_GetById_ShouldThrowIdentifierUndefinedException()
+        public void Addressee_Service_Add_Sucessfully()
         {
-            //Cenario
-            _address = ObjectMother.AddressValid();
-            _addressee = ObjectMother.AddresseePessoaJuridicaWithIdInvalid(_address);
+            //Arrange 
+            var addressee = ObjectMother.AddresseeValidWithIdWithAddress();
+            var addresseeCmd = ObjectMother.AddresseeCommandToRegister();
+            _mockAddresseeRepository.Setup(er => er.Add(It.IsAny<Addressee>())).Returns(addressee);
 
-            //Ação
-            Action act = () => _service.GetById(_addressee);
+            //Action
+            var addAddressee = _addresseeService.Add(addresseeCmd);
 
-            //Verificar
-            act.Should().Throw<IdentifierUndefinedException>();
-            _repository.VerifyNoOtherCalls();
+            //Assert
+            _mockAddresseeRepository.Verify(er => er.Add(It.IsAny<Addressee>()), Times.Once);
+            addAddressee.Should().Be(addressee.Id);
         }
 
         [Test]
-        public void Addressee_Service_GetAll_Sucessfully()
+        public void Addressee_Service_Add_DeveSerTratamentoExcecao()
         {
-            //Cenario
-            var listaAddressee = new List<Addressee>();
-            _address = ObjectMother.AddressValid();
-            _addressee = ObjectMother.AddresseePessoaJuridicaValida(_address);
-            listaAddressee.Add(_addressee);
-            _repository.Setup(r => r.GetAll()).Returns(listaAddressee as IQueryable<Addressee>);
+            //Arrange
+            var addresseeCmd = ObjectMother.AddresseeCommandToRegister();
+            _mockAddresseeRepository.Setup(er => er.Add(It.IsAny<Addressee>())).Throws<Exception>();
 
-            //Ação
-            var listaEsperada = _service.GetAll();
+            //Action
+            Action newAddresseeAcao = () => _addresseeService.Add(addresseeCmd);
 
-            listaEsperada.Should().NotBeNull();
-            listaEsperada.Last().Id.Should().Be(_addressee.Id);
-            _repository.Verify(r => r.GetAll());
+            //Assert
+            newAddresseeAcao.Should().Throw<Exception>();
+            _mockAddresseeRepository.Verify(er => er.Add(It.IsAny<Addressee>()), Times.Once);
+        }
+
+        [Test]
+        public void Addressee_Service_Update_Sucessfully()
+        {
+            //Arrange
+            var addressee = ObjectMother.AddresseeValidWithIdWithAddress();
+            var addresseeCmd = ObjectMother.AddresseeCommandToUpdate();
+            var IsUpdate = true;
+            _mockAddresseeRepository.Setup(e => e.GetById(addresseeCmd.Id)).Returns(addressee);
+            _mockAddresseeRepository.Setup(er => er.Update(addressee)).Returns(IsUpdate);
+
+            //Action
+            var updateAddressee = _addresseeService.Update(addresseeCmd);
+
+            //Assert
+            _mockAddresseeRepository.Verify(e => e.GetById(addresseeCmd.Id), Times.Once);
+            _mockAddresseeRepository.Verify(er => er.Update(addressee), Times.Once);
+            updateAddressee.Should().BeTrue();
+        }
+
+        [Test]
+        public void Addressee_Service_Update_DeveTratarNaoEncontrado()
+        {
+            //Arrange
+            var addresseeCmd = ObjectMother.AddresseeCommandToUpdate();
+            _mockAddresseeRepository.Setup(e => e.GetById(addresseeCmd.Id)).Returns((Addressee)null);
+
+            //Action
+            Action addresseeAction = () => _addresseeService.Update(addresseeCmd);
+
+            //Assert
+            addresseeAction.Should().Throw<NotFoundException>();
+            _mockAddresseeRepository.Verify(e => e.GetById(addresseeCmd.Id), Times.Once);
+            _mockAddresseeRepository.Verify(e => e.Update(It.IsAny<Addressee>()), Times.Never);
         }
 
         [Test]
         public void Addressee_Service_Remove_Sucessfully()
         {
-            //Cenario
-            _address = ObjectMother.AddressValid();
-            _addressee = ObjectMother.AddresseePessoaJuridicaValida(_address);
-            _repository.Setup(r => r.Remove(_addressee.Id));
+            //Arrange
+            var addresseeCmd = ObjectMother.AddresseeCommandToRemove();
+            var mockFoiRemovido = true;
+            _mockAddresseeRepository.Setup(e => e.Remove(addresseeCmd.Ids.First())).Returns(mockFoiRemovido);
 
-            //Ação
-            _service.Remove(_addressee);
-            _AddresseeEsperada = _service.GetById(_addressee);
+            //Action
+            var removed = _addresseeService.Remove(addresseeCmd);
 
-            //Verificar
-            _AddresseeEsperada.Should().BeNull();
-            _repository.Verify(r => r.Remove(_addressee.Id));
+            //Assert
+            _mockAddresseeRepository.Verify(e => e.Remove(addresseeCmd.Ids.First()), Times.Once);
+            removed.Should().BeTrue();
         }
 
         [Test]
-        public void Addressee_Service_Remove_ShouldThrowIdentifierUndefinedException()
+        public void Addressee_Service_Remove_DeveTratarNaoEncontrado()
         {
-            //Cenario
-            _address = ObjectMother.AddressValid();
-            _addressee = ObjectMother.AddresseePessoaJuridicaWithIdInvalid(_address);
+            //Arrange
+            var addresseeCmd = ObjectMother.AddresseeCommandToRemove();
+            _mockAddresseeRepository.Setup(e => e.Remove(addresseeCmd.Ids.First())).Throws<NotFoundException>();
 
-            //Ação
-            Action act = () => _service.Remove(_addressee);
+            //Action
+            Action AddresseeAcao = () => _addresseeService.Remove(addresseeCmd);
 
-            //Verificar
-            act.Should().Throw<IdentifierUndefinedException>();
-            _repository.VerifyNoOtherCalls();
+            //Assert
+            AddresseeAcao.Should().Throw<NotFoundException>();
+            _mockAddresseeRepository.Verify(e => e.Remove(addresseeCmd.Ids.First()), Times.Once);
+        }
+
+        [Test]
+        public void Addressee_Service_GetById_Sucessfully()
+        {
+            //Arrange
+            var addressee = ObjectMother.AddresseeValidWithIdWithAddress();
+            _mockAddresseeRepository.Setup(er => er.GetById(addressee.Id)).Returns(addressee);
+
+            //Action
+            var pegarAddressee = _addresseeService.GetById(addressee.Id);
+
+            //Assert
+            _mockAddresseeRepository.Verify(er => er.GetById(addressee.Id), Times.Once);
+            pegarAddressee.Should().NotBeNull();
+            pegarAddressee.Id.Should().Be(addressee.Id);
+        }
+
+        [Test]
+        public void Addressee_Service_GetById_DeveTratarNotFoundException()
+        {
+            //Arrange
+            var addressee = ObjectMother.AddresseeValidWithIdWithAddress();
+            var excecao = new NotFoundException();
+            _mockAddresseeRepository.Setup(e => e.GetById(addressee.Id)).Throws(excecao);
+
+            //Action
+            Action AddresseeAcao = () => _addresseeService.GetById(addressee.Id);
+
+            //Assert
+            AddresseeAcao.Should().Throw<NotFoundException>();
+            _mockAddresseeRepository.Verify(e => e.GetById(addressee.Id), Times.Once);
+        }
+
+        [Test]
+        public void Addressee_Service_GetAll_Sucessfully()
+        {
+            //Arrange
+            var addressee = ObjectMother.AddresseeValidWithIdWithAddress();
+            var mockValueRepository = new List<Addressee>() { addressee }.AsQueryable();
+            _mockAddresseeRepository.Setup(er => er.GetAll()).Returns(mockValueRepository);
+
+            //Action
+            var AddresseesResultado = _addresseeService.GetAll();
+
+            //Assert
+            _mockAddresseeRepository.Verify(er => er.GetAll(), Times.Once);
+            AddresseesResultado.Should().NotBeNull();
+            AddresseesResultado.First().Should().Be(addressee);
+            AddresseesResultado.Count().Should().Be(mockValueRepository.Count());
         }
     }
 }

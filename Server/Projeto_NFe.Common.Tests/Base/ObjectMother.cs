@@ -15,6 +15,7 @@ using Projeto_NFe.Domain.Features.ProductsSold;
 using Projeto_NFe.Domain.Features.ProductTaxes;
 using Projeto_NFe.Application.Features.Issuers.Commands;
 using Projeto_NFe.Application.Features.ShippingCompanies.Commands;
+using Projeto_NFe.Application.Features.Addressees.Commands;
 
 namespace Projeto_NFe.Common.Tests
 {
@@ -357,6 +358,47 @@ namespace Projeto_NFe.Common.Tests
         #endregion
 
         #region Addressee
+        public static AddresseeRegisterCommand AddresseeCommandToRegister()
+        {
+            AddresseeRegisterCommand adressee = new AddresseeRegisterCommand();
+            adressee.BusinessName = "NDDIGITAL";
+            adressee.CorporateName = "NDDIGITAL S/A - SOFTWARE";
+            adressee.Cnpj = "12.345.678/0009-09";
+            adressee.StateRegistration = "12.234.5678-9";
+            adressee.StreetName = "Rua Avenida";
+            adressee.Number = 400;
+            adressee.Neighborhood = "Coral";
+            adressee.City = "Lages";
+            adressee.State = "SC";
+            adressee.Country = "Brasil";
+            return adressee;
+        }
+
+        public static AddresseeUpdateCommand AddresseeCommandToUpdate()
+        {
+            AddresseeUpdateCommand addressee = new AddresseeUpdateCommand();
+            addressee.Id = 1;
+            addressee.BusinessName = "NDDIGITAL";
+            addressee.CorporateName = "NDDIGITAL S/A - SOFTWARE";
+            addressee.Cnpj = "12.345.678/0009-09";
+            addressee.StateRegistration = "12.234.5678-9";
+            addressee.StreetName = "Rua Avenida";
+            addressee.Number = 400;
+            addressee.Neighborhood = "Coral";
+            addressee.City = "Lages";
+            addressee.State = "SC";
+            addressee.Country = "Brasil";
+            return addressee;
+        }
+
+        public static AddresseeRemoveCommand AddresseeCommandToRemove()
+        {
+            return new AddresseeRemoveCommand()
+            {
+                Ids = new int[] { 1 },
+            };
+        }
+
         public static Addressee AddresseeValidWithoutIdWithAddress()
         {
             Addressee addressee = new Addressee();

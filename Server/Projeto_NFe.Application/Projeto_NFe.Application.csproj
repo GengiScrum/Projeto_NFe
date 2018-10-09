@@ -56,6 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Features\Addressees\AddresseeService.cs" />
+    <Compile Include="Features\Addressees\Commands\AddresseeRegisterCommand.cs" />
+    <Compile Include="Features\Addressees\Commands\AddresseeRemoveCommand.cs" />
+    <Compile Include="Features\Addressees\Commands\AddresseeUpdateCommand.cs" />
+    <Compile Include="Features\Addressees\IAddresseeService.cs" />
+    <Compile Include="Features\Addressees\MappingProfile.cs" />
+    <Compile Include="Features\Addressees\Querys\AddresseeQuery.cs" />
+    <Compile Include="Features\Addressees\ViewModel\AddresseeViewModel.cs" />
     <Compile Include="Features\Issuers\Commands\IssuerUpdateCommand.cs" />
     <Compile Include="Features\Issuers\Commands\IssuerRemoveCommand.cs" />
     <Compile Include="Features\Issuers\Commands\IssuerRegisterCommand.cs" />

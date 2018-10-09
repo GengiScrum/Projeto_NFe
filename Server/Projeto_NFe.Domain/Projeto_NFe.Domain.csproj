@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="Features\Addressees\Addressee.cs" />
     <Compile Include="Features\Addressees\IAddresseeRepository.cs" />
-    <Compile Include="Features\Addressees\IAddresseeService.cs" />
     <Compile Include="Features\Issuers\Issuer.cs" />
     <Compile Include="Features\Issuers\IIssuerRepository.cs" />
     <Compile Include="Features\Addresses\Address.cs" />
