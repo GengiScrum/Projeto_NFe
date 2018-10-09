@@ -14,15 +14,21 @@ namespace Projeto_NFe.Application.Features.ShippingCompanies
     {
         public MappingProfile()
         {
-            CreateMap<ShippingCompanyRegisterCommand, ShippingCompany>();
+            CreateMap<ShippingCompanyRegisterCommand, ShippingCompany>()
+                .ForPath(sc => sc.Address.Neighborhood, m => m.MapFrom(scm => scm.Neighborhood))
+                .ForPath(sc => sc.Address.State, m => m.MapFrom(scm => scm.State))
+                .ForPath(sc => sc.Address.StreetName, m => m.MapFrom(scm => scm.StreetName))
+                .ForPath(sc => sc.Address.City, m => m.MapFrom(scm => scm.City))
+                .ForPath(sc => sc.Address.Number, m => m.MapFrom(scm => scm.Number))
+                .ForPath(sc => sc.Address.Country, m => m.MapFrom(scm => scm.Country));
             CreateMap<ShippingCompany, ShippingCompanyViewModel>()
-                .ForMember(tq => tq.PersonType, mt => mt.MapFrom(t => t.PersonType.GetHashCode()))
-                .ForMember(tq => tq.Neighborhood, mt => mt.MapFrom(t => t.Address.Neighborhood))
-                .ForMember(tq => tq.State, mt => mt.MapFrom(t => t.Address.State))
-                .ForMember(tq => tq.StreetName, mt => mt.MapFrom(t => t.Address.StreetName))
-                .ForMember(tq => tq.City, mt => mt.MapFrom(t => t.Address.City))
-                .ForMember(tq => tq.Number, mt => mt.MapFrom(t => t.Address.Number))
-                .ForMember(tq => tq.Country, mt => mt.MapFrom(t => t.Address.Country));
+                .ForMember(sc => sc.PersonType, m => m.MapFrom(scm => scm.PersonType.GetHashCode()))
+                .ForMember(sc => sc.Neighborhood, m => m.MapFrom(scm => scm.Address.Neighborhood))
+                .ForMember(sc => sc.State, m => m.MapFrom(scm => scm.Address.State))
+                .ForMember(sc => sc.StreetName, m => m.MapFrom(scm => scm.Address.StreetName))
+                .ForMember(sc => sc.City, m => m.MapFrom(scm => scm.Address.City))
+                .ForMember(sc => sc.Number, m => m.MapFrom(scm => scm.Address.Number))
+                .ForMember(sc => sc.Country, m => m.MapFrom(scm => scm.Address.Country));
             CreateMap<ShippingCompanyUpdateCommand, ShippingCompany>();
         }
     }

@@ -74,6 +74,10 @@
     <Compile Include="Migrations\201810082049411_NFeContext_V2.2.Designer.cs">
       <DependentUpon>201810082049411_NFeContext_V2.2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810092103592_NFeContext_V1.1.cs" />
+    <Compile Include="Migrations\201810092103592_NFeContext_V1.1.Designer.cs">
+      <DependentUpon>201810092103592_NFeContext_V1.1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -99,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810082049411_NFeContext_V2.2.resx">
       <DependentUpon>201810082049411_NFeContext_V2.2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810092103592_NFeContext_V1.1.resx">
+      <DependentUpon>201810092103592_NFeContext_V1.1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

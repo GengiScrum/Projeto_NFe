@@ -5,7 +5,8 @@ import { ShippingCompanyListComponent } from './shipping-company-list/shipping-c
 import { ShippingCompanyResolveService } from './shared/shipping-company.service';
 import { ShippingCompanyDetailComponent } from './shipping-company-view/shipping-company-detail/shipping-company-detail.component';
 import { ShippingCompanyViewComponent } from './shipping-company-view/shipping-company-view.component';
-import { ShippingCompanyRegisterComponent } from './shipping-company-register/shipping-company-register.component';
+import { ShippingCompanyRegisterFormComponent } from './shipping-company-register/shipping-company-register-form.component';
+import { ShippingCompanyEditFormComponent } from './shipping-company-view/shipping-company-edit-form/shipping-company-edit-form.component';
 
 const shippingCompanyRoutes: Routes = [
     {
@@ -14,7 +15,7 @@ const shippingCompanyRoutes: Routes = [
     },
     {
         path: 'cadastrar',
-        component: ShippingCompanyRegisterComponent,
+        component: ShippingCompanyRegisterFormComponent,
     },
     {
         path: ':shippingCompanyId',
@@ -42,6 +43,15 @@ const shippingCompanyRoutes: Routes = [
                             {
                                 path: '',
                                 component: ShippingCompanyDetailComponent,
+                            },
+                            {
+                                path: 'editar',
+                                component: ShippingCompanyEditFormComponent,
+                                data: {
+                                    breadcrumbOptions: {
+                                        breadcrumbLabel: 'Editar',
+                                    },
+                                },
                             },
                         ],
                     },

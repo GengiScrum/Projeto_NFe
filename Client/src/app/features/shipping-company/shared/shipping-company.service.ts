@@ -12,7 +12,8 @@ import { AbstractResolveService } from './../../../core/utils/abstract-resolve.s
 import { BaseService } from './../../../core/utils/base-service';
 import { NDDBreadcrumbService } from './../../../shared/ndd-ng-breadcrumb/component/ndd-ng-breadcrumb.service';
 
-import { ShippingCompany } from './shipping-company.model';
+import { ShippingCompany, ShippingCompanyRemoveCommand,
+    ShippingCompanyUpdateCommand, ShippingCompanyRegisterCommand } from './shipping-company.model';
 
 @Injectable()
 export class ShippingCompanyGridService extends BehaviorSubject<GridDataResult> {
@@ -54,6 +55,18 @@ export class ShippingCompanyService extends BaseService {
     public get(id: number): Observable<ShippingCompany> {
         return this.http.get(`${this.api}/${id}`).map((response: ShippingCompany) => response);
     }
+
+    public remove(shippingCompanyCmd: ShippingCompanyRemoveCommand): Observable<Boolean> {
+        return this.deleteRequestWithBody(`${this.api}`, shippingCompanyCmd);
+    }
+
+    public register(shippingCompanyCmd: ShippingCompanyRegisterCommand): Observable<ShippingCompany> {
+        return this.http.post(this.api, shippingCompanyCmd).map((response: ShippingCompany) => response);
+    }
+
+    public update(shippingCompanyCmd: ShippingCompanyUpdateCommand): Observable<ShippingCompany> {
+        return this.http.put(this.api, shippingCompanyCmd).map((response: ShippingCompany) => response);
+    }
 }
 
 @Injectable()
@@ -73,7 +86,7 @@ export class ShippingCompanyResolveService extends AbstractResolveService<Shippi
             .do((shippingCompany: ShippingCompany) => {
                 this.breadcrumbService.setMetadata({
                     id: 'shippingCompany',
-                    label: shippingCompany.name,
+                    label: shippingCompany.businessName,
                     sizeLimit: true,
                 });
             });

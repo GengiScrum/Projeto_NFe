@@ -261,7 +261,7 @@ namespace Projeto_NFe.Common.Tests
         public static ShippingCompanyRegisterCommand ShippingCompanyCommandToRegister()
         {
             ShippingCompanyRegisterCommand shippingCompany = new ShippingCompanyRegisterCommand();
-            shippingCompany.Name = "NDDIGITAL";
+            shippingCompany.BusinessName = "NDDIGITAL";
             shippingCompany.CorporateName = "NDDIGITAL S/A - SOFTWARE";
             shippingCompany.Cnpj = "12.345.678/0009-09";
             shippingCompany.StateRegistration = "12.234.5678-9";
@@ -278,7 +278,7 @@ namespace Projeto_NFe.Common.Tests
         {
             ShippingCompanyUpdateCommand shippingCompany = new ShippingCompanyUpdateCommand();
             shippingCompany.Id = 1;
-            shippingCompany.Name = "NDDIGITAL";
+            shippingCompany.BusinessName = "NDDIGITAL";
             shippingCompany.CorporateName = "NDDIGITAL S/A - SOFTWARE";
             shippingCompany.Cnpj = "12.345.678/0009-09";
             shippingCompany.StateRegistration = "12.234.5678-9";
@@ -303,7 +303,7 @@ namespace Projeto_NFe.Common.Tests
         {
             ShippingCompany shippingCompany = new ShippingCompany();
 
-            shippingCompany.Name = "Letícia";
+            shippingCompany.BusinessName = "Letícia";
             shippingCompany.Address = AddressValid();
             shippingCompany.Cpf = "12345678901";
             shippingCompany.PersonType = EnumPersonType.PessoaFisica;
@@ -317,7 +317,7 @@ namespace Projeto_NFe.Common.Tests
             ShippingCompany shippingCompany = new ShippingCompany();
 
             shippingCompany.Id = 1;
-            shippingCompany.Name = "Letícia";
+            shippingCompany.BusinessName = "Letícia";
             shippingCompany.Address = AddressValid();
             shippingCompany.Cpf = "12345678901";
             shippingCompany.PersonType = EnumPersonType.PessoaFisica;
@@ -331,7 +331,7 @@ namespace Projeto_NFe.Common.Tests
             ShippingCompany t = new ShippingCompany
             {
                 Id = 1,
-                Name = "Sedex",
+                BusinessName = "Sedex",
                 Address = address,
                 Cpf = "12345678901",
                 PersonType = EnumPersonType.PessoaFisica,
@@ -345,7 +345,7 @@ namespace Projeto_NFe.Common.Tests
             return new ShippingCompany
             {
                 Id = 1,
-                Name = "Sedex",
+                BusinessName = "Sedex",
                 CorporateName = "Lages Ltda",
                 StateRegistration = "128398213791",
                 Address = address,

@@ -16,3 +16,9 @@ C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debu
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.csproj.CoreCompileInputs.cache
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.dll
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.pdb
+C:\Users\T0KS1CK\Desktop\Projeto_NFe\Server\Projeto_NFe.Domain\bin\Debug\Projeto_NFe.Domain.dll
+C:\Users\T0KS1CK\Desktop\Projeto_NFe\Server\Projeto_NFe.Domain\bin\Debug\Projeto_NFe.Domain.pdb
+C:\Users\T0KS1CK\Desktop\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.csprojAssemblyReference.cache
+C:\Users\T0KS1CK\Desktop\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.csproj.CoreCompileInputs.cache
+C:\Users\T0KS1CK\Desktop\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.dll
+C:\Users\T0KS1CK\Desktop\Projeto_NFe\Server\Projeto_NFe.Domain\obj\Debug\Projeto_NFe.Domain.pdb
