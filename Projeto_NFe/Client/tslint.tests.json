@@ -1,8 +1,0 @@
-{
-    "extends": [
-        "./node_modules/ndd-ng-standardization/tslint.json"
-    ],
-    "rules": {
-        "no-magic-numbers": false
-    }
-}

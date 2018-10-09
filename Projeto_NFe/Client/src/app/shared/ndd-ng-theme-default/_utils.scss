@@ -1,4 +1,0 @@
-@function rem-calc($size) {
-    $remsize: $size / $ndd-ng-browsers-default-font-size;
-    @return #{$remsize}rem;
-}
