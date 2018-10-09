@@ -75,7 +75,7 @@
     <Compile Include="Features\Issuers\IssuerServiceTest.cs" />
     <Compile Include="Features\IssuedInvoices\IssuedInvoiceServiceTests.cs" />
     <Compile Include="Features\Invoices\InvoiceServiceTest.cs" />
-    <Compile Include="Features\Products\ProductServiceTest.cs" />
+    <Compile Include="Features\Products\ProductServiceTests.cs" />
     <Compile Include="Features\ShippingCompanies\ShippingCompanyServiceTest.cs" />
     <Compile Include="Initializer\TestServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

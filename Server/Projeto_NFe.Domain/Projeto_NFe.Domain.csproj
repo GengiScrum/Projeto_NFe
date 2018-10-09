@@ -55,7 +55,6 @@
     <Compile Include="Features\IssuedInvoices\IIssuedInvoiceRepository.cs" />
     <Compile Include="Features\ProductsSold\ProductSold.cs" />
     <Compile Include="Features\Products\IProductRepository.cs" />
-    <Compile Include="Features\Products\IProductService.cs" />
     <Compile Include="Features\Products\Product.cs" />
     <Compile Include="Features\ShippingCompanies\IShippingCompanyRepository.cs" />
     <Compile Include="Features\ShippingCompanies\ShippingCompany.cs" />
