@@ -45,7 +45,7 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
         }
 
         [Test]
-        public void Addressee_Service_Add_DeveSerTratamentoExcecao()
+        public void Addressee_Service_Add_ShouldHandlerException()
         {
             //Arrange
             var addresseeCmd = ObjectMother.AddresseeCommandToRegister();
@@ -78,7 +78,7 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             updateAddressee.Should().BeTrue();
         }
         [Test]
-        public void Addressee_Service_Update_DeveTratarNaoEncontrado()
+        public void Addressee_Service_Update_ShouldHandlerNotFoundException()
         {
             //Arrange
             var addresseeCmd = ObjectMother.AddresseeCommandToUpdate();
@@ -110,7 +110,7 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
         }
 
         [Test]
-        public void Addressee_Service_Remove_DeveTratarNaoEncontrado()
+        public void Addressee_Service_Remove_ShouldHandlerNotFoundException()
         {
             //Arrange
             var addresseeCmd = ObjectMother.AddresseeCommandToRemove();

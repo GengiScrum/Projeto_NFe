@@ -12,7 +12,7 @@ namespace Projeto_NFe.Application.Features.Addressees.Commands
     [ExcludeFromCodeCoverage]
     public class AddresseeUpdateCommand
     {
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
         public string BusinessName { get; set; }
         public string CorporateName { get; set; }
         public string Cnpj { get; set; }

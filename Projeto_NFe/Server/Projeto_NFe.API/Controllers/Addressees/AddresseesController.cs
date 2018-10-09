@@ -63,25 +63,25 @@ namespace Projeto_NFe.API.Controllers.Addressees
         }
 
         [HttpPut]
-        public IHttpActionResult Update(AddresseeUpdateCommand shippingCompany)
+        public IHttpActionResult Update(AddresseeUpdateCommand command)
         {
-            var validador = shippingCompany.Validate();
+            var validador = command.Validate();
 
             if (!validador.IsValid)
                 return HandleValidationFailure(validador.Errors);
 
-            return HandleCallback(_service.Update(shippingCompany));
+            return HandleCallback(_service.Update(command));
         }
 
         [HttpDelete]
-        public IHttpActionResult Remove(AddresseeRemoveCommand shippingCompany)
+        public IHttpActionResult Remove(AddresseeRemoveCommand command)
         {
-            var validador = shippingCompany.Validate();
+            var validador = command.Validate();
 
             if (!validador.IsValid)
                 return HandleValidationFailure(validador.Errors);
 
-            return HandleCallback(_service.Remove(shippingCompany));
+            return HandleCallback(_service.Remove(command));
         }
     }
 }

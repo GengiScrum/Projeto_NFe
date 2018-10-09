@@ -11,7 +11,7 @@ namespace Projeto_NFe.Domain.Features.Addressees
 {
     public class Addressee
     {
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
         public string BusinessName { get; set; }
         public string CorporateName { get; set; }
         public string Cnpj { get; set; }
