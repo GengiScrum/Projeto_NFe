@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projeto_NFe.Application.Features.Addressees.Commands;
+using Projeto_NFe.Application.Features.Addressees.Querys;
+using AutoMapper;
 
 namespace Projeto_NFe.Application.Features.Addressees
 {
@@ -17,34 +20,49 @@ namespace Projeto_NFe.Application.Features.Addressees
             _repository = repository;
         }
 
-        public Addressee Add(Addressee addressee)
+        public int Add(AddresseeRegisterCommand command)
         {
-            addressee.Validate();
-            return _repository.Add(addressee);
+            var addressee = Mapper.Map<AddresseeRegisterCommand, Addressee>(command);
+
+            var newAddressee = _repository.Add(addressee);
+
+            return newAddressee.Id;
         }
 
-        public Addressee Update(Addressee addressee)
+        public bool Update(AddresseeUpdateCommand command)
         {
-            if (addressee.Id == 0) throw new IdentifierUndefinedException();
-            addressee.Validate();
-            return addressee;//_repository.Update(addressee);
+            var addressee = _repository.GetById(command.Id);
+            if (addressee == null)
+                throw new NotFoundException();
+            Mapper.Map(command, addressee);
+            return _repository.Update(addressee);
         }
 
-        public void Remove(Addressee addressee)
+        public bool Remove(AddresseeRemoveCommand command)
         {
-            if (addressee.Id == 0) throw new IdentifierUndefinedException();
-            _repository.Remove(addressee.Id);
+            var allRemoved = true;
+            foreach (var addresseeId in command.Ids)
+            {
+                var removed = _repository.Remove(addresseeId);
+                allRemoved = removed ? allRemoved : false;
+            }
+            return allRemoved;
         }
 
-        public Addressee GetById(Addressee addressee)
+        public Addressee GetById(int id)
         {
-            if (addressee.Id == 0) throw new IdentifierUndefinedException();
-            return _repository.GetById(addressee.Id);
+            var addressee = _repository.GetById(id);
+            return addressee;
         }
 
-        public IEnumerable<Addressee> GetAll()
+        IQueryable<Addressee> IAddresseeService.GetAll()
         {
             return _repository.GetAll();
+        }
+
+        public IQueryable<Addressee> GetAll(AddresseeQuery query)
+        {
+            return _repository.GetAll(query.Quantity);
         }
     }
 }
