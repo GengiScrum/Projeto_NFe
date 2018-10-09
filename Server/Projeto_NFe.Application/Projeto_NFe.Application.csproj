@@ -73,7 +73,14 @@
     <Compile Include="Features\Issuers\MappingProfile.cs" />
     <Compile Include="Features\IssuedInvoices\IssuedInvoiceService.cs" />
     <Compile Include="Features\Invoices\InvoiceService.cs" />
+    <Compile Include="Features\Products\Commands\ProductRegisterCommand.cs" />
+    <Compile Include="Features\Products\Commands\ProductRemoveCommand.cs" />
+    <Compile Include="Features\Products\Commands\ProductUpdateCommand.cs" />
+    <Compile Include="Features\Products\IProductService.cs" />
+    <Compile Include="Features\Products\MappingProfile.cs" />
     <Compile Include="Features\Products\ProductService.cs" />
+    <Compile Include="Features\Products\Querys\ProductQuery.cs" />
+    <Compile Include="Features\Products\ViewModel\ProductViewModel.cs" />
     <Compile Include="Features\ShippingCompanies\Commands\ShippingCompanyUpdateCommand.cs" />
     <Compile Include="Features\ShippingCompanies\Commands\ShippingCompanyRegisterCommand.cs" />
     <Compile Include="Features\ShippingCompanies\Commands\ShippingCompanyRemoveCommand.cs" />

@@ -16,6 +16,7 @@ using Projeto_NFe.Domain.Features.ProductTaxes;
 using Projeto_NFe.Application.Features.Issuers.Commands;
 using Projeto_NFe.Application.Features.ShippingCompanies.Commands;
 using Projeto_NFe.Application.Features.Addressees.Commands;
+using Projeto_NFe.Application.Features.Products.Commands;
 
 namespace Projeto_NFe.Common.Tests
 {
@@ -701,6 +702,34 @@ namespace Projeto_NFe.Common.Tests
         #endregion
 
         #region Product
+
+        public static ProductRegisterCommand ProductCommandToRegister()
+        {
+            ProductRegisterCommand product = new ProductRegisterCommand();
+            product.Code = "ASDY-87";
+            product.Description = "Bolacha";
+            product.UnitaryValue = 2.500;
+            return product;
+        }
+
+        public static ProductUpdateCommand ProductCommandToUpdate()
+        {
+            ProductUpdateCommand product = new ProductUpdateCommand();
+            product.Id = 1;
+            product.Code = "ASDY-87";
+            product.Description = "Bolacha";
+            product.UnitaryValue = 2.500;
+            return product;
+        }
+
+        public static ProductRemoveCommand ProductCommandToRemove()
+        {
+            return new ProductRemoveCommand()
+            {
+                ProductsId = new int[] { 1 },
+            };
+        }
+
         public static Product ProductValidWithoutId()
         {
             Product product = new Product();

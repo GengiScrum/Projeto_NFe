@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projeto_NFe.Application.Features.Products.Commands;
+using AutoMapper;
+using Projeto_NFe.Application.Features.Products.Querys;
 
 namespace Projeto_NFe.Application.Features.Products
 {
@@ -17,39 +20,50 @@ namespace Projeto_NFe.Application.Features.Products
             _productRepository = productRepository;
         }
 
-        public Product Add(Product product)
+        public int Add(ProductRegisterCommand command)
         {
-            product.Validate();
+            var product = Mapper.Map<ProductRegisterCommand, Product>(command);
 
-            return _productRepository.Add(product);
+            var newProduct = _productRepository.Add(product);
+
+            return newProduct.Id;
         }
 
-        public Product Update(Product product)
+        public bool Update(ProductUpdateCommand command)
         {
-            product.Validate();
-
+            var product = _productRepository.GetById(command.Id);
+            if (product == null)
+                throw new NotFoundException();
+            Mapper.Map(command, product);
             return _productRepository.Update(product);
         }
 
-        public void Remove(Product product)
+        public bool Remove(ProductRemoveCommand command)
         {
-            if (product.Id == 0)
-                throw new IdentifierUndefinedException();
-
-            _productRepository.Remove(product.Id);
+            var removedAll = true;
+            foreach (var productId in command.ProductsId)
+            {
+                var removed = _productRepository.Remove(productId);
+                removedAll = removed ? removedAll : false;
+            }
+            return removedAll;
         }
 
-        public Product GetById(Product product)
+        public Product GetById(int id)
         {
-            if (product.Id == 0)
-                throw new IdentifierUndefinedException();
+            var product = _productRepository.GetById(id);
+            return product;
 
-            return _productRepository.GetById(product.Id);
         }
 
-        public IEnumerable<Product> GetAll()
+        public IQueryable<Product> GetAll()
         {
             return _productRepository.GetAll();
+        }
+
+        public IQueryable<Product> GetAll(ProductQuery query)
+        {
+            return _productRepository.GetAll(query.Quantity);
         }
     }
 }
