@@ -7,3 +7,12 @@ C:\Users\ndduser\Desktop\Exemplos\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infr
 C:\Users\ndduser\Desktop\Exemplos\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.csproj.CopyComplete
 C:\Users\ndduser\Desktop\Exemplos\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.dll
 C:\Users\ndduser\Desktop\Exemplos\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.pdb
+C:\Users\Pichau\Documents\Vitor\Projeto_NFe\Projeto_NFe\Server\Projeto_NFe.Infra\bin\Debug\Projeto_NFe.Infra.dll
+C:\Users\Pichau\Documents\Vitor\Projeto_NFe\Projeto_NFe\Server\Projeto_NFe.Infra\bin\Debug\Projeto_NFe.Infra.pdb
+C:\Users\Pichau\Documents\Vitor\Projeto_NFe\Projeto_NFe\Server\Projeto_NFe.Infra\bin\Debug\Projeto_NFe.Domain.dll
+C:\Users\Pichau\Documents\Vitor\Projeto_NFe\Projeto_NFe\Server\Projeto_NFe.Infra\bin\Debug\Projeto_NFe.Domain.pdb
+C:\Users\Pichau\Documents\Vitor\Projeto_NFe\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.csprojAssemblyReference.cache
+C:\Users\Pichau\Documents\Vitor\Projeto_NFe\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.csproj.CoreCompileInputs.cache
+C:\Users\Pichau\Documents\Vitor\Projeto_NFe\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.csproj.CopyComplete
+C:\Users\Pichau\Documents\Vitor\Projeto_NFe\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.dll
+C:\Users\Pichau\Documents\Vitor\Projeto_NFe\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.pdb
