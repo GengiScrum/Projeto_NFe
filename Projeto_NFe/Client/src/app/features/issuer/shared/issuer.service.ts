@@ -74,7 +74,7 @@ export class IssuerService extends BaseService {
     }
 
     public update(issuerCmd: IssuerUpdateCommand): Observable<Issuer> {
-        return this.http.post(this.api, issuerCmd).map((response: Issuer) => response);
+        return this.http.put(this.api, issuerCmd).map((response: Issuer) => response);
     }
 }
 
