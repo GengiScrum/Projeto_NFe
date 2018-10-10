@@ -56,7 +56,13 @@ export class IssuerEditFormComponent implements OnInit, OnDestroy {
         this.isLoading = true;
         const issuerUpdateCommand: IssuerUpdateCommand =
             new IssuerUpdateCommand(this.form.get('details').value, this.form.get('address').value, this.issuer.id);
-        this.service.update(issuerUpdateCommand).take(1).subscribe(() => { this.isLoading = false; this.redirect(); });
+        this.service.update(issuerUpdateCommand)
+            .take(1)
+            .subscribe(() => {
+                this.isLoading = false;
+                this.resolver.resolveFromRouteAndNotify();
+                this.redirect();
+            });
     }
 
     public redirect(): void {
