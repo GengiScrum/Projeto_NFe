@@ -7,6 +7,7 @@ import { AddresseeRoutingModule } from './addressee.routing-module';
 import { NDDTabsbarModule } from './../../shared/ndd-ng-tabsbar/component/ndd-ng-tabsbar.module';
 import { NDDTitlebarModule } from './../../shared/ndd-ng-titlebar/component/ndd-ng-titlebar.module';
 import { AddresseeListComponent } from './addressee-list/addressee-list.component';
+import { AddresseeGridService } from './shared/addressee.service';
 
 @NgModule({
     imports: [
@@ -21,7 +22,9 @@ import { AddresseeListComponent } from './addressee-list/addressee-list.componen
     declarations: [
         AddresseeListComponent,
     ],
-    providers: [],
+    providers: [
+        AddresseeGridService,
+    ],
 })
 
 export class AddresseeModule {
