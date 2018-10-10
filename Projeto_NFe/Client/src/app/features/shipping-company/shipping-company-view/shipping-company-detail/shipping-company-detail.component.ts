@@ -1,10 +1,10 @@
-import { Address } from './../../../address/address.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 import { ShippingCompany } from './../../shared/shipping-company.model';
 import { ShippingCompanyResolveService } from './../../shared/shipping-company.service';
+import { Address } from './../../../address/address.model';
 
 @Component({
     templateUrl: './shipping-company-detail.component.html',
@@ -21,7 +21,8 @@ export class ShippingCompanyDetailComponent implements OnInit, OnDestroy {
     private ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(private resolver: ShippingCompanyResolveService,
-        private router: Router) { }
+        private router: Router,
+        private route: ActivatedRoute) { }
 
     public ngOnInit(): void {
         this.isLoading = true;
@@ -44,8 +45,12 @@ export class ShippingCompanyDetailComponent implements OnInit, OnDestroy {
         this.router.navigate(['/transportadores']);
     }
 
+    public onEdit(): void {
+        this.router.navigate(['editar'], { relativeTo: this.route, skipLocationChange: true });
+    }
+
     private setDocument(): void {
-        if (this.shippingCompany.personType === 1) {
+        if (this.shippingCompany.cpf) {
             this.documentNumber = this.shippingCompany.cpf;
             this.documentType = 'CPF';
         } else {

@@ -12,7 +12,7 @@ using System.Web.Http;
 
 namespace Projeto_NFe.API.Controllers.ShippingCompanies
 {
-    [RoutePrefix("api/shippingCompanies")]
+    [RoutePrefix("api/shippingcompanies")]
     public class ShippingCompaniesController : ApiControllerBase
     {
         private readonly IShippingCompanyService _service;

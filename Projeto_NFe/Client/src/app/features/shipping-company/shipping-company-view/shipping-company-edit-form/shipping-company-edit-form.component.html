@@ -1,0 +1,17 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form" class="feature-view__content">
+    <div class="row">
+        <div class="col-sm-6">
+            <ndd-shipping-company-form [returnRoute]="'./transportadores'" [form]="form.get('details')"></ndd-shipping-company-form>
+        </div>
+        <div class="col-sm-6">
+            <ndd-address-form [form]="form.get('address')"></ndd-address-form>
+        </div>
+    </div>
+    <div class="feature-view-tab__footer">
+        <button class="ndd-ng-button ndd-ng-button--primary" type="submit" [disabled]="form.invalid">Salvar</button>
+        <button class="ndd-ng-button ndd-ng-button--cancel" type="button" (click)="redirect()">Voltar</button>
+    </div>
+</form>
+
+<div class="ndd-ng-spinner__spinner" *ngIf="isLoading"></div>
+<div class="ndd-ng-spinner__color" *ngIf="isLoading"></div>

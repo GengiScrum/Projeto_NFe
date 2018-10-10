@@ -1,5 +1,5 @@
-import { PersonType } from './../shared/person-type.enum';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 
 import { ShippingCompany } from './../shared/shipping-company.model';
@@ -33,13 +33,23 @@ export class ShippingCompanyViewComponent implements OnInit, OnDestroy {
     }
 
     private createProperty(): void {
-        this.title = this.shippingCompany.name;
-        const cnpjDescription: string = (this.shippingCompany.personType === PersonType.COMPANY) ?
+        this.title = this.shippingCompany.businessName;
+        const docDescription: string = (this.shippingCompany.cnpj) ?
             ('CNPJ: ' + this.shippingCompany.cnpj) : ('CPF: ' + this.shippingCompany.cpf);
+        const stateRegistrationDescription: string = 'Inscrição Estadual: ' + this.shippingCompany.stateRegistration;
+        const corporateNameDescription: string = 'Razão Social: ' + this.shippingCompany.corporateName;
         this.infoItems = [
             {
-                value: cnpjDescription,
-                description: cnpjDescription,
+                value: docDescription,
+                description: docDescription,
+            },
+            {
+                value: stateRegistrationDescription,
+                description: stateRegistrationDescription,
+            },
+            {
+                value: corporateNameDescription,
+                description: corporateNameDescription,
             },
         ];
     }

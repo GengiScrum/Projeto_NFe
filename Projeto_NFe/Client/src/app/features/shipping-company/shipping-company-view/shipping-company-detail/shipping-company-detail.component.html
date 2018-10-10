@@ -11,11 +11,11 @@
                     <div class="row">
                         <div class="col-sm-6 feature-view__body">
                             <div>
-                                <span class="feature-view__label">Nome</span>
+                                <span class="feature-view__label">Nome Fantasia</span>
                             </div>
                             <div class="truncate feature-view__value">
-                                <span title="{{ shippingCompany?.name }}" class="feature-view__value">
-                                    {{ shippingCompany?.name }}
+                                <span title="{{ shippingCompany?.businessName }}" class="feature-view__value">
+                                    {{ shippingCompany?.businessName }}
                                 </span>
                             </div>
                         </div>
@@ -60,3 +60,9 @@
         <ndd-address-detail [address]=address></ndd-address-detail>
     </div>
 </div>
+<div class="feature-view-tab__footer">
+        <button class="ndd-ng-button ndd-ng-button--primary" (click)="onEdit()">Editar</button>
+        <button class="ndd-ng-button ndd-ng-button--cancel" (click)="redirect()">Voltar</button>
+    </div>
+    <div class="ndd-ng-spinner__spinner" *ngIf="isLoading"></div>
+    <div class="ndd-ng-spinner__color" *ngIf="isLoading"></div>
