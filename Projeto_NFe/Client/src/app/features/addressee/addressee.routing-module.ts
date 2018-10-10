@@ -1,7 +1,9 @@
-import { AddresseeViewComponent } from './addressee-view/addressee-view.component';
-import { AddresseeResolveService } from './shared/addressee.service';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+
+import { AddresseeDetailComponent } from './addressee-view/addressee-detail/addressee-detail.component';
+import { AddresseeViewComponent } from './addressee-view/addressee-view.component';
+import { AddresseeResolveService } from './shared/addressee.service';
 import { AddresseeListComponent } from './addressee-list/addressee-list.component';
 
 const addresseeRoutes: Routes = [
