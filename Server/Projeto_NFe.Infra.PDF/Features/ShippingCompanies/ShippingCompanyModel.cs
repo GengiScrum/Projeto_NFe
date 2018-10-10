@@ -29,7 +29,7 @@ namespace Projeto_NFe.Infra.PDF.Features.ShippingCompanies
             Address.Country = shippingCompany.Address.Country;
             Id = shippingCompany.Id;
             StateRegistration = shippingCompany.StateRegistration;
-            Name = shippingCompany.Name;
+            Name = shippingCompany.BusinessName;
             CorporateName = shippingCompany.CorporateName;
             ShippingResponsability = shippingCompany.ShippingResponsability;
             PersonType = shippingCompany.PersonType;
