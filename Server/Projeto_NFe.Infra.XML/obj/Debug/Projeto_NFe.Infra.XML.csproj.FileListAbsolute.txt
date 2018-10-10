@@ -34,3 +34,12 @@ C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Proje
 C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.csproj.CopyComplete
 C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.dll
 C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.pdb
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra.XML\bin\Debug\Projeto_NFe.Infra.XML.dll
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra.XML\bin\Debug\Projeto_NFe.Infra.XML.pdb
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra.XML\bin\Debug\Projeto_NFe.Domain.dll
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra.XML\bin\Debug\Projeto_NFe.Domain.pdb
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.csprojAssemblyReference.cache
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.csproj.CoreCompileInputs.cache
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.csproj.CopyComplete
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.dll
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra.XML\obj\Debug\Projeto_NFe.Infra.XML.pdb

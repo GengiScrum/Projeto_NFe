@@ -14,7 +14,7 @@ namespace Projeto_NFe.Infra.ORM.Features.ShippingCompanies
         {
             ToTable("TBShippingCompany");
             HasKey(t => t.Id);
-            Property(t => t.Name).HasMaxLength(40);
+            Property(t => t.BusinessName).HasMaxLength(40);
             Property(t => t.CorporateName).HasMaxLength(40);
             Property(t => t.StateRegistration).HasMaxLength(40);
             Property(t => t.Cpf).HasMaxLength(15);

@@ -109,7 +109,7 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.ShippingCompanies
             // Cenário
             var alterado = false;
             var newName = "alterado";
-            _shippingCompanyBase.Name = newName;
+            _shippingCompanyBase.BusinessName = newName;
             //Ação
             var atualizado = new Action(() => { alterado = _repository.Update(_shippingCompanyBase); });
             // Verificação

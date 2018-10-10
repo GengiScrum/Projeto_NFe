@@ -34,3 +34,12 @@ C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Proje
 C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.csproj.CopyComplete
 C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.dll
 C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.pdb
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra\bin\Debug\Projeto_NFe.Infra.dll
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra\bin\Debug\Projeto_NFe.Infra.pdb
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra\bin\Debug\Projeto_NFe.Domain.dll
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra\bin\Debug\Projeto_NFe.Domain.pdb
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.csprojAssemblyReference.cache
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.csproj.CoreCompileInputs.cache
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.csproj.CopyComplete
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.dll
+C:\Users\T0KS1CK\Desktop\acad\Projeto_NFe\Server\Projeto_NFe.Infra\obj\Debug\Projeto_NFe.Infra.pdb
