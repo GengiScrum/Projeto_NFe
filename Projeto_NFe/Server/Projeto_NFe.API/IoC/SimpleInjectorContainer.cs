@@ -38,6 +38,8 @@ namespace Projeto_NFe.API.IoC
         {
             ContainerInstance.Register<IIssuerService, IssuerService>();
             ContainerInstance.Register<IIssuerRepository, IssuerRepository>();
+            ContainerInstance.Register<IShippingCompanyService, ShippingCompanyService>();
+            ContainerInstance.Register<IShippingCompanyRepository, ShippingCompanyRepository>();
 
             // TODO: Por enquanto estaremos criando o context do EF por aqui. Precisaremos trocar por uma Factory
             ContainerInstance.Register<NFeContext>(() => new NFeContext(), Lifestyle.Singleton);

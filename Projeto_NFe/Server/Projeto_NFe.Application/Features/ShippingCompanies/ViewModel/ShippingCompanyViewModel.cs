@@ -9,7 +9,7 @@ namespace Projeto_NFe.Application.Features.ShippingCompanies.ViewModel
     public class ShippingCompanyViewModel
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string BusinessName { get; set; }
         public string CorporateName { get; set; }
         public string Cnpj { get; set; }
         public string Cpf { get; set; }
