@@ -34,12 +34,22 @@ const appRoutes: Routes = [
                         breadcrumbLabel: 'Transportadores',
                     },
                 },
-            }, {
+            },
+            {
                 path: 'emitentes',
                 loadChildren: './features/issuer/issuer.module#IssuerModule',
                 data: {
                     breadcrumbOptions: {
                         breadcrumbLabel: 'Emitentes',
+                    },
+                },
+            },
+            {
+                path: 'destinatarios',
+                loadChildren: './features/addressee/addressee.module#AddresseeModule',
+                data: {
+                    breadcrumbOptions: {
+                        breadcrumbLabel: 'Destinatarios',
                     },
                 },
             },

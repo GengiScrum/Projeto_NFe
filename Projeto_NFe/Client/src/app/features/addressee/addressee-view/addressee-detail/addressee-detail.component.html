@@ -1,0 +1,62 @@
+<div class="feature-view-tab__content">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="feature-view__title">Dados Cadastrais</div>
+                </div>
+            </div>
+            <div class="row feature-view__group">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-6 feature-view__body">
+                            <div>
+                                <span class="feature-view__label">Nome Fantasia</span>
+                            </div>
+                            <div>
+                                <span title="{{ addressee?.businessName }}" class="feature-view__value">{{ addressee?.businessName }}</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 feature-view__body">
+                            <div>
+                                <span class="feature-view__label">Razão Social</span>
+                            </div>
+                            <div>
+                                <span title="{{ addressee?.corporateName }}" class="feature-view__value">{{ addressee?.corporateName }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-6 feature-view__body">
+                            <div>
+                                <span class="feature-view__label">Inscrição Estadual</span>
+                            </div>
+                            <div>
+                                <span title="{{ addressee?.stateRegistration }}" class="feature-view__value">{{ addressee?.stateRegistration }}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="feature-view__label">{{ documentType }}</span>
+                        </div>
+                        <div class="truncate feature-view__value">
+                            <span title="{{ documentNumber }}" class="feature-view__value">
+                                {{ documentNumber }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <ndd-address-detail [address]=address></ndd-address-detail>    
+        </div>
+    </div>
+</div>
+<div class="feature-view-tab__footer">
+    <button class="ndd-ng-button ndd-ng-button--primary" (click)="onEdit()">Editar</button>
+    <button class="ndd-ng-button ndd-ng-button--cancel" (click)="redirect()">Voltar</button>
+</div>
+<div class="ndd-ng-spinner__spinner" *ngIf="isLoading"></div>
+<div class="ndd-ng-spinner__color" *ngIf="isLoading"></div>

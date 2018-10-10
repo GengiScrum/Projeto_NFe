@@ -14,6 +14,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using Projeto_NFe.Application.Features.Addressees;
+using Projeto_NFe.Domain.Features.Addressees;
+using Projeto_NFe.Infra.ORM.Features.Addressees;
+using Projeto_NFe.Application.Features.Products;
+using Projeto_NFe.Domain.Features.Products;
+using Projeto_NFe.Infra.ORM.Features.Products;
 
 namespace Projeto_NFe.API.IoC
 {
@@ -40,6 +46,10 @@ namespace Projeto_NFe.API.IoC
             ContainerInstance.Register<IIssuerRepository, IssuerRepository>();
             ContainerInstance.Register<IShippingCompanyService, ShippingCompanyService>();
             ContainerInstance.Register<IShippingCompanyRepository, ShippingCompanyRepository>();
+            ContainerInstance.Register<IAddresseeService, AddresseeService>();
+            ContainerInstance.Register<IAddresseeRepository, AddresseReposiotory>();
+            ContainerInstance.Register<IProductService, ProductService>();
+            ContainerInstance.Register<IProductRepository, ProductRepository>();
 
             // TODO: Por enquanto estaremos criando o context do EF por aqui. Precisaremos trocar por uma Factory
             ContainerInstance.Register<NFeContext>(() => new NFeContext(), Lifestyle.Singleton);
