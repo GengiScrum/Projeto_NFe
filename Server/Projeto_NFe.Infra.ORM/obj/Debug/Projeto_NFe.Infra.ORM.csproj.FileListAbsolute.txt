@@ -69,3 +69,4 @@ C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Proje
 C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.ORM\obj\Debug\Projeto_NFe.Infra.ORM.csproj.CopyComplete
 C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.ORM\obj\Debug\Projeto_NFe.Infra.ORM.dll
 C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.ORM\obj\Debug\Projeto_NFe.Infra.ORM.pdb
+C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.ORM\obj\Debug\Projeto_NFe.Infra.ORM.Migrations.NFeContext_V23.resources
