@@ -99,13 +99,13 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             //Arrange
             var addresseeCmd = ObjectMother.AddresseeCommandToRemove();
             var mockFoiRemovido = true;
-            _mockAddresseeRepository.Setup(e => e.Remove(addresseeCmd.Ids.First())).Returns(mockFoiRemovido);
+            _mockAddresseeRepository.Setup(e => e.Remove(addresseeCmd.AddresseesId.First())).Returns(mockFoiRemovido);
 
             //Action
             var removed = _addresseeService.Remove(addresseeCmd);
 
             //Assert
-            _mockAddresseeRepository.Verify(e => e.Remove(addresseeCmd.Ids.First()), Times.Once);
+            _mockAddresseeRepository.Verify(e => e.Remove(addresseeCmd.AddresseesId.First()), Times.Once);
             removed.Should().BeTrue();
         }
 
@@ -114,14 +114,14 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
         {
             //Arrange
             var addresseeCmd = ObjectMother.AddresseeCommandToRemove();
-            _mockAddresseeRepository.Setup(e => e.Remove(addresseeCmd.Ids.First())).Throws<NotFoundException>();
+            _mockAddresseeRepository.Setup(e => e.Remove(addresseeCmd.AddresseesId.First())).Throws<NotFoundException>();
 
             //Action
             Action AddresseeAcao = () => _addresseeService.Remove(addresseeCmd);
 
             //Assert
             AddresseeAcao.Should().Throw<NotFoundException>();
-            _mockAddresseeRepository.Verify(e => e.Remove(addresseeCmd.Ids.First()), Times.Once);
+            _mockAddresseeRepository.Verify(e => e.Remove(addresseeCmd.AddresseesId.First()), Times.Once);
         }
 
         [Test]

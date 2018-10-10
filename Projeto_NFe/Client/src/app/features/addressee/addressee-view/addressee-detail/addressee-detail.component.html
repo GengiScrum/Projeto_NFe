@@ -19,16 +19,18 @@
                         </div>
                         <div class="col-sm-6 feature-view__body">
                             <div>
-                                <span class="feature-view__label">Razão Social</span>
+                                <span class="feature-view__label">{{ documentType }}</span>
                             </div>
-                            <div>
-                                <span title="{{ addressee?.corporateName }}" class="feature-view__value">{{ addressee?.corporateName }}</span>
+                            <div class="truncate feature-view__value">
+                                <span title="{{ documentNumber }}" class="feature-view__value">
+                                    {{ documentNumber }}
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
-                    <div class="row">
+                    <div class="row" [hidden]="addressee?.personType === 1">
                         <div class="col-sm-6 feature-view__body">
                             <div>
                                 <span class="feature-view__label">Inscrição Estadual</span>
@@ -37,20 +39,20 @@
                                 <span title="{{ addressee?.stateRegistration }}" class="feature-view__value">{{ addressee?.stateRegistration }}</span>
                             </div>
                         </div>
-                        <div>
-                            <span class="feature-view__label">{{ documentType }}</span>
-                        </div>
-                        <div class="truncate feature-view__value">
-                            <span title="{{ documentNumber }}" class="feature-view__value">
-                                {{ documentNumber }}
-                            </span>
+                        <div class="col-sm-6 feature-view__body">
+                            <div>
+                                <span class="feature-view__label">Razão Social</span>
+                            </div>
+                            <div>
+                                <span title="{{ addressee?.corporateName }}" class="feature-view__value">{{ addressee?.corporateName }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6">
-            <ndd-address-detail [address]=address></ndd-address-detail>    
+            <ndd-address-detail [address]=address></ndd-address-detail>
         </div>
     </div>
 </div>

@@ -12,7 +12,7 @@ namespace Projeto_NFe.Application.Features.Addressees.Commands
     [ExcludeFromCodeCoverage]
     public class AddresseeRemoveCommand
     {
-        public virtual int[] Ids { get; set; }
+        public virtual int[] AddresseesId { get; set; }
 
         public virtual ValidationResult Validate()
         {
@@ -23,8 +23,8 @@ namespace Projeto_NFe.Application.Features.Addressees.Commands
         {
             public Validator()
             {
-                RuleFor(a => a.Ids).NotNull();
-                RuleFor(a => a.Ids.Length).GreaterThan(0);
+                RuleFor(a => a.AddresseesId).NotNull();
+                RuleFor(a => a.AddresseesId.Length).GreaterThan(0);
             }
         }
     }

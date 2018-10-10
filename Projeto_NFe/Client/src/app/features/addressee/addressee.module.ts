@@ -1,6 +1,5 @@
 import { GridModule } from '@progress/kendo-angular-grid';
 import { NgModule } from '@angular/core';
-import { SharedModule } from '@progress/kendo-angular-dropdowns';
 import { TextMaskModule } from 'angular2-text-mask';
 
 import { AddresseeRoutingModule } from './addressee.routing-module';
@@ -10,6 +9,9 @@ import { AddresseeListComponent } from './addressee-list/addressee-list.componen
 import { AddresseeGridService, AddresseeResolveService, AddresseeService } from './shared/addressee.service';
 import { AddresseeDetailComponent } from './addressee-view/addressee-detail/addressee-detail.component';
 import { AddresseeViewComponent } from './addressee-view/addressee-view.component';
+import { SharedModule } from './../../shared/shared.module';
+import { AddresseeRegisterFormComponent } from './addressee-register-form/addressee-register-form.component';
+import { AddresseeFormComponent } from './addressee-form/addressee-form.component';
 
 @NgModule({
     imports: [
@@ -25,6 +27,8 @@ import { AddresseeViewComponent } from './addressee-view/addressee-view.componen
         AddresseeListComponent,
         AddresseeViewComponent,
         AddresseeDetailComponent,
+        AddresseeFormComponent,
+        AddresseeRegisterFormComponent,
     ],
     providers: [
         AddresseeService,

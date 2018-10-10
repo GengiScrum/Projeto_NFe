@@ -2,13 +2,13 @@
 using Projeto_NFe.Domain.Features.Issuers;
 using Projeto_NFe.Domain.Features.InvoiceTaxes;
 using Projeto_NFe.Domain.Features.IssuedInvoices;
-using Projeto_NFe.Domain.Features.ProductsSold;
 using Projeto_NFe.Domain.Features.ShippingCompanies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projeto_NFe.Domain.Features.ProductsSold;
 
 namespace Projeto_NFe.Domain.Features.Invoices
 {

@@ -9,8 +9,8 @@ namespace Projeto_NFe.Infra.ORM.Features.Products
         {
             ToTable("TBProduct");
             HasKey(p => p.Id);
-            Property(p => p.Code).HasMaxLength(40).IsRequired();
-            Property(p => p.Description).HasMaxLength(40).IsRequired();
+            Property(p => p.Code).IsRequired().HasMaxLength(40);
+            Property(p => p.Description).IsRequired().HasMaxLength(40);
             Property(p => p.UnitaryValue).IsRequired();
         }
     }

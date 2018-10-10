@@ -8,15 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Projeto_NFe.Domain.Features.Addressees;
-using Projeto_NFe.Domain.Features.Products;
+using Projeto_NFe.Application.Features.Products;
 using Projeto_NFe.Domain.Features.Invoices;
 using Projeto_NFe.Domain.Features.InvoiceTaxes;
-using Projeto_NFe.Domain.Features.ProductsSold;
 using Projeto_NFe.Domain.Features.ProductTaxes;
 using Projeto_NFe.Application.Features.Issuers.Commands;
 using Projeto_NFe.Application.Features.ShippingCompanies.Commands;
 using Projeto_NFe.Application.Features.Addressees.Commands;
+using Projeto_NFe.Domain.Features.Products;
 using Projeto_NFe.Application.Features.Products.Commands;
+using Projeto_NFe.Domain.Features.ProductsSold;
 
 namespace Projeto_NFe.Common.Tests
 {
@@ -341,7 +342,7 @@ namespace Projeto_NFe.Common.Tests
             };
             return t;
         }
-                
+
         public static ShippingCompany ShippingCompanyPessoaJuridicaValida(Address address)
         {
             return new ShippingCompany
@@ -396,7 +397,7 @@ namespace Projeto_NFe.Common.Tests
         {
             return new AddresseeRemoveCommand()
             {
-                Ids = new int[] { 1 },
+                AddresseesId = new int[] { 1 },
             };
         }
 
@@ -702,23 +703,25 @@ namespace Projeto_NFe.Common.Tests
         #endregion
 
         #region Product
-
         public static ProductRegisterCommand ProductCommandToRegister()
         {
             ProductRegisterCommand product = new ProductRegisterCommand();
-            product.Code = "ASDY-87";
-            product.Description = "Bolacha";
-            product.UnitaryValue = 2.500;
+
+            product.Code = "ABY-Y7ASA";
+            product.Description = "Bolacha Maria";
+            product.UnitaryValue = 10.00;
+
             return product;
         }
 
         public static ProductUpdateCommand ProductCommandToUpdate()
         {
             ProductUpdateCommand product = new ProductUpdateCommand();
-            product.Id = 1;
-            product.Code = "ASDY-87";
-            product.Description = "Bolacha";
-            product.UnitaryValue = 2.500;
+
+            product.Code = "ABY-Y7ASA";
+            product.Description = "Bolacha Maria";
+            product.UnitaryValue = 10.00;
+
             return product;
         }
 
@@ -726,7 +729,7 @@ namespace Projeto_NFe.Common.Tests
         {
             return new ProductRemoveCommand()
             {
-                ProductsId = new int[] { 1 },
+                ProductsId = new int[] { 1 }
             };
         }
 

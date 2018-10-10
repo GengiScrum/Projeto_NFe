@@ -1,14 +1,10 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using Projeto_NFe.Domain.Features.Products;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Projeto_NFe.Application.Features.Products.Commands
 {
+    [ExcludeFromCodeCoverage]
     public class ProductRemoveCommand
     {
         public int [] ProductsId { get; set; }
@@ -18,7 +14,7 @@ namespace Projeto_NFe.Application.Features.Products.Commands
             return new Validator().Validate(this);
         }
 
-        class Validator : AbstractValidator<ProductRemoveCommand>
+        class Validator: AbstractValidator<ProductRemoveCommand>
         {
             public Validator()
             {

@@ -4,7 +4,7 @@ using NUnit.Framework;
 using Projeto_NFe.Common.Tests;
 using Projeto_NFe.Domain.Features.InvoiceTaxes;
 using Projeto_NFe.Domain.Features.ProductTaxes;
-using Projeto_NFe.Domain.Features.ProductsSold;
+using Projeto_NFe.Application.Features.ProductsSold;
 using System;
 using System.Collections.Generic;
 using System.Linq;

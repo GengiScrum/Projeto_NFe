@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using Projeto_NFe.Common.Tests;
-using Projeto_NFe.Domain.Features.Products;
+using Projeto_NFe.Application.Features.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;

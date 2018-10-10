@@ -1,13 +1,10 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Projeto_NFe.Application.Features.Products.Commands
 {
+    [ExcludeFromCodeCoverage]
     public class ProductRegisterCommand
     {
         public string Code { get; set; }
@@ -23,9 +20,9 @@ namespace Projeto_NFe.Application.Features.Products.Commands
         {
             public Validator()
             {
-                RuleFor(p => p.Code).NotNull().MaximumLength(40);
-                RuleFor(p => p.Description).NotNull().MaximumLength(40);
-                RuleFor(p => p.UnitaryValue).NotNull().GreaterThan(0);
+                RuleFor(p => p.Code).NotNull();
+                RuleFor(p => p.Description).NotNull();
+                RuleFor(p => p.UnitaryValue).NotNull();
             }
         }
     }

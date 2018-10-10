@@ -13,3 +13,11 @@ export class Addressee {
     public country: string;
     public personType: number;
 }
+
+export class AddresseeRemoveCommand {
+    public addresseesId: number[] = [];
+
+    constructor(selectedEntities: any) {
+        this.addresseesId = selectedEntities.map((addressee: Addressee) => addressee.id);
+    }
+}

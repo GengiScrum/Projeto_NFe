@@ -1,0 +1,29 @@
+<div class="feature-view">
+    <ndd-ng-titlebar titlebarIcon="ndd-font ndd-font-box-check" titlebarTitle="Cadastrar Transportador" [titlebarRouterToReturnOnClose]="returnRoute"></ndd-ng-titlebar>
+    <ndd-ng-tabsbar>
+        <ndd-ng-tab tabId="ndd-ng-tab-issuer-info" [tabRoute]="'./'" tabTitle="Dados Cadastrais"></ndd-ng-tab>
+    </ndd-ng-tabsbar>
+    <div class="feature-view__content">
+        <form (ngSubmit)="onSubmit()" [formGroup]="form" class="form">
+            <div class="row">
+                <div class="col-sm-6">
+                    <ndd-shipping-company-form [returnRoute]="'./emitentes'" [form]="form.get('details')"></ndd-shipping-company-form>
+                </div>
+                <div class="col-sm-6">
+                    <ndd-address-form [form]="form.get('address')"></ndd-address-form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="feature-view-tab__footer">
+                        <button class="ndd-ng-button ndd-ng-button--primary" type="submit" [disabled]="form.invalid">Salvar</button>
+                        <button class="ndd-ng-button ndd-ng-button--cancel" type="button" (click)="redirect()">Voltar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="ndd-ng-spinner__spinner" *ngIf="isLoading"></div>
+<div class="ndd-ng-spinner__color" *ngIf="isLoading"></div>
