@@ -31,14 +31,3 @@ C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\obj\D
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\obj\Debug\Projeto_NFe.Infra.PDF.csproj.CopyComplete
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\obj\Debug\Projeto_NFe.Infra.PDF.dll
 C:\Users\bruno\Desktop\GengiScrum\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\obj\Debug\Projeto_NFe.Infra.PDF.pdb
-C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\bin\Debug\Projeto_NFe.Infra.PDF.dll
-C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\bin\Debug\Projeto_NFe.Infra.PDF.pdb
-C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\bin\Debug\itextsharp.dll
-C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\bin\Debug\Projeto_NFe.Domain.dll
-C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\bin\Debug\Projeto_NFe.Domain.pdb
-C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\bin\Debug\itextsharp.xml
-C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\obj\Debug\Projeto_NFe.Infra.PDF.csprojAssemblyReference.cache
-C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\obj\Debug\Projeto_NFe.Infra.PDF.csproj.CoreCompileInputs.cache
-C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\obj\Debug\Projeto_NFe.Infra.PDF.csproj.CopyComplete
-C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\obj\Debug\Projeto_NFe.Infra.PDF.dll
-C:\Users\Pichau\Documents\Vitor\Academia do Programador\Projeto_NFe\Server\Projeto_NFe.Infra.PDF\obj\Debug\Projeto_NFe.Infra.PDF.pdb
