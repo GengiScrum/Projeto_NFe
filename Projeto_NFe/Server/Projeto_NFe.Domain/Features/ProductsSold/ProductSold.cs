@@ -14,12 +14,7 @@ namespace Projeto_NFe.Domain.Features.ProductsSold
         public int Quantity { get; set; }
         public double Amount => GetAmount();
         public ProductTax Tax { get; set; }
-
-        public override void Validate()
-        {
-            //if (Quantity < 1)
-            //    throw new ProductSoldQuantityExcecao();
-        }
+        public int InvoiceId { get; set; }
 
         private double GetAmount()
         {

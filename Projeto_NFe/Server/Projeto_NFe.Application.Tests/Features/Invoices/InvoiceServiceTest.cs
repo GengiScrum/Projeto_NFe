@@ -5,18 +5,18 @@ using Projeto_NFe.Application.Features.Invoices;
 using Projeto_NFe.Common.Tests;
 using Projeto_NFe.Domain.Features.Invoices;
 using Projeto_NFe.Domain.Features.IssuedInvoices;
-using Projeto_NFe.Application.Features.ProductsSold;
 using Projeto_NFe.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projeto_NFe.Application.Tests.Initializer;
 
 namespace Projeto_NFe.Application.Tests.Features.Invoices
 {
     [TestFixture]
-    public class InvoiceServiceTest
+    public class InvoiceServiceTest : TestServiceBase
     {
         Invoice _invoice;
 
@@ -30,7 +30,7 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
             _invoice = new Invoice();
             _mockInvoiceRepository = new Mock<IInvoiceRepository>();
             _mockIssuedInvoiceRepository = new Mock<IIssuedInvoiceRepository>();
-            _invoiceService = new InvoiceService(_mockInvoiceRepository.Object, _mockIssuedInvoiceRepository.Object);
+            _invoiceService = new InvoiceService(_mockInvoiceRepository.Object);
         }
 
         #region Add Invoice
@@ -38,47 +38,53 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         public void Invoice_Service_Add_Sucessfully()
         {
             //Cenário
-            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId();
-            _mockInvoiceRepository.Setup(nfr => nfr.Add(_invoice)).Returns(_invoice);
+            var invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId(1, 1, 1);
+            var invoiceCmd = ObjectMother.InvoiceCommandToRegister(1,1,1);
+            _mockInvoiceRepository.Setup(ir => ir.Add(It.IsAny<Invoice>())).Returns(invoice);
 
             //Ação
-            Invoice salvarInvoice = _invoiceService.Add(_invoice);
+            var addInvoice = _invoiceService.Add(invoiceCmd);
 
             //Verificar
-            salvarInvoice.Should().Be(_invoice);
-            _mockInvoiceRepository.Verify(nfr => nfr.Add(_invoice));
+            _mockInvoiceRepository.Verify(ir => ir.Add(It.IsAny<Invoice>()));
+            addInvoice.Id.Should().Be(invoice.Id);
         }
         #endregion
 
         #region Update
-        [Test]
-        public void Invoice_Service_Update_Sucessfully()
-        {
-            //Cenário
-            _invoice = ObjectMother.InvoiceValidWithIdWithoutIssuerAddresseeShippingCompanyId();
-            _mockInvoiceRepository.Setup(nfr => nfr.Update(_invoice)).Returns(_invoice);
+        //[Test]
+        //public void Invoice_Service_Update_Sucessfully()
+        //{
+        //    //Cenário
+        //    var invoice = ObjectMother.InvoiceValidWithIdWithoutIssuerAddresseeShippingCompanyId();
+        //    var invoiceCmd = ObjectMother.InvoiceCommandToUpdate(1,1,1);
+        //    var updated = true;
+        //    _mockInvoiceRepository.Setup(pr => pr.GetById(invoiceCmd.Id)).Returns(invoice);
+        //    _mockInvoiceRepository.Setup(pr => pr.Update(invoice)).Returns(updated);
 
-            //Ação
-            Invoice updateInvoice = _invoiceService.Update(_invoice);
+        //    //Ação
+        //    var updateInvoice = _invoiceService.Update(invoiceCmd);
 
-            //Verificar
-            updateInvoice.Should().Be(_invoice);
-            _mockInvoiceRepository.Verify(nfr => nfr.Update(_invoice));
-        }
+        //    //Verificar
+        //    _mockInvoiceRepository.Verify(pr => pr.GetById(invoiceCmd.Id), Times.Once);
+        //    _mockInvoiceRepository.Verify(pr => pr.Update(invoice), Times.Once);
+        //    updateInvoice.Should().BeTrue();
+        //}
         
         [Test]
-        public void Invoice_Service_Update_ShouldThrowIdentifierUndefinedException()
+        public void Invoice_Service_Update_ShouldThrowNotFoundException()
         {
-            //Cenário
-            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId();
-            _mockInvoiceRepository.Setup(nfr => nfr.Update(_invoice)).Returns(_invoice);
+            //Arrange
+            var invoiceCmd = ObjectMother.InvoiceCommandToUpdate(1,1,1);
+            _mockInvoiceRepository.Setup(pr => pr.GetById(invoiceCmd.Id)).Returns((Invoice)null);
 
-            //Ação
-            Action act = () => _invoiceService.Update(_invoice);
+            //Action
+            Action act = () => _invoiceService.Update(invoiceCmd);
 
-            //Verificar
-            act.Should().Throw<IdentifierUndefinedException>();
-            _mockInvoiceRepository.VerifyNoOtherCalls();
+            //Assert
+            act.Should().Throw<NotFoundException>();
+            _mockInvoiceRepository.Verify(pr => pr.GetById(invoiceCmd.Id), Times.Once);
+            _mockInvoiceRepository.Verify(pr => pr.Update(It.IsAny<Invoice>()), Times.Never);
         }
         #endregion
 
@@ -89,61 +95,16 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         {
             //Cenário
             _invoice = ObjectMother.InvoiceValidWithIdWithoutIssuerAddresseeShippingCompanyId();
-            _mockInvoiceRepository.Setup(nfr => nfr.GetById(_invoice.Id)).Returns(_invoice);
+            _mockInvoiceRepository.Setup(ir => ir.GetById(_invoice.Id)).Returns(_invoice);
 
             //Ação
-            Invoice pegarInvoice = _invoiceService.GetById(_invoice);
+            Invoice pegarInvoice = _invoiceService.GetById(_invoice.Id);
 
             //Verificar
             pegarInvoice.Should().Be(_invoice);
-            _mockInvoiceRepository.Verify(nfr => nfr.GetById(_invoice.Id));
+            _mockInvoiceRepository.Verify(ir => ir.GetById(_invoice.Id));
         }
 
-        [Test]
-        public void Invoice_Service_GetByIdIssuedInvoice_Sucessfully()
-        {
-            //Cenário
-            _invoice = ObjectMother.IssuedInvoiceValidWithoutId();
-            _invoice.Id = 1;
-            _mockIssuedInvoiceRepository.Setup(nfr => nfr.GetById(_invoice)).Returns(_invoice);
-
-            //Ação
-            Invoice pegarInvoice = _invoiceService.GetByIdIssuedInvoice(_invoice);
-
-            //Verificar
-            pegarInvoice.Should().Be(_invoice);
-            _mockIssuedInvoiceRepository.Verify(nfr => nfr.GetById(_invoice));
-        }
-
-        [Test]
-        public void Invoice_Service_GetById_ShouldThrowIdentifierUndefinedException()
-        {
-            //Cenário
-            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId();
-            _mockInvoiceRepository.Setup(nfr => nfr.GetById(_invoice.Id)).Returns(_invoice);
-
-            //Ação
-            Action act = () => _invoiceService.GetById(_invoice);
-
-            //Verificar
-            act.Should().Throw<IdentifierUndefinedException>();
-            _mockInvoiceRepository.VerifyNoOtherCalls();
-        }
-
-        [Test]
-        public void Invoice_Service_GetByIdIssuedInvoice_ShouldThrowIdentifierUndefinedException()
-        {
-            //Cenário
-            _invoice = ObjectMother.IssuedInvoiceValidWithoutId();
-            _mockIssuedInvoiceRepository.Setup(nfr => nfr.GetById(_invoice)).Returns(_invoice);
-
-            //Ação
-            Action act = () => _invoiceService.GetByIdIssuedInvoice(_invoice);
-
-            //Verificar
-            act.Should().Throw<IdentifierUndefinedException>();
-            _mockIssuedInvoiceRepository.VerifyNoOtherCalls();
-        }
         #endregion
 
         #region GetById Todas
@@ -153,7 +114,7 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         {
             //Cenário
 
-            _mockInvoiceRepository.Setup(nfr => nfr.GetAll()).Returns(new List<Invoice>() { _invoice });
+            _mockInvoiceRepository.Setup(ir => ir.GetAll()).Returns(new List<Invoice>() { _invoice }.AsQueryable());
 
             //Ação
             IEnumerable<Invoice> invoices = _invoiceService.GetAll();
@@ -162,25 +123,7 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
             invoices.Should().NotBeNull();
             invoices.First().Should().Be(_invoice);
             invoices.Count().Should().Be(1);
-            _mockInvoiceRepository.Verify(nfr => nfr.GetAll());
-        }
-
-        [Test]
-        public void Invoice_Service_GetByIdTodasIssuedInvoices_Sucessfully()
-        {
-            //Cenário
-            _invoice = ObjectMother.IssuedInvoiceValidWithoutId();
-            _invoice.Id = 1;
-            _mockIssuedInvoiceRepository.Setup(nfr => nfr.GetAll()).Returns(new List<Invoice>() { _invoice });
-
-            //Ação
-            IEnumerable<Invoice> invoices = _invoiceService.GetByIdTodasIssuedInvoices();
-
-            //Verificar
-            invoices.Should().NotBeNull();
-            invoices.First().Should().Be(_invoice);
-            invoices.Count().Should().Be(1);
-            _mockIssuedInvoiceRepository.Verify(nfr => nfr.GetAll());
+            _mockInvoiceRepository.Verify(ir => ir.GetAll());
         }
 
         #endregion
@@ -190,96 +133,33 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         [Test]
         public void Invoice_Service_Remove_Sucessfully()
         {
-            //Cenário
-            _invoice = ObjectMother.InvoiceValidWithIdWithoutIssuerAddresseeShippingCompanyId();
-            _mockInvoiceRepository.Setup(nfr => nfr.Remove(_invoice.Id));
+            //Arrange
+            var invoiceCmd = ObjectMother.InvoiceCommandToRemove();
+            var mockWasRemoved = true;
+            _mockInvoiceRepository.Setup(pr => pr.Remove(invoiceCmd.InvoicesId.First())).Returns(mockWasRemoved);
 
-            //Ação
-            Action act = () => _invoiceService.Remove(_invoice);
+            //Action
+            var invoiceRemoved = _invoiceService.Remove(invoiceCmd);
 
-            //Verificar
-            act.Should().NotThrow<IdentifierUndefinedException>();
-            _mockInvoiceRepository.Verify(nfr => nfr.Remove(_invoice.Id));
+            //Assert
+            _mockInvoiceRepository.Verify(pr => pr.Remove(invoiceCmd.InvoicesId.First()), Times.Once);
+            invoiceRemoved.Should().BeTrue();
         }
 
         [Test]
         public void Invoice_Service_Remove_ShouldThrowIdentifierUndefinedException()
         {
-            //Cenário
-            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId();
-            _mockInvoiceRepository.Setup(nfr => nfr.Remove(_invoice.Id));
+            //Arrange
+            var invoiceCmd = ObjectMother.InvoiceCommandToRemove();
+            _mockInvoiceRepository.Setup(pr => pr.Remove(invoiceCmd.InvoicesId.First())).Throws<NotFoundException>();
 
-            //Ação
-            Action act = () => _invoiceService.Remove(_invoice);
+            //Action
+            Action act = () => _invoiceService.Remove(invoiceCmd);
 
-            //Verificar
-            act.Should().Throw<IdentifierUndefinedException>();
-            _mockInvoiceRepository.VerifyNoOtherCalls();
+            //Assert
+            act.Should().Throw<NotFoundException>();
+            _mockInvoiceRepository.Verify(pr => pr.Remove(invoiceCmd.InvoicesId.First()), Times.Once);
         }
         #endregion
-
-        #region Issue
-        [Test]
-        public void Invoice_Service_Issue_Sucessfully()
-        {
-            //Cenário
-            _invoice = ObjectMother.InvoiceValidWithIdWithoutIssuerAddresseeShippingCompanyId();
-            _mockInvoiceRepository.Setup(nfr => nfr.Remove(_invoice.Id));
-            _mockIssuedInvoiceRepository.Setup(nfer => nfer.Add(_invoice));
-
-            //Ação
-            Action act = () => _invoiceService.Issue(_invoice);
-
-            //Verificar
-            act.Should().NotThrow();
-            _mockIssuedInvoiceRepository.Verify(nfer => nfer.Add(_invoice));
-            _mockInvoiceRepository.Verify(nfr => nfr.Remove(_invoice.Id));
-        }
-
-        [Test]
-        public void Invoice_Service_IssueComChaveDeAcessoExistente_Sucessfully()
-        {
-            //Cenário
-            _invoice = ObjectMother.InvoiceValidWithIdWithoutIssuerAddresseeShippingCompanyId();
-            _mockInvoiceRepository.Setup(nfr => nfr.Remove(_invoice.Id));
-            _mockIssuedInvoiceRepository.Setup(nfer => nfer.Add(_invoice));
-            _mockIssuedInvoiceRepository.SetupSequence(nfer => nfer.CheckAcessKey(It.IsAny<string>())).Returns(true).Returns(false);
-
-            //Ação
-            Action act = () => _invoiceService.Issue(_invoice);
-
-            //Verificar
-            act.Should().NotThrow();
-            _mockIssuedInvoiceRepository.Verify(nfer => nfer.CheckAcessKey(It.IsAny<string>()));
-            _mockIssuedInvoiceRepository.Verify(nfer => nfer.Add(_invoice));
-            _mockInvoiceRepository.Verify(nfr => nfr.Remove(_invoice.Id));
-        }
-        
-        [Test]
-        public void Invoice_Service_Issue_ShouldThrowIdentifierUndefinedException()
-        {
-            //Cenário
-            _invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId();
-            _mockInvoiceRepository.Setup(nfr => nfr.Remove(_invoice.Id));
-            _mockIssuedInvoiceRepository.Setup(nfer => nfer.Add(_invoice));
-
-            //Ação
-            Action act = () => _invoiceService.Issue(_invoice);
-
-            //Verificar
-            act.Should().Throw<IdentifierUndefinedException>();
-            _mockIssuedInvoiceRepository.VerifyNoOtherCalls();
-            _mockInvoiceRepository.VerifyNoOtherCalls();
-        }
-        #endregion
-
-        [TearDown]
-        public void Finalize()
-        {
-            _invoice = null;
-            _invoiceService = null;
-            _mockIssuedInvoiceRepository = null;
-            _mockInvoiceRepository = null;
-        }
     }
 }

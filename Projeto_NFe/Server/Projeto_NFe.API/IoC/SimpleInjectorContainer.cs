@@ -20,6 +20,9 @@ using Projeto_NFe.Infra.ORM.Features.Addressees;
 using Projeto_NFe.Application.Features.Products;
 using Projeto_NFe.Infra.ORM.Features.Products;
 using Projeto_NFe.Domain.Features.Products;
+using Projeto_NFe.Infra.ORM.Features.Invoices;
+using Projeto_NFe.Domain.Features.Invoices;
+using Projeto_NFe.Application.Features.Invoices;
 
 namespace Projeto_NFe.API.IoC
 {
@@ -50,7 +53,8 @@ namespace Projeto_NFe.API.IoC
             ContainerInstance.Register<IAddresseeRepository, AddresseReposiotory>();
             ContainerInstance.Register<IProductService, ProductService>();
             ContainerInstance.Register<IProductRepository, ProductRepository>();
-
+            ContainerInstance.Register<IInvoiceService, InvoiceService>();
+            ContainerInstance.Register<IInvoiceRepository, InvoiceRepository>();
             // TODO: Por enquanto estaremos criando o context do EF por aqui. Precisaremos trocar por uma Factory
             ContainerInstance.Register<NFeContext>(() => new NFeContext(), Lifestyle.Singleton);
         }

@@ -10,6 +10,7 @@ import { IssuerRegisterCommand } from './../shared/issuer.model';
 export class IssuerRegisterFormComponent {
     public form: FormGroup;
     public isLoading: boolean = false;
+    public returnRoute: string = '/emitentes';
 
     constructor(private fb: FormBuilder, private service: IssuerService, private router: Router) {
         this.form = this.fb.group({
@@ -35,7 +36,7 @@ export class IssuerRegisterFormComponent {
         this.isLoading = true;
         const issuerRegisterCommand: IssuerRegisterCommand
             = new IssuerRegisterCommand(this.form.get('details').value, this.form.get('address').value);
-        this.service.register(issuerRegisterCommand).take(1).subscribe(() => { this.isLoading = false; this.redirect(); });
+        this.service.register(issuerRegisterCommand).take(1).subscribe(() => { this.isLoading = false; alert('Cadastrado!'); this.redirect(); });
     }
 
     public redirect(): void {

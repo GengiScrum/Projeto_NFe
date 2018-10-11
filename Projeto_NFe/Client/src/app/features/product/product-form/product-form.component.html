@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="feature-view__title">Dados Cadastrais</span>
+            </div>
+        </div>
+        <form [formGroup]="form">
+            <div class="row feature-view__group">
+                <div class="col-sm-12 feature-view__body">
+                    <div>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('code')">Código *</span>
+                    </div>
+                    <input formControlName="code" class="form__input" type="text" [class.form__input__border-red]="getFormError('code')">
+                    <div *ngIf="getFormError('code')">
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('code')">Campo requerido</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row feature-view__group">
+                <div class="col-sm-12 feature-view__body">
+                    <div>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('description')">Descrição *</span>
+                    </div>
+                    <input formControlName="description" class="form__input" type="text" [class.form__input__border-red]="getFormError('description')">
+                    <div *ngIf="getFormError('description')">
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('description')">Campo requerido</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row feature-view__group">
+                <div class="col-sm-6 feature-view__body">
+                    <div>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('unitaryValue')">Valor Unitário *</span>
+                    </div>
+                    <input formControlName="unitaryValue" class="form__input" type="number" [class.form__input__border-red]="getFormError('unitaryValue')">
+                    <div *ngIf="getFormError('unitaryValue')">
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('unitaryValue')">Campo requerido</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

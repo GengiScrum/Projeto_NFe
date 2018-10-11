@@ -6,7 +6,7 @@
     <div class="feature-view__content">
         <div class="row">
             <div class="col-sm-6">
-                <ndd-issuer-form [returnRoute]="'/emitentes'" [form]="form.get('details')"></ndd-issuer-form>
+                <ndd-issuer-form [returnRoute]="'./emitentes'" [form]="form.get('details')"></ndd-issuer-form>
             </div>
             <div class="col-sm-6">
                 <ndd-address-form [form]="form.get('address')"></ndd-address-form>
@@ -15,7 +15,7 @@
     </div>
 </div>
 <div class="feature-view-tab__footer">
-    <button class="ndd-ng-button ndd-ng-button--primary" (click)="onRegister()">Salvar</button>
+    <button class="ndd-ng-button ndd-ng-button--primary" (click)="onRegister()" [disabled]="form.invalid">Salvar</button>
     <button class="ndd-ng-button ndd-ng-button--cancel" (click)="redirect()">Voltar</button>
 </div>
 <div class="ndd-ng-spinner__spinner" *ngIf="isLoading"></div>

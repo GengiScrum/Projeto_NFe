@@ -15,3 +15,12 @@ export class Address {
         this.country = entity.country;
     }
 }
+
+export class AddressCommand {
+    public streetName: string;
+    public number: string;
+    public neighborhood: string;
+    public city: string;
+    public state: string;
+    public country: string;
+}

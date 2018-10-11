@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Projeto_NFe.Application.Features.Addresses.Commands;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -17,12 +18,7 @@ namespace Projeto_NFe.Application.Features.Issuers.Commands
         public string Cnpj { get; set; }
         public string StateRegistration { get; set; }
         public string MunicipalRegistration { get; set; }
-        public string StreetName { get; set; }
-        public int Number { get; set; }
-        public string Neighborhood { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Country { get; set; }
+        public AddressCommand Address { get; set; }
 
         public virtual ValidationResult Validate()
         {
@@ -38,12 +34,7 @@ namespace Projeto_NFe.Application.Features.Issuers.Commands
                 RuleFor(e => e.Cnpj).NotNull().MaximumLength(40);
                 RuleFor(e => e.StateRegistration).NotNull().MaximumLength(40);
                 RuleFor(e => e.MunicipalRegistration).NotNull().MaximumLength(40);
-                RuleFor(e => e.StreetName).NotNull().MaximumLength(40);
-                RuleFor(e => e.Number).NotNull();
-                RuleFor(e => e.Neighborhood).NotNull().MaximumLength(40);
-                RuleFor(e => e.City).NotNull().MaximumLength(40);
-                RuleFor(e => e.State).NotNull().MaximumLength(40);
-                RuleFor(e => e.Country).NotNull().MaximumLength(40);
+                RuleFor(e => e.Address).NotNull();
             }
         }
     }

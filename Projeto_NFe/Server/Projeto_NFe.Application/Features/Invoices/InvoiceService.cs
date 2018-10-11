@@ -7,80 +7,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projeto_NFe.Application.Features.Invoices.Commands;
+using AutoMapper;
 
 namespace Projeto_NFe.Application.Features.Invoices
 {
     public class InvoiceService : IInvoiceService
     {
         IInvoiceRepository _invoiceRepository;
-        IIssuedInvoiceRepository _issuedInvoiceRepository;
+        
 
-        public InvoiceService(IInvoiceRepository invoiceRepository, IIssuedInvoiceRepository issuedInvoiceRepository)
+        public InvoiceService(IInvoiceRepository invoiceRepository)
         {
             _invoiceRepository = invoiceRepository;
-            _issuedInvoiceRepository = issuedInvoiceRepository;
         }
 
-        public Invoice Add(Invoice invoice)
+        public Invoice Add(InvoiceRegisterCommand command)
         {
-            invoice.Validate();
+            var invoice = Mapper.Map<InvoiceRegisterCommand, Invoice>(command);
             return _invoiceRepository.Add(invoice);
         }
 
-        public Invoice Update(Invoice invoice)
+        public bool Update(InvoiceUpdateCommand command)
         {
-            if (invoice.Id == 0)
-                throw new IdentifierUndefinedException();
-
-            invoice.Validate();
+            var invoice = _invoiceRepository.GetById(command.Id);
+            if (invoice == null)
+                throw new NotFoundException();
+            Mapper.Map(invoice, command);
             return _invoiceRepository.Update(invoice);
         }
 
-        public void Remove(Invoice invoice)
+        public bool Remove(InvoiceRemoveCommand command)
         {
-            if (invoice.Id == 0)
-                throw new IdentifierUndefinedException();
+            var isRemovedAll = true;
+            foreach (int id in command.InvoicesId)
+            {
+                var isRemoved = _invoiceRepository.Remove(id);
+                isRemovedAll = isRemoved ? isRemovedAll : false;
+            }
 
-            invoice.Validate();
-            _invoiceRepository.Remove(invoice.Id);
+            return isRemovedAll;
         }
 
-        public void Issue(Invoice invoice)
+    
+        public Invoice GetById(int id)
         {
-            if (invoice.Id == 0)
+            if (id == 0)
                 throw new IdentifierUndefinedException();
 
-            invoice.Validate();
-            invoice.Issue();
-            if (_issuedInvoiceRepository.CheckAcessKey(invoice.AcessKey))
-                Issue(invoice);
-            _issuedInvoiceRepository.Add(invoice);
-            _invoiceRepository.Remove(invoice.Id);
+            return _invoiceRepository.GetById(id);
         }
 
-        public Invoice GetById(Invoice invoice)
-        {
-            if (invoice.Id == 0)
-                throw new IdentifierUndefinedException();
-
-            return _invoiceRepository.GetById(invoice.Id);
-        }
-
-        public IEnumerable<Invoice> GetAll()
+        public IQueryable<Invoice> GetAll()
         {
             return _invoiceRepository.GetAll();
-        }
-
-        public Invoice GetByIdIssuedInvoice(Invoice invoice)
-        {
-            if (invoice.Id == 0)
-                throw new IdentifierUndefinedException();
-            return _issuedInvoiceRepository.GetById(invoice);
-        }
-
-        public IEnumerable<Invoice> GetByIdTodasIssuedInvoices()
-        {
-            return _issuedInvoiceRepository.GetAll();
         }
     }
 }

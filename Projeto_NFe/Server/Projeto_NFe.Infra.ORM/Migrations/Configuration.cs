@@ -9,7 +9,7 @@ namespace Projeto_NFe.Infra.ORM.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Projeto_NFe.Infra.ORM.Contexts.NFeContext context)

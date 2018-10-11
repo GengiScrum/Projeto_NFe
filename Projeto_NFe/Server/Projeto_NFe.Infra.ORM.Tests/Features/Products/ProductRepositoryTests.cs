@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projeto_NFe.Infra.ORM.Testes.Features.Products
+namespace Projeto_NFe.Infra.ORM.Tests.Features.Products
 {
     [TestFixture]
     public class ProductRepositoryTests

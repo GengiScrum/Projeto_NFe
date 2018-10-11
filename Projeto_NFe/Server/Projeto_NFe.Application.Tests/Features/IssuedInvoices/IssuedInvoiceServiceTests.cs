@@ -18,6 +18,7 @@ namespace Projeto_NFe.Application.Tests.Features.IssuedInvoices
     {
         Invoice _invoice;
         IIssuedInvoiceService _service;
+        IIssuedInvoiceRepository _issuedInvoiceRepository;
         Mock<IIssuedInvoiceXMLRepository> _repositoryXML;
         Mock<IInvoicePDFRepository> _repostorioPDF;
 
@@ -27,7 +28,7 @@ namespace Projeto_NFe.Application.Tests.Features.IssuedInvoices
             _invoice = new Invoice();
             _repositoryXML = new Mock<IIssuedInvoiceXMLRepository>();
             _repostorioPDF = new Mock<IInvoicePDFRepository>();
-            _service = new IssuedInvoiceService(_repositoryXML.Object, _repostorioPDF.Object);
+            _service = new IssuedInvoiceService(_repositoryXML.Object, _repostorioPDF.Object, _issuedInvoiceRepository);
         }
 
         [Test]

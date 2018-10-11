@@ -1,5 +1,5 @@
 ﻿using Projeto_NFe.Application.Features.Products.Commands;
-using Projeto_NFe.Application.Features.Products.Querys;
+using Projeto_NFe.Application.Features.Products.Queries;
 using Projeto_NFe.Domain.Features.Products;
 using System.Linq;
 

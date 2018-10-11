@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="feature-view__title">Dados Cadastrais</span>
+            </div>
+        </div>
+        <form [formGroup]="formInvoice">
+            <div class="row feature-view__group">
+                <div class="col-sm-12 feature-view__body">
+                    <div>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('businessName')">Natureza da operação *</span>
+                    </div>
+                    <input formControlName="operationNature" class="form__input" type="text" [class.form__input__border-red]="getFormError('operationNature')">
+                    <div *ngIf="getFormError('operationNature')">
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('operationNature')">Campo requerido</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row feature-view__group">
+                <div class="col-sm-12 feature-view__body">
+                    <div>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('entryDate')">Data de entrada *</span>
+                    </div>
+                    <input formControlName="entryDate" class="form__input" type="text" [class.form__input__border-red]="getFormError('entryDate')">
+                    <div *ngIf="getFormError('entryDate')">
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('corporateName')">Campo requerido</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row feature-view__group">
+                <div class="col-sm-6 feature-view__body">
+                    <div>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('issuers')">Emitente *</span>
+                    </div>
+                    <select name="issuers" formControlName="issuers" class="form__input" type="text" [class.form__input__border-red]="getFormError('issuers')">
+                        <option value="" *ngFor="let issuer of issuersList">{{ issuer.businessName }}</option>
+                    </select>
+                    <div *ngIf="getFormError('issuer')">
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('issuers')">Campo requerido</span>
+                    </div>
+                </div>
+                <div class="col-sm-6 feature-view__body">
+                    <div>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('stateRegistration')">Inscrição Estadual *</span>
+                    </div>
+                    <input formControlName="stateRegistration" class="form__input" type="text" [class.form__input__border-red]="getFormError('stateRegistration')">
+                    <div *ngIf="getFormError('stateRegistration')">
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('stateRegistration')">Campo requerido</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row feature-view__group">
+                <div class="col-sm-6 feature-view__body">
+                    <div>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('cnpj')">CNPJ *</span>
+                    </div>
+                    <input [textMask]="{mask: mask}" formControlName="cnpj" class="form__input" [placeholder]="'__.___.___/____-__'" type="text"
+                        [class.form__input__border-red]="getFormError('cnpj')">
+                    <div *ngIf="getFormError('cnpj')">
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('cnpj')">Campo requerido</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

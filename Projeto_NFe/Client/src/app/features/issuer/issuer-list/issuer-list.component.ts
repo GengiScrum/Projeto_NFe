@@ -22,8 +22,8 @@ export class IssuerListComponent extends GridUtilsComponent {
 
     public dataStateChange(state: DataStateChangeEvent): void {
         this.state = state;
-        this.gridService.query(this.createFormattedState());
         this.selectedRows = [];
+        this.gridService.query(this.createFormattedState());
     }
 
     public onSelectionChange(event: SelectionEvent): void {

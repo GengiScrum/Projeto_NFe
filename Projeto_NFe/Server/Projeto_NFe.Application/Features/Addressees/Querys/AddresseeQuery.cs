@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projeto_NFe.Application.Features.Addressees.Querys
+namespace Projeto_NFe.Application.Features.Addressees.Queries
 {
     [ExcludeFromCodeCoverage]
     public class AddresseeQuery

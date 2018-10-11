@@ -11,5 +11,9 @@ namespace Projeto_NFe.Domain.Features.IssuedInvoices
     {
         void ExportToXML(Invoice invoice, string file);
         void ExportToPDF(Invoice invoice, string file);
+
+        Invoice GetById(int id);
+
+        IQueryable<Invoice> GetAll();
     }
 }

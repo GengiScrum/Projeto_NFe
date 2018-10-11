@@ -18,6 +18,9 @@ using Projeto_NFe.Application.Features.Addressees.Commands;
 using Projeto_NFe.Domain.Features.Products;
 using Projeto_NFe.Application.Features.Products.Commands;
 using Projeto_NFe.Domain.Features.ProductsSold;
+using Projeto_NFe.Application.Features.Addresses.Commands;
+using Projeto_NFe.Application.Features.Invoices.Commands;
+using Projeto_NFe.Application.Features.ProductSolds.Commands;
 
 namespace Projeto_NFe.Common.Tests
 {
@@ -43,12 +46,7 @@ namespace Projeto_NFe.Common.Tests
             issuer.Cnpj = "12.345.678/0009-09";
             issuer.StateRegistration = "12.234.5678-9";
             issuer.MunicipalRegistration = "1234";
-            issuer.StreetName = "Rua Avenida";
-            issuer.Number = 400;
-            issuer.Neighborhood = "Coral";
-            issuer.City = "Lages";
-            issuer.State = "SC";
-            issuer.Country = "Brasil";
+            issuer.Address = AddressCommandToRegister();
             return issuer;
         }
 
@@ -82,12 +80,7 @@ namespace Projeto_NFe.Common.Tests
             issuer.Cnpj = "12.345.678/0009-09";
             issuer.StateRegistration = "12.234.5678-9";
             issuer.MunicipalRegistration = "1234";
-            issuer.StreetName = "Rua Avenida";
-            issuer.Number = 400;
-            issuer.Neighborhood = "Coral";
-            issuer.City = "Lages";
-            issuer.State = "SC";
-            issuer.Country = "Brasil";
+            issuer.Address = AddressCommandToRegister();
             return issuer;
         }
 
@@ -174,6 +167,17 @@ namespace Projeto_NFe.Common.Tests
         #endregion
 
         #region Address
+        public static AddressCommand AddressCommandToRegister()
+        {
+            AddressCommand address = new AddressCommand();
+            address.StreetName = "Rua Avenida";
+            address.Number = 400;
+            address.Neighborhood = "Coral";
+            address.City = "Lages";
+            address.State = "SC";
+            address.Country = "Brasil";
+            return address;
+        }
 
         public static Address AddressValid()
         {
@@ -827,6 +831,18 @@ namespace Projeto_NFe.Common.Tests
         #endregion
 
         #region ProductSold
+        public static ProductSold ProductSoldValidWithId()
+        {
+            ProductSold productSold = new ProductSold();
+
+            productSold.Id = 1;
+            productSold.Tax = new ProductTax();
+            productSold.Quantity = 2;
+            productSold.UnitaryValue = 2;
+
+            return productSold;
+        }
+
         public static ProductSold ProductSoldValidWithoutId()
         {
             ProductSold productSold = new ProductSold();
@@ -840,14 +856,27 @@ namespace Projeto_NFe.Common.Tests
             return productSold;
         }
 
-        public static ProductSold ProductSoldValidWithId()
+        public static ProductSoldRegisterCommand ProductSoldRegisterCommand(int invoiceId)
         {
-            ProductSold productSold = new ProductSold();
+            ProductSoldRegisterCommand productSold = new ProductSoldRegisterCommand();
 
-            productSold.Id = 1;
-            productSold.Tax = new ProductTax();
             productSold.Quantity = 2;
+            productSold.Product = ProductValidWithId();
+            productSold.InvoiceId = invoiceId;
+
+            return productSold;
+        }
+
+        public static ProductSoldUpdateCommand ProductSoldUpdateCommand(int invoiceId)
+        {
+            ProductSoldUpdateCommand productSold = new ProductSoldUpdateCommand();
+
+            productSold.Quantity = 2;
+            productSold.Code = "0012";
             productSold.UnitaryValue = 2;
+            productSold.Description = "Bolacha Maria";
+            productSold.UnitaryValue = 2;
+            productSold.InvoiceId = invoiceId;
 
             return productSold;
         }
@@ -883,12 +912,44 @@ namespace Projeto_NFe.Common.Tests
         #endregion
 
         #region Invoice
+        public static InvoiceRegisterCommand InvoiceCommandToRegister(int issuerId, int addresseeId, int shippingCompanyId)
+        {
+            InvoiceRegisterCommand invoice = new InvoiceRegisterCommand();
+            invoice.OperationNature = "Venda";
+            invoice.EntryDate = DateTime.Now;
+            invoice.IssuerId = issuerId;
+            invoice.AddresseeId = addresseeId;
+            invoice.ShippingCompanyId = shippingCompanyId;
+            invoice.ProductSolds = new List<ProductSoldRegisterCommand>() { ProductSoldRegisterCommand(1) };
+            return invoice;
+        }
+
+        public static InvoiceUpdateCommand InvoiceCommandToUpdate(int issuerId, int addresseeId, int shippingCompanyId)
+        {
+            InvoiceUpdateCommand invoice = new InvoiceUpdateCommand();
+            invoice.OperationNature = "Venda";
+            invoice.EntryDate = DateTime.Now;
+            invoice.IssuerId = issuerId;
+            invoice.AddresseeId = addresseeId;
+            invoice.ShippingCompanyId = shippingCompanyId;
+            invoice.ProductSolds = new List<ProductSoldUpdateCommand>() { ProductSoldUpdateCommand(invoice.Id) };
+            return invoice;
+        }
+
+        public static InvoiceRemoveCommand InvoiceCommandToRemove()
+        {
+            return new InvoiceRemoveCommand()
+            {
+                InvoicesId = new int[] { 1 }
+            };
+        }
+
         public static Invoice InvoiceWithoutIdNeedMock()
         {
             Invoice invoice = new Invoice();
             invoice.OperationNature = "Venda";
             invoice.EntryDate = DateTime.Now;
-            invoice.AcessKey = "BAJDSA0123IU43I249206954";
+            invoice.AcessKey = "111111111111111111111111";
             return invoice;
         }
 
@@ -902,8 +963,8 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.Products = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.InvoiceTax = new InvoiceTax();
             return invoice;
         }
 
@@ -917,20 +978,20 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithIdWithAddress();
-            invoice.Products = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
             return invoice;
         }
 
-        public static Invoice InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId()
+        public static Invoice InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId(int issuerId, int addresseeId, int shippingCompanyId)
         {
             Invoice invoice = new Invoice();
             invoice.OperationNature = "Venda";
             invoice.EntryDate = DateTime.Now;
             invoice.AcessKey = "BAJDSA0123IU43I249206954";
-            invoice.Issuer = IssuerValidWithIdAndWithAddress();
-            invoice.Addressee = AddresseeValidWithIdWithAddress();
-            invoice.ShippingCompany = ShippingCompanyValidWithIdWithAddress();
-            invoice.Products = new List<ProductSold>() { ProductSoldValidWithId() };
+            invoice.IssuerId = issuerId;
+            invoice.AddresseeId = addresseeId;
+            invoice.ShippingCompanyId = shippingCompanyId;
+            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithId() };
             return invoice;
         }
 
@@ -941,9 +1002,9 @@ namespace Projeto_NFe.Common.Tests
                 EntryDate = DateTime.Now,
                 Addressee = addressee,
                 Issuer = issuer,
-                Tax = tax,
+                InvoiceTax = tax,
                 OperationNature = "Venda",
-                Products = new List<ProductSold> { ProductSoldValidWithId() },
+                ProductSolds = new List<ProductSold> { ProductSoldValidWithId() },
                 ShippingCompany = shippingCompany
             };
         }
@@ -959,8 +1020,8 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.Products = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.InvoiceTax = new InvoiceTax();
             return invoice;
         }
         public static Invoice IssuedInvoiceValidWithId()
@@ -974,10 +1035,10 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.Products = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.InvoiceTax = new InvoiceTax();
             invoice.CalculateTax();
-            invoice.Tax.ShippingValue = 10;
+            invoice.InvoiceTax.ShippingValue = 10;
             return invoice;
         }
 
@@ -999,10 +1060,10 @@ namespace Projeto_NFe.Common.Tests
                 productSold.Code = i.ToString();
                 productsSold.Add(productSold);
             }
-            invoice.Products = productsSold;
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = productsSold;
+            invoice.InvoiceTax = new InvoiceTax();
             invoice.CalculateTax();
-            invoice.Tax.ShippingValue = 10;
+            invoice.InvoiceTax.ShippingValue = 10;
             return invoice;
         }
 
@@ -1024,10 +1085,10 @@ namespace Projeto_NFe.Common.Tests
                 productSold.Code = i.ToString();
                 productsSold.Add(productSold);
             }
-            invoice.Products = productsSold;
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = productsSold;
+            invoice.InvoiceTax = new InvoiceTax();
             invoice.CalculateTax();
-            invoice.Tax.ShippingValue = 10;
+            invoice.InvoiceTax.ShippingValue = 10;
             return invoice;
         }
 
@@ -1049,10 +1110,10 @@ namespace Projeto_NFe.Common.Tests
                 productSold.Code = i.ToString();
                 productsSold.Add(productSold);
             }
-            invoice.Products = productsSold;
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = productsSold;
+            invoice.InvoiceTax = new InvoiceTax();
             invoice.CalculateTax();
-            invoice.Tax.ShippingValue = 10;
+            invoice.InvoiceTax.ShippingValue = 10;
             return invoice;
         }
 
@@ -1074,10 +1135,10 @@ namespace Projeto_NFe.Common.Tests
                 productSold.Code = i.ToString();
                 productsSold.Add(productSold);
             }
-            invoice.Products = productsSold;
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = productsSold;
+            invoice.InvoiceTax = new InvoiceTax();
             invoice.CalculateTax();
-            invoice.Tax.ShippingValue = 10;
+            invoice.InvoiceTax.ShippingValue = 10;
             return invoice;
         }
 
@@ -1093,8 +1154,8 @@ namespace Projeto_NFe.Common.Tests
                 Addressee = AddresseeValidComCnpjWithIdWithAddress(),
                 Issuer = IssuerValidWithIdAndWithAddress(),
                 ShippingCompany = ShippingCompanyValidWithIdWithAddress(),
-                Products = new List<ProductSold> { ProductSoldFull(new ProductTax { IcmsAliquot = 10, IpiValue = 0.16, IcmsValue = 0.4, IpiAliquot = 4, Id = 1 }) },
-                Tax = new InvoiceTax
+                ProductSolds = new List<ProductSold> { ProductSoldFull(new ProductTax { IcmsAliquot = 10, IpiValue = 0.16, IcmsValue = 0.4, IpiAliquot = 4, Id = 1 }) },
+                InvoiceTax = new InvoiceTax
                 {
                     ShippingValue = 20,
                     Id = 1,
@@ -1114,8 +1175,8 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.Products = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.InvoiceTax = new InvoiceTax();
             return invoice;
         }
 
@@ -1127,8 +1188,8 @@ namespace Projeto_NFe.Common.Tests
             invoice.AcessKey = "BAJDSA0123IU43I249206954";
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.Products = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.InvoiceTax = new InvoiceTax();
             return invoice;
         }
 
@@ -1140,8 +1201,8 @@ namespace Projeto_NFe.Common.Tests
             invoice.AcessKey = "BAJDSA0123IU43I249206954";
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
-            invoice.Products = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.InvoiceTax = new InvoiceTax();
             return invoice;
         }
 
@@ -1153,8 +1214,8 @@ namespace Projeto_NFe.Common.Tests
             invoice.AcessKey = "BAJDSA0123IU43I249206954";
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.Products = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.InvoiceTax = new InvoiceTax();
             return invoice;
         }
 
@@ -1166,8 +1227,8 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.Products = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.InvoiceTax = new InvoiceTax();
             return invoice;
         }
 
@@ -1181,8 +1242,8 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.Products = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.InvoiceTax = new InvoiceTax();
             return invoice;
         }
 
@@ -1195,8 +1256,8 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.Products = new List<ProductSold>();
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = new List<ProductSold>();
+            invoice.InvoiceTax = new InvoiceTax();
             return invoice;
         }
 
@@ -1210,8 +1271,8 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer.BusinessName = "Bruno Barba";
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.Products = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.Tax = new InvoiceTax();
+            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.InvoiceTax = new InvoiceTax();
             return invoice;
         }
         #endregion

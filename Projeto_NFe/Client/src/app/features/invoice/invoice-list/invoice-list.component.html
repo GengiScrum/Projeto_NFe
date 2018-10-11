@@ -1,0 +1,39 @@
+<kendo-grid [style.height]="'100%'" 
+            [data]="gridService | async" 
+            [loading]="gridService.loading" 
+            [pageSize]="state.take"
+            [selectable]="selectableSettings" 
+            [skip]="state.skip" 
+            [sort]="state.sort" 
+            [sortable]="true" 
+            [pageable]="pageableSettings"
+            [scrollable]="'true'" 
+            (dataStateChange)="dataStateChange($event)" 
+            (selectionChange)="onSelectionChange($event)">
+
+    <ng-template kendoGridToolbarTemplate position="top">
+        <div class="projeto-nfe-grid__action-container">
+            <button (click)="onClick()" class="projeto-nfe-grid__action">
+                <i class="ndd-font ndd-font-create projeto-nfe-grid__action__icon"></i>
+                <span class="projeto-nfe-grid__action__description">Novo Emitente</span>
+            </button>
+            <button (click)="deleteIssuer()" class="projeto-nfe-grid__action" [disabled]="!selectedRows.length">
+                <i class="ndd-font ndd-font-delete projeto-nfe-grid__action__icon"></i>
+                <span class="projeto-nfe-grid__action__description">Remover</span>
+            </button>
+            <button (click)="redirectOpenIssuer()" class="projeto-nfe-grid__action" [disabled]="selectedRows.length != 1">
+                <i class="ndd-font ndd-font-open projeto-nfe-grid__action__icon"></i>
+                <span class="projeto-nfe-grid__action__description">Abrir</span>
+            </button>
+        </div>
+    </ng-template>
+
+    <kendo-grid-checkbox-column width="10"></kendo-grid-checkbox-column>
+    <kendo-grid-column field="id" title="ID" width="40"></kendo-grid-column>
+    <kendo-grid-column field="issuerBusinessName" title="Emitente" width="90"></kendo-grid-column>
+    <kendo-grid-column field="addresseeBusinessName" title="Destinatário" width="90"></kendo-grid-column>
+    <kendo-grid-column field="shippingCompanyBusinessName" title="Transportadora" width="90"></kendo-grid-column>
+    <kendo-grid-column field="operationNature" title="Natureza da Operação" width="90"></kendo-grid-column>
+    <kendo-grid-column field="issueDate" title="Data Emissão" width="90"></kendo-grid-column>
+    <kendo-grid-column field="entryDate" title="Data Emissão" width="90"></kendo-grid-column>
+</kendo-grid>

@@ -64,16 +64,29 @@
     <Compile Include="Features\Addressees\MappingProfile.cs" />
     <Compile Include="Features\Addressees\Querys\AddresseeQuery.cs" />
     <Compile Include="Features\Addressees\ViewModel\AddresseeViewModel.cs" />
+    <Compile Include="Features\Addresses\Commands\AddressCommand.cs" />
+    <Compile Include="Features\Addresses\MappingProfile.cs" />
+    <Compile Include="Features\Invoices\Commands\InvoiceRegisterCommand.cs" />
+    <Compile Include="Features\Invoices\Commands\InvoiceRemoveCommand.cs" />
+    <Compile Include="Features\Invoices\Commands\InvoiceUpdateCommand.cs" />
+    <Compile Include="Features\Invoices\IInvoiceService.cs" />
+    <Compile Include="Features\Invoices\MappingProfile.cs" />
+    <Compile Include="Features\Invoices\Queries\InvoiceQuery.cs" />
+    <Compile Include="Features\Invoices\ViewModels\InvoiceViewModel.cs" />
+    <Compile Include="Features\IssuedInvoices\Commands\IssuedInvoiceRegisterCommand.cs" />
     <Compile Include="Features\Issuers\Commands\IssuerUpdateCommand.cs" />
     <Compile Include="Features\Issuers\Commands\IssuerRemoveCommand.cs" />
     <Compile Include="Features\Issuers\Commands\IssuerRegisterCommand.cs" />
-    <Compile Include="Features\Issuers\Querys\IssuerQuery.cs" />
+    <Compile Include="Features\Issuers\Queries\IssuerQuery.cs" />
     <Compile Include="Features\Issuers\IssuerService.cs" />
     <Compile Include="Features\Issuers\IIssuerService.cs" />
     <Compile Include="Features\Issuers\ViewModel\IssuerViewModel.cs" />
     <Compile Include="Features\Issuers\MappingProfile.cs" />
     <Compile Include="Features\IssuedInvoices\IssuedInvoiceService.cs" />
     <Compile Include="Features\Invoices\InvoiceService.cs" />
+    <Compile Include="Features\ProductSolds\Commands\ProductSoldRegisterCommand.cs" />
+    <Compile Include="Features\ProductSolds\Commands\ProductSoldUpdateCommand.cs" />
+    <Compile Include="Features\ProductSolds\MappingProfile.cs" />
     <Compile Include="Features\Products\Commands\ProductRegisterCommand.cs" />
     <Compile Include="Features\Products\Commands\ProductRemoveCommand.cs" />
     <Compile Include="Features\Products\Commands\ProductUpdateCommand.cs" />
@@ -110,6 +123,9 @@
       <Name>Projeto_NFe.Infra.XML</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Features\IssuedInvoices\Queries\" />
+    <Folder Include="Features\IssuedInvoices\ViewModels\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

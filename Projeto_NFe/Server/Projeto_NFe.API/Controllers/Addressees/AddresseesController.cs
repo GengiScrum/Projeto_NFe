@@ -3,7 +3,7 @@ using Projeto_NFe.API.Controllers.Base;
 using Projeto_NFe.API.Filters;
 using Projeto_NFe.Application.Features.Addressees;
 using Projeto_NFe.Application.Features.Addressees.Commands;
-using Projeto_NFe.Application.Features.Addressees.Querys;
+using Projeto_NFe.Application.Features.Addressees.Queries;
 using Projeto_NFe.Application.Features.Addressees.ViewModel;
 using Projeto_NFe.Domain.Features.Addressees;
 using System;
