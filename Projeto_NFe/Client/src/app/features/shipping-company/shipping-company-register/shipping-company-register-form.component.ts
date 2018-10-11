@@ -30,7 +30,7 @@ export class ShippingCompanyRegisterFormComponent {
     public onSubmit(): void {
         this.isLoading = true;
         const shippingCompanyRegisterCommand: ShippingCompanyRegisterCommand
-            = new ShippingCompanyRegisterCommand(this.formModel.get('details').value, this.formModel.get('address').value);
+            = new ShippingCompanyRegisterCommand(this.formModel.value);
         this.service.register(shippingCompanyRegisterCommand)
             .take(1)
             .subscribe(() => {

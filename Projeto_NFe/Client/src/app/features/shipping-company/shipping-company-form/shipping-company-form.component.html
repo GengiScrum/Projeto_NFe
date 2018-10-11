@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-                <div *ngIf="form?.get('personType').value == 2" formGroupName="enterprise">
+                <div formGroupName="enterprise" *ngIf="form?.get('personType').value == 2">
                     <div class="col-sm-6 feature-view__body">
                         <div>
                             <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('cnpj')">CNPJ
