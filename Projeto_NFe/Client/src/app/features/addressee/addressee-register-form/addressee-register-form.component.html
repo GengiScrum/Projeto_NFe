@@ -1,22 +1,24 @@
 <div class="feature-view">
-        <ndd-ng-titlebar titlebarIcon="ndd-font ndd-font-box-check" titlebarTitle="Cadastrar Destinatario" [titlebarRouterToReturnOnClose]="returnRoute"></ndd-ng-titlebar>
-        <ndd-ng-tabsbar>
-            <ndd-ng-tab tabId="ndd-ng-tab-issuer-info" [tabRoute]="'./'" tabTitle="Dados Cadastrais"></ndd-ng-tab>
-        </ndd-ng-tabsbar>
-        <div class="feature-view__content">
-            <div class="row">
-                <div class="col-sm-6">
-                    <ndd-addressee-form [form]="form.get('details')"></ndd-addressee-form>
-                </div>
-                <div class="col-sm-6">
-                    <ndd-address-form [form]="form.get('address')"></ndd-address-form>
-                </div>
+    <ndd-ng-titlebar titlebarIcon="ndd-font ndd-font-box-check" titlebarTitle="Cadastrar Destinatario" [titlebarRouterToReturnOnClose]="returnRoute"></ndd-ng-titlebar>
+    <ndd-ng-tabsbar>
+        <ndd-ng-tab tabId="ndd-ng-tab-issuer-info" [tabRoute]="'./'" tabTitle="Dados Cadastrais"></ndd-ng-tab>
+    </ndd-ng-tabsbar>
+    <form (ngSubmit)="onSubmit()" [formGroup]="formModel" class="feature-view__content">
+        <div class="row">
+            <div class="col-sm-6">
+                <ndd-addressee-form [returnRoute]="'./destinatarios'" [form]="formModel" [enterprise]="enterprise" [person]="person"></ndd-addressee-form>
+            </div>
+            <div class="col-sm-6">
+                <ndd-address-form [form]="formModel.get('address')"></ndd-address-form>
             </div>
         </div>
-    </div>
-    <div class="feature-view-tab__footer">
-        <button class="ndd-ng-button ndd-ng-button--primary" (click)="onRegister()" [disabled]="form.invalid">Salvar</button>
-        <button class="ndd-ng-button ndd-ng-button--cancel" (click)="redirect()">Voltar</button>
-    </div>
-    <div class="ndd-ng-spinner__spinner" *ngIf="isLoading"></div>
-    <div class="ndd-ng-spinner__color" *ngIf="isLoading"></div>
+        <div class="feature-view-tab__footer">
+            <button class="ndd-ng-button ndd-ng-button--primary" type="submit" [disabled]="formModel.invalid">Salvar</button>
+            <button class="ndd-ng-button ndd-ng-button--cancel" type="button" (click)="redirect()">Voltar</button>
+        </div>
+    </form>
+</div>
+
+
+<div class="ndd-ng-spinner__spinner" *ngIf="isLoading"></div>
+<div class="ndd-ng-spinner__color" *ngIf="isLoading"></div>
