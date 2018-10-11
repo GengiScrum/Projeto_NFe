@@ -69,17 +69,9 @@
     <Compile Include="Migrations\201810082013086_NFeContext_V2.Designer.cs">
       <DependentUpon>201810082013086_NFeContext_V2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810082037564_NFeContext_V2.1.cs" />
-    <Compile Include="Migrations\201810082037564_NFeContext_V2.1.Designer.cs">
-      <DependentUpon>201810082037564_NFeContext_V2.1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810082049411_NFeContext_V2.2.cs" />
-    <Compile Include="Migrations\201810082049411_NFeContext_V2.2.Designer.cs">
-      <DependentUpon>201810082049411_NFeContext_V2.2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810100424180_NFeContext_V3.cs" />
-    <Compile Include="Migrations\201810100424180_NFeContext_V3.Designer.cs">
-      <DependentUpon>201810100424180_NFeContext_V3.cs</DependentUpon>
+    <Compile Include="Migrations\201810101741537_NFeContext_V3.cs" />
+    <Compile Include="Migrations\201810101741537_NFeContext_V3.Designer.cs">
+      <DependentUpon>201810101741537_NFeContext_V3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,14 +93,8 @@
     <EmbeddedResource Include="Migrations\201810082013086_NFeContext_V2.resx">
       <DependentUpon>201810082013086_NFeContext_V2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810082037564_NFeContext_V2.1.resx">
-      <DependentUpon>201810082037564_NFeContext_V2.1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810082049411_NFeContext_V2.2.resx">
-      <DependentUpon>201810082049411_NFeContext_V2.2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810100424180_NFeContext_V3.resx">
-      <DependentUpon>201810100424180_NFeContext_V3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810101741537_NFeContext_V3.resx">
+      <DependentUpon>201810101741537_NFeContext_V3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

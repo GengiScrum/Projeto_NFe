@@ -8,7 +8,7 @@ namespace Projeto_NFe.Application.Features.Products.Querys
 {
     public class ProductQuery
     {
-        public virtual int Quantity { get; set; }
+        public virtual int Quantity {get; set;}
 
         public ProductQuery(int quantity)
         {

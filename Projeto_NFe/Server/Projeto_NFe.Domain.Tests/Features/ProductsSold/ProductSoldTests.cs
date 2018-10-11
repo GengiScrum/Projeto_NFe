@@ -3,7 +3,7 @@ using Moq;
 using NUnit.Framework;
 using Projeto_NFe.Common.Tests;
 using Projeto_NFe.Domain.Features.ProductTaxes;
-using Projeto_NFe.Domain.Features.ProductsSold;
+using Projeto_NFe.Application.Features.ProductsSold;
 using System;
 
 namespace Projeto_NFe.Domain.Tests.Features.ProductsSold

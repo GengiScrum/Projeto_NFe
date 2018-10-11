@@ -16,7 +16,7 @@ namespace Projeto_NFe.Infra.ORM.Migrations
                         CorporateName = c.String(maxLength: 40),
                         Cnpj = c.String(maxLength: 40),
                         Cpf = c.String(maxLength: 40),
-                        StateRegistration = c.String(nullable: false, maxLength: 40),
+                        StateRegistration = c.String(maxLength: 40),
                         StreetName = c.String(nullable: false, maxLength: 40),
                         Number = c.Int(nullable: false),
                         Neighborhood = c.String(nullable: false, maxLength: 40),

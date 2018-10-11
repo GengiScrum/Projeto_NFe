@@ -31,13 +31,21 @@ export class AddresseeViewComponent implements OnInit, OnDestroy{
 
     private createProperty(): void {
         this.title = this.addressee.businessName;
-        const stateRegistration: string = 'Inscrição Estadual: ' + this.addressee.stateRegistration;
+        const document: string = this.setDocument();
 
         this.infoItems = [
             {
-                value: stateRegistration,
-                description: stateRegistration,
+                value: document,
+                description: document,
             },
         ];
+    }
+
+    private setDocument(): string {
+        if (this.addressee.cpf === null) {
+            return 'CNPJ: ' + this.addressee.cnpj;
+        }else {
+            return 'CPF: ' + this.addressee.cpf;
+        }
     }
 }

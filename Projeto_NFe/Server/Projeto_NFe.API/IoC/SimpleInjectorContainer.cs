@@ -18,8 +18,8 @@ using Projeto_NFe.Application.Features.Addressees;
 using Projeto_NFe.Domain.Features.Addressees;
 using Projeto_NFe.Infra.ORM.Features.Addressees;
 using Projeto_NFe.Application.Features.Products;
-using Projeto_NFe.Domain.Features.Products;
 using Projeto_NFe.Infra.ORM.Features.Products;
+using Projeto_NFe.Domain.Features.Products;
 
 namespace Projeto_NFe.API.IoC
 {

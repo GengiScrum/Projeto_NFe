@@ -5,7 +5,7 @@ using Projeto_NFe.Application.Features.Invoices;
 using Projeto_NFe.Common.Tests;
 using Projeto_NFe.Domain.Features.Invoices;
 using Projeto_NFe.Domain.Features.IssuedInvoices;
-using Projeto_NFe.Domain.Features.ProductsSold;
+using Projeto_NFe.Application.Features.ProductsSold;
 using Projeto_NFe.Domain.Exceptions;
 using System;
 using System.Collections.Generic;

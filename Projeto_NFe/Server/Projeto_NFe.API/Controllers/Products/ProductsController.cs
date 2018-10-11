@@ -5,10 +5,6 @@ using Projeto_NFe.Application.Features.Products;
 using Projeto_NFe.Application.Features.Products.Commands;
 using Projeto_NFe.Application.Features.Products.ViewModel;
 using Projeto_NFe.Domain.Features.Products;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 
 namespace Projeto_NFe.API.Controllers.Products
@@ -24,7 +20,6 @@ namespace Projeto_NFe.API.Controllers.Products
         }
 
         #region HttpGet
-
         [HttpGet]
         [ODataQueryOptionsValidate]
         public IHttpActionResult GetAll(ODataQueryOptions<Product> queryOptions)
@@ -40,39 +35,32 @@ namespace Projeto_NFe.API.Controllers.Products
         {
             return HandleQuery<Product, ProductViewModel>(_productService.GetById(id));
         }
-        #endregion HttpGet
+        #endregion
 
         #region HttpPost
-
-        [HttpPost]
-        public IHttpActionResult Add(ProductRegisterCommand command)
+        public IHttpActionResult Add(ProductRegisterCommand productCmd)
         {
-            var validator = command.Validate();
+            var validator = productCmd.Validate();
             if (!validator.IsValid)
                 return HandleValidationFailure(validator.Errors);
 
-            return HandleCallback(_productService.Add(command));
+            return HandleCallback(_productService.Add(productCmd));
         }
-
-        #endregion HttpPost
+        #endregion
 
         #region HttpPut
-
         [HttpPut]
         public IHttpActionResult Update(ProductUpdateCommand command)
         {
             var validator = command.Validate();
-
             if (!validator.IsValid)
                 return HandleValidationFailure(validator.Errors);
 
             return HandleCallback(_productService.Update(command));
         }
-
-        #endregion HttpPut
+        #endregion
 
         #region HttpDelete
-
         [HttpDelete]
         public IHttpActionResult Remove(ProductRemoveCommand command)
         {
@@ -83,7 +71,6 @@ namespace Projeto_NFe.API.Controllers.Products
 
             return HandleCallback(_productService.Remove(command));
         }
-
-        #endregion HttpDelete
+        #endregion
     }
 }

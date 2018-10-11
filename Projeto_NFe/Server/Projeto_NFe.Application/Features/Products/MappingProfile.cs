@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
 using Projeto_NFe.Application.Features.Products.Commands;
 using Projeto_NFe.Application.Features.Products.ViewModel;
+using Projeto_NFe.Application.Features.Products;
 using Projeto_NFe.Domain.Features.Products;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Projeto_NFe.Application.Features.Products
 {

@@ -6,13 +6,13 @@
         <div class="projeto-nfe-grid__action-container">
             <button (click)="onClick()" class="projeto-nfe-grid__action">
                 <i class="ndd-font ndd-font-create projeto-nfe-grid__action__icon"></i>
-                <span class="projeto-nfe-grid__action__description">Novo Emitente</span>
+                <span class="projeto-nfe-grid__action__description">Novo Destinatario</span>
             </button>
-            <button (click)="deleteIssuer()" class="projeto-nfe-grid__action" [disabled]="!selectedRows.length">
+            <button (click)="deleteAddressee()" class="projeto-nfe-grid__action" [disabled]="!selectedRows.length">
                 <i class="ndd-font ndd-font-delete projeto-nfe-grid__action__icon"></i>
                 <span class="projeto-nfe-grid__action__description">Remover</span>
             </button>
-            <button (click)="redirectOpenIssuer()" class="projeto-nfe-grid__action" [disabled]="selectedRows.length != 1">
+            <button (click)="redirectOpenAddressee()" class="projeto-nfe-grid__action" [disabled]="selectedRows.length != 1">
                 <i class="ndd-font ndd-font-open projeto-nfe-grid__action__icon"></i>
                 <span class="projeto-nfe-grid__action__description">Abrir</span>
             </button>

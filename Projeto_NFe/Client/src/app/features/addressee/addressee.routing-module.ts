@@ -5,11 +5,16 @@ import { AddresseeDetailComponent } from './addressee-view/addressee-detail/addr
 import { AddresseeViewComponent } from './addressee-view/addressee-view.component';
 import { AddresseeResolveService } from './shared/addressee.service';
 import { AddresseeListComponent } from './addressee-list/addressee-list.component';
+import { AddresseeRegisterFormComponent } from './addressee-register-form/addressee-register-form.component';
 
 const addresseeRoutes: Routes = [
     {
         path: '',
         component: AddresseeListComponent,
+    },
+    {
+        path: 'cadastrar',
+        component: AddresseeRegisterFormComponent,
     },
     {
         path: ':addresseeId',

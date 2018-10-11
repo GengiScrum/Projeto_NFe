@@ -1,13 +1,10 @@
-﻿using Projeto_NFe.Domain.Features.Products;
+﻿using Projeto_NFe.Application.Features.Products;
 using Projeto_NFe.Domain.Exceptions;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Projeto_NFe.Application.Features.Products.Commands;
 using AutoMapper;
 using Projeto_NFe.Application.Features.Products.Querys;
+using Projeto_NFe.Domain.Features.Products;
 
 namespace Projeto_NFe.Application.Features.Products
 {
@@ -40,13 +37,13 @@ namespace Projeto_NFe.Application.Features.Products
 
         public bool Remove(ProductRemoveCommand command)
         {
-            var removedAll = true;
+            var removeAll = true;
             foreach (var productId in command.ProductsId)
             {
-                var removed = _productRepository.Remove(productId);
-                removedAll = removed ? removedAll : false;
+                var eRemovido = _productRepository.Remove(productId);
+                removeAll = eRemovido ? removeAll : false;
             }
-            return removedAll;
+            return removeAll;
         }
 
         public Product GetById(int id)

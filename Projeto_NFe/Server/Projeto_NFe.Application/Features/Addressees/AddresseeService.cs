@@ -41,7 +41,7 @@ namespace Projeto_NFe.Application.Features.Addressees
         public bool Remove(AddresseeRemoveCommand command)
         {
             var allRemoved = true;
-            foreach (var addresseeId in command.Ids)
+            foreach (var addresseeId in command.AddresseesId)
             {
                 var removed = _repository.Remove(addresseeId);
                 allRemoved = removed ? allRemoved : false;
