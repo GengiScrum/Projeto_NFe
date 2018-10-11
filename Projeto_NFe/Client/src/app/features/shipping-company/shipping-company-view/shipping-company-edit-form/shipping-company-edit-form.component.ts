@@ -5,6 +5,7 @@ import { Subject } from 'rxjs/Subject';
 
 import { ShippingCompany, ShippingCompanyUpdateCommand } from './../../shared/shipping-company.model';
 import { ShippingCompanyService, ShippingCompanyResolveService } from './../../shared/shipping-company.service';
+import { PersonType } from './../../../shared/person-type.enum';
 
 @Component({
     templateUrl: './shipping-company-edit-form.component.html',
@@ -12,7 +13,16 @@ import { ShippingCompanyService, ShippingCompanyResolveService } from './../../s
 export class ShippingCompanyEditFormComponent implements OnInit, OnDestroy {
     public shippingCompany: ShippingCompany;
     public isLoading: boolean = false;
-    public form: FormGroup;
+    public formModel: FormGroup;
+    public person: FormGroup = this.fb.group({
+        cpf: ['', Validators.required],
+    });
+
+    public enterprise: FormGroup = this.fb.group({
+        cnpj: ['', Validators.required],
+        corporateName: ['', Validators.required],
+        stateRegistration: ['', Validators.required],
+    });
     private ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(private fb: FormBuilder,
@@ -20,24 +30,7 @@ export class ShippingCompanyEditFormComponent implements OnInit, OnDestroy {
         private router: Router,
         private route: ActivatedRoute,
         private resolver: ShippingCompanyResolveService) {
-        this.form = this.fb.group({
-            details: this.fb.group({
-                businessName: ['', Validators.required],
-                corporateName: ['', Validators.required],
-                cnpj: [''],
-                cpf: [''],
-                personType: ['1', Validators.required],
-                stateRegistration: ['', Validators.required],
-            }),
-            address: this.fb.group({
-                streetName: ['', Validators.required],
-                number: ['', Validators.required],
-                neighborhood: ['', Validators.required],
-                city: ['', Validators.required],
-                state: ['', Validators.required],
-                country: ['', Validators.required],
-            }),
-        });
+        this.arrangeForm();
     }
 
     public ngOnInit(): void {
@@ -59,7 +52,7 @@ export class ShippingCompanyEditFormComponent implements OnInit, OnDestroy {
     public onSubmit(): void {
         this.isLoading = true;
         const shippingCompanyUpdateCommand: ShippingCompanyUpdateCommand =
-            new ShippingCompanyUpdateCommand(this.form.get('details').value, this.form.get('address').value, this.shippingCompany.id);
+            new ShippingCompanyUpdateCommand(this.formModel.value, this.shippingCompany.id);
         this.service.update(shippingCompanyUpdateCommand)
             .take(1)
             .subscribe(() => {
@@ -73,16 +66,25 @@ export class ShippingCompanyEditFormComponent implements OnInit, OnDestroy {
         this.router.navigate(['../'], { relativeTo: this.route });
     }
 
+    private arrangeForm(): void {
+        this.formModel = this.fb.group({
+            businessName: ['', Validators.required],
+            personType: ['1', Validators.required],
+            address: this.fb.group({
+                streetName: ['', Validators.required],
+                number: ['', Validators.required],
+                neighborhood: ['', Validators.required],
+                city: ['', Validators.required],
+                state: ['', Validators.required],
+                country: ['', Validators.required],
+            }),
+        });
+    }
+
     private populateForm(): void {
-        this.form.patchValue({
-            details: {
-                businessName: this.shippingCompany.businessName,
-                corporateName: this.shippingCompany.corporateName,
-                cnpj: this.shippingCompany.cnpj,
-                stateRegistration: this.shippingCompany.stateRegistration,
-                cpf: this.shippingCompany.cpf,
-                personType: this.shippingCompany.personType.toString(),
-            },
+        this.formModel.patchValue({
+            businessName: this.shippingCompany.businessName,
+            personType: this.shippingCompany.personType.toString(),
             address: {
                 streetName: this.shippingCompany.streetName,
                 number: this.shippingCompany.number,
@@ -92,5 +94,20 @@ export class ShippingCompanyEditFormComponent implements OnInit, OnDestroy {
                 country: this.shippingCompany.country,
             },
         });
+        if (this.shippingCompany.personType === PersonType.PERSON) {
+            this.formModel.patchValue({
+                person: {
+                    cpf: this.shippingCompany.streetName,
+                },
+            });
+        } else {
+            this.formModel.patchValue({
+                enterprise: {
+                    cnpj: this.shippingCompany.streetName,
+                    stateRegistration: this.shippingCompany.stateRegistration,
+                    corporateName: this.shippingCompany.corporateName,
+                },
+            });
+        }
     }
 }
