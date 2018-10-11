@@ -9,7 +9,16 @@ import { ShippingCompanyService } from '../shared/shipping-company.service';
     templateUrl: './shipping-company-register-form.component.html',
 })
 export class ShippingCompanyRegisterFormComponent {
-    public form: FormGroup;
+    public formModel: FormGroup;
+    public person: FormGroup = this.fb.group({
+        cpf: ['', Validators.required],
+    });
+
+    public enterprise: FormGroup = this.fb.group({
+        cnpj: ['', Validators.required],
+        corporateName: ['', Validators.required],
+        stateRegistration: ['', Validators.required],
+    });
     public isLoading: boolean = false;
 
     constructor(private fb: FormBuilder,
@@ -21,7 +30,7 @@ export class ShippingCompanyRegisterFormComponent {
     public onSubmit(): void {
         this.isLoading = true;
         const shippingCompanyRegisterCommand: ShippingCompanyRegisterCommand
-            = new ShippingCompanyRegisterCommand(this.form.get('details').value, this.form.get('address').value);
+            = new ShippingCompanyRegisterCommand(this.formModel.get('details').value, this.formModel.get('address').value);
         this.service.register(shippingCompanyRegisterCommand)
             .take(1)
             .subscribe(() => {
@@ -36,15 +45,9 @@ export class ShippingCompanyRegisterFormComponent {
     }
 
     private arrangeForm(): void {
-        this.form = this.fb.group({
-            details: this.fb.group({
-                businessName: ['', Validators.required],
-                corporateName: [''],
-                cnpj: ['' ],
-                cpf: [''],
-                stateRegistration: [''],
-                personType: ['1', Validators.required],
-            }, {  }),
+        this.formModel = this.fb.group({
+            businessName: ['', Validators.required],
+            personType: ['1', Validators.required],
             address: this.fb.group({
                 streetName: ['', Validators.required],
                 number: ['', Validators.required],

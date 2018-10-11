@@ -4,17 +4,17 @@
     <ndd-ng-tabsbar>
         <ndd-ng-tab tabId="ndd-ng-tab-issuer-info" [tabRoute]="'./'" tabTitle="Dados Cadastrais"></ndd-ng-tab>
     </ndd-ng-tabsbar>
-    <form (ngSubmit)="onSubmit()" [formGroup]="form" class="feature-view__content">
+    <form (ngSubmit)="onSubmit()" [formGroup]="formModel" class="feature-view__content">
         <div class="row">
             <div class="col-sm-6">
-                <ndd-shipping-company-form [returnRoute]="'./transportadores'" [form]="form.get('details')"></ndd-shipping-company-form>
+                <ndd-shipping-company-form [returnRoute]="'./transportadores'" [form]="formModel" [enterprise]="enterprise" [person]="person"></ndd-shipping-company-form>
             </div>
             <div class="col-sm-6">
-                <ndd-address-form [form]="form.get('address')"></ndd-address-form>
+                <ndd-address-form [form]="formModel.get('address')"></ndd-address-form>
             </div>
         </div>
         <div class="feature-view-tab__footer">
-            <button class="ndd-ng-button ndd-ng-button--primary" type="submit" [disabled]="form.invalid">Salvar</button>
+            <button class="ndd-ng-button ndd-ng-button--primary" type="submit" [disabled]="formModel.invalid">Salvar</button>
             <button class="ndd-ng-button ndd-ng-button--cancel" type="button" (click)="redirect()">Voltar</button>
         </div>
     </form>
