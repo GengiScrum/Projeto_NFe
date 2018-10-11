@@ -5,7 +5,7 @@
                 <span class="feature-view__title">Dados Cadastrais</span>
             </div>
         </div>
-        <form [formGroup]="form.get('')">
+        <form [formGroup]="form">
             <div class="row feature-view__group">
                 <div class="col-sm-12 feature-view__body">
                     <div>
@@ -18,37 +18,36 @@
                 </div>
             </div>
             <div class="row feature-view__group">
-                <div class="col-sm-6 feature-view__body" *ngIf="form?.get('personType').value == 1">
-                    <div>
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('cpf')">CPF *</span>
-                    </div>
-                    <input formControlName="cpf" [textMask]="{ mask: cpfMask}" class="form__input" type="text" [class.form__input__border-red]="getFormError('cpf')">
-                    <div *ngIf="getFormError('cpf')">
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('cpf')">Campo requerido</span>
+                <div formGroupName="physicalPerson">
+                    <div class="col-sm-6 feature-view__body" *ngIf="form?.get('personType').value">
+                        <div>
+                            <span class="feature-view__label" [class.form__color-red]="getPhysicalPersonError('cpf')">CPF *</span>
+                        </div>
+                        <input formControlName="cpf" [textMask]="{ mask: cpfMask}" class="form__input" type="text" [class.form__input__border-red]="getPhysicalPersonError('cpf')">
+                        <div *ngIf="getPhysicalPersonError('cpf')">
+                            <span class="feature-view__label" [class.form__color-red]="getPhysicalPersonError('cpf')">Campo requerido</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-6 feature-view__body" *ngIf="form?.get('personType').value == 2">
-                    <div>
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('cnpj')">CNPJ *</span>
-                    </div>
-                    <input formControlName="cnpj" [textMask]="{ mask: cnpjMask}" class="form__input" type="text" [class.form__input__border-red]="getFormError('cnpj')">
-                    <div *ngIf="getFormError('cnpj')">
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('cnpj')">Campo requerido
-                        </span>
+                <div formGroupName="legalPerson">
+                    <div class="col-sm-6 feature-view__body" *ngIf="!form?.get('personType').value">
+                        <div>
+                            <span class="feature-view__label" [class.form__color-red]="getLegalPersonError('cnpj')">CNPJ *</span>
+                        </div>
+                        <input formControlName="cnpj" [textMask]="{ mask: cnpjMask}" class="form__input" type="text" [class.form__input__border-red]="getLegalPersonError('cnpj')">
+                        <div *ngIf="getLegalPersonError('cnpj')">
+                            <span class="feature-view__label" [class.form__color-red]="getLegalPersonError('cnpj')">Campo requerido
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6 feature-view__body">
                     <div>
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('personType')">Tipo Pessoa *</span>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('personType')">Pessoa Juridica ? *</span>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6 feature-view__body">
-                            <input type="radio" name="personType" id="individualPerson" value=1 formControlName="personType" checked="true">
-                            <span for="individualPerson" class="feature-view__label">Pessoa Fisica</span>
-                        </div>
-                        <div class="col-sm-6 feature-view__body">
-                            <input type="radio" name="personType" id="legalPerson" value=2 formControlName="personType">
-                            <span for="legalPerson" class="feature-view__label">Pessoa Juridica</span>
+                        <div class="col-sm-12 feature-view__body">
+                            <ui-switch formControlName="personType" id="personType" (change)="setControls()"></ui-switch>
                         </div>
                     </div>
                     <div *ngIf="getFormError('personType')">
@@ -57,23 +56,23 @@
                     </div>
                 </div>
             </div>
-            <div class="row feature-view__group" [hidden]="form?.get('personType').value == 1">
-                <div class="col-sm-6 feature-view__body">
+            <div class="row feature-view__group" formGroupName="legalPerson">
+                <div class="col-sm-6 feature-view__body" *ngIf="!form?.get('personType').value">
                     <div>
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('stateRegistration')">Inscrição Estadual *</span>
+                        <span class="feature-view__label" [class.form__color-red]="getLegalPersonError('stateRegistration')">Inscrição Estadual *</span>
                     </div>
-                    <input formControlName="stateRegistration" class="form__input" type="text" [class.form__input__border-red]="getFormError('stateRegistration')">
-                    <div *ngIf="getFormError('stateRegistration')">
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('stateRegistration')">Campo requerido</span>
+                    <input formControlName="stateRegistration" class="form__input" type="text" [class.form__input__border-red]="getLegalPersonError('stateRegistration')">
+                    <div *ngIf="getLegalPersonError('stateRegistration')">
+                        <span class="feature-view__label" [class.form__color-red]="getLegalPersonError('stateRegistration')">Campo requerido</span>
                     </div>
                 </div>
-                <div class="col-sm-6 feature-view__body">
+                <div class="col-sm-6 feature-view__body" *ngIf="!form?.get('personType').value">
                     <div>
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('corporateName')">Razão Social *</span>
+                        <span class="feature-view__label" [class.form__color-red]="getLegalPersonError('corporateName')">Razão Social *</span>
                     </div>
-                    <input formControlName="corporateName" class="form__input" type="text" [class.form__input__border-red]="getFormError('corporateName')">
-                    <div *ngIf="getFormError('corporateName')">
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('corporateName')">Campo requerido</span>
+                    <input formControlName="corporateName" class="form__input" type="text" [class.form__input__border-red]="getLegalPersonError('corporateName')">
+                    <div *ngIf="getLegalPersonError('corporateName')">
+                        <span class="feature-view__label" [class.form__color-red]="getLegalPersonError('corporateName')">Campo requerido</span>
                     </div>
                 </div>
             </div>

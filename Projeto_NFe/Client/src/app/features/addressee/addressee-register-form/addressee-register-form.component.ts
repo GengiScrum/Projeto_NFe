@@ -15,17 +15,8 @@ export class AddresseeRegisterFormComponent {
     constructor(private fb: FormBuilder, private service: AddresseeService, private router: Router) {
         this.form = this.fb.group({
             details: this.fb.group({
-                personType: ['1', Validators.required],
-                legal: this.fb.group({
-                    businessName: ['', Validators.required],
-                    corporateName: [''],
-                    cnpj: [''],
-                    stateRegistration: [''],
-                }),
-                physical: ({
-                    businessName: ['', Validators.required],
-                    cpf: [''],
-                }),
+                personType: [false, Validators.required],
+                businessName: ['', Validators.required],
             }),
             address: this.fb.group({
                 streetName: ['', Validators.required],

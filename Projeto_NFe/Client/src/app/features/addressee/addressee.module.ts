@@ -1,6 +1,7 @@
 import { GridModule } from '@progress/kendo-angular-grid';
 import { NgModule } from '@angular/core';
 import { TextMaskModule } from 'angular2-text-mask';
+import { RippleModule } from '@progress/kendo-angular-ripple'; 
 
 import { AddresseeRoutingModule } from './addressee.routing-module';
 import { NDDTabsbarModule } from './../../shared/ndd-ng-tabsbar/component/ndd-ng-tabsbar.module';
@@ -12,6 +13,7 @@ import { AddresseeViewComponent } from './addressee-view/addressee-view.componen
 import { SharedModule } from './../../shared/shared.module';
 import { AddresseeRegisterFormComponent } from './addressee-register-form/addressee-register-form.component';
 import { AddresseeFormComponent } from './addressee-form/addressee-form.component';
+import { UiSwitchModule } from 'angular2-ui-switch';
 
 @NgModule({
     imports: [
@@ -21,6 +23,7 @@ import { AddresseeFormComponent } from './addressee-form/addressee-form.componen
         NDDTabsbarModule,
         TextMaskModule,
         AddresseeRoutingModule,
+        UiSwitchModule,
     ],
     exports: [],
     declarations: [
