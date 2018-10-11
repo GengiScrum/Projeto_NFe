@@ -30,10 +30,10 @@ namespace Projeto_NFe.Application.Features.ShippingCompanies.Commands
             public Validator()
             {
                 RuleFor(t => t.BusinessName).NotNull().NotEmpty().MaximumLength(40);
-                RuleFor(t => t.CorporateName).NotNull().NotEmpty().MaximumLength(40);
+                RuleFor(t => t.CorporateName).MaximumLength(40);
                 RuleFor(t => t.Cpf).MaximumLength(15);
                 RuleFor(t => t.Cnpj).MaximumLength(19);
-                RuleFor(t => t.StateRegistration).NotNull().NotEmpty().MaximumLength(40);
+                RuleFor(t => t.StateRegistration).MaximumLength(40);
                 RuleFor(t => t.PersonType).NotNull().NotEmpty();
                 RuleFor(t => t.StreetName).NotNull().NotEmpty().MaximumLength(40);
                 RuleFor(t => t.Number).NotNull().NotEmpty();
