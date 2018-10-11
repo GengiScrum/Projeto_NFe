@@ -3,7 +3,7 @@ using Projeto_NFe.API.Controllers.Base;
 using Projeto_NFe.API.Filters;
 using Projeto_NFe.Application.Features.ShippingCompanies;
 using Projeto_NFe.Application.Features.ShippingCompanies.Commands;
-using Projeto_NFe.Application.Features.ShippingCompanies.Querys;
+using Projeto_NFe.Application.Features.ShippingCompanies.Queries;
 using Projeto_NFe.Application.Features.ShippingCompanies.ViewModel;
 using Projeto_NFe.Domain.Features.ShippingCompanies;
 using System.Linq;

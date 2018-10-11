@@ -1,5 +1,5 @@
 ﻿using Projeto_NFe.Application.Features.Issuers.Commands;
-using Projeto_NFe.Application.Features.Issuers.Querys;
+using Projeto_NFe.Application.Features.Issuers.Queries;
 using Projeto_NFe.Domain.Features.Issuers;
 using System.Linq;
 

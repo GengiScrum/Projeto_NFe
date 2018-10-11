@@ -10,8 +10,8 @@ namespace Projeto_NFe.Domain.Features.IssuedInvoices
     public interface IIssuedInvoiceRepository
     {
         Invoice Add(Invoice invoice);
-        Invoice GetById(Invoice invoice);
-        IEnumerable<Invoice> GetAll();
+        Invoice GetById(int id);
+        IQueryable<Invoice> GetAll();
         bool CheckAcessKey(string chave);
     }
 }

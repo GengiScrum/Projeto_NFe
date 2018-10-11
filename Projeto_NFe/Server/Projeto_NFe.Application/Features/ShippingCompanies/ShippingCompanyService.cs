@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Projeto_NFe.Application.Features.ShippingCompanies.Commands;
-using Projeto_NFe.Application.Features.ShippingCompanies.Querys;
+using Projeto_NFe.Application.Features.ShippingCompanies.Queries;
 using Projeto_NFe.Domain.Features.ShippingCompanies;
 using Projeto_NFe.Domain.Exceptions;
 using System.Linq;

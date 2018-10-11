@@ -50,7 +50,6 @@
     <Compile Include="Features\ProductTaxes\ProductTax.cs" />
     <Compile Include="Features\IssuedInvoices\IIssuedInvoiceService.cs" />
     <Compile Include="Features\Invoices\IInvoiceRepository.cs" />
-    <Compile Include="Features\Invoices\IInvoiceService.cs" />
     <Compile Include="Features\Invoices\Invoice.cs" />
     <Compile Include="Features\IssuedInvoices\IIssuedInvoiceRepository.cs" />
     <Compile Include="Features\ProductsSold\ProductSold.cs" />

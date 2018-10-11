@@ -1,6 +1,15 @@
-<kendo-grid [style.height]="'100%'" [data]="gridService | async" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort"
-    [sortable]="true" [pageable]="pageableSettings" [selectable]="selectableSettings" [scrollable]="true" [loading]="gridService.loading"
-    (dataStateChange)="dataStateChange($event)" (selectionChange)="onSelectionChange($event)">
+<kendo-grid [style.height]="'100%'" 
+            [data]="gridService | async" 
+            [loading]="gridService.loading" 
+            [pageSize]="state.take"
+            [selectable]="selectableSettings" 
+            [skip]="state.skip" 
+            [sort]="state.sort" 
+            [sortable]="true" 
+            [pageable]="pageableSettings"
+            [scrollable]="'true'" 
+            (dataStateChange)="dataStateChange($event)" 
+            (selectionChange)="onSelectionChange($event)">
 
     <ng-template kendoGridToolbarTemplate position="top">
         <div class="projeto-nfe-grid__action-container">

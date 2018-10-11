@@ -71,11 +71,11 @@ namespace Projeto_NFe.Infra.XML.Features.IssuedInvoices
                     {
                         ICMSTot = new InvoiceTaxModel
                         {
-                            ShippingValue = invoiceEmitida.Tax.ShippingValue,
-                            IcmsValue = invoiceEmitida.Tax.InvoiceIcmsValue,
-                            IpiValue = invoiceEmitida.Tax.InvoiceIpiValue,
-                            ValueProducts = invoiceEmitida.Tax.ProductAmount,
-                            InvoiceAmount = invoiceEmitida.Tax.InvoiceAmount
+                            ShippingValue = invoiceEmitida.InvoiceTax.ShippingValue,
+                            IcmsValue = invoiceEmitida.InvoiceTax.InvoiceIcmsValue,
+                            IpiValue = invoiceEmitida.InvoiceTax.InvoiceIpiValue,
+                            ValueProducts = invoiceEmitida.InvoiceTax.ProductAmount,
+                            InvoiceAmount = invoiceEmitida.InvoiceTax.InvoiceAmount
                         }
                     }
                 }
@@ -84,7 +84,7 @@ namespace Projeto_NFe.Infra.XML.Features.IssuedInvoices
 
         private List<ProductsSoldModel> preparaListaProductsSold(Invoice nf)
         {
-            var listaDeProductDaNota = nf.Products.ToArray();
+            var listaDeProductDaNota = nf.ProductSolds.ToArray();
             List<ProductsSoldModel> listaFinal = new List<ProductsSoldModel>();
             for (int x = 0; x < listaDeProductDaNota.Count(); x++)
             {
@@ -118,7 +118,6 @@ namespace Projeto_NFe.Infra.XML.Features.IssuedInvoices
 
         public void Export(Invoice invoice, string file)
         {
-            invoice.Validate();
             using (StreamWriter sw = File.CreateText(file))
             {
                 sw.Write(PrepararInvoiceToExportacao(invoice).Serialize());

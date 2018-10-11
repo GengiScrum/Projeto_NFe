@@ -2,6 +2,9 @@
 using Projeto_NFe.Domain.Features.Invoices;
 using Projeto_NFe.Infra.XML.Features.IssuedInvoices;
 using Projeto_NFe.Infra.PDF.Features.Invoices;
+using System.Linq;
+using Projeto_NFe.Domain.Exceptions;
+using Projeto_NFe.Application.Features.IssuedInvoices.Commands;
 
 namespace Projeto_NFe.Application.Features.IssuedInvoices
 {
@@ -9,11 +12,13 @@ namespace Projeto_NFe.Application.Features.IssuedInvoices
     {
         IIssuedInvoiceXMLRepository _repositoryXML;
         IInvoicePDFRepository _repositoryPDF;
+        IIssuedInvoiceRepository _issuedInvoiceRepository;
 
-        public IssuedInvoiceService(IIssuedInvoiceXMLRepository repositoryXML, IInvoicePDFRepository repositoryPDF)
+        public IssuedInvoiceService(IIssuedInvoiceXMLRepository repositoryXML, IInvoicePDFRepository repositoryPDF, IIssuedInvoiceRepository issuedInvoiceRepository)
         {
             _repositoryXML = repositoryXML;
             _repositoryPDF = repositoryPDF;
+            _issuedInvoiceRepository = issuedInvoiceRepository;
         }
 
         public void ExportToPDF(Invoice invoice, string file)
@@ -25,5 +30,31 @@ namespace Projeto_NFe.Application.Features.IssuedInvoices
         {
             _repositoryXML.Export(invoice, file);
         }
+
+
+        public Invoice GetById(int id)
+        {
+            if (id == 0)
+                throw new IdentifierUndefinedException();
+            return _issuedInvoiceRepository.GetById(id);
+        }
+
+        public IQueryable<Invoice> GetAll()
+        {
+            return _issuedInvoiceRepository.GetAll();
+        }
+
+        public void Issue(IssuedInvoiceRegisterCommand IssuedInvoice)
+        {
+            //if (IssuedInvoice. == 0)
+            //    throw new IdentifierUndefinedException();
+
+            //invoice.Issue();
+            //if (_issuedInvoiceRepository.CheckAcessKey(invoice.AcessKey))
+            //    Issue(invoice);
+            //_issuedInvoiceRepository.Add(invoice);
+            //_invoiceRepository.Remove(invoice.Id);
+        }
+
     }
 }

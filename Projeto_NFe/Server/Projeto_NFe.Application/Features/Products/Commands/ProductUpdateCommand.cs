@@ -12,7 +12,7 @@ namespace Projeto_NFe.Application.Features.Products.Commands
     [ExcludeFromCodeCoverage]
     public class ProductUpdateCommand
     {
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public double UnitaryValue { get; set; }

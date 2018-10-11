@@ -3,7 +3,7 @@ using Projeto_NFe.Domain.Exceptions;
 using System.Linq;
 using Projeto_NFe.Application.Features.Products.Commands;
 using AutoMapper;
-using Projeto_NFe.Application.Features.Products.Querys;
+using Projeto_NFe.Application.Features.Products.Queries;
 using Projeto_NFe.Domain.Features.Products;
 
 namespace Projeto_NFe.Application.Features.Products

@@ -9,9 +9,9 @@ namespace Projeto_NFe.Domain.Features.Invoices
     public interface IInvoiceRepository
     {
         Invoice Add(Invoice invoice);
-        Invoice Update(Invoice invoice);
-        void Remove(int id);
+        bool Update(Invoice invoice);
+        bool Remove(int id);
         Invoice GetById(int id);
-        IEnumerable<Invoice> GetAll();
+        IQueryable<Invoice> GetAll();
     }
 }

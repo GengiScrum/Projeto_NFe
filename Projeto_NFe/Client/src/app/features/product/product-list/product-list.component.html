@@ -1,0 +1,27 @@
+<kendo-grid [style.height]="'100%'" [data]="gridService | async" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort"
+    [sortable]="true" [pageable]="pageableSettings" [selectable]="selectableSettings" [scrollable]="true" [loading]="gridService.loading"
+    (dataStateChange)="dataStateChange($event)" (selectionChange)="onSelectionChange($event)">
+
+    <ng-template kendoGridToolbarTemplate position="top">
+        <div class="projeto-nfe-grid__action-container">
+            <button (click)="onClick()" class="projeto-nfe-grid__action">
+                <i class="ndd-font ndd-font-create projeto-nfe-grid__action__icon"></i>
+                <span class="projeto-nfe-grid__action__description">Novo Produto</span>
+            </button>
+            <button (click)="deleteProduct()" class="projeto-nfe-grid__action" [disabled]="!selectedRows.length">
+                <i class="ndd-font ndd-font-delete projeto-nfe-grid__action__icon"></i>
+                <span class="projeto-nfe-grid__action__description">Remover</span>
+            </button>
+            <button (click)="redirectOpenProduct()" class="projeto-nfe-grid__action" [disabled]="selectedRows.length != 1">
+                <i class="ndd-font ndd-font-open projeto-nfe-grid__action__icon"></i>
+                <span class="projeto-nfe-grid__action__description">Abrir</span>
+            </button>
+        </div>
+    </ng-template>
+    
+    <kendo-grid-checkbox-column width="10"></kendo-grid-checkbox-column>
+    <kendo-grid-column field="id" title="ID" width="20"></kendo-grid-column>
+    <kendo-grid-column field="code" title="Código" width="60"></kendo-grid-column>
+    <kendo-grid-column field="description" title="Descrição" width="90"></kendo-grid-column>
+    <kendo-grid-column field="unitaryValue" format="{0:c}" title="Valor Unitário" width="40"></kendo-grid-column>
+</kendo-grid>

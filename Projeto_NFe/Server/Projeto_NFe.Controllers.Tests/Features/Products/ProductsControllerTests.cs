@@ -114,7 +114,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Products
         }
 
         [Test]
-        public void products_Controller_Add_ShouldHandleValidationErrors()
+        public void Products_Controller_Add_ShouldHandleValidationErrors()
         {
             //Arrange
             var isValid = false;
@@ -147,7 +147,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Products
         }
 
         [Test]
-        public void products_Controller_Update_ShouldHandleValidationErrors()
+        public void Products_Controller_Update_ShouldHandleValidationErrors()
         {
             //Arrange
             var isValid = false;

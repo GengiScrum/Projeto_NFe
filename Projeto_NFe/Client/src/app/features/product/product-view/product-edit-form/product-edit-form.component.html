@@ -1,0 +1,13 @@
+<div class="feature-view__content">
+    <div class="row">
+        <div class="col-sm-6">
+            <ndd-product-form [returnRoute]="'/produtos'" [form]="form"></ndd-product-form>
+        </div>
+    </div>
+</div>
+<div class="feature-view-tab__footer">
+    <button class="ndd-ng-button ndd-ng-button--primary" (click)="onUpdate()">Salvar</button>
+    <button class="ndd-ng-button ndd-ng-button--cancel" (click)="redirect()">Voltar</button>
+</div>
+<div class="ndd-ng-spinner__spinner" *ngIf="isLoading"></div>
+<div class="ndd-ng-spinner__color" *ngIf="isLoading"></div>

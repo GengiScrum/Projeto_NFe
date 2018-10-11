@@ -1,0 +1,19 @@
+<div class="feature-view">
+    <ndd-ng-titlebar titlebarIcon="ndd-font ndd-font-box-check" titlebarTitle="Cadastrar Produto" [titlebarRouterToReturnOnClose]="returnRoute"></ndd-ng-titlebar>
+    <ndd-ng-tabsbar>
+        <ndd-ng-tab tabId="ndd-ng-tab-product-info" [tabRoute]="'./'" tabTitle="Dados Cadastrais"></ndd-ng-tab>
+    </ndd-ng-tabsbar>
+    <div class="feature-view__content">
+        <div class="row">
+            <div class="col-sm-6">
+                <ndd-product-form [returnRoute]="'./produtos'" [form]="form"></ndd-product-form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="feature-view-tab__footer">
+    <button class="ndd-ng-button ndd-ng-button--primary" (click)="onRegister()" [disabled]="form.invalid">Salvar</button>
+    <button class="ndd-ng-button ndd-ng-button--cancel" (click)="redirect()">Voltar</button>
+</div>
+<div class="ndd-ng-spinner__spinner" *ngIf="isLoading"></div>
+<div class="ndd-ng-spinner__color" *ngIf="isLoading"></div>

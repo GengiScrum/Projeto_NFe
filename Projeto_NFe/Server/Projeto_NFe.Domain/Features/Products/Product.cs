@@ -12,9 +12,5 @@ namespace Projeto_NFe.Domain.Features.Products
         public string Code { get; set; }
         public string Description { get; set; }
         public double UnitaryValue { get; set; }
-
-        public virtual void Validate()
-        {
-        }
     }
 }

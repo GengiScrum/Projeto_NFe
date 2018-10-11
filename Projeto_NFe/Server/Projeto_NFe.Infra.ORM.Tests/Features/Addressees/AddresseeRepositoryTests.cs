@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projeto_NFe.Infra.ORM.Testes.Features.Addressees
+namespace Projeto_NFe.Infra.ORM.Tests.Features.Addressees
 {
     [TestFixture]
     public class AddresseeRepositoryTests

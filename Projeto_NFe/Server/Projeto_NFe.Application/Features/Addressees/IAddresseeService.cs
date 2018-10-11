@@ -1,5 +1,5 @@
 ﻿using Projeto_NFe.Application.Features.Addressees.Commands;
-using Projeto_NFe.Application.Features.Addressees.Querys;
+using Projeto_NFe.Application.Features.Addressees.Queries;
 using Projeto_NFe.Domain.Features.Addressees;
 using System;
 using System.Collections.Generic;

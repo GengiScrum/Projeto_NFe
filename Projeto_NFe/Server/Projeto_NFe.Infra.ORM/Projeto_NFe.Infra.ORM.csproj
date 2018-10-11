@@ -52,6 +52,9 @@
   <ItemGroup>
     <Compile Include="Features\Addressees\AddresseConfiguration.cs" />
     <Compile Include="Features\Addressees\AddresseeRepository.cs" />
+    <Compile Include="Features\Invoices\InvoiceConfiguration.cs" />
+    <Compile Include="Features\Invoices\InvoiceRepository.cs" />
+    <Compile Include="Features\InvoiceTaxes\InvoiceTaxConfiguration.cs" />
     <Compile Include="Features\Issuers\IssuerConfiguration.cs" />
     <Compile Include="Features\Issuers\IssuerRepository.cs" />
     <Compile Include="Features\Products\ProductConfiguration.cs" />
@@ -72,6 +75,10 @@
     <Compile Include="Migrations\201810101741537_NFeContext_V3.cs" />
     <Compile Include="Migrations\201810101741537_NFeContext_V3.Designer.cs">
       <DependentUpon>201810101741537_NFeContext_V3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810101959197_NFeContext_V4.cs" />
+    <Compile Include="Migrations\201810101959197_NFeContext_V4.Designer.cs">
+      <DependentUpon>201810101959197_NFeContext_V4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,6 +103,12 @@
     <EmbeddedResource Include="Migrations\201810101741537_NFeContext_V3.resx">
       <DependentUpon>201810101741537_NFeContext_V3.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101959197_NFeContext_V4.resx">
+      <DependentUpon>201810101959197_NFeContext_V4.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\IssuedInvoices\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

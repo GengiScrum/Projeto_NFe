@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Projeto_NFe.Application.Features.Addressees.Commands;
-using Projeto_NFe.Application.Features.Addressees.Querys;
+using Projeto_NFe.Application.Features.Addressees.Queries;
 using AutoMapper;
 
 namespace Projeto_NFe.Application.Features.Addressees

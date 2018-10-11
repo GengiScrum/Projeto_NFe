@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projeto_NFe.Application.Features.Products.Querys
+namespace Projeto_NFe.Application.Features.Products.Queries
 {
     public class ProductQuery
     {

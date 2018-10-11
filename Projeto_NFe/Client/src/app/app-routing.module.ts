@@ -19,7 +19,7 @@ const appRoutes: Routes = [
             },
             {
                 path: 'notas-fiscais',
-                loadChildren: './features/shipping-company/shipping-company.module#ShippingCompanyModule',
+                loadChildren: './features/invoice/invoice.module#InvoiceModule',
                 data : {
                     breadcrumbOptions: {
                         breadcrumbLabel: 'Notas Fiscais',
@@ -50,6 +50,15 @@ const appRoutes: Routes = [
                 data: {
                     breadcrumbOptions: {
                         breadcrumbLabel: 'Destinatarios',
+                    },
+                },
+            },
+            {
+                path: 'produtos',
+                loadChildren: './features/product/product.module#ProductModule',
+                data: {
+                    breadcrumbOptions: {
+                        breadcrumbLabel: 'Produtos',
                     },
                 },
             },

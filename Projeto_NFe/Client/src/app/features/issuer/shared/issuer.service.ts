@@ -33,7 +33,7 @@ export class IssuerGridService extends BehaviorSubject<GridDataResult>{
             .get(`${this.config.apiEndpoint}api/issuers?${queryStr}`)
             .map((response: any): GridDataResult => ({
                 data: response.items,
-                total: parseInt(response.cound, 10),
+                total: parseInt(response.count, 10),
             }))
             .do(() => this.loading = false);
     }

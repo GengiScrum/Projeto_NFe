@@ -38,10 +38,10 @@ namespace Projeto_NFe.Infra.PDF.Features.Invoices
             Issuer = new IssuerModel();
             Issuer.Create(invoice.Issuer);
             Tax = new InvoiceTaxModel();
-            Tax.Create(invoice.Tax);
+            Tax.Create(invoice.InvoiceTax);
             OperationNature = invoice.OperationNature;
             Products = new List<ProductSoldModel>();
-            Products = productSoldModel.CreateLista(invoice.Products);
+            Products = productSoldModel.CreateLista(invoice.ProductSolds);
             if (invoice.ShippingCompany != null)
             {
                 ShippingCompany = new ShippingCompanyModel();

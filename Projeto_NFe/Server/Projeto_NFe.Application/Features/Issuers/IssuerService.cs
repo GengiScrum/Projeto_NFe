@@ -7,8 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Projeto_NFe.Application.Features.Issuers.Commands;
 using AutoMapper;
-using Projeto_NFe.Application.Features.ShippingCompanies.Querys;
-using Projeto_NFe.Application.Features.Issuers.Querys;
+using Projeto_NFe.Application.Features.ShippingCompanies.Queries;
+using Projeto_NFe.Application.Features.Issuers.Queries;
 
 namespace Projeto_NFe.Application.Features.Issuers
 {
@@ -41,13 +41,13 @@ namespace Projeto_NFe.Application.Features.Issuers
 
         public bool Remove(IssuerRemoveCommand command)
         {
-            var eRemovidoTodos = true;
+            var isRemovedAll = true;
             foreach (var issuerId in command.IssuersId)
             {
-                var eRemovido = _issuerRepository.Remove(issuerId);
-                eRemovidoTodos = eRemovido ? eRemovidoTodos : false;
+                var isRemoved = _issuerRepository.Remove(issuerId);
+                isRemovedAll = isRemoved ? isRemovedAll : false;
             }
-            return eRemovidoTodos;
+            return isRemovedAll;
         }
 
         public Issuer GetById(int id)
