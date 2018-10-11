@@ -27,7 +27,7 @@ export class ShippingCompanyRegisterFormComponent {
             .subscribe(() => {
                 this.isLoading = false;
                 alert('Cadastrado com sucesso');
-                this.form.reset();
+                this.redirect();
             });
     }
 
@@ -39,12 +39,12 @@ export class ShippingCompanyRegisterFormComponent {
         this.form = this.fb.group({
             details: this.fb.group({
                 businessName: ['', Validators.required],
-                corporateName: ['', Validators.required],
-                cnpj: [''],
+                corporateName: [''],
+                cnpj: ['' ],
                 cpf: [''],
-                stateRegistration: ['', Validators.required],
+                stateRegistration: [''],
                 personType: ['1', Validators.required],
-            }),
+            }, {  }),
             address: this.fb.group({
                 streetName: ['', Validators.required],
                 number: ['', Validators.required],
