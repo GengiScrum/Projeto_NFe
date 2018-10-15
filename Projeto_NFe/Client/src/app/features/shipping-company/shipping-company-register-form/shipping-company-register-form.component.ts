@@ -35,7 +35,7 @@ export class ShippingCompanyRegisterFormComponent {
             .take(1)
             .subscribe(() => {
                 this.isLoading = false;
-                alert('Cadastrado com sucesso');
+                alert('Transportador cadastrado com sucesso.');
                 this.redirect();
             });
     }

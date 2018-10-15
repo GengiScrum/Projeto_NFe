@@ -62,7 +62,7 @@ export class ShippingCompanyFormComponent implements OnInit, OnDestroy {
 
     private arrangeIndividualPersonForm(): void {
         this.form.addControl('person', this.person);
-        this.form.removeControl('entreprise');
+        this.form.removeControl('enterprise');
         this.form.updateValueAndValidity();
     }
 

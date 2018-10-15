@@ -58,6 +58,7 @@ export class ShippingCompanyEditFormComponent implements OnInit, OnDestroy {
             .subscribe(() => {
                 this.isLoading = false;
                 this.resolver.resolveFromRouteAndNotify();
+                alert('Transportador editado com sucesso.');
                 this.redirect();
             });
     }
