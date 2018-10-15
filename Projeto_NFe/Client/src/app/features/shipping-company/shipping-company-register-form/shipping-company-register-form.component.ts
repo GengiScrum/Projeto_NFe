@@ -30,12 +30,12 @@ export class ShippingCompanyRegisterFormComponent {
     public onSubmit(): void {
         this.isLoading = true;
         const shippingCompanyRegisterCommand: ShippingCompanyRegisterCommand
-            = new ShippingCompanyRegisterCommand(this.formModel.get('details').value, this.formModel.get('address').value);
+            = new ShippingCompanyRegisterCommand(this.formModel.value);
         this.service.register(shippingCompanyRegisterCommand)
             .take(1)
             .subscribe(() => {
                 this.isLoading = false;
-                alert('Cadastrado com sucesso');
+                alert('Transportador cadastrado com sucesso.');
                 this.redirect();
             });
     }
@@ -50,7 +50,7 @@ export class ShippingCompanyRegisterFormComponent {
             personType: ['1', Validators.required],
             address: this.fb.group({
                 streetName: ['', Validators.required],
-                number: ['', Validators.required],
+                number: ['', [Validators.required, Validators.pattern('[0-9]+')]],
                 neighborhood: ['', Validators.required],
                 city: ['', Validators.required],
                 state: ['', Validators.required],

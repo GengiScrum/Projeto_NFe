@@ -5,7 +5,7 @@ import { ShippingCompanyListComponent } from './shipping-company-list/shipping-c
 import { ShippingCompanyResolveService } from './shared/shipping-company.service';
 import { ShippingCompanyDetailComponent } from './shipping-company-view/shipping-company-detail/shipping-company-detail.component';
 import { ShippingCompanyViewComponent } from './shipping-company-view/shipping-company-view.component';
-import { ShippingCompanyRegisterFormComponent } from './shipping-company-register/shipping-company-register-form.component';
+import { ShippingCompanyRegisterFormComponent } from './shipping-company-register-form/shipping-company-register-form.component';
 import { ShippingCompanyEditFormComponent } from './shipping-company-view/shipping-company-edit-form/shipping-company-edit-form.component';
 
 const shippingCompanyRoutes: Routes = [

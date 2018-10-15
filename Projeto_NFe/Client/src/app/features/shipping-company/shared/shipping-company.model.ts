@@ -16,6 +16,27 @@ export class ShippingCompany {
     public country: string;
 }
 
+export class ShippingCompanyListViewModel {
+    public id: number;
+    public businessName: string;
+    public document: string;
+
+    constructor(value: any) {
+        this.id = value.id;
+        this.businessName = value.businessName;
+        this.document = (value.cpf) ? value.cpf : value.cnpj;
+    }
+
+    public static createArray(items: any[]): ShippingCompanyListViewModel[] {
+        const shippingCompanies: ShippingCompanyListViewModel[] = [];
+        items.forEach((item: any) => {
+            shippingCompanies.push(new ShippingCompanyListViewModel(item));
+        });
+
+        return shippingCompanies;
+    }
+}
+
 export class ShippingCompanyRegisterCommand {
     public businessName: string;
     public corporateName: string;

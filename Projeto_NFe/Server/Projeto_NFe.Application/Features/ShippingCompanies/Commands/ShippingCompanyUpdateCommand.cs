@@ -35,12 +35,12 @@ namespace Projeto_NFe.Application.Features.ShippingCompanies.Commands
         {
             public Validator()
             {
-                RuleFor(c => c.Id).NotNull().GreaterThan(0);
+                RuleFor(t => t.Id).NotNull().GreaterThan(0);
                 RuleFor(t => t.BusinessName).NotNull().NotEmpty().MaximumLength(40);
-                RuleFor(t => t.CorporateName).NotNull().NotEmpty().MaximumLength(40); RuleFor(t => t.BusinessName).NotNull().NotEmpty().MaximumLength(40);
-                RuleFor(t => t.Cpf).MaximumLength(15);
-                RuleFor(t => t.Cnpj).MaximumLength(19);
-                RuleFor(t => t.StateRegistration).NotNull().NotEmpty().MaximumLength(40);
+                RuleFor(t => t.CorporateName).MaximumLength(40);
+                RuleFor(t => t.Cpf).Length(14);
+                RuleFor(t => t.Cnpj).Length(18);
+                RuleFor(t => t.StateRegistration).MaximumLength(40);
                 RuleFor(t => t.PersonType).NotNull().NotEmpty();
                 RuleFor(t => t.StreetName).NotNull().NotEmpty().MaximumLength(40);
                 RuleFor(t => t.Number).NotNull().NotEmpty();

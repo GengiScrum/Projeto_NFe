@@ -12,8 +12,10 @@ import { AbstractResolveService } from './../../../core/utils/abstract-resolve.s
 import { BaseService } from './../../../core/utils/base-service';
 import { NDDBreadcrumbService } from './../../../shared/ndd-ng-breadcrumb/component/ndd-ng-breadcrumb.service';
 
-import { ShippingCompany, ShippingCompanyRemoveCommand,
-    ShippingCompanyUpdateCommand, ShippingCompanyRegisterCommand } from './shipping-company.model';
+import {
+    ShippingCompany, ShippingCompanyRemoveCommand,
+    ShippingCompanyUpdateCommand, ShippingCompanyRegisterCommand, ShippingCompanyListViewModel,
+} from './shipping-company.model';
 
 @Injectable()
 export class ShippingCompanyGridService extends BehaviorSubject<GridDataResult> {
@@ -35,7 +37,7 @@ export class ShippingCompanyGridService extends BehaviorSubject<GridDataResult> 
         return this.httpClient
             .get(`${this.config.apiEndpoint}api/shippingcompanies?${queryStr}`)
             .map((response: any): GridDataResult => ({
-                data: response.items,
+                data: ShippingCompanyListViewModel.createArray(response.items),
                 total: parseInt(response.count, 10),
             }))
             .do(() => this.loading = false);
@@ -46,7 +48,7 @@ export class ShippingCompanyGridService extends BehaviorSubject<GridDataResult> 
 export class ShippingCompanyService extends BaseService {
     private api: string;
 
-    constructor( @Inject(CORE_CONFIG_TOKEN) config: ICoreConfig,
+    constructor(@Inject(CORE_CONFIG_TOKEN) config: ICoreConfig,
         public http: HttpClient) {
         super(http);
         this.api = `${config.apiEndpoint}api/shippingcompanies`;
