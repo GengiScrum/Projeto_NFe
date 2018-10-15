@@ -34,7 +34,7 @@ export class AddresseeRegisterFormComponent {
     private arrangeForm(): void {
         this.formModel = this.fb.group({
             businessName: ['', Validators.required],
-            personType: ['1', Validators.required],
+            personType: [true, Validators.required],
             address: this.fb.group({
                 streetName: ['', Validators.required],
                 number: ['', Validators.required],

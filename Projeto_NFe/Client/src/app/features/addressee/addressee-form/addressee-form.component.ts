@@ -39,10 +39,9 @@ export class AddresseeFormComponent implements OnInit, OnDestroy {
     }
 
     public getPersonTypeFormError(formControlName: string): boolean {
-        const corporatePerson: string = '2';
-        const personType: string = this.form.get('personType').value;
+        const personType: boolean = this.form.get('personType').value;
 
-        if (personType === corporatePerson) {
+        if (personType) {
             return this.form.get('enterprise').get(formControlName).errors && this.form.get('enterprise').get(formControlName).touched;
         } else {
             return this.form.get('person').get(formControlName).errors && this.form.get('person').get(formControlName).touched;
@@ -50,10 +49,9 @@ export class AddresseeFormComponent implements OnInit, OnDestroy {
     }
 
     public changePerson(): void {
-        const corporatePerson: string = '2';
-        const personType: string = this.form.get('personType').value;
+        const personType: boolean = this.form.get('personType').value;
 
-        if (personType === corporatePerson) {
+        if (personType) {
             this.arrangeLegalPersonForm();
         } else {
             this.arrangeIndividualPersonForm();
