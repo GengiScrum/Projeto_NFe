@@ -28,6 +28,8 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             _addresseeService = new AddresseeService(_mockAddresseeRepository.Object);
         }
 
+        #region Add
+
         [Test]
         public void Addressee_Service_Add_Sucessfully()
         {
@@ -58,6 +60,10 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             newAddresseeAcao.Should().Throw<Exception>();
             _mockAddresseeRepository.Verify(er => er.Add(It.IsAny<Addressee>()), Times.Once);
         }
+
+        #endregion
+
+        #region Update
 
         [Test]
         public void Addressee_Service_Update_Sucessfully()
@@ -93,6 +99,10 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             _mockAddresseeRepository.Verify(e => e.Update(It.IsAny<Addressee>()), Times.Never);
         }
 
+        #endregion
+
+        #region Remove
+
         [Test]
         public void Addressee_Service_Remove_Sucessfully()
         {
@@ -123,6 +133,10 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             AddresseeAcao.Should().Throw<NotFoundException>();
             _mockAddresseeRepository.Verify(e => e.Remove(addresseeCmd.AddresseesId.First()), Times.Once);
         }
+
+        #endregion
+
+        #region Get
 
         [Test]
         public void Addressee_Service_GetById_Sucessfully()
@@ -173,5 +187,7 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             AddresseesResultado.First().Should().Be(addressee);
             AddresseesResultado.Count().Should().Be(mockValueRepository.Count());
         }
+
+        #endregion
     }
 }

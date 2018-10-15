@@ -28,6 +28,8 @@ namespace Projeto_NFe.Application.Tests.Features.Products
             _productService = new ProductService(_mockProductRepository.Object);
         }
 
+        #region Add
+
         [Test]
         public void Product_Service_Add_Sucessfully()
         {
@@ -52,12 +54,16 @@ namespace Projeto_NFe.Application.Tests.Features.Products
             _mockProductRepository.Setup(pr => pr.Add(It.IsAny<Product>())).Throws<Exception>();
 
             //Action
-            Action newProductAcao = () => _productService.Add(productCmd);
+            Action act = () => _productService.Add(productCmd);
 
             //Assert
-            newProductAcao.Should().Throw<Exception>();
+            act.Should().Throw<Exception>();
             _mockProductRepository.Verify(pr => pr.Add(It.IsAny<Product>()), Times.Once);
         }
+
+        #endregion
+
+        #region Update
 
         [Test]
         public void Product_Service_Update_Sucessfully()
@@ -94,6 +100,10 @@ namespace Projeto_NFe.Application.Tests.Features.Products
             _mockProductRepository.Verify(pr => pr.Update(It.IsAny<Product>()), Times.Never);
         }
 
+        #endregion
+
+        #region Remove
+
         [Test]
         public void Product_Service_Remove_Sucessfully()
         {
@@ -125,6 +135,9 @@ namespace Projeto_NFe.Application.Tests.Features.Products
             _mockProductRepository.Verify(pr => pr.Remove(productCmd.ProductsId.First()), Times.Once);
         }
 
+        #endregion
+
+        #region Get
 
         [Test]
         public void Product_Service_GetById_Sucessfully()
@@ -175,5 +188,7 @@ namespace Projeto_NFe.Application.Tests.Features.Products
             productsResultado.First().Should().Be(product);
             productsResultado.Count().Should().Be(mockValueRepository.Count());
         }
+
+        #endregion
     }
 }

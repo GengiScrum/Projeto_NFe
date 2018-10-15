@@ -25,6 +25,8 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
             _shippingCompanyService = new ShippingCompanyService(_mockShippingCompanyRepository.Object);
         }
 
+        #region Add
+
         [Test]
         public void ShippingCompany_Service_Add_Sucessfully()
         {
@@ -42,7 +44,7 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
         }
 
         [Test]
-        public void ShippingCompany_Service_Add_DeveSerTratamentoExcecao()
+        public void ShippingCompany_Service_Add_ShouldThrowException()
         {
             //Cenário
             var shippingCompanyCmd = ObjectMother.ShippingCompanyCommandToRegister();
@@ -55,6 +57,10 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
             newShippingCompanyAcao.Should().Throw<Exception>();
             _mockShippingCompanyRepository.Verify(er => er.Add(It.IsAny<ShippingCompany>()), Times.Once);
         }
+
+        #endregion
+
+        #region Update
 
         [Test]
         public void ShippingCompany_Service_Update_Sucessfully()
@@ -76,7 +82,7 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
         }
 
         [Test]
-        public void ShippingCompany_Service_Update_DeveTratarNaoEncontrado()
+        public void ShippingCompany_Service_Update_ShouldThrowNotFoundException()
         {
             //Cenário
             var shippingCompanyCmd = ObjectMother.ShippingCompanyCommandToUpdate();
@@ -90,6 +96,10 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
             _mockShippingCompanyRepository.Verify(e => e.GetById(shippingCompanyCmd.Id), Times.Once);
             _mockShippingCompanyRepository.Verify(e => e.Update(It.IsAny<ShippingCompany>()), Times.Never);
         }
+
+        #endregion
+
+        #region Remove
 
         [Test]
         public void ShippingCompany_Service_Remove_Sucessfully()
@@ -108,7 +118,7 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
         }
 
         [Test]
-        public void ShippingCompany_Service_Remove_DeveTratarNaoEncontrado()
+        public void ShippingCompany_Service_Remove_ShouldThrowNotFounException()
         {
             //Cenário
             var shippingCompanyCmd = ObjectMother.ShippingCompanyCommandToRemove();
@@ -121,6 +131,10 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
             shippingCompanyAcao.Should().Throw<NotFoundException>();
             _mockShippingCompanyRepository.Verify(e => e.Remove(shippingCompanyCmd.Ids.First()), Times.Once);
         }
+
+        #endregion
+
+        #region Get
 
         [Test]
         public void ShippingCompany_Service_GetById_Sucessfully()
@@ -139,7 +153,7 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
         }
 
         [Test]
-        public void ShippingCompany_Service_GetById_DeveTratarNotFoundException()
+        public void ShippingCompany_Service_GetById_ShouldThrowNotFoundException()
         {
             //Cenário
             var shippingCompany = ObjectMother.ShippingCompanyValidWithIdWithAddress();
@@ -171,5 +185,7 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
             shippingCompanysResultado.First().Should().Be(shippingCompany);
             shippingCompanysResultado.Count().Should().Be(mockValueRepository.Count());
         }
+
+        #endregion
     }
 }

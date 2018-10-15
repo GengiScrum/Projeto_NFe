@@ -28,6 +28,8 @@ namespace Projeto_NFe.Application.Tests.Features.Issuers
             _issuerService = new IssuerService(_mockIssuerRepository.Object);
         }
 
+        #region Add
+
         [Test]
         public void Issuer_Service_Add_Sucessfully()
         {
@@ -45,20 +47,23 @@ namespace Projeto_NFe.Application.Tests.Features.Issuers
         }
 
         [Test]
-        public void Issuer_Service_Add_DeveSerTratamentoExcecao()
+        public void Issuer_Service_Add_ShouldThrowException()
         {
             //Cenário
             var issuerCmd = ObjectMother.IssuerCommandToRegister();
             _mockIssuerRepository.Setup(er => er.Add(It.IsAny<Issuer>())).Throws<Exception>();
 
             //Ação
-            Action newIssuerAcao = () => _issuerService.Add(issuerCmd);
+            Action act = () => _issuerService.Add(issuerCmd);
 
             //Verificar
-            newIssuerAcao.Should().Throw<Exception>();
+            act.Should().Throw<Exception>();
             _mockIssuerRepository.Verify(er => er.Add(It.IsAny<Issuer>()), Times.Once);
         }
-        
+
+        #endregion
+
+        #region Update
         [Test]
         public void Issuer_Service_Update_Sucessfully()
         {
@@ -79,21 +84,24 @@ namespace Projeto_NFe.Application.Tests.Features.Issuers
         }
 
         [Test]
-        public void Issuer_Service_Update_DeveTratarNaoEncontrado()
+        public void Issuer_Service_Update_ShouldThrowNotFoundException()
         {
             //Cenário
             var issuerCmd = ObjectMother.IssuerCommandToUpdate();
             _mockIssuerRepository.Setup(e => e.GetById(issuerCmd.Id)).Returns((Issuer)null);
 
             //Ação
-            Action issuerAcao = () => _issuerService.Update(issuerCmd);
+            Action act = () => _issuerService.Update(issuerCmd);
 
             //Verificar
-            issuerAcao.Should().Throw<NotFoundException>();
+            act.Should().Throw<NotFoundException>();
             _mockIssuerRepository.Verify(e => e.GetById(issuerCmd.Id), Times.Once);
             _mockIssuerRepository.Verify(e => e.Update(It.IsAny<Issuer>()), Times.Never);
         }
 
+        #endregion
+
+        #region Remove
         [Test]
         public void Issuer_Service_Remove_Sucessfully()
         {
@@ -111,20 +119,23 @@ namespace Projeto_NFe.Application.Tests.Features.Issuers
         }
 
         [Test]
-        public void Issuer_Service_Remove_DeveTratarNaoEncontrado()
+        public void Issuer_Service_Remove_ShouldThrowNotFoundException()
         {
             //Cenário
             var issuerCmd = ObjectMother.IssuerCommandToRemove();
             _mockIssuerRepository.Setup(e => e.Remove(issuerCmd.IssuersId.First())).Throws<NotFoundException>();
 
             //Ação
-            Action issuerAcao = () => _issuerService.Remove(issuerCmd);
+            Action act = () => _issuerService.Remove(issuerCmd);
 
             //Verificar
-            issuerAcao.Should().Throw<NotFoundException>();
+            act.Should().Throw<NotFoundException>();
             _mockIssuerRepository.Verify(e => e.Remove(issuerCmd.IssuersId.First()), Times.Once);
         }
 
+        #endregion
+
+        #region Get
         [Test]
         public void Issuer_Service_GetById_Sucessfully()
         {
@@ -142,7 +153,7 @@ namespace Projeto_NFe.Application.Tests.Features.Issuers
         }
 
         [Test]
-        public void Issuer_Service_GetById_DeveTratarNotFoundException()
+        public void Issuer_Service_GetById_ShouldThrowNotFoundException()
         {
             //Cenário
             var issuer = ObjectMother.IssuerValidWithIdAndWithAddress();
@@ -150,10 +161,10 @@ namespace Projeto_NFe.Application.Tests.Features.Issuers
             _mockIssuerRepository.Setup(e => e.GetById(issuer.Id)).Throws(excecao);
 
             //Ação
-            Action issuerAcao = () => _issuerService.GetById(issuer.Id);
+            Action act = () => _issuerService.GetById(issuer.Id);
 
             //Verificar
-            issuerAcao.Should().Throw<NotFoundException>();
+            act.Should().Throw<NotFoundException>();
             _mockIssuerRepository.Verify(e => e.GetById(issuer.Id), Times.Once);
         }
 
@@ -174,5 +185,7 @@ namespace Projeto_NFe.Application.Tests.Features.Issuers
             issuersResultado.First().Should().Be(issuer);
             issuersResultado.Count().Should().Be(mockValueRepository.Count());
         }
+
+        #endregion
     }
 }
