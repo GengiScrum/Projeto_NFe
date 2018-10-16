@@ -30,12 +30,12 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
         [Test]
         public void ShippingCompany_Service_Add_Sucessfully()
         {
-            //Cenário 
+            //Arrange 
             var shippingCompany = ObjectMother.ShippingCompanyValidWithIdWithAddress();
             var shippingCompanyCmd = ObjectMother.ShippingCompanyCommandToRegister();
             _mockShippingCompanyRepository.Setup(er => er.Add(It.IsAny<ShippingCompany>())).Returns(shippingCompany);
 
-            //Ação
+            //Action
             var addShippingCompany = _shippingCompanyService.Add(shippingCompanyCmd);
 
             //Verificar
@@ -46,11 +46,11 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
         [Test]
         public void ShippingCompany_Service_Add_ShouldThrowException()
         {
-            //Cenário
+            //Arrange
             var shippingCompanyCmd = ObjectMother.ShippingCompanyCommandToRegister();
             _mockShippingCompanyRepository.Setup(er => er.Add(It.IsAny<ShippingCompany>())).Throws<Exception>();
 
-            //Ação
+            //Action
             Action act = () => _shippingCompanyService.Add(shippingCompanyCmd);
 
             //Verificar
@@ -65,14 +65,14 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
         [Test]
         public void ShippingCompany_Service_Update_Sucessfully()
         {
-            //Cenário
+            //Arrange
             var shippingCompany = ObjectMother.ShippingCompanyValidWithIdWithAddress();
             var shippingCompanyCmd = ObjectMother.ShippingCompanyCommandToUpdate();
             var updated = true;
             _mockShippingCompanyRepository.Setup(e => e.GetById(shippingCompanyCmd.Id)).Returns(shippingCompany);
             _mockShippingCompanyRepository.Setup(er => er.Update(shippingCompany)).Returns(updated);
 
-            //Ação
+            //Action
             var updatedShippingCompany = _shippingCompanyService.Update(shippingCompanyCmd);
 
             //Verificar
@@ -84,11 +84,11 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
         [Test]
         public void ShippingCompany_Service_Update_ShouldThrowNotFoundException()
         {
-            //Cenário
+            //Arrange
             var shippingCompanyCmd = ObjectMother.ShippingCompanyCommandToUpdate();
             _mockShippingCompanyRepository.Setup(e => e.GetById(shippingCompanyCmd.Id)).Returns((ShippingCompany)null);
 
-            //Ação
+            //Action
             Action act = () => _shippingCompanyService.Update(shippingCompanyCmd);
 
             //Verificar
@@ -104,12 +104,12 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
         [Test]
         public void ShippingCompany_Service_Remove_Sucessfully()
         {
-            //Cenário
+            //Arrange
             var shippingCompanyCmd = ObjectMother.ShippingCompanyCommandToRemove();
             var mockWasRemoved = true;
             _mockShippingCompanyRepository.Setup(e => e.Remove(shippingCompanyCmd.Ids.First())).Returns(mockWasRemoved);
 
-            //Ação
+            //Action
             var productRemoved = _shippingCompanyService.Remove(shippingCompanyCmd);
 
             //Verificar
@@ -120,11 +120,11 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
         [Test]
         public void ShippingCompany_Service_Remove_ShouldThrowNotFounException()
         {
-            //Cenário
+            //Arrange
             var shippingCompanyCmd = ObjectMother.ShippingCompanyCommandToRemove();
             _mockShippingCompanyRepository.Setup(e => e.Remove(shippingCompanyCmd.Ids.First())).Throws<NotFoundException>();
 
-            //Ação
+            //Action
             Action act = () => _shippingCompanyService.Remove(shippingCompanyCmd);
 
             //Verificar
@@ -139,11 +139,11 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
         [Test]
         public void ShippingCompany_Service_GetById_Sucessfully()
         {
-            //Cenário
+            //Arrange
             var shippingCompany = ObjectMother.ShippingCompanyValidWithIdWithAddress();
             _mockShippingCompanyRepository.Setup(er => er.GetById(shippingCompany.Id)).Returns(shippingCompany);
 
-            //Ação
+            //Action
             var getShippingCompany = _shippingCompanyService.GetById(shippingCompany.Id);
 
             //Verificar
@@ -155,12 +155,12 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
         [Test]
         public void ShippingCompany_Service_GetById_ShouldThrowNotFoundException()
         {
-            //Cenário
+            //Arrange
             var shippingCompany = ObjectMother.ShippingCompanyValidWithIdWithAddress();
             var exception = new NotFoundException();
             _mockShippingCompanyRepository.Setup(e => e.GetById(shippingCompany.Id)).Throws(exception);
 
-            //Ação
+            //Action
             Action act = () => _shippingCompanyService.GetById(shippingCompany.Id);
 
             //Verificar
@@ -171,12 +171,12 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
         [Test]
         public void ShippingCompany_Service_GetAll_Sucessfully()
         {
-            //Cenário
+            //Arrange
             var shippingCompany = ObjectMother.ShippingCompanyValidWithIdWithAddress();
             var mockValueRepository = new List<ShippingCompany>() { shippingCompany }.AsQueryable();
             _mockShippingCompanyRepository.Setup(er => er.GetAll()).Returns(mockValueRepository);
 
-            //Ação
+            //Action
             var shippingCompanysResultado = _shippingCompanyService.GetAll();
 
             //Verificar

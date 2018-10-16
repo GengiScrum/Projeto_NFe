@@ -39,9 +39,9 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Addressees
         [Test]
         public void Addressees_Repository_Add_Sucessfully()
         {
-            //Ação
+            //Action
             var addressee = _repository.Add(_addressee);
-            //Verificação
+            //Assert
             addressee.Should().NotBeNull();
             addressee.Id.Should().NotBe(0);
             var expectedOrder = _ctx.Addressees.Find(addressee.Id);
@@ -56,7 +56,7 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Addressees
         [Test]
         public void Addressees_Repository_GetAll_Sucessfully()
         {
-            //Ação
+            //Action
             var addressee = _repository.GetAll().ToList();
 
             //Assert
@@ -68,7 +68,7 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Addressees
         [Test]
         public void Addressees_Repository_GetById_Sucessfully()
         {
-            //Ação
+            //Action
             var addressee = _repository.GetById(_addresseeBase.Id);
 
             //Assert
@@ -82,7 +82,7 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Addressees
         [Test]
         public void Addressees_Repository_Remove_Sucessfully()
         {
-            // Ação
+            // Action
             var removed = _repository.Remove(_addresseeBase.Id);
             // Assert
             removed.Should().BeTrue();
@@ -92,11 +92,11 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Addressees
         [Test]
         public void Addressees_Repository_Remove_ShouldThrowNotFoundException()
         {
-            // Cenário
+            // Arrange
             var idInvalid = 10;
-            // Ação
+            // Action
             Action act = () => _repository.Remove(idInvalid);
-            // Verificação
+            // Assert
             act.Should().Throw<NotFoundException>();
         }
         #endregion
@@ -106,13 +106,13 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Addressees
         [Test]
         public void Addressees_Repository_Update_Sucessfully()
         {
-            // Cenário
+            // Arrange
             var modified = false;
             var newName = "alterado";
             _addresseeBase.BusinessName = newName;
-            //Ação
+            //Action
             var updated = new Action(() => { modified = _repository.Update(_addresseeBase); });
-            // Verificação
+            // Assert
             updated.Should().NotThrow<Exception>();
             modified.Should().BeTrue();
         }

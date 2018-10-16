@@ -113,11 +113,11 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Invoices
         [Test]
         public void Invoice_Repository_Remove_ShouldThrowNotFoundException()
         {
-            // Cenário
+            // Arrange
             var idInvalid = 2;
-            // Ação
+            // Action
             Action act = () => _invoiceRepository.Remove(idInvalid);
-            // Verificação
+            // Assert
             act.Should().Throw<NotFoundException>();
         }
         #endregion
