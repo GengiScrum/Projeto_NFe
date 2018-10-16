@@ -90,7 +90,7 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Addressees
         }
 
         [Test]
-        public void Addressees_Repository_Remove_DeveTratarNotFoundException()
+        public void Addressees_Repository_Remove_ShouldThrowNotFoundException()
         {
             // Cenário
             var idInvalid = 10;

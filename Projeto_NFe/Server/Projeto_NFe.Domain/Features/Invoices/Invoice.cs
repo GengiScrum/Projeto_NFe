@@ -14,7 +14,7 @@ namespace Projeto_NFe.Domain.Features.Invoices
 {
     public class Invoice
     {
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
         public int? IssuerId { get; set; }
         public Issuer Issuer { get; set; }
         public int? ShippingCompanyId { get; set; }

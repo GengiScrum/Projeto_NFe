@@ -90,31 +90,31 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.ShippingCompanies
         }
 
         [Test]
-        public void ShippingCompanies_Repository_Remove_DeveTratarNotFoundException()
+        public void ShippingCompanies_Repository_Remove_ShouldThrowNotFoundException()
         {
             // Cenário
             var idInvalid = 10;
             // Ação
-            Action Remove = () => _repository.Remove(idInvalid);
+            Action act = () => _repository.Remove(idInvalid);
             // Verificação
-            Remove.Should().Throw<NotFoundException>();
+            act.Should().Throw<NotFoundException>();
         }
         #endregion
 
         #region UPDATE
 
         [Test]
-        public void ShippingCompanies_Repository_Alterar_Sucessfully()
+        public void ShippingCompanies_Repository_Update_Sucessfully()
         {
             // Cenário
-            var alterado = false;
+            var modified = false;
             var newName = "alterado";
             _shippingCompanyBase.BusinessName = newName;
             //Ação
-            var atualizado = new Action(() => { alterado = _repository.Update(_shippingCompanyBase); });
+            var updated = new Action(() => { modified = _repository.Update(_shippingCompanyBase); });
             // Verificação
-            atualizado.Should().NotThrow<Exception>();
-            alterado.Should().BeTrue();
+            updated.Should().NotThrow<Exception>();
+            modified.Should().BeTrue();
         }
         #endregion
     }

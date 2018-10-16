@@ -47,6 +47,10 @@ namespace Projeto_NFe.API.Controllers.Invoices
         [HttpPost]
         public IHttpActionResult Add(InvoiceRegisterCommand invoiceCmd)
         {
+            /*var validator = invoiceCmd.Validate();
+            if (!validator.IsValid)
+                return HandleValidationFailure(validator.Errors);*/
+
             return HandleCallback(_invoiceService.Add(invoiceCmd));
         }
 

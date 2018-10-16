@@ -111,11 +111,11 @@ namespace Projeto_NFe.Controllers.Tests.Features.Issuers
         }
 
         [Test]
-        public void issuers_Controller_Add_DeveTratarErrosValidacao()
+        public void issuers_Controller_Add_ShouldHandleValidationErrors()
         {
             //Arrange
-            var eValid = false;
-            _validador.Setup(v => v.IsValid).Returns(eValid);
+            var isValid = false;
+            _validador.Setup(v => v.IsValid).Returns(isValid);
             // Action
             var callback = _issuersController.Add(_issuerRegisterCmd.Object);
             //Assert
@@ -144,7 +144,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Issuers
         }
 
         [Test]
-        public void issuers_Controller_Update_DeveTratarErrosValidacao()
+        public void issuers_Controller_Update_ShouldHandleValidationErrors()
         {
             //Arrange
             var eValid = false;
@@ -177,7 +177,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Issuers
         }
 
         [Test]
-        public void Issuers_Controller_Remove_DeveTratarErrosValidacao()
+        public void Issuers_Controller_Remove_ShouldHandleValidationErrors()
         {
             //Arrange
             var eValid = false;

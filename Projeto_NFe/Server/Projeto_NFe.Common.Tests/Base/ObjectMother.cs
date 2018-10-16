@@ -927,6 +927,7 @@ namespace Projeto_NFe.Common.Tests
         public static InvoiceUpdateCommand InvoiceCommandToUpdate(int issuerId, int addresseeId, int shippingCompanyId)
         {
             InvoiceUpdateCommand invoice = new InvoiceUpdateCommand();
+            invoice.Id = 1;
             invoice.OperationNature = "Venda";
             invoice.EntryDate = DateTime.Now;
             invoice.IssuerId = issuerId;
@@ -963,6 +964,21 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
+            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.InvoiceTax = new InvoiceTax();
+            return invoice;
+        }
+
+        public static Invoice InvoiceValidWithId()
+        {
+            Invoice invoice = new Invoice();
+            invoice.Id = 1;
+            invoice.OperationNature = "Venda";
+            invoice.EntryDate = DateTime.Now;
+            invoice.AcessKey = "BAJDSA0123IU43I249206954";
+            invoice.Issuer = IssuerValidWithIdAndWithAddress();
+            invoice.Addressee = AddresseeValidWithIdWithAddress();
+            invoice.ShippingCompany = ShippingCompanyValidWithIdWithAddress();
             invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
             invoice.InvoiceTax = new InvoiceTax();
             return invoice;

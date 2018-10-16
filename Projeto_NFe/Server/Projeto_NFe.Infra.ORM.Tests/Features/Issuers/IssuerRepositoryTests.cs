@@ -83,18 +83,18 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Issuers
             var removed = _repository.Remove(_issuerBase.Id);
             // Assert
             removed.Should().BeTrue();
-            _ctx.Issuers.Where(p => p.Id == _issuerBase.Id).FirstOrDefault().Should().BeNull();
+            _ctx.Issuers.Where(i => i.Id == _issuerBase.Id).FirstOrDefault().Should().BeNull();
         }
 
         [Test]
-        public void Issuers_Repository_Remove_DeveTratarNotFoundException()
+        public void Issuers_Repository_Remove_ShouldThrowNotFoundException()
         {
             // Cenário
             var idInvalid = 10;
             // Ação
-            Action Remove = () => _repository.Remove(idInvalid);
+            Action act = () => _repository.Remove(idInvalid);
             // Verificação
-            Remove.Should().Throw<NotFoundException>();
+            act.Should().Throw<NotFoundException>();
         }
         #endregion
 

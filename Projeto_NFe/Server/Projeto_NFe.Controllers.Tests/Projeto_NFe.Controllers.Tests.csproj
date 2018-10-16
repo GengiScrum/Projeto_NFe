@@ -117,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Features\Addressees\AddresseesControllerTests.cs" />
+    <Compile Include="Features\Invoices\InvoicesControllerTests.cs" />
     <Compile Include="Features\Products\ProductsControllerTests.cs" />
     <Compile Include="Features\ShippingCompanies\ShippingCompaniesControllerTests.cs" />
     <Compile Include="Features\Issuers\IssuersControllerTests.cs" />

@@ -22,10 +22,12 @@ namespace Projeto_NFe.Application.Features.Invoices
             _invoiceRepository = invoiceRepository;
         }
 
-        public Invoice Add(InvoiceRegisterCommand command)
+        public int Add(InvoiceRegisterCommand command)
         {
             var invoice = Mapper.Map<InvoiceRegisterCommand, Invoice>(command);
-            return _invoiceRepository.Add(invoice);
+            var newInvoice =  _invoiceRepository.Add(invoice);
+
+            return newInvoice.Id;
         }
 
         public bool Update(InvoiceUpdateCommand command)
