@@ -104,14 +104,14 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Issuers
         public void Issuers_Repository_Update_Sucessfully()
         {
             // Cenário
-            var alterado = false;
+            var modified = false;
             var newName = "alterado";
             _issuerBase.BusinessName = newName;
             //Ação
-            var atualizado = new Action(() => { alterado = _repository.Update(_issuerBase); });
+            var updated = new Action(() => { modified = _repository.Update(_issuerBase); });
             // Verificação
-            atualizado.Should().NotThrow<Exception>();
-            alterado.Should().BeTrue();
+            updated.Should().NotThrow<Exception>();
+            modified.Should().BeTrue();
         }
         #endregion
     }

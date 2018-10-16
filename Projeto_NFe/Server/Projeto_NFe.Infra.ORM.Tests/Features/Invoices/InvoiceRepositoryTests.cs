@@ -116,9 +116,9 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Invoices
             // Cenário
             var idInvalid = 2;
             // Ação
-            Action Remove = () => _invoiceRepository.Remove(idInvalid);
+            Action act = () => _invoiceRepository.Remove(idInvalid);
             // Verificação
-            Remove.Should().Throw<NotFoundException>();
+            act.Should().Throw<NotFoundException>();
         }
         #endregion
 

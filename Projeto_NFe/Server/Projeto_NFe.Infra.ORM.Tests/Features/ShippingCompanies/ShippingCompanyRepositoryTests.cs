@@ -57,12 +57,12 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.ShippingCompanies
         public void ShippingCompanies_Repository_GetAll_Sucessfully()
         {
             //Ação
-            var shippingCompanyes = _repository.GetAll().ToList();
+            var shippingCompanies = _repository.GetAll().ToList();
 
             //Assert
-            shippingCompanyes.Should().NotBeNull();
-            shippingCompanyes.Should().HaveCount(_ctx.ShippingCompanies.Count());
-            shippingCompanyes.First().Should().Be(_shippingCompanyBase);
+            shippingCompanies.Should().NotBeNull();
+            shippingCompanies.Should().HaveCount(_ctx.ShippingCompanies.Count());
+            shippingCompanies.First().Should().Be(_shippingCompanyBase);
         }
 
         [Test]

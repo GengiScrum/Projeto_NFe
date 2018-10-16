@@ -95,9 +95,9 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Addressees
             // Cenário
             var idInvalid = 10;
             // Ação
-            Action Remove = () => _repository.Remove(idInvalid);
+            Action act = () => _repository.Remove(idInvalid);
             // Verificação
-            Remove.Should().Throw<NotFoundException>();
+            act.Should().Throw<NotFoundException>();
         }
         #endregion
 
@@ -107,14 +107,14 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Addressees
         public void Addressees_Repository_Update_Sucessfully()
         {
             // Cenário
-            var alterado = false;
+            var modified = false;
             var newName = "alterado";
             _addresseeBase.BusinessName = newName;
             //Ação
-            var atualizado = new Action(() => { alterado = _repository.Update(_addresseeBase); });
+            var updated = new Action(() => { modified = _repository.Update(_addresseeBase); });
             // Verificação
-            atualizado.Should().NotThrow<Exception>();
-            alterado.Should().BeTrue();
+            updated.Should().NotThrow<Exception>();
+            modified.Should().BeTrue();
         }
         #endregion
     }
