@@ -47,7 +47,7 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
 
             //Verificar
             _mockInvoiceRepository.Verify(ir => ir.Add(It.IsAny<Invoice>()));
-            addInvoice.Id.Should().Be(invoice.Id);
+            addInvoice.Should().Be(invoice.Id);
         }
 
         [Test]

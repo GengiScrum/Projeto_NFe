@@ -114,8 +114,8 @@ namespace Projeto_NFe.Controllers.Tests.Features.Issuers
         public void issuers_Controller_Add_ShouldHandleValidationErrors()
         {
             //Arrange
-            var eValid = false;
-            _validador.Setup(v => v.IsValid).Returns(eValid);
+            var isValid = false;
+            _validador.Setup(v => v.IsValid).Returns(isValid);
             // Action
             var callback = _issuersController.Add(_issuerRegisterCmd.Object);
             //Assert
