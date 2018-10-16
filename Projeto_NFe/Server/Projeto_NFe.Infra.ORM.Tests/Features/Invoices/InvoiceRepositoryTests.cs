@@ -111,7 +111,7 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Invoices
         }
 
         [Test]
-        public void Invoice_Repository_Remove_DeveTratarNotFoundException()
+        public void Invoice_Repository_Remove_ShouldThrowNotFoundException()
         {
             // Cenário
             var idInvalid = 2;

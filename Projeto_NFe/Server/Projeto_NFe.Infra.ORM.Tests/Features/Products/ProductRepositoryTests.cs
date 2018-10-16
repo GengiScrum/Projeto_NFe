@@ -95,9 +95,9 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Products
             // Cenário
             var idInvalid = 10;
             // Ação
-            Action Remove = () => _repository.Remove(idInvalid);
+            Action act = () => _repository.Remove(idInvalid);
             // Verificação
-            Remove.Should().Throw<NotFoundException>();
+            act.Should().Throw<NotFoundException>();
         }
         #endregion
 
@@ -111,9 +111,9 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Products
             var newDescription = "Alterado";
             _productBase.Description = newDescription;
             //Ação
-            var updated = new Action(() => { modified = _repository.Update(_productBase); });
+            var act = new Action(() => { modified = _repository.Update(_productBase); });
             // Verificação
-            updated.Should().NotThrow<Exception>();
+            act.Should().NotThrow<Exception>();
             modified.Should().BeTrue();
         }
         #endregion
