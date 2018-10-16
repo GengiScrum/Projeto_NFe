@@ -64,9 +64,9 @@ namespace Projeto_NFe.Controllers.Tests.Features.Invoices
             _invoiceServiceMock.Setup(isv => isv.GetAll()).Returns(response);
             var id = 1;
             _invoiceUpdateCmd.Setup(i => i.Id).Returns(id);
-            var odataOptions = GetOdataQueryOptions<Invoice>(_invoicesController);
+            var oDataOptions = GetOdataQueryOptions<Invoice>(_invoicesController);
             // Action
-            var callback = _invoicesController.GetAll(odataOptions);
+            var callback = _invoicesController.GetAll(oDataOptions);
 
             //Assert
             _invoiceServiceMock.Verify(isv => isv.GetAll(), Times.Once);
@@ -82,7 +82,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Invoices
             var id = 1;
             _invoiceUpdateCmd.Setup(i => i.Id).Returns(id);
             _invoice.Setup(i => i.Id).Returns(id);
-            _invoiceServiceMock.Setup(c => c.GetById(id)).Returns(_invoice.Object);
+            _invoiceServiceMock.Setup(isv => isv.GetById(id)).Returns(_invoice.Object);
             // Action
             IHttpActionResult callback = _invoicesController.GetById(id);
             // Assert
@@ -101,7 +101,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Invoices
         {
             // Arrange
             var id = 1;
-            _invoiceServiceMock.Setup(c => c.Add(_invoiceRegisterCmd.Object)).Returns(id);
+            _invoiceServiceMock.Setup(isv => isv.Add(_invoiceRegisterCmd.Object)).Returns(id);
             // Action
             IHttpActionResult callback = _invoicesController.Add(_invoiceRegisterCmd.Object);
             // Assert
@@ -134,7 +134,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Invoices
         {
             // Arrange
             var isUpdated = true;
-            _invoiceServiceMock.Setup(c => c.Update(_invoiceUpdateCmd.Object)).Returns(isUpdated);
+            _invoiceServiceMock.Setup(isv => isv.Update(_invoiceUpdateCmd.Object)).Returns(isUpdated);
             // Action
             IHttpActionResult callback = _invoicesController.Update(_invoiceUpdateCmd.Object);
             // Assert
@@ -167,7 +167,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Invoices
         {
             // Arrange
             var updated = true;
-            _invoiceServiceMock.Setup(c => c.Remove(_invoiceRemoveCmd.Object)).Returns(updated);
+            _invoiceServiceMock.Setup(isv => isv.Remove(_invoiceRemoveCmd.Object)).Returns(updated);
             // Action
             IHttpActionResult callback = _invoicesController.Remove(_invoiceRemoveCmd.Object);
             // Assert

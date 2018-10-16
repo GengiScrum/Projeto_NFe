@@ -63,10 +63,10 @@ namespace Projeto_NFe.Controllers.Tests.Features.Issuers
             var response = new List<Issuer>() { issuer }.AsQueryable();
             _issuerServiceMock.Setup(s => s.GetAll()).Returns(response);
             var id = 1;
-            _issuerUpdateCmd.Setup(p => p.Id).Returns(id);
-            var odataOptions = GetOdataQueryOptions<Issuer>(_issuersController);
+            _issuerUpdateCmd.Setup(i => i.Id).Returns(id);
+            var oDataOptions = GetOdataQueryOptions<Issuer>(_issuersController);
             // Action
-            var callback = _issuersController.GetAll(odataOptions);
+            var callback = _issuersController.GetAll(oDataOptions);
 
             //Assert
             _issuerServiceMock.Verify(s => s.GetAll(), Times.Once);
@@ -80,9 +80,9 @@ namespace Projeto_NFe.Controllers.Tests.Features.Issuers
         {
             // Arrange
             var id = 1;
-            _issuerUpdateCmd.Setup(p => p.Id).Returns(id);
-            _issuer.Setup(p => p.Id).Returns(id);
-            _issuerServiceMock.Setup(c => c.GetById(id)).Returns(_issuer.Object);
+            _issuerUpdateCmd.Setup(i => i.Id).Returns(id);
+            _issuer.Setup(i => i.Id).Returns(id);
+            _issuerServiceMock.Setup(isv => isv.GetById(id)).Returns(_issuer.Object);
             // Action
             IHttpActionResult callback = _issuersController.GetById(id);
             // Assert
@@ -101,7 +101,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Issuers
         {
             // Arrange
             var id = 1;
-            _issuerServiceMock.Setup(c => c.Add(_issuerRegisterCmd.Object)).Returns(id);
+            _issuerServiceMock.Setup(isv => isv.Add(_issuerRegisterCmd.Object)).Returns(id);
             // Action
             IHttpActionResult callback = _issuersController.Add(_issuerRegisterCmd.Object);
             // Assert
@@ -111,7 +111,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Issuers
         }
 
         [Test]
-        public void issuers_Controller_Add_ShouldHandleValidationErrors()
+        public void Issuers_Controller_Add_ShouldHandleValidationErrors()
         {
             //Arrange
             var isValid = false;
@@ -134,7 +134,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Issuers
         {
             // Arrange
             var isUpdated = true;
-            _issuerServiceMock.Setup(c => c.Update(_issuerUpdateCmd.Object)).Returns(isUpdated);
+            _issuerServiceMock.Setup(isv => isv.Update(_issuerUpdateCmd.Object)).Returns(isUpdated);
             // Action
             IHttpActionResult callback = _issuersController.Update(_issuerUpdateCmd.Object);
             // Assert
@@ -144,11 +144,11 @@ namespace Projeto_NFe.Controllers.Tests.Features.Issuers
         }
 
         [Test]
-        public void issuers_Controller_Update_ShouldHandleValidationErrors()
+        public void Issuers_Controller_Update_ShouldHandleValidationErrors()
         {
             //Arrange
-            var eValid = false;
-            _validador.Setup(v => v.IsValid).Returns(eValid);
+            var isValid = false;
+            _validador.Setup(v => v.IsValid).Returns(isValid);
             // Action
             var callback = _issuersController.Update(_issuerUpdateCmd.Object);
             //Assert
@@ -166,8 +166,8 @@ namespace Projeto_NFe.Controllers.Tests.Features.Issuers
         public void Issuers_Controller_Remove_Sucessfully()
         {
             // Arrange
-            var eAtualizado = true;
-            _issuerServiceMock.Setup(c => c.Remove(_issuerRemoveCmd.Object)).Returns(eAtualizado);
+            var updated = true;
+            _issuerServiceMock.Setup(isv => isv.Remove(_issuerRemoveCmd.Object)).Returns(updated);
             // Action
             IHttpActionResult callback = _issuersController.Remove(_issuerRemoveCmd.Object);
             // Assert
@@ -180,8 +180,8 @@ namespace Projeto_NFe.Controllers.Tests.Features.Issuers
         public void Issuers_Controller_Remove_ShouldHandleValidationErrors()
         {
             //Arrange
-            var eValid = false;
-            _validador.Setup(v => v.IsValid).Returns(eValid);
+            var isValid = false;
+            _validador.Setup(v => v.IsValid).Returns(isValid);
             // Action
             var callback = _issuersController.Remove(_issuerRemoveCmd.Object);
             //Assert
