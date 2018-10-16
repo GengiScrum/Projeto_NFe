@@ -180,13 +180,13 @@ namespace Projeto_NFe.Application.Tests.Features.Products
             _mockProductRepository.Setup(pr => pr.GetAll()).Returns(mockValueRepository);
 
             //Action
-            var productsResultado = _productService.GetAll();
+            var products = _productService.GetAll();
 
             //Assert
             _mockProductRepository.Verify(pr => pr.GetAll(), Times.Once);
-            productsResultado.Should().NotBeNull();
-            productsResultado.First().Should().Be(product);
-            productsResultado.Count().Should().Be(mockValueRepository.Count());
+            products.Should().NotBeNull();
+            products.First().Should().Be(product);
+            products.Count().Should().Be(mockValueRepository.Count());
         }
 
         #endregion

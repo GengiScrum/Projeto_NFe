@@ -19,16 +19,16 @@ namespace Projeto_NFe.Application.Tests.Features.IssuedInvoices
         Invoice _invoice;
         IIssuedInvoiceService _service;
         IIssuedInvoiceRepository _issuedInvoiceRepository;
-        Mock<IIssuedInvoiceXMLRepository> _repositoryXML;
-        Mock<IInvoicePDFRepository> _repostorioPDF;
+        Mock<IIssuedInvoiceXMLRepository> _xmlRepository;
+        Mock<IInvoicePDFRepository> _pdfRepository;
 
         [SetUp]
         public void Initialize()
         {
             _invoice = new Invoice();
-            _repositoryXML = new Mock<IIssuedInvoiceXMLRepository>();
-            _repostorioPDF = new Mock<IInvoicePDFRepository>();
-            _service = new IssuedInvoiceService(_repositoryXML.Object, _repostorioPDF.Object, _issuedInvoiceRepository);
+            _xmlRepository = new Mock<IIssuedInvoiceXMLRepository>();
+            _pdfRepository = new Mock<IInvoicePDFRepository>();
+            _service = new IssuedInvoiceService(_xmlRepository.Object, _pdfRepository.Object, _issuedInvoiceRepository);
         }
 
         [Test]
@@ -36,11 +36,11 @@ namespace Projeto_NFe.Application.Tests.Features.IssuedInvoices
         {
             var file = "Caminho";
             _invoice = ObjectMother.IssuedInvoiceFullToExport();
-            _repositoryXML.Setup(rXML => rXML.Export(_invoice, file));
+            _xmlRepository.Setup(rXML => rXML.Export(_invoice, file));
 
             _service.ExportToXML(_invoice, file);
 
-            _repositoryXML.Verify(rXML => rXML.Export(_invoice, file));
+            _xmlRepository.Verify(xmlr => xmlr.Export(_invoice, file));
         }
 
         [Test]
@@ -48,11 +48,11 @@ namespace Projeto_NFe.Application.Tests.Features.IssuedInvoices
         {
             var file = "Caminho";
             _invoice = ObjectMother.IssuedInvoiceFullToExport();
-            _repostorioPDF.Setup(rPDF => rPDF.Export(_invoice, file));
+            _pdfRepository.Setup(rPDF => rPDF.Export(_invoice, file));
 
             _service.ExportToPDF(_invoice, file);
 
-            _repostorioPDF.Verify(rPDF => rPDF.Export(_invoice, file));
+            _pdfRepository.Verify(pdfr => pdfr.Export(_invoice, file));
         }
     }
 }

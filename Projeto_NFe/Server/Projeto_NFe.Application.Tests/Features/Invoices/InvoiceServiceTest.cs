@@ -79,12 +79,12 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
             _mockInvoiceRepository.Setup(pr => pr.Update(invoice)).Returns(updated);
 
             //Action
-            var updateInvoice = _invoiceService.Update(invoiceCmd);
+            var updatedInvoice = _invoiceService.Update(invoiceCmd);
 
             //Verificar
             _mockInvoiceRepository.Verify(pr => pr.Update(invoice), Times.Once);
             _mockInvoiceRepository.Verify(pr => pr.GetById(invoiceCmd.Id), Times.Once);
-            updateInvoice.Should().BeTrue();
+            updatedInvoice.Should().BeTrue();
         }
 
         [Test]
@@ -123,7 +123,7 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         }
 
         [Test]
-        public void Invoice_Service_Remove_ShouldThrowIdentifierUndefinedException()
+        public void Invoice_Service_Remove_ShouldThrowNotFoundException()
         {
             //Arrange
             var invoiceCmd = ObjectMother.InvoiceCommandToRemove();
@@ -148,10 +148,10 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
             _mockInvoiceRepository.Setup(ir => ir.GetById(invoice.Id)).Returns(invoice);
 
             //Action
-            Invoice pegarInvoice = _invoiceService.GetById(invoice.Id);
+            var getInvoice = _invoiceService.GetById(invoice.Id);
 
             //Verificar
-            pegarInvoice.Should().Be(invoice);
+            getInvoice.Should().Be(invoice);
             _mockInvoiceRepository.Verify(ir => ir.GetById(invoice.Id));
         }
 
@@ -160,8 +160,8 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         {
             //Cenário
             var invoice = ObjectMother.InvoiceValidWithId();
-            var excecao = new NotFoundException();
-            _mockInvoiceRepository.Setup(e => e.GetById(invoice.Id)).Throws(excecao);
+            var exception = new NotFoundException();
+            _mockInvoiceRepository.Setup(e => e.GetById(invoice.Id)).Throws(exception);
 
             //Ação
             Action act = () => _invoiceService.GetById(invoice.Id);

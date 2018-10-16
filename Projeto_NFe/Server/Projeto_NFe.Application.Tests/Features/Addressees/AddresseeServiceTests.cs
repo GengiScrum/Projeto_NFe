@@ -54,10 +54,10 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             _mockAddresseeRepository.Setup(er => er.Add(It.IsAny<Addressee>())).Throws<Exception>();
 
             //Action
-            Action newAddresseeAcao = () => _addresseeService.Add(addresseeCmd);
+            Action act = () => _addresseeService.Add(addresseeCmd);
 
             //Assert
-            newAddresseeAcao.Should().Throw<Exception>();
+            act.Should().Throw<Exception>();
             _mockAddresseeRepository.Verify(er => er.Add(It.IsAny<Addressee>()), Times.Once);
         }
 
@@ -71,9 +71,9 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             //Arrange
             var addressee = ObjectMother.AddresseeValidWithIdWithAddress();
             var addresseeCmd = ObjectMother.AddresseeCommandToUpdate();
-            var IsUpdate = true;
+            var updated = true;
             _mockAddresseeRepository.Setup(e => e.GetById(addresseeCmd.Id)).Returns(addressee);
-            _mockAddresseeRepository.Setup(er => er.Update(addressee)).Returns(IsUpdate);
+            _mockAddresseeRepository.Setup(er => er.Update(addressee)).Returns(updated);
 
             //Action
             var updateAddressee = _addresseeService.Update(addresseeCmd);
@@ -91,10 +91,10 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             _mockAddresseeRepository.Setup(e => e.GetById(addresseeCmd.Id)).Returns((Addressee)null);
 
             //Action
-            Action addresseeAction = () => _addresseeService.Update(addresseeCmd);
+            Action act = () => _addresseeService.Update(addresseeCmd);
 
             //Assert
-            addresseeAction.Should().Throw<NotFoundException>();
+            act.Should().Throw<NotFoundException>();
             _mockAddresseeRepository.Verify(e => e.GetById(addresseeCmd.Id), Times.Once);
             _mockAddresseeRepository.Verify(e => e.Update(It.IsAny<Addressee>()), Times.Never);
         }
@@ -108,8 +108,8 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
         {
             //Arrange
             var addresseeCmd = ObjectMother.AddresseeCommandToRemove();
-            var mockFoiRemovido = true;
-            _mockAddresseeRepository.Setup(e => e.Remove(addresseeCmd.AddresseesId.First())).Returns(mockFoiRemovido);
+            var mockWasRemoved = true;
+            _mockAddresseeRepository.Setup(e => e.Remove(addresseeCmd.AddresseesId.First())).Returns(mockWasRemoved);
 
             //Action
             var removed = _addresseeService.Remove(addresseeCmd);
@@ -155,7 +155,7 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
         }
 
         [Test]
-        public void Addressee_Service_GetById_DeveTratarNotFoundException()
+        public void Addressee_Service_GetById_ShouldThrowNotFoundException()
         {
             //Arrange
             var addressee = ObjectMother.AddresseeValidWithIdWithAddress();
@@ -163,10 +163,10 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             _mockAddresseeRepository.Setup(e => e.GetById(addressee.Id)).Throws(excecao);
 
             //Action
-            Action AddresseeAcao = () => _addresseeService.GetById(addressee.Id);
+            Action act = () => _addresseeService.GetById(addressee.Id);
 
             //Assert
-            AddresseeAcao.Should().Throw<NotFoundException>();
+            act.Should().Throw<NotFoundException>();
             _mockAddresseeRepository.Verify(e => e.GetById(addressee.Id), Times.Once);
         }
 
@@ -179,13 +179,13 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
             _mockAddresseeRepository.Setup(er => er.GetAll()).Returns(mockValueRepository);
 
             //Action
-            var AddresseesResultado = _addresseeService.GetAll();
+            var addressees = _addresseeService.GetAll();
 
             //Assert
             _mockAddresseeRepository.Verify(er => er.GetAll(), Times.Once);
-            AddresseesResultado.Should().NotBeNull();
-            AddresseesResultado.First().Should().Be(addressee);
-            AddresseesResultado.Count().Should().Be(mockValueRepository.Count());
+            addressees.Should().NotBeNull();
+            addressees.First().Should().Be(addressee);
+            addressees.Count().Should().Be(mockValueRepository.Count());
         }
 
         #endregion
