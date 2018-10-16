@@ -114,7 +114,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.ShippingCompanies
         }
 
         [Test]
-        public void products_Controller_Post_ShouldBeHandleValidationErrors()
+        public void products_Controller_Post_ShouldHandleValidationErrors()
         {
             //Arrange
             var isValid = false;
@@ -147,7 +147,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.ShippingCompanies
         }
 
         [Test]
-        public void products_Controller_Update_ShouldBeHandleValidationErrors()
+        public void products_Controller_Update_ShouldHandleValidationErrors()
         {
             //Arrange
             var isValid = false;
@@ -180,7 +180,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.ShippingCompanies
         }
 
         [Test]
-        public void Products_Controller_Delete_ShouldBeHandleValidationErrors()
+        public void Products_Controller_Delete_ShouldHandleValidationErrors()
         {
             //Arrange
             var isValid = false;

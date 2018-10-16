@@ -14,7 +14,7 @@ namespace Projeto_NFe.Application.Features.Invoices.Commands
 {
     public class InvoiceUpdateCommand
     {
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
         public int IssuerId { get; set; }
         public int AddresseeId { get; set; }
         public int ShippingCompanyId { get; set; }

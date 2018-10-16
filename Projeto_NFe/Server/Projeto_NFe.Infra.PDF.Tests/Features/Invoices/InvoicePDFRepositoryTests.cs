@@ -28,11 +28,11 @@ namespace Projeto_NFe.Infra.PDF.Tests.Features.Invoices
         [Test]
         public void Invoice_PDFRepository_Export_ShippingCompanyPessoaJuridica_Sucessfully()
         {
-            //Cenário
+            //Arrange
             _invoice = ObjectMother.IssuedInvoiceValidWithShippingCompanyLegalPerson();
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "IssuedInvoice.pdf");
 
-            //Ação
+            //Action
             _invoiceRepository.Export(_invoice, path);
 
             //Verificar
@@ -42,11 +42,11 @@ namespace Projeto_NFe.Infra.PDF.Tests.Features.Invoices
         [Test]
         public void Invoice_PDFRepository_Export_ShippingCompanyPessoaFisica_Sucessfully()
         {
-            //Cenário
+            //Arrange
             _invoice = ObjectMother.IssuedInvoiceValidWithShippingCompanyPerson();
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "IssuedInvoice.pdf");
 
-            //Ação
+            //Action
             _invoiceRepository.Export(_invoice, path);
 
             //Verificar
@@ -56,11 +56,11 @@ namespace Projeto_NFe.Infra.PDF.Tests.Features.Invoices
         [Test]
         public void Invoice_PDFRepository_Export_WithoutShippingCompanyWithAddresseePessoaFisica_Sucessfully()
         {
-            //Cenário
+            //Arrange
             _invoice = ObjectMother.IssuedInvoiceValidWithoutShippingCompanyWithAddresseePerson();
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "IssuedInvoice.pdf");
 
-            //Ação
+            //Action
             _invoiceRepository.Export(_invoice, path);
 
             //Verificar
@@ -70,11 +70,11 @@ namespace Projeto_NFe.Infra.PDF.Tests.Features.Invoices
         [Test]
         public void Invoice_PDFRepository_Export_WithoutShippingCompanyWithAddresseePessoaJuridica_Sucessfully()
         {
-            //Cenário
+            //Arrange
             _invoice = ObjectMother.IssuedInvoiceValidWithoutShippingCompanyWithAddresseeLegalPerson();
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "IssuedInvoice.pdf");
 
-            //Ação
+            //Action
             _invoiceRepository.Export(_invoice, path);
 
             //Verificar
