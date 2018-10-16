@@ -37,7 +37,7 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         [Test]
         public void Invoice_Service_Add_Sucessfully()
         {
-            //Cenário
+            //Arrange
             var invoice = ObjectMother.InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId(1, 1, 1);
             var invoiceCmd = ObjectMother.InvoiceCommandToRegister(1,1,1);
             _mockInvoiceRepository.Setup(ir => ir.Add(It.IsAny<Invoice>())).Returns(invoice);
@@ -71,7 +71,7 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         [Test]
         public void Invoice_Service_Update_Sucessfully()
         {
-            //Cenário
+            //Arrange
             var invoice = ObjectMother.InvoiceValidWithId();
             var invoiceCmd = ObjectMother.InvoiceCommandToUpdate(1, 1, 1);
             var updated = true;
@@ -143,7 +143,7 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         [Test]
         public void Invoice_Service_GetById_Sucessfully()
         {
-            //Cenário
+            //Arrange
             var invoice = ObjectMother.InvoiceValidWithIdWithoutIssuerAddresseeShippingCompanyId();
             _mockInvoiceRepository.Setup(ir => ir.GetById(invoice.Id)).Returns(invoice);
 
@@ -158,12 +158,12 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         [Test]
         public void Invoice_Service_GetById_ShouldThrowNotFoundException()
         {
-            //Cenário
+            //Arrange
             var invoice = ObjectMother.InvoiceValidWithId();
             var exception = new NotFoundException();
             _mockInvoiceRepository.Setup(e => e.GetById(invoice.Id)).Throws(exception);
 
-            //Ação
+            //Action
             Action act = () => _invoiceService.GetById(invoice.Id);
 
             //Verificar
@@ -175,7 +175,7 @@ namespace Projeto_NFe.Application.Tests.Features.Invoices
         [Test]
         public void Invoice_Service_GetAll_Sucessfully()
         {
-            //Cenário
+            //Arrange
 
             _mockInvoiceRepository.Setup(ir => ir.GetAll()).Returns(new List<Invoice>() { _invoice }.AsQueryable());
 

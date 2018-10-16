@@ -27,7 +27,7 @@ namespace Projeto_NFe.Domain.Tests.Features.InvoiceTaxes
         [Test]
         public void InvoiceTax_Domain_Calculate_Sucessfully()
         {
-            //Cenário
+            //Arrange
             Mock<ProductSold> _mockPrimeiroProductSold = new Mock<ProductSold>();
             Mock<ProductSold> _mockSegundoProductSold = new Mock<ProductSold>();
             Mock<ProductTax> _mockProductTax = new Mock<ProductTax>();
@@ -46,10 +46,10 @@ namespace Projeto_NFe.Domain.Tests.Features.InvoiceTaxes
 
             IEnumerable<ProductSold> listaProducts = new List<ProductSold> { _mockPrimeiroProductSold.Object, _mockSegundoProductSold.Object };
 
-            //Ação
+            //Action
             _taxInvoice.Calculate(listaProducts);
 
-            //Verificação
+            //Assert
             _taxInvoice.InvoiceIpiValue.Should().Be(9);
             _taxInvoice.InvoiceIcmsValue.Should().Be(3.6);
             _taxInvoice.ProductAmount.Should().Be(90);
