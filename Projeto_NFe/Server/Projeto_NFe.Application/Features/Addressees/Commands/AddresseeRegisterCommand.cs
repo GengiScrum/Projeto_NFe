@@ -18,6 +18,7 @@ namespace Projeto_NFe.Application.Features.Addressees.Commands
         public string Cnpj { get; set; }
         public string Cpf { get; set; }
         public string StateRegistration { get; set; }
+        public int PersonType { get; set; } 
         public AddressCommand Address { get; set; }
 
         public virtual ValidationResult Validate()
@@ -30,12 +31,11 @@ namespace Projeto_NFe.Application.Features.Addressees.Commands
             public Validator()
             {
                 RuleFor(a => a.BusinessName).NotNull().MaximumLength(40);
-                RuleFor(a => a.CorporateName).NotNull().MaximumLength(40);
-                RuleFor(a => a.Cnpj).NotNull().MaximumLength(40);
-                RuleFor(a => a.Cpf).NotNull().MaximumLength(40);
-                RuleFor(a => a.StateRegistration).NotNull().MaximumLength(40);
+                RuleFor(a => a.CorporateName).MaximumLength(40);
+                RuleFor(a => a.Cnpj).MaximumLength(40);
+                RuleFor(a => a.Cpf).MaximumLength(40);
+                RuleFor(a => a.StateRegistration).MaximumLength(40);
                 RuleFor(a => a.Address).NotNull();
-
             }
         }
     }

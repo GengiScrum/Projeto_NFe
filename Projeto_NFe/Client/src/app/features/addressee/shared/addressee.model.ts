@@ -16,6 +16,27 @@ export class Addressee {
     public personType: number;
 }
 
+export class AddresseeListViewModel {
+    public id: number;
+    public businessName: string;
+    public document: string;
+
+    constructor(value: any) {
+        this.id = value.id;
+        this.businessName = value.businessName;
+        this.document = (value.cpf) ? value.cpf : value.cnpj;
+    }
+
+    public static createArray(items: any[]): AddresseeListViewModel[] {
+        const addressee: AddresseeListViewModel[] = [];
+        items.forEach((item: any) => {
+            addressee.push(new AddresseeListViewModel(item));
+        });
+
+        return addressee;
+    }
+}
+
 export class AddresseeRegisterCommand {
     public businessName: string;
     public corporateName: string;

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 import { CORE_CONFIG_TOKEN, ICoreConfig } from './../../../core/core.config';
 import { AbstractResolveService } from '../../../core/utils/abstract-resolve.service';
-import { Addressee, AddresseeRemoveCommand, AddresseeRegisterCommand } from './addressee.model';
+import { Addressee, AddresseeRemoveCommand, AddresseeRegisterCommand, AddresseeListViewModel } from './addressee.model';
 import { BaseService } from './../../../core/utils/base-service';
 import { NDDBreadcrumbService } from './../../../shared/ndd-ng-breadcrumb/component/ndd-ng-breadcrumb.service';
 
@@ -32,7 +32,7 @@ export class AddresseeGridService extends BehaviorSubject<GridDataResult>{
         return this.httpClient
             .get(`${this.config.apiEndpoint}api/addressees?${queryStr}`)
             .map((response: any): GridDataResult => ({
-                data: response.items,
+                data: AddresseeListViewModel.createArray(response.items),
                 total: parseInt(response.cound, 10),
             }))
             .do(() => this.loading = false);
