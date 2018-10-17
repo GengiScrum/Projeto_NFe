@@ -29,7 +29,13 @@ namespace Projeto_NFe.Application.Features.ShippingCompanies
                 .ForMember(tq => tq.City, mt => mt.MapFrom(t => t.Address.City))
                 .ForMember(tq => tq.Number, mt => mt.MapFrom(t => t.Address.Number))
                 .ForMember(tq => tq.Country, mt => mt.MapFrom(t => t.Address.Country));
-            CreateMap<ShippingCompanyUpdateCommand, ShippingCompany>();
+            CreateMap<ShippingCompanyUpdateCommand, ShippingCompany>()
+                .ForPath(sc => sc.Address.Neighborhood, m => m.MapFrom(scm => scm.Neighborhood))
+                .ForPath(sc => sc.Address.State, m => m.MapFrom(scm => scm.State))
+                .ForPath(sc => sc.Address.StreetName, m => m.MapFrom(scm => scm.StreetName))
+                .ForPath(sc => sc.Address.City, m => m.MapFrom(scm => scm.City))
+                .ForPath(sc => sc.Address.Number, m => m.MapFrom(scm => scm.Number))
+                .ForPath(sc => sc.Address.Country, m => m.MapFrom(scm => scm.Country));
         }
     }
 }

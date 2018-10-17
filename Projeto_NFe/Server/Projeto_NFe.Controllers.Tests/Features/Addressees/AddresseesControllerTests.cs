@@ -36,12 +36,12 @@ namespace Projeto_NFe.Controllers.Tests.Features.Addressees
         [SetUp]
         public void Initialize()
         {
-            HttpRequestMessage requisicao = new HttpRequestMessage();
-            requisicao.SetConfiguration(new HttpConfiguration());
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.SetConfiguration(new HttpConfiguration());
             _addresseeServiceMock = new Mock<IAddresseeService>();
             _addresseesController = new AddresseesController(_addresseeServiceMock.Object)
             {
-                Request = requisicao,
+                Request = request,
             };
             _validador = new Mock<ValidationResult>();
             _addresseeUpdateCmd = new Mock<AddresseeUpdateCommand>();
@@ -65,7 +65,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Addressees
             var response = new List<Addressee>() { addressee }.AsQueryable();
             _addresseeServiceMock.Setup(s => s.GetAll()).Returns(response);
             var id = 1;
-            _addresseeUpdateCmd.Setup(p => p.Id).Returns(id);
+            _addresseeUpdateCmd.Setup(a => a.Id).Returns(id);
             var odataOptions = GetOdataQueryOptions<Addressee>(_addresseesController);
             // Action
             var callback = _addresseesController.GetAll(odataOptions);
@@ -78,12 +78,12 @@ namespace Projeto_NFe.Controllers.Tests.Features.Addressees
         }
 
         [Test]
-        public void AddresseesController_GetById_ShouldBeOk()
+        public void AddresseesController_GetById_Sucessfully()
         {
             // Arrange
             var id = 1;
-            _addresseeUpdateCmd.Setup(p => p.Id).Returns(id);
-            _addressee.Setup(p => p.Id).Returns(id);
+            _addresseeUpdateCmd.Setup(a => a.Id).Returns(id);
+            _addressee.Setup(a => a.Id).Returns(id);
             _addresseeServiceMock.Setup(c => c.GetById(id)).Returns(_addressee.Object);
             // Action
             IHttpActionResult callback = _addresseesController.GetById(id);
@@ -99,7 +99,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Addressees
         #region POST
 
         [Test]
-        public void AddresseesController_Post_ShouldBeOk()
+        public void AddresseesController_AddSucessfully()
         {
             // Arrange
             var id = 1;
@@ -113,7 +113,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Addressees
         }
 
         [Test]
-        public void AddresseesController_Post_ShouldBeHandleValidationErrors()
+        public void AddresseesController_AddShouldHandleValidationErrors()
         {
             //Arrange
             var isValid = false;
@@ -132,7 +132,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Addressees
         #region PUT
 
         [Test]
-        public void AddresseesController_Put_ShouldBeOk()
+        public void AddresseesController_Update_Sucessfully()
         {
             // Arrange
             var isUpdated = true;
@@ -146,7 +146,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Addressees
         }
 
         [Test]
-        public void AddresseesController_Update_ShouldBeHandleValidationErrors()
+        public void AddresseesController_Update_ShouldHandleValidationErrors()
         {
             //Arrange
             var isValid = false;
@@ -165,7 +165,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Addressees
         #region DELETE
 
         [Test]
-        public void AddresseesController_Delete_ShouldBeOk()
+        public void AddresseesController_Remove_Sucessfully()
         {
             // Arrange
             var isUpdated = true;
@@ -179,7 +179,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Addressees
         }
 
         [Test]
-        public void AddresseesController_Delete_ShouldBeHandleValidationErrors()
+        public void AddresseesController_Remove_ShouldHandleValidationErrors()
         {
             //Arrange
             var isValid = false;

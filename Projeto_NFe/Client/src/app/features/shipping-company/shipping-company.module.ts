@@ -12,7 +12,7 @@ import { ShippingCompanyViewComponent } from './shipping-company-view/shipping-c
 import { ShippingCompanyListComponent } from './shipping-company-list/shipping-company-list.component';
 import { ShippingCompanyDetailComponent } from './shipping-company-view/shipping-company-detail/shipping-company-detail.component';
 import { ShippingCompanyFormComponent } from './shipping-company-form/shipping-company-form.component';
-import { ShippingCompanyRegisterFormComponent } from './shipping-company-register/shipping-company-register-form.component';
+import { ShippingCompanyRegisterFormComponent } from './shipping-company-register-form/shipping-company-register-form.component';
 import { ShippingCompanyEditFormComponent } from './shipping-company-view/shipping-company-edit-form/shipping-company-edit-form.component';
 
 @NgModule({

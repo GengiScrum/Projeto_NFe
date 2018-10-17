@@ -10,7 +10,7 @@ namespace Projeto_NFe.Application.Features.Invoices
 {
     public interface IInvoiceService
     {
-        Invoice Add(InvoiceRegisterCommand command);
+        int Add(InvoiceRegisterCommand command);
         bool Update(InvoiceUpdateCommand command);
         bool Remove(InvoiceRemoveCommand command);
         Invoice GetById(int id);

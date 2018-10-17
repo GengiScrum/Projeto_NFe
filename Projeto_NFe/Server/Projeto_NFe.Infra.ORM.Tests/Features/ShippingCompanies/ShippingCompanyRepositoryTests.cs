@@ -39,9 +39,9 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.ShippingCompanies
         [Test]
         public void ShippingCompanies_Repository_Add_Sucessfully()
         {
-            //Ação
+            //Action
             var shippingCompany = _repository.Add(_shippingCompany);
-            //Verificação
+            //Assert
             shippingCompany.Should().NotBeNull();
             shippingCompany.Id.Should().NotBe(0);
             var expectedOrder = _ctx.ShippingCompanies.Find(shippingCompany.Id);
@@ -56,19 +56,19 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.ShippingCompanies
         [Test]
         public void ShippingCompanies_Repository_GetAll_Sucessfully()
         {
-            //Ação
-            var shippingCompanyes = _repository.GetAll().ToList();
+            //Action
+            var shippingCompanies = _repository.GetAll().ToList();
 
             //Assert
-            shippingCompanyes.Should().NotBeNull();
-            shippingCompanyes.Should().HaveCount(_ctx.ShippingCompanies.Count());
-            shippingCompanyes.First().Should().Be(_shippingCompanyBase);
+            shippingCompanies.Should().NotBeNull();
+            shippingCompanies.Should().HaveCount(_ctx.ShippingCompanies.Count());
+            shippingCompanies.First().Should().Be(_shippingCompanyBase);
         }
 
         [Test]
         public void ShippingCompanies_Repository_GetById_Sucessfully()
         {
-            //Ação
+            //Action
             var shippingCompany = _repository.GetById(_shippingCompanyBase.Id);
 
             //Assert
@@ -82,7 +82,7 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.ShippingCompanies
         [Test]
         public void ShippingCompanies_Repository_Remove_Sucessfully()
         {
-            // Ação
+            // Action
             var removed = _repository.Remove(_shippingCompanyBase.Id);
             // Assert
             removed.Should().BeTrue();
@@ -90,31 +90,31 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.ShippingCompanies
         }
 
         [Test]
-        public void ShippingCompanies_Repository_Remove_DeveTratarNotFoundException()
+        public void ShippingCompanies_Repository_Remove_ShouldThrowNotFoundException()
         {
-            // Cenário
+            // Arrange
             var idInvalid = 10;
-            // Ação
-            Action Remove = () => _repository.Remove(idInvalid);
-            // Verificação
-            Remove.Should().Throw<NotFoundException>();
+            // Action
+            Action act = () => _repository.Remove(idInvalid);
+            // Assert
+            act.Should().Throw<NotFoundException>();
         }
         #endregion
 
         #region UPDATE
 
         [Test]
-        public void ShippingCompanies_Repository_Alterar_Sucessfully()
+        public void ShippingCompanies_Repository_Update_Sucessfully()
         {
-            // Cenário
-            var alterado = false;
+            // Arrange
+            var modified = false;
             var newName = "alterado";
             _shippingCompanyBase.BusinessName = newName;
-            //Ação
-            var atualizado = new Action(() => { alterado = _repository.Update(_shippingCompanyBase); });
-            // Verificação
-            atualizado.Should().NotThrow<Exception>();
-            alterado.Should().BeTrue();
+            //Action
+            var updated = new Action(() => { modified = _repository.Update(_shippingCompanyBase); });
+            // Assert
+            updated.Should().NotThrow<Exception>();
+            modified.Should().BeTrue();
         }
         #endregion
     }

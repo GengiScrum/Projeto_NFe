@@ -17,6 +17,7 @@ export class ShippingCompanyFormComponent implements OnInit, OnDestroy {
         /[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/];
     public cpfMask: (string | RegExp)[] = [/[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/,
         '.', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/];
+    public nome: string;
 
     private ngUnsubscribe: Subject<void> = new Subject<void>();
 
@@ -55,14 +56,16 @@ export class ShippingCompanyFormComponent implements OnInit, OnDestroy {
 
         if (personType === corporatePerson) {
             this.arrangeLegalPersonForm();
+            this.nome = 'Nome Fantasia';
         } else {
             this.arrangeIndividualPersonForm();
+            this.nome = 'Nome';
         }
     }
 
     private arrangeIndividualPersonForm(): void {
         this.form.addControl('person', this.person);
-        this.form.removeControl('entreprise');
+        this.form.removeControl('enterprise');
         this.form.updateValueAndValidity();
     }
 
