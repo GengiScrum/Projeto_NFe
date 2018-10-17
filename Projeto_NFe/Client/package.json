@@ -44,7 +44,7 @@
         "@progress/kendo-angular-l10n": "~1.1.0",
         "@progress/kendo-data-query": "~1.0.7",
         "@progress/kendo-drawing": "~1.4.0",
-        "@progress/kendo-theme-default": "~2.49.0",
+        "@progress/kendo-theme-default": "~2.49.1",
         "@progress/kendo-ui": "~2017.2.621",
         "angular2-text-mask": "~9.0.0",
         "angular2-ui-switch": "~1.2.0",
