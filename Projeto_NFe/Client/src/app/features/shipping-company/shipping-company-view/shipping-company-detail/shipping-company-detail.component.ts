@@ -17,6 +17,7 @@ export class ShippingCompanyDetailComponent implements OnInit, OnDestroy {
     public address: Address;
     public documentNumber: string;
     public documentType: string;
+    public nome: string;
 
     private ngUnsubscribe: Subject<void> = new Subject<void>();
 
@@ -53,9 +54,11 @@ export class ShippingCompanyDetailComponent implements OnInit, OnDestroy {
         if (this.shippingCompany.cpf) {
             this.documentNumber = this.shippingCompany.cpf;
             this.documentType = 'CPF';
+            this.nome = 'Nome';
         } else {
             this.documentNumber = this.shippingCompany.cnpj;
             this.documentType = 'CNPJ';
+            this.nome = 'Nome Fantasia';
         }
     }
 }

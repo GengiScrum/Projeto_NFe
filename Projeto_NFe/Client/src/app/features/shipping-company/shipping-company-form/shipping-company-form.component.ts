@@ -2,6 +2,8 @@ import { FormGroup } from '@angular/forms';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
+import { PersonType } from '../../shared/person-type.enum';
+
 @Component({
     selector: 'ndd-shipping-company-form',
     templateUrl: './shipping-company-form.component.html',
@@ -40,10 +42,9 @@ export class ShippingCompanyFormComponent implements OnInit, OnDestroy {
     }
 
     public getPersonTypeFormError(formControlName: string): boolean {
-        const corporatePerson: string = '2';
         const personType: string = this.form.get('personType').value;
 
-        if (personType === corporatePerson) {
+        if (personType === PersonType.ENTERPRISE) {
             return this.form.get('enterprise').get(formControlName).errors && this.form.get('enterprise').get(formControlName).touched;
         } else {
             return this.form.get('person').get(formControlName).errors && this.form.get('person').get(formControlName).touched;
@@ -51,10 +52,9 @@ export class ShippingCompanyFormComponent implements OnInit, OnDestroy {
     }
 
     public changePerson(): void {
-        const corporatePerson: string = '2';
         const personType: string = this.form.get('personType').value;
 
-        if (personType === corporatePerson) {
+        if (personType === PersonType.ENTERPRISE) {
             this.arrangeLegalPersonForm();
             this.nome = 'Nome Fantasia';
         } else {
