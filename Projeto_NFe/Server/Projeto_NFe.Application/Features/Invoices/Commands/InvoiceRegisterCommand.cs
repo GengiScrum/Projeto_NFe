@@ -1,4 +1,6 @@
-﻿using Projeto_NFe.Application.Features.ProductSolds;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using Projeto_NFe.Application.Features.ProductSolds;
 using Projeto_NFe.Application.Features.ProductSolds.Commands;
 using Projeto_NFe.Domain.Features.ProductsSold;
 using System;
@@ -19,5 +21,17 @@ namespace Projeto_NFe.Application.Features.Invoices.Commands
         public DateTime EntryDate { get; set; }
         public string OperationNature { get; set; }
         public List<ProductSoldRegisterCommand> ProductSolds { get; set; }
+
+        public virtual ValidationResult Validate()
+        {
+            return new Validator().Validate(this);
+        }
+
+        class Validator : AbstractValidator<InvoiceRegisterCommand>
+        {
+            public Validator()
+            {
+            }
+        }
     }
 }

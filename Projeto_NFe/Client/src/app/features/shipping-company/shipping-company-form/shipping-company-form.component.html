@@ -9,8 +9,7 @@
             <div class="row feature-view__group">
                 <div class="col-sm-12 feature-view__body">
                     <div>
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('businessName')">Nome
-                            Fantasia *</span>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('businessName')">{{ nome }} *</span>
                     </div>
                     <input formControlName="businessName" class="form__input" type="text"
                         [class.form__input__border-red]="getFormError('businessName')">
@@ -49,20 +48,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 feature-view__body">
+                <div class="col-sm-6 feature-view__group">
                     <div>
                         <span class="feature-view__label" [class.form__color-red]="getFormError('personType')">Tipo
                             Pessoa *</span>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6 feature-view__body">
+                        <div class="col-sm-6 feature-view__body feature-view__body--radio">
                             <input type="radio" name="personType" id="individualPerson" value="1" formControlName="personType"
-                                checked="true">
-                            <span for="individualPerson" class="feature-view__label">Pessoa Física</span>
+                                checked="true" class="k-radio">
+                            <label for="individualPerson" class="feature-view__label k-radio-label">Pessoa Física</label>
                         </div>
-                        <div class="col-sm-6 feature-view__body">
-                            <input type="radio" name="personType" id="legalPerson" value="2" formControlName="personType">
-                            <span for="legalPerson" class="feature-view__label">Pessoa Jurídica</span>
+                        <div class="col-sm-6 feature-view__body feature-view__body--radio">
+                            <input type="radio" name="personType" id="legalPerson" value="2" formControlName="personType" class="k-radio">
+                            <label for="legalPerson" class="feature-view__label k-radio-label ">Pessoa Jurídica</label>
                         </div>
                     </div>
                     <div *ngIf="getFormError('personType')">

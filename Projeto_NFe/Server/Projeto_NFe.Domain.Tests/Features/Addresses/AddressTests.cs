@@ -24,10 +24,10 @@ namespace Projeto_NFe.Domain.Tests.Features.Addresses
         [Test]
         public void Address_Domain_ValidateStreetName_Sucessfully()
         {
-            //Cenário
+            //Arrange
             _address = ObjectMother.AddressValid();
 
-            //Ação
+            //Action
             Action acao = () => _address.Validate();
 
             //Verificar

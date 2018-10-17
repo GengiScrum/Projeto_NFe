@@ -33,7 +33,7 @@ export class ShippingCompanyListComponent extends GridUtilsComponent {
 
     public redirectOpenShippingCompany(): void {
         this.router.navigate(['./', `${this.getSelectedEntities()[0].id}`],
-        { relativeTo: this.route });
+            { relativeTo: this.route });
     }
 
     public onClick(): void {
@@ -48,8 +48,9 @@ export class ShippingCompanyListComponent extends GridUtilsComponent {
             .take(1)
             .do(() => this.gridService.loading = false)
             .subscribe(() => {
-            this.selectedRows = [];
-            this.gridService.query(this.createFormattedState());
-        });
+                this.selectedRows = [];
+                alert('Transportadores removidos com sucesso.');
+                this.gridService.query(this.createFormattedState());
+            });
     }
 }

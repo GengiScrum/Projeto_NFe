@@ -39,9 +39,9 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Products
         [Test]
         public void Products_Repository_Add_Sucessfully()
         {
-            //Ação
+            //Action
             var product = _repository.Add(_product);
-            //Verificação
+            //Assert
             product.Should().NotBeNull();
             product.Id.Should().NotBe(0);
             var expectedProduct = _context.Products.Find(product.Id);
@@ -56,7 +56,7 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Products
         [Test]
         public void Products_Repository_GetAll_Sucessfully()
         {
-            //Ação
+            //Action
             var products = _repository.GetAll().ToList();
 
             //Assert
@@ -68,7 +68,7 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Products
         [Test]
         public void Products_Repository_GetById_Sucessfully()
         {
-            //Ação
+            //Action
             var product = _repository.GetById(_productBase.Id);
 
             //Assert
@@ -82,7 +82,7 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Products
         [Test]
         public void Products_Repository_Remove_Sucessfully()
         {
-            // Ação
+            // Action
             var removed = _repository.Remove(_productBase.Id);
             // Assert
             removed.Should().BeTrue();
@@ -92,12 +92,12 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Products
         [Test]
         public void Products_Repository_Remove_ShouldThrowNotFoundException()
         {
-            // Cenário
+            // Arrange
             var idInvalid = 10;
-            // Ação
-            Action Remove = () => _repository.Remove(idInvalid);
-            // Verificação
-            Remove.Should().Throw<NotFoundException>();
+            // Action
+            Action act = () => _repository.Remove(idInvalid);
+            // Assert
+            act.Should().Throw<NotFoundException>();
         }
         #endregion
 
@@ -106,14 +106,14 @@ namespace Projeto_NFe.Infra.ORM.Tests.Features.Products
         [Test]
         public void Products_Repository_Update_Sucessfully()
         {
-            // Cenário
+            // Arrange
             var modified = false;
             var newDescription = "Alterado";
             _productBase.Description = newDescription;
-            //Ação
-            var updated = new Action(() => { modified = _repository.Update(_productBase); });
-            // Verificação
-            updated.Should().NotThrow<Exception>();
+            //Action
+            var act = new Action(() => { modified = _repository.Update(_productBase); });
+            // Assert
+            act.Should().NotThrow<Exception>();
             modified.Should().BeTrue();
         }
         #endregion
