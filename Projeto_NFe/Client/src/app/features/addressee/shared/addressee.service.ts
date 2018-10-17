@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 import { CORE_CONFIG_TOKEN, ICoreConfig } from './../../../core/core.config';
 import { AbstractResolveService } from '../../../core/utils/abstract-resolve.service';
-import { Addressee, AddresseeRemoveCommand } from './addressee.model';
+import { Addressee, AddresseeRemoveCommand, AddresseeRegisterCommand } from './addressee.model';
 import { BaseService } from './../../../core/utils/base-service';
 import { NDDBreadcrumbService } from './../../../shared/ndd-ng-breadcrumb/component/ndd-ng-breadcrumb.service';
 
@@ -59,6 +59,10 @@ export class AddresseeService extends BaseService {
 
     public remove(addresseeCmd: AddresseeRemoveCommand): Observable<Boolean> {
         return this.deleteRequestWithBody(`${this.api}`, addresseeCmd);
+    }
+
+    public register(addresseeCmd: AddresseeRegisterCommand): Observable<Boolean> {
+        return this.http.post(`${this.api}`, addresseeCmd).map((response: boolean) => response);
     }
 }
 

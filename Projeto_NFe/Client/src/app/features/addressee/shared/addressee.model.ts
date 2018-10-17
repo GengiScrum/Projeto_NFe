@@ -1,3 +1,4 @@
+import { PersonType } from './../../shared/person-type.enum';
 import { AddressCommand } from './../../address/address.model';
 export class Addressee {
     public id: number;
@@ -15,21 +16,26 @@ export class Addressee {
     public personType: number;
 }
 
-export class AddresseRegisterCommand {
+export class AddresseeRegisterCommand {
     public businessName: string;
     public corporateName: string;
     public cnpj: string;
     public cpf: string;
+    public personType: string;
     public stateRegistration: string;
     public address: AddressCommand;
 
-    constructor(addressee: Addressee, address: AddressCommand) {
+    constructor(addressee: any) {
         this.businessName = addressee.businessName;
-        this.corporateName = addressee.corporateName === null ? '' : addressee.corporateName;
-        this.cnpj = addressee.cnpj === null ? '' : addressee.cnpj;
-        this.cpf = addressee.cpf === null ? '' : addressee.cpf;
-        this.stateRegistration = addressee.stateRegistration === null ? '' : addressee.stateRegistration;
-        this.address = address;
+        this.personType = addressee.personType;
+        this.address = addressee.address;
+        if (this.personType === PersonType.PERSON) {
+            this.cpf = addressee.person.cpf;
+        } else {
+            this.cnpj = addressee.enterprise.cnpj;
+            this.stateRegistration = addressee.enterprise.stateRegistration;
+            this.corporateName = addressee.enterprise.corporateName;
+        }
     }
 }
 

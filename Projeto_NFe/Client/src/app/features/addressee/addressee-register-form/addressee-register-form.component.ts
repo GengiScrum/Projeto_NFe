@@ -1,3 +1,4 @@
+import { AddresseeRegisterCommand } from './../shared/addressee.model';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
@@ -27,6 +28,19 @@ export class AddresseeRegisterFormComponent {
         this.arrangeForm();
     }
 
+    public onSubmit(): void {
+        this.isLoading = true;
+        const addresseeRegisterCommand: AddresseeRegisterCommand
+            = new AddresseeRegisterCommand(this.formModel.value);
+        this.service.register(addresseeRegisterCommand)
+            .take(1)
+            .subscribe(() => {
+                this.isLoading = false;
+                alert('Destinatario cadastrado com sucesso.');
+                this.redirect();
+            });
+    }
+
     public redirect(): void {
         this.router.navigate(['/destinatarios']);
     }
@@ -34,7 +48,7 @@ export class AddresseeRegisterFormComponent {
     private arrangeForm(): void {
         this.formModel = this.fb.group({
             businessName: ['', Validators.required],
-            personType: [true, Validators.required],
+            personType: ['1', Validators.required],
             address: this.fb.group({
                 streetName: ['', Validators.required],
                 number: ['', Validators.required],
