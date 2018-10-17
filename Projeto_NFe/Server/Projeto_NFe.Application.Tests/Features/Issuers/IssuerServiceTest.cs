@@ -28,15 +28,17 @@ namespace Projeto_NFe.Application.Tests.Features.Issuers
             _issuerService = new IssuerService(_mockIssuerRepository.Object);
         }
 
+        #region Add
+
         [Test]
         public void Issuer_Service_Add_Sucessfully()
         {
-            //Cenário 
+            //Arrange 
             var issuer = ObjectMother.IssuerValidWithoutIdAndWithAddress();
             var issuerCmd = ObjectMother.IssuerCommandToRegister();
             _mockIssuerRepository.Setup(er => er.Add(It.IsAny<Issuer>())).Returns(issuer);
 
-            //Ação
+            //Action
             var addIssuer = _issuerService.Add(issuerCmd);
 
             //Verificar
@@ -45,64 +47,70 @@ namespace Projeto_NFe.Application.Tests.Features.Issuers
         }
 
         [Test]
-        public void Issuer_Service_Add_DeveSerTratamentoExcecao()
+        public void Issuer_Service_Add_ShouldThrowException()
         {
-            //Cenário
+            //Arrange
             var issuerCmd = ObjectMother.IssuerCommandToRegister();
             _mockIssuerRepository.Setup(er => er.Add(It.IsAny<Issuer>())).Throws<Exception>();
 
-            //Ação
-            Action newIssuerAcao = () => _issuerService.Add(issuerCmd);
+            //Action
+            Action act = () => _issuerService.Add(issuerCmd);
 
             //Verificar
-            newIssuerAcao.Should().Throw<Exception>();
+            act.Should().Throw<Exception>();
             _mockIssuerRepository.Verify(er => er.Add(It.IsAny<Issuer>()), Times.Once);
         }
-        
+
+        #endregion
+
+        #region Update
         [Test]
         public void Issuer_Service_Update_Sucessfully()
         {
-            //Cenário
+            //Arrange
             var issuer = ObjectMother.IssuerValidWithIdAndWithAddress();
             var issuerCmd = ObjectMother.IssuerCommandToUpdate();
-            var eAtualizado = true;
+            var updated = true;
             _mockIssuerRepository.Setup(e => e.GetById(issuerCmd.Id)).Returns(issuer);
-            _mockIssuerRepository.Setup(er => er.Update(issuer)).Returns(eAtualizado);
+            _mockIssuerRepository.Setup(er => er.Update(issuer)).Returns(updated);
 
-            //Ação
-            var updateIssuer = _issuerService.Update(issuerCmd);
+            //Action
+            var updatedIssuer = _issuerService.Update(issuerCmd);
 
             //Verificar
             _mockIssuerRepository.Verify(e => e.GetById(issuerCmd.Id), Times.Once);
             _mockIssuerRepository.Verify(er => er.Update(issuer), Times.Once);
-            updateIssuer.Should().BeTrue();
+            updatedIssuer.Should().BeTrue();
         }
 
         [Test]
-        public void Issuer_Service_Update_DeveTratarNaoEncontrado()
+        public void Issuer_Service_Update_ShouldThrowNotFoundException()
         {
-            //Cenário
+            //Arrange
             var issuerCmd = ObjectMother.IssuerCommandToUpdate();
             _mockIssuerRepository.Setup(e => e.GetById(issuerCmd.Id)).Returns((Issuer)null);
 
-            //Ação
-            Action issuerAcao = () => _issuerService.Update(issuerCmd);
+            //Action
+            Action act = () => _issuerService.Update(issuerCmd);
 
             //Verificar
-            issuerAcao.Should().Throw<NotFoundException>();
+            act.Should().Throw<NotFoundException>();
             _mockIssuerRepository.Verify(e => e.GetById(issuerCmd.Id), Times.Once);
             _mockIssuerRepository.Verify(e => e.Update(It.IsAny<Issuer>()), Times.Never);
         }
 
+        #endregion
+
+        #region Remove
         [Test]
         public void Issuer_Service_Remove_Sucessfully()
         {
-            //Cenário
+            //Arrange
             var issuerCmd = ObjectMother.IssuerCommandToRemove();
-            var mockFoiRemovido = true;
-            _mockIssuerRepository.Setup(e => e.Remove(issuerCmd.IssuersId.First())).Returns(mockFoiRemovido);
+            var mockWasRemoved = true;
+            _mockIssuerRepository.Setup(e => e.Remove(issuerCmd.IssuersId.First())).Returns(mockWasRemoved);
 
-            //Ação
+            //Action
             var eProductRemovido = _issuerService.Remove(issuerCmd );
 
             //Verificar
@@ -111,68 +119,73 @@ namespace Projeto_NFe.Application.Tests.Features.Issuers
         }
 
         [Test]
-        public void Issuer_Service_Remove_DeveTratarNaoEncontrado()
+        public void Issuer_Service_Remove_ShouldThrowNotFoundException()
         {
-            //Cenário
+            //Arrange
             var issuerCmd = ObjectMother.IssuerCommandToRemove();
             _mockIssuerRepository.Setup(e => e.Remove(issuerCmd.IssuersId.First())).Throws<NotFoundException>();
 
-            //Ação
-            Action issuerAcao = () => _issuerService.Remove(issuerCmd);
+            //Action
+            Action act = () => _issuerService.Remove(issuerCmd);
 
             //Verificar
-            issuerAcao.Should().Throw<NotFoundException>();
+            act.Should().Throw<NotFoundException>();
             _mockIssuerRepository.Verify(e => e.Remove(issuerCmd.IssuersId.First()), Times.Once);
         }
 
+        #endregion
+
+        #region Get
         [Test]
         public void Issuer_Service_GetById_Sucessfully()
         {
-            //Cenário
+            //Arrange
             var issuer = ObjectMother.IssuerValidWithIdAndWithAddress();
             _mockIssuerRepository.Setup(er => er.GetById(issuer.Id)).Returns(issuer);
 
-            //Ação
-            var pegarIssuer = _issuerService.GetById(issuer.Id);
+            //Action
+            var getIssuer = _issuerService.GetById(issuer.Id);
 
             //Verificar
             _mockIssuerRepository.Verify(er => er.GetById(issuer.Id), Times.Once);
-            pegarIssuer.Should().NotBeNull();
-            pegarIssuer.Id.Should().Be(issuer.Id);
+            getIssuer.Should().NotBeNull();
+            getIssuer.Id.Should().Be(issuer.Id);
         }
 
         [Test]
-        public void Issuer_Service_GetById_DeveTratarNotFoundException()
+        public void Issuer_Service_GetById_ShouldThrowNotFoundException()
         {
-            //Cenário
+            //Arrange
             var issuer = ObjectMother.IssuerValidWithIdAndWithAddress();
-            var excecao = new NotFoundException();
-            _mockIssuerRepository.Setup(e => e.GetById(issuer.Id)).Throws(excecao);
+            var exception = new NotFoundException();
+            _mockIssuerRepository.Setup(e => e.GetById(issuer.Id)).Throws(exception);
 
-            //Ação
-            Action issuerAcao = () => _issuerService.GetById(issuer.Id);
+            //Action
+            Action act = () => _issuerService.GetById(issuer.Id);
 
             //Verificar
-            issuerAcao.Should().Throw<NotFoundException>();
+            act.Should().Throw<NotFoundException>();
             _mockIssuerRepository.Verify(e => e.GetById(issuer.Id), Times.Once);
         }
 
         [Test]
         public void Issuer_Service_GetAll_Sucessfully()
         {
-            //Cenário
+            //Arrange
             var issuer = ObjectMother.IssuerValidWithIdAndWithAddress();
             var mockValueRepository = new List<Issuer>() { issuer }.AsQueryable();
             _mockIssuerRepository.Setup(er => er.GetAll()).Returns(mockValueRepository);
 
-            //Ação
-            var issuersResultado = _issuerService.GetAll();
+            //Action
+            var issuers = _issuerService.GetAll();
 
             //Verificar
             _mockIssuerRepository.Verify(er => er.GetAll(), Times.Once);
-            issuersResultado.Should().NotBeNull();
-            issuersResultado.First().Should().Be(issuer);
-            issuersResultado.Count().Should().Be(mockValueRepository.Count());
+            issuers.Should().NotBeNull();
+            issuers.First().Should().Be(issuer);
+            issuers.Count().Should().Be(mockValueRepository.Count());
         }
+
+        #endregion
     }
 }

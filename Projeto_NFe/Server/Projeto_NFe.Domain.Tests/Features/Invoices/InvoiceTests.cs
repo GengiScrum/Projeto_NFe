@@ -42,13 +42,13 @@ namespace Projeto_NFe.Domain.Tests.Features.Invoices
         [Test]
         public void Invoice_Domain_CalculateTax_Sucessfully()
         {
-            //Cenário
+            //Arrange
             _invoice = ObjectMother.InvoiceWithoutIdNeedMock();
             _invoice.ProductSolds = new List<ProductSold>() { _mockProductSold.Object };
             _mockInvoiceTax.Setup(imnf => imnf.Calculate(_invoice.ProductSolds));
             _invoice.InvoiceTax = _mockInvoiceTax.Object;
 
-            //Ação
+            //Action
             _invoice.CalculateTax();
 
             //Verificar
@@ -58,7 +58,7 @@ namespace Projeto_NFe.Domain.Tests.Features.Invoices
         [Test]
         public void Invoice_Domain_IssueInvoice_Sucessfully()
         {
-            //Cenário
+            //Arrange
             _invoice = ObjectMother.InvoiceWithoutIdNeedMock();
             _mockIssuer.Object.BusinessName = "Issuer";
             _invoice.Issuer = _mockIssuer.Object;
@@ -68,7 +68,7 @@ namespace Projeto_NFe.Domain.Tests.Features.Invoices
             _invoice.InvoiceTax = _mockInvoiceTax.Object;
             _invoice.ProductSolds = new List<ProductSold>() { _mockProductSold.Object };
 
-            //Ação
+            //Action
             _invoice.Issue();
 
             //Verificar

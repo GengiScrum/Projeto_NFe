@@ -22,7 +22,7 @@ namespace Projeto_NFe.Domain.Tests.Features.ProductsSold
         [Test]
         public void ProductSold_Domain_CalculateTax_Sucessfully()
         {
-            //Cenário
+            //Arrange
             Mock<ProductTax> _mockProductTax = new Mock<ProductTax>();
             _mockProductTax.Object.IcmsAliquot = 4;
             _mockProductTax.Object.IpiAliquot = 10;

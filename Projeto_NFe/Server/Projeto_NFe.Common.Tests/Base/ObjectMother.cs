@@ -272,12 +272,15 @@ namespace Projeto_NFe.Common.Tests
             shippingCompany.CorporateName = "NDDIGITAL S/A - SOFTWARE";
             shippingCompany.Cnpj = "12.345.678/0009-09";
             shippingCompany.StateRegistration = "12.234.5678-9";
-            shippingCompany.StreetName = "Rua Avenida";
-            shippingCompany.Number = 400;
-            shippingCompany.Neighborhood = "Coral";
-            shippingCompany.City = "Lages";
-            shippingCompany.State = "SC";
-            shippingCompany.Country = "Brasil";
+            shippingCompany.Address = new AddressCommand
+            {
+                StreetName = "Rua Avenida",
+                Number = 400,
+                Neighborhood = "Coral",
+                City = "Lages",
+                State = "SC",
+                Country = "Brasil"
+            };
             return shippingCompany;
         }
 
@@ -289,12 +292,15 @@ namespace Projeto_NFe.Common.Tests
             shippingCompany.CorporateName = "NDDIGITAL S/A - SOFTWARE";
             shippingCompany.Cnpj = "12.345.678/0009-09";
             shippingCompany.StateRegistration = "12.234.5678-9";
-            shippingCompany.StreetName = "Rua Avenida";
-            shippingCompany.Number = 400;
-            shippingCompany.Neighborhood = "Coral";
-            shippingCompany.City = "Lages";
-            shippingCompany.State = "SC";
-            shippingCompany.Country = "Brasil";
+            shippingCompany.Address = new AddressCommand
+            {
+                StreetName = "Rua Avenida",
+                Number = 400,
+                Neighborhood = "Coral",
+                City = "Lages",
+                State = "SC",
+                Country = "Brasil"
+            };
             return shippingCompany;
         }
 
@@ -927,6 +933,7 @@ namespace Projeto_NFe.Common.Tests
         public static InvoiceUpdateCommand InvoiceCommandToUpdate(int issuerId, int addresseeId, int shippingCompanyId)
         {
             InvoiceUpdateCommand invoice = new InvoiceUpdateCommand();
+            invoice.Id = 1;
             invoice.OperationNature = "Venda";
             invoice.EntryDate = DateTime.Now;
             invoice.IssuerId = issuerId;
@@ -963,6 +970,21 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
+            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.InvoiceTax = new InvoiceTax();
+            return invoice;
+        }
+
+        public static Invoice InvoiceValidWithId()
+        {
+            Invoice invoice = new Invoice();
+            invoice.Id = 1;
+            invoice.OperationNature = "Venda";
+            invoice.EntryDate = DateTime.Now;
+            invoice.AcessKey = "BAJDSA0123IU43I249206954";
+            invoice.Issuer = IssuerValidWithIdAndWithAddress();
+            invoice.Addressee = AddresseeValidWithIdWithAddress();
+            invoice.ShippingCompany = ShippingCompanyValidWithIdWithAddress();
             invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
             invoice.InvoiceTax = new InvoiceTax();
             return invoice;

@@ -14,7 +14,7 @@ namespace Projeto_NFe.Domain.Exceptions
         Unauthorized = 401,
 
         /// <summary>
-        /// Ação proibida. O server entendeu o pedido, mas não pode executá-lo (está autenticado mas não tem permissão)
+        /// Action proibida. O server entendeu o pedido, mas não pode executá-lo (está autenticado mas não tem permissão)
         /// </summary>
         Forbidden = 0403,
 

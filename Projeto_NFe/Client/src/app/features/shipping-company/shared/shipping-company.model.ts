@@ -1,4 +1,5 @@
 import { PersonType } from '../../shared/person-type.enum';
+import { AddressCommand } from '../../address/address.model';
 
 export class ShippingCompany {
     public id: number;
@@ -16,6 +17,27 @@ export class ShippingCompany {
     public country: string;
 }
 
+export class ShippingCompanyListViewModel {
+    public id: number;
+    public businessName: string;
+    public document: string;
+
+    constructor(value: any) {
+        this.id = value.id;
+        this.businessName = value.businessName;
+        this.document = (value.cpf) ? value.cpf : value.cnpj;
+    }
+
+    public static createArray(items: any[]): ShippingCompanyListViewModel[] {
+        const shippingCompanies: ShippingCompanyListViewModel[] = [];
+        items.forEach((item: any) => {
+            shippingCompanies.push(new ShippingCompanyListViewModel(item));
+        });
+
+        return shippingCompanies;
+    }
+}
+
 export class ShippingCompanyRegisterCommand {
     public businessName: string;
     public corporateName: string;
@@ -23,28 +45,18 @@ export class ShippingCompanyRegisterCommand {
     public cpf: string;
     public personType: string;
     public stateRegistration: string;
-    public streetName: string;
-    public number: number;
-    public neighborhood: string;
-    public city: string;
-    public state: string;
-    public country: string;
+    public address: AddressCommand;
 
-    constructor(formModel: any) {
-        this.businessName = formModel.businessName;
-        this.personType = formModel.personType;
-        this.streetName = formModel.address.streetName;
-        this.number = formModel.address.number;
-        this.neighborhood = formModel.address.neighborhood;
-        this.city = formModel.address.city;
-        this.state = formModel.address.state;
-        this.country = formModel.address.country;
+    constructor(shippingCompany: any) {
+        this.businessName = shippingCompany.businessName;
+        this.personType = shippingCompany.personType;
+        this.address = shippingCompany.address;
         if (this.personType === PersonType.PERSON) {
-            this.cpf = formModel.person.cpf;
+            this.cpf = shippingCompany.person.cpf;
         } else {
-            this.cnpj = formModel.enterprise.cnpj;
-            this.stateRegistration = formModel.enterprise.stateRegistration;
-            this.corporateName = formModel.enterprise.corporateName;
+            this.cnpj = shippingCompany.enterprise.cnpj;
+            this.stateRegistration = shippingCompany.enterprise.stateRegistration;
+            this.corporateName = shippingCompany.enterprise.corporateName;
         }
     }
 }
@@ -57,29 +69,19 @@ export class ShippingCompanyUpdateCommand {
     public cpf: string;
     public personType: string;
     public stateRegistration: string;
-    public streetName: string;
-    public number: number;
-    public neighborhood: string;
-    public city: string;
-    public state: string;
-    public country: string;
+    public address: AddressCommand;
 
-    constructor(formModel: any, id: number) {
+    constructor(shippingCompany: any, id: number) {
         this.id = id;
-        this.businessName = formModel.businessName;
-        this.personType = formModel.personType;
-        this.streetName = formModel.address.streetName;
-        this.number = formModel.address.number;
-        this.neighborhood = formModel.address.neighborhood;
-        this.city = formModel.address.city;
-        this.state = formModel.address.state;
-        this.country = formModel.address.country;
+        this.businessName = shippingCompany.businessName;
+        this.personType = shippingCompany.personType;
+        this.address = shippingCompany.address;
         if (this.personType === PersonType.PERSON) {
-            this.cpf = formModel.person.cpf;
+            this.cpf = shippingCompany.person.cpf;
         } else {
-            this.cnpj = formModel.enterprise.cnpj;
-            this.stateRegistration = formModel.enterprise.stateRegistration;
-            this.corporateName = formModel.enterprise.corporateName;
+            this.cnpj = shippingCompany.enterprise.cnpj;
+            this.stateRegistration = shippingCompany.enterprise.stateRegistration;
+            this.corporateName = shippingCompany.enterprise.corporateName;
         }
     }
 }

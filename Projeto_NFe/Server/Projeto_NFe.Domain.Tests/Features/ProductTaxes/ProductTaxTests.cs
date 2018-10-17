@@ -24,7 +24,7 @@ namespace Projeto_NFe.Domain.Tests.Features.ProductTaxes
         [Test]
         public void ProductTax_Domain_CalculateIpi_Sucessfully()
         {
-            //Cenário
+            //Arrange
             _taxProduct = ObjectMother.ProductTaxWithAliquotIcsmAndIpiAliquot();
             double amount = 50;
 
@@ -38,7 +38,7 @@ namespace Projeto_NFe.Domain.Tests.Features.ProductTaxes
         [Test]
         public void ProductTax_Domain_CalculateIcms_Sucessfully()
         {
-            //Cenário
+            //Arrange
             _taxProduct = ObjectMother.ProductTaxWithAliquotIcsmAndIpiAliquot();
             double amount = 50;
 

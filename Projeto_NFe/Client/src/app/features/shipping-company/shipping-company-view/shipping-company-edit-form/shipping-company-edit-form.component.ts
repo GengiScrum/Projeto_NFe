@@ -58,6 +58,7 @@ export class ShippingCompanyEditFormComponent implements OnInit, OnDestroy {
             .subscribe(() => {
                 this.isLoading = false;
                 this.resolver.resolveFromRouteAndNotify();
+                alert('Transportador editado com sucesso.');
                 this.redirect();
             });
     }
@@ -72,7 +73,7 @@ export class ShippingCompanyEditFormComponent implements OnInit, OnDestroy {
             personType: ['1', Validators.required],
             address: this.fb.group({
                 streetName: ['', Validators.required],
-                number: ['', Validators.required],
+                number: ['', [Validators.required, Validators.pattern('[0-9]+')]],
                 neighborhood: ['', Validators.required],
                 city: ['', Validators.required],
                 state: ['', Validators.required],
@@ -94,20 +95,30 @@ export class ShippingCompanyEditFormComponent implements OnInit, OnDestroy {
                 country: this.shippingCompany.country,
             },
         });
-        if (this.shippingCompany.personType === PersonType.PERSON) {
-            this.formModel.patchValue({
-                person: {
-                    cpf: this.shippingCompany.streetName,
-                },
-            });
+        if (this.shippingCompany.personType.toString() === PersonType.PERSON) {
+            this.populateFormPerson();
         } else {
-            this.formModel.patchValue({
-                enterprise: {
-                    cnpj: this.shippingCompany.streetName,
-                    stateRegistration: this.shippingCompany.stateRegistration,
-                    corporateName: this.shippingCompany.corporateName,
-                },
-            });
+            this.populateFormEnterprise();
         }
+    }
+
+    private populateFormPerson(): void {
+        this.formModel.addControl('person', this.person);
+        this.formModel.patchValue({
+            person: {
+                cpf: this.shippingCompany.cpf,
+            },
+        });
+    }
+
+    private populateFormEnterprise(): void {
+        this.formModel.addControl('enterprise', this.enterprise);
+        this.formModel.patchValue({
+            enterprise: {
+                cnpj: this.shippingCompany.cnpj,
+                stateRegistration: this.shippingCompany.stateRegistration,
+                corporateName: this.shippingCompany.corporateName,
+            },
+        });
     }
 }
