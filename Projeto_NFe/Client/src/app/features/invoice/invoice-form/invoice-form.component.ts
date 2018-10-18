@@ -6,6 +6,7 @@ import { Addressee } from './../../addressee/shared/addressee.model';
 import { Issuer } from './../../issuer/shared/issuer.model';
 import { IssuerService } from '../../issuer/shared/issuer.service';
 import { ShippingCompanyService } from '../../shipping-company/shared/shipping-company.service';
+import { AddresseeService } from '../../addressee/shared/addressee.service';
 
 @Component({
     selector: 'ndd-invoice-form',
@@ -21,10 +22,10 @@ export class InvoiceFormComponent implements OnInit {
 
     constructor(private issuerService: IssuerService,
         private shippingCompanyService: ShippingCompanyService,
-        /*private adresseService: AddresseService*/) { }
+        private adresseeService: AddresseeService) { }
 
     public ngOnInit(): void {
-        this.addressees = [];
+        this.adresseeService.getAll().take(1).subscribe((addressees: Addressee[]) => this.addressees = addressees);
         this.issuerService.getAll().take(1).subscribe((issuers: Issuer[]) => this.issuers = issuers);
         this.shippingCompanyService.getAll().take(1).subscribe((shippingCompanies: ShippingCompany[]) => this.shippingCompanies = shippingCompanies);
     }

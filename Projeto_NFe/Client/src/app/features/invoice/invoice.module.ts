@@ -12,6 +12,7 @@ import { InvoiceFormComponent } from './invoice-form/invoice-form.component';
 import { InvoiceRegisterFormComponent } from './invoice-register-form/invoice-register-form.component';
 import { ShippingCompanySharedModule } from '../shipping-company/shared/shipping-company-shared.module';
 import { IssuerSharedModule } from '../issuer/shared/issuer-shared.module';
+import { AddresseeSharedModule } from '../addressee/shared/addressee-shared.module';
 
 @NgModule({
     imports: [
@@ -22,6 +23,7 @@ import { IssuerSharedModule } from '../issuer/shared/issuer-shared.module';
         InvoiceRoutingModule,
         ShippingCompanySharedModule,
         IssuerSharedModule,
+        AddresseeSharedModule,
     ],
     exports: [],
     declarations: [

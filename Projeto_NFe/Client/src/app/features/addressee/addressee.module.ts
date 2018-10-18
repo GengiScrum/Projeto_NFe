@@ -14,6 +14,7 @@ import { SharedModule } from './../../shared/shared.module';
 import { AddresseeRegisterFormComponent } from './addressee-register-form/addressee-register-form.component';
 import { AddresseeFormComponent } from './addressee-form/addressee-form.component';
 import { AddresseeEditFormComponent } from './addressee-view/addressee-edit-form/addressee-edit-form.component';
+import { AddresseeSharedModule } from './shared/addressee-shared.module';
 
 @NgModule({
     imports: [
@@ -24,6 +25,7 @@ import { AddresseeEditFormComponent } from './addressee-view/addressee-edit-form
         TextMaskModule,
         AddresseeRoutingModule,
         UiSwitchModule,
+        AddresseeSharedModule,
     ],
     exports: [],
     declarations: [
@@ -35,7 +37,6 @@ import { AddresseeEditFormComponent } from './addressee-view/addressee-edit-form
         AddresseeEditFormComponent,
     ],
     providers: [
-        AddresseeService,
         AddresseeGridService,
         AddresseeResolveService,
     ],
