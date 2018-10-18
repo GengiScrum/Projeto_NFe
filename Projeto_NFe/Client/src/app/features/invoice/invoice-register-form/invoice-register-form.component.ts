@@ -41,7 +41,7 @@ export class InvoiceRegisterFormComponent {
             shippingCompanyId: [''],
             addresseeId: [''],
             operationNature: [''],
-            entryDate: [''],
+            entryDate: [(new Date()).toISOString().split('T')[0]],
         });
     }
 }
