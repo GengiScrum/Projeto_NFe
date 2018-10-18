@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Projeto_NFe.Application.Features.Invoices.Commands;
 using AutoMapper;
+using Projeto_NFe.Application.Features.Invoices.Queries;
 
 namespace Projeto_NFe.Application.Features.Invoices
 {
@@ -63,6 +64,11 @@ namespace Projeto_NFe.Application.Features.Invoices
         public IQueryable<Invoice> GetAll()
         {
             return _invoiceRepository.GetAll();
+        }
+
+        public IQueryable<Invoice> GetAll(InvoiceQuery query)
+        {
+            return _invoiceRepository.GetAll(query.Quantity);
         }
     }
 }

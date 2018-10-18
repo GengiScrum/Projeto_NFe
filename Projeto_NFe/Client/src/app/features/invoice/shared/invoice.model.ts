@@ -9,7 +9,6 @@ export class Invoice {
     public productSolds: ProductSold[];
     public invoiceTax: InvoiceTax;
     public operationNature: string;
-    public issueDate: Date;
     public entryDate: Date;
 }
 

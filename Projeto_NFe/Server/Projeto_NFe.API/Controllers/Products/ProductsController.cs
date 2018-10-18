@@ -3,8 +3,11 @@ using Projeto_NFe.API.Controllers.Base;
 using Projeto_NFe.API.Filters;
 using Projeto_NFe.Application.Features.Products;
 using Projeto_NFe.Application.Features.Products.Commands;
+using Projeto_NFe.Application.Features.Products.Queries;
 using Projeto_NFe.Application.Features.Products.ViewModel;
 using Projeto_NFe.Domain.Features.Products;
+using System.Linq;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace Projeto_NFe.API.Controllers.Products
@@ -24,7 +27,18 @@ namespace Projeto_NFe.API.Controllers.Products
         [ODataQueryOptionsValidate]
         public IHttpActionResult GetAll(ODataQueryOptions<Product> queryOptions)
         {
-            var query = _productService.GetAll();
+            var queryString = Request.GetQueryNameValuePairs()
+                                                .Where(x => x.Key.Equals("size"))
+                                                .FirstOrDefault();
+
+            var query = default(IQueryable<Product>);
+            int size = 0;
+            if (queryString.Key != null && int.TryParse(queryString.Value, out size))
+            {
+                query = _productService.GetAll(new ProductQuery(size));
+            }
+            else
+                query = _productService.GetAll();
 
             return HandleQueryable<Product, ProductViewModel>(query, queryOptions);
         }

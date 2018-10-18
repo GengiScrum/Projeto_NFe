@@ -30,6 +30,11 @@ namespace Projeto_NFe.Infra.ORM.Features.Invoices
             return _context.Invoices;
         }
 
+        public IQueryable<Invoice> GetAll(int quantity)
+        {
+            return _context.Invoices.Take(quantity);
+        }
+
         public Invoice GetById(int id)
         {
             return _context.Invoices.FirstOrDefault(invoice => invoice.Id == id);

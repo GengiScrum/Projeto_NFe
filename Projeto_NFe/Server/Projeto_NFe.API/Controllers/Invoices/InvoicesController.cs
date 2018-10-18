@@ -3,11 +3,13 @@ using Projeto_NFe.API.Controllers.Base;
 using Projeto_NFe.API.Filters;
 using Projeto_NFe.Application.Features.Invoices;
 using Projeto_NFe.Application.Features.Invoices.Commands;
+using Projeto_NFe.Application.Features.Invoices.Queries;
 using Projeto_NFe.Application.Features.Invoices.ViewModels;
 using Projeto_NFe.Domain.Features.Invoices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 
@@ -29,7 +31,18 @@ namespace Projeto_NFe.API.Controllers.Invoices
         [ODataQueryOptionsValidate]
         public IHttpActionResult GetAll(ODataQueryOptions<Invoice> queryOptions)
         {
-            var query = _invoiceService.GetAll();
+            var queryString = Request.GetQueryNameValuePairs()
+                                                .Where(x => x.Key.Equals("size"))
+                                                .FirstOrDefault();
+
+            var query = default(IQueryable<Invoice>);
+            int size = 0;
+            if (queryString.Key != null && int.TryParse(queryString.Value, out size))
+            {
+                query = _invoiceService.GetAll(new InvoiceQuery(size));
+            }
+            else
+                query = _invoiceService.GetAll();
 
             return HandleQueryable<Invoice, InvoiceViewModel>(query, queryOptions);
         }
