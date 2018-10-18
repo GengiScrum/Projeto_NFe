@@ -1,10 +1,13 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="formModel" class="feature-view__content">
-    <div class="row">
-        <div class="col-sm-6">
-            <ndd-shipping-company-form [returnRoute]="'./transportadores'" [form]="formModel" [person]="person" [enterprise]="enterprise"></ndd-shipping-company-form>
-        </div>
-        <div class="col-sm-6">
-            <ndd-address-form [form]="formModel.get('address')"></ndd-address-form>
+<form (ngSubmit)="onSubmit()" [formGroup]="formModel">
+    <div class="feature-view__content">
+        <div class="row">
+            <div class="col-sm-6">
+                <ndd-shipping-company-form [returnRoute]="'./transportadores'" [form]="formModel" [person]="person"
+                    [enterprise]="enterprise"></ndd-shipping-company-form>
+            </div>
+            <div class="col-sm-6">
+                <ndd-address-form [form]="formModel.get('address')"></ndd-address-form>
+            </div>
         </div>
     </div>
     <div class="feature-view-tab__footer">

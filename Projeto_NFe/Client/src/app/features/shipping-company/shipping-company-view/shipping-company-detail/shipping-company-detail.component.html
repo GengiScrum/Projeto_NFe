@@ -3,55 +3,51 @@
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <span class="feature-view__title">Dados Cadastrais</span>
+                    <span class="feature-view__title">Dados Cadastrais</span>
+                </div>
+            </div>
+            <div class="feature-view__group">
+                <div class="row">
+                    <div class="col-sm-6 feature-view__body">
+                        <div>
+                            <span class="feature-view__label">{{ nome }}</span>
+                        </div>
+                        <div class="truncate feature-view__value">
+                            <span title="{{ shippingCompany?.businessName }}" class="feature-view__value">
+                                {{ shippingCompany?.businessName }}
+                            </span>
                         </div>
                     </div>
-                    <div class="feature-view__group">
-                        <div class="row">
-                            <div class="col-sm-6 feature-view__body">
-                                <div>
-                                    <span class="feature-view__label">{{ nome }}</span>
-                                </div>
-                                <div class="truncate feature-view__value">
-                                    <span title="{{ shippingCompany?.businessName }}" class="feature-view__value">
-                                        {{ shippingCompany?.businessName }}
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 feature-view__body">
-                                <div>
-                                    <span class="feature-view__label">{{ documentType }}</span>
-                                </div>
-                                <div class="truncate feature-view__value">
-                                    <span title="{{ documentNumber }}" class="feature-view__value">
-                                        {{ documentNumber }}
-                                    </span>
-                                </div>
-                            </div>
+                    <div class="col-sm-6 feature-view__body">
+                        <div>
+                            <span class="feature-view__label">{{ documentType }}</span>
                         </div>
-                        <div class="row" *ngIf="shippingCompany?.cnpj">
-                            <div class="col-sm-6 feature-view__body">
-                                <div>
-                                    <span class="feature-view__label">Incrição Estadual</span>
-                                </div>
-                                <div class="truncate feature-view__value">
-                                    <span title="{{ shippingCompany?.stateRegistration }}" class="feature-view__value">
-                                        {{ shippingCompany?.stateRegistration }}
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 feature-view__body">
-                                <div>
-                                    <span class="feature-view__label">Razão Social</span>
-                                </div>
-                                <div class="truncate feature-view__value">
-                                    <span title="{{ shippingCompany?.corporateName }}" class="feature-view__value">
-                                        {{ shippingCompany?.corporateName }}
-                                    </span>
-                                </div>
-                            </div>
+                        <div class="truncate feature-view__value">
+                            <span title="{{ documentNumber }}" class="feature-view__value">
+                                {{ documentNumber }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="shippingCompany?.cnpj">
+                    <div class="col-sm-6 feature-view__body">
+                        <div>
+                            <span class="feature-view__label">Incrição Estadual</span>
+                        </div>
+                        <div class="truncate feature-view__value">
+                            <span title="{{ shippingCompany?.stateRegistration }}" class="feature-view__value">
+                                {{ shippingCompany?.stateRegistration }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 feature-view__body">
+                        <div>
+                            <span class="feature-view__label">Razão Social</span>
+                        </div>
+                        <div class="truncate feature-view__value">
+                            <span title="{{ shippingCompany?.corporateName }}" class="feature-view__value">
+                                {{ shippingCompany?.corporateName }}
+                            </span>
                         </div>
                     </div>
                 </div>
