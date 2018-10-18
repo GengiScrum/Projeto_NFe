@@ -372,18 +372,13 @@ namespace Projeto_NFe.Common.Tests
         #region Addressee
         public static AddresseeRegisterCommand AddresseeCommandToRegister()
         {
-            AddresseeRegisterCommand adressee = new AddresseeRegisterCommand();
-            adressee.BusinessName = "NDDIGITAL";
-            adressee.CorporateName = "NDDIGITAL S/A - SOFTWARE";
-            adressee.Cnpj = "12.345.678/0009-09";
-            adressee.StateRegistration = "12.234.5678-9";
-            adressee.StreetName = "Rua Avenida";
-            adressee.Number = 400;
-            adressee.Neighborhood = "Coral";
-            adressee.City = "Lages";
-            adressee.State = "SC";
-            adressee.Country = "Brasil";
-            return adressee;
+            AddresseeRegisterCommand addressee = new AddresseeRegisterCommand();
+            addressee.BusinessName = "NDDIGITAL";
+            addressee.CorporateName = "NDDIGITAL S/A - SOFTWARE";
+            addressee.Cnpj = "12.345.678/0009-09";
+            addressee.StateRegistration = "12.234.5678-9";
+            addressee.Address = AddressCommandToRegister();
+            return addressee;
         }
 
         public static AddresseeUpdateCommand AddresseeCommandToUpdate()
@@ -394,12 +389,7 @@ namespace Projeto_NFe.Common.Tests
             addressee.CorporateName = "NDDIGITAL S/A - SOFTWARE";
             addressee.Cnpj = "12.345.678/0009-09";
             addressee.StateRegistration = "12.234.5678-9";
-            addressee.StreetName = "Rua Avenida";
-            addressee.Number = 400;
-            addressee.Neighborhood = "Coral";
-            addressee.City = "Lages";
-            addressee.State = "SC";
-            addressee.Country = "Brasil";
+            addressee.Address = AddressCommandToRegister();
             return addressee;
         }
 
