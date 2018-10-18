@@ -1,6 +1,7 @@
 import { Subject } from 'rxjs/Subject';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { PersonType } from '../../shared/person-type.enum';
 
 @Component({
     templateUrl: './addressee-form.component.html',
@@ -12,6 +13,8 @@ export class AddresseeFormComponent implements OnInit, OnDestroy {
     @Input() public person: FormGroup;
     @Input() public enterprise: FormGroup;
     @Input() public returnRoute: string;
+
+    public nome: string;
 
     public cnpjMask: (string | RegExp)[] = [/[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/,
         /[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/];
@@ -39,10 +42,9 @@ export class AddresseeFormComponent implements OnInit, OnDestroy {
     }
 
     public getPersonTypeFormError(formControlName: string): boolean {
-        const corporatePerson: string = '2';
         const personType: string = this.form.get('personType').value;
 
-        if (personType === corporatePerson) {
+        if (personType === PersonType.ENTERPRISE) {
             return this.form.get('enterprise').get(formControlName).errors && this.form.get('enterprise').get(formControlName).touched;
         } else {
             return this.form.get('person').get(formControlName).errors && this.form.get('person').get(formControlName).touched;
@@ -50,19 +52,20 @@ export class AddresseeFormComponent implements OnInit, OnDestroy {
     }
 
     public changePerson(): void {
-        const corporatePerson: string = '2';
         const personType: string = this.form.get('personType').value;
 
-        if (personType === corporatePerson) {
+        if (personType === PersonType.ENTERPRISE) {
             this.arrangeLegalPersonForm();
+            this.nome = 'Nome Fantasia';
         } else {
             this.arrangeIndividualPersonForm();
+            this.nome = 'Nome';
         }
     }
 
     private arrangeIndividualPersonForm(): void {
         this.form.addControl('person', this.person);
-        this.form.removeControl('entreprise');
+        this.form.removeControl('enterprise');
         this.form.updateValueAndValidity();
     }
 

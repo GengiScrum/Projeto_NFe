@@ -7,37 +7,34 @@
         </div>
         <form [formGroup]="form">
             <div class="row feature-view__group">
-                <div class="col-sm-9 feature-view__body">
+                <div class="col-sm-12 feature-view__body">
                     <div>
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('businessName')">Nome Fantasia *</span>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('businessName')">{{
+                            nome }} *</span>
                     </div>
-                    <input formControlName="businessName" class="form__input" type="text" [class.form__input__border-red]="getFormError('businessName')">
+                    <input formControlName="businessName" class="form__input" type="text"
+                        [class.form__input__border-red]="getFormError('businessName')">
                     <div *ngIf="getFormError('businessName')">
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('businessName')">Campo requerido
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('businessName')">Campo
+                            requerido
                         </span>
                     </div>
                 </div>
-                <div class="col-sm-3 feature-view__body">
-                    <div>
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('personType')">Tipo Pessoa *</span>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <ui-switch formControlName="personType"></ui-switch>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="row feature-view__group">
-                <div formGroupName="person" *ngIf="form?.get('personType').value == 1">
+                <div *ngIf="form?.get('personType').value == 1" formGroupName="person">
                     <div class="col-sm-6 feature-view__body">
                         <div>
-                            <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('cpf')">CPF *
+                            <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('cpf')">CPF
+                                *
                             </span>
                         </div>
-                        <input formControlName="cpf" [textMask]="{ mask: cpfMask}" class="form__input" type="text" [class.form__input__border-red]="getPersonTypeFormError('cpf')">
+                        <input formControlName="cpf" [textMask]="{ mask: cpfMask}" class="form__input" type="text"
+                            [class.form__input__border-red]="getPersonTypeFormError('cpf')">
                         <div *ngIf="getPersonTypeFormError('cpf')">
-                            <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('cpf')">Campo requerido
+                            <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('cpf')">Campo
+                                requerido
                             </span>
                         </div>
                     </div>
@@ -45,59 +42,63 @@
                 <div *ngIf="form?.get('personType').value == 2" formGroupName="enterprise">
                     <div class="col-sm-6 feature-view__body">
                         <div>
-                            <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('cnpj')">CNPJ *
+                            <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('cnpj')">CNPJ
+                                *
                             </span>
                         </div>
-                        <input formControlName="cnpj" [textMask]="{ mask: cnpjMask}" class="form__input" type="text" [class.form__input__border-red]="getPersonTypeFormError('cnpj')">
+                        <input formControlName="cnpj" [textMask]="{ mask: cnpjMask}" class="form__input" type="text"
+                            [class.form__input__border-red]="getPersonTypeFormError('cnpj')">
                         <div *ngIf="getPersonTypeFormError('cnpj')">
-                            <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('cnpj')">Campo requerido
+                            <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('cnpj')">Campo
+                                requerido
                             </span>
                         </div>
                     </div>
                 </div>
-                <!--div class="col-sm-6 feature-view__body">
-                    <div>
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('personType')">Tipo
-                            Pessoa *</span>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 feature-view__body">
-                            <input type="radio" name="personType" id="individualPerson" value="1" formControlName="personType"
-                                checked="true">
-                            <span for="individualPerson" class="feature-view__label">Pessoa Física</span>
-                        </div>
-                        <div class="col-sm-6 feature-view__body">
-                            <input type="radio" name="personType" id="legalPerson" value="2" formControlName="personType">
-                            <span for="legalPerson" class="feature-view__label">Pessoa Jurídica</span>
-                        </div>
-                    </div>
-                    <div *ngIf="getFormError('personType')">
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('personType')">Campo
-                            requerido</span>
-                    </div>
-                </div-->
-            </div>
-            <div *ngIf="form?.get('personType').value == 2" formGroupName="enterprise">
                 <div class="col-sm-6 feature-view__body">
                     <div>
-                        <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('stateRegistration')">Inscrição Estadual *</span>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('personType')">Tipo
+                            Pessoa ?</span>
                     </div>
-                    <input formControlName="stateRegistration" class="form__input" type="text" [class.form__input__border-red]="getPersonTypeFormError('stateRegistration')">
-                    <div *ngIf="getPersonTypeFormError('stateRegistration')">
-                        <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('stateRegistration')">Campo requerido
-                        </span>
+                    <div class="row">
+                        <div class="col-sm-6 feature-view__body feature-view__body--radio">
+                            <input type="radio" name="personType" id="individualPerson" value="1" formControlName="personType"
+                                checked="true" class="k-radio">
+                            <label for="individualPerson" class="feature-view__label k-radio-label">Pessoa Física</label>
+                        </div>
+                        <div class="col-sm-6 feature-view__body feature-view__body--radio">
+                            <input type="radio" name="personType" id="legalPerson" value="2" formControlName="personType"
+                                class="k-radio">
+                            <label for="legalPerson" class="feature-view__label k-radio-label ">Pessoa Jurídica</label>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div *ngIf="form?.get('personType').value == 2" class="row feature-view__group" formGroupName="enterprise">
-                    <div class="col-sm-12 feature-view__body">
+            <div class="row feature-view__group">
+                <div *ngIf="form?.get('personType').value == 2" formGroupName="enterprise">
+                    <div class="col-sm-6 feature-view__body">
                         <div>
-                            <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('corporateName')">Razão Social *</span>
+                            <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('corporateName')">Razão
+                                Social *</span>
                         </div>
-                        <input formControlName="corporateName" class="form__input" type="text" [class.form__input__border-red]="getPersonTypeFormError('corporateName')">
+                        <input formControlName="corporateName" class="form__input" type="text"
+                            [class.form__input__border-red]="getPersonTypeFormError('corporateName')">
                         <div *ngIf="getPersonTypeFormError('corporateName')">
-                            <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('corporateName')">Campo requerido
+                            <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('corporateName')">Campo
+                                requerido
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 feature-view__body">
+                        <div>
+                            <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('stateRegistration')">Inscrição
+                                Estadual *</span>
+                        </div>
+                        <input formControlName="stateRegistration" class="form__input" type="text"
+                            [class.form__input__border-red]="getPersonTypeFormError('stateRegistration')">
+                        <div *ngIf="getPersonTypeFormError('stateRegistration')">
+                            <span class="feature-view__label" [class.form__color-red]="getPersonTypeFormError('stateRegistration')">Campo
+                                requerido
                             </span>
                         </div>
                     </div>

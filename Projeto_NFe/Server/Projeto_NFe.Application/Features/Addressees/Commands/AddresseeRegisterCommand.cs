@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Projeto_NFe.Application.Features.Addresses.Commands;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -17,13 +18,8 @@ namespace Projeto_NFe.Application.Features.Addressees.Commands
         public string Cnpj { get; set; }
         public string Cpf { get; set; }
         public string StateRegistration { get; set; }
-        public string StreetName { get; set; }
-        public int Number { get; set; }
-        public string Neighborhood { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Country { get; set; }
-        public int PersonType { get; set; }
+        public int PersonType { get; set; } 
+        public AddressCommand Address { get; set; }
 
         public virtual ValidationResult Validate()
         {
@@ -35,18 +31,11 @@ namespace Projeto_NFe.Application.Features.Addressees.Commands
             public Validator()
             {
                 RuleFor(a => a.BusinessName).NotNull().MaximumLength(40);
-                RuleFor(a => a.CorporateName).NotNull().MaximumLength(40);
-                RuleFor(a => a.Cnpj).NotNull().MaximumLength(40);
-                RuleFor(a => a.Cpf).NotNull().MaximumLength(40);
-                RuleFor(a => a.StateRegistration).NotNull().MaximumLength(40);
-                RuleFor(a => a.StreetName).NotNull().MaximumLength(40);
-                RuleFor(a => a.Number).NotNull();
-                RuleFor(a => a.Neighborhood).NotNull().MaximumLength(40);
-                RuleFor(a => a.City).NotNull().MaximumLength(40);
-                RuleFor(a => a.State).NotNull().MaximumLength(40);
-                RuleFor(a => a.Country).NotNull().MaximumLength(40);
-                RuleFor(a => a.PersonType).NotNull().NotEmpty();
-
+                RuleFor(a => a.CorporateName).MaximumLength(40);
+                RuleFor(a => a.Cnpj).MaximumLength(40);
+                RuleFor(a => a.Cpf).MaximumLength(40);
+                RuleFor(a => a.StateRegistration).MaximumLength(40);
+                RuleFor(a => a.Address).NotNull();
             }
         }
     }

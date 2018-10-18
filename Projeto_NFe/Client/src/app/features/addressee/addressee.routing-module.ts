@@ -6,6 +6,7 @@ import { AddresseeViewComponent } from './addressee-view/addressee-view.componen
 import { AddresseeResolveService } from './shared/addressee.service';
 import { AddresseeListComponent } from './addressee-list/addressee-list.component';
 import { AddresseeRegisterFormComponent } from './addressee-register-form/addressee-register-form.component';
+import { AddresseeEditFormComponent } from './addressee-view/addressee-edit-form/addressee-edit-form.component';
 
 const addresseeRoutes: Routes = [
     {
@@ -42,6 +43,15 @@ const addresseeRoutes: Routes = [
                             {
                                 path: '',
                                 component: AddresseeDetailComponent,
+                            },
+                            {
+                                path: 'editar',
+                                component: AddresseeEditFormComponent,
+                                data: {
+                                    breadcrumbOptions: {
+                                        breadcrumbLabel: 'Editar',
+                                    },
+                                },
                             },
                         ],
                     },

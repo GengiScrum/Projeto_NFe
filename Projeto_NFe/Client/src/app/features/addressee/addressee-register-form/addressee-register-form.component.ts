@@ -1,3 +1,4 @@
+import { AddresseeRegisterCommand } from './../shared/addressee.model';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
@@ -25,6 +26,19 @@ export class AddresseeRegisterFormComponent {
         private service: AddresseeService,
         private router: Router) {
         this.arrangeForm();
+    }
+
+    public onSubmit(): void {
+        this.isLoading = true;
+        const addresseeRegisterCommand: AddresseeRegisterCommand
+            = new AddresseeRegisterCommand(this.formModel.value);
+        this.service.register(addresseeRegisterCommand)
+            .take(1)
+            .subscribe(() => {
+                this.isLoading = false;
+                alert('Destinatario cadastrado com sucesso.');
+                this.redirect();
+            });
     }
 
     public redirect(): void {
