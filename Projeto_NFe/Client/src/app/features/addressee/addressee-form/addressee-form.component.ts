@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs/Subject';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { PersonType } from '../../shared/person-type.enum';
 

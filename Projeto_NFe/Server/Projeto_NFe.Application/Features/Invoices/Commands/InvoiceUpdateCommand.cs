@@ -20,7 +20,7 @@ namespace Projeto_NFe.Application.Features.Invoices.Commands
         public int? ShippingCompanyId { get; set; }
         public DateTime EntryDate { get; set; }
         public string OperationNature { get; set; }
-        public List <ProductSoldUpdateCommand> ProductSolds { get; set; }
+        public IEnumerable <ProductSoldUpdateCommand> ProductSolds { get; set; }
 
         public virtual ValidationResult Validate()
         {

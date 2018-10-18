@@ -12,8 +12,11 @@ namespace Projeto_NFe.Application.Features.Invoices.ViewModels
     {
         public int Id { get; set; }
         public string IssuerBusinessName { get; set; }
+        public int IssuerId { get; set; }
         public string ShippingCompanyBusinessName { get; set; }
+        public int ShippingCompanyId { get; set; }
         public string AddresseeBusinessName { get; set; }
+        public int AddresseeId { get; set; }
         public IEnumerable<ProductSold> ProductSolds { get; set; }
         public InvoiceTax InvoiceTax { get; set; }
         public string OperationNature { get; set; }

@@ -1,4 +1,4 @@
-import { Address, AddressCommand } from './../../address/address.model';
+import { AddressCommand } from './../../address/address.model';
 export class Issuer {
     public id: number;
     public businessName: string;

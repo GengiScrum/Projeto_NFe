@@ -36,7 +36,7 @@ namespace Projeto_NFe.Application.Features.Invoices
             var invoice = _invoiceRepository.GetById(command.Id);
             if (invoice == null)
                 throw new NotFoundException();
-            Mapper.Map(invoice, command);
+            Mapper.Map(command, invoice);
             return _invoiceRepository.Update(invoice);
         }
 

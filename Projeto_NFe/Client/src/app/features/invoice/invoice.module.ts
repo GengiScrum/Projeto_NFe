@@ -13,6 +13,9 @@ import { InvoiceRegisterFormComponent } from './invoice-register-form/invoice-re
 import { ShippingCompanySharedModule } from '../shipping-company/shared/shipping-company-shared.module';
 import { IssuerSharedModule } from '../issuer/shared/issuer-shared.module';
 import { AddresseeSharedModule } from '../addressee/shared/addressee-shared.module';
+import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
+import { InvoiceDetailComponent } from './invoice-view/invoice-detail/invoice-detail.component';
+import { InvoiceEditFormComponent } from './invoice-view/invoice-edit-form/invoice-edit-form.component';
 
 @NgModule({
     imports: [
@@ -30,6 +33,9 @@ import { AddresseeSharedModule } from '../addressee/shared/addressee-shared.modu
         InvoiceListComponent,
         InvoiceFormComponent,
         InvoiceRegisterFormComponent,
+        InvoiceViewComponent,
+        InvoiceDetailComponent,
+        InvoiceEditFormComponent,
     ],
     providers: [
         InvoiceGridService,

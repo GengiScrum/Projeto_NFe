@@ -5,6 +5,7 @@ import { DataStateChangeEvent } from '@progress/kendo-angular-grid/dist/es2015/d
 
 import { InvoiceGridService, InvoiceService } from './../shared/invoice.service';
 import { GridUtilsComponent } from './../../../shared/grid-utils/grid-utils-component';
+import { InvoiceRemoveCommand } from '../../invoice/shared/invoice.model';
 
 @Component({
     templateUrl: './invoice-list.component.html',
@@ -31,5 +32,24 @@ export class InvoiceListComponent extends GridUtilsComponent {
     public onSelectionChange(event: SelectionEvent): void {
         this.updateSelectedRows(event.selectedRows, true);
         this.updateSelectedRows(event.deselectedRows, false);
+    }
+
+    public redirectOpenInvoice(): void {
+        this.router.navigate(['./', `${this.getSelectedEntities()[0].id}`],
+            { relativeTo: this.route });
+    }
+
+    public deleteInvoice(): void {
+        this.gridService.loading = true;
+        const invoiceRemoveCommand: InvoiceRemoveCommand = new InvoiceRemoveCommand(this.getSelectedEntities());
+        this.invoiceService
+            .remove(invoiceRemoveCommand)
+            .take(1)
+            .do(() => this.gridService.loading = false)
+            .subscribe(() => {
+                this.selectedRows = [];
+                alert('Notas fiscais removidas com sucesso.');
+                this.gridService.query(this.createFormattedState());
+            });
     }
 }
