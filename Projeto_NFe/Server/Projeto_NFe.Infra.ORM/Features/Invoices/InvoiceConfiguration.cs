@@ -22,6 +22,8 @@ namespace Projeto_NFe.Infra.ORM.Features.Invoices
 
             Ignore(invoice => invoice.IssueDate);
 
+            Ignore(invoice => invoice.AcessKey);
+
             Property(invoice => invoice.AddresseeId).HasColumnName("AddresseeId");
             HasOptional(invoice => invoice.Addressee)
             .WithMany()
