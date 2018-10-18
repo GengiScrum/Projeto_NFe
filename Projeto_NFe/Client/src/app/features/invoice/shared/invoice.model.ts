@@ -1,4 +1,5 @@
 import { InvoiceTax } from './../invoice-tax/invoice-tax.model';
+import { Product } from '../../product/shared/product.model';
 
 export class Invoice {
     public id: number;
@@ -14,11 +15,19 @@ export class Invoice {
 
 export class InvoiceRegisterCommand {
     public issuerId: number;
-    public adresseeId: number;
+    public addresseeId: number;
     public shippingCompanyId: number;
     public entryDate: Date;
     public operationNature: string;
     public productSolds: ProductSoldRegisterCommand[];
+
+    constructor(invoice: any) {
+        this.addresseeId = invoice.addresseeId;
+        this.shippingCompanyId = invoice.shippingCompanyId;
+        this.issuerId = invoice.issuerId;
+        this.entryDate = invoice.entryDate;
+        this.operationNature = invoice.operationNature;
+    }
 }
 
 export class InvoiceUpdateCommand {

@@ -25,6 +25,7 @@ namespace Projeto_NFe.Application.Features.Invoices
         public int Add(InvoiceRegisterCommand command)
         {
             var invoice = Mapper.Map<InvoiceRegisterCommand, Invoice>(command);
+            invoice.IssueDate = DateTime.Today;
             var newInvoice =  _invoiceRepository.Add(invoice);
 
             return newInvoice.Id;

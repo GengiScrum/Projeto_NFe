@@ -13,7 +13,8 @@ namespace Projeto_NFe.Application.Features.Invoices
             CreateMap<Invoice, InvoiceViewModel>()
                 .ForMember(i => i.IssuerBusinessName, m => m.MapFrom(v => v.Issuer.BusinessName))
                 .ForMember(i => i.AddresseBusinessName, m => m.MapFrom(v => v.Addressee.BusinessName))
-                .ForMember(i => i.ShippingCompanyBusinessName, m => m.MapFrom(v => v.ShippingCompany.BusinessName));
+                .ForMember(i => i.ShippingCompanyBusinessName, m => m.MapFrom(v => v.ShippingCompany.BusinessName))
+                .ForMember(i => i.EntryDate, m => m.MapFrom(im => im.EntryDate.ToString("yyyy-MM-ddTHH:mm:ssZ")));
             CreateMap<InvoiceUpdateCommand, Invoice>();
         }
     }

@@ -6,7 +6,7 @@ import { NDDTabsbarModule } from './../../shared/ndd-ng-tabsbar/component/ndd-ng
 import { NDDTitlebarModule } from './../../shared/ndd-ng-titlebar/component/ndd-ng-titlebar.module';
 import { SharedModule } from './../../shared/shared.module';
 
-import { ShippingCompanyGridService, ShippingCompanyService, ShippingCompanyResolveService } from './shared/shipping-company.service';
+import { ShippingCompanyGridService, ShippingCompanyResolveService } from './shared/shipping-company.service';
 import { ShippingCompanyRoutingModule } from './shipping-company.routing-module';
 import { ShippingCompanyViewComponent } from './shipping-company-view/shipping-company-view.component';
 import { ShippingCompanyListComponent } from './shipping-company-list/shipping-company-list.component';
@@ -14,6 +14,7 @@ import { ShippingCompanyDetailComponent } from './shipping-company-view/shipping
 import { ShippingCompanyFormComponent } from './shipping-company-form/shipping-company-form.component';
 import { ShippingCompanyRegisterFormComponent } from './shipping-company-register-form/shipping-company-register-form.component';
 import { ShippingCompanyEditFormComponent } from './shipping-company-view/shipping-company-edit-form/shipping-company-edit-form.component';
+import { ShippingCompanySharedModule } from './shared/shipping-company-shared.module';
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import { ShippingCompanyEditFormComponent } from './shipping-company-view/shippi
         NDDTitlebarModule,
         NDDTabsbarModule,
         TextMaskModule,
+        ShippingCompanySharedModule,
     ],
     exports: [],
     declarations: [
@@ -35,7 +37,6 @@ import { ShippingCompanyEditFormComponent } from './shipping-company-view/shippi
     ],
     providers: [
         ShippingCompanyGridService,
-        ShippingCompanyService,
         ShippingCompanyResolveService,
     ],
 })

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { GridModule } from '@progress/kendo-angular-grid/dist/es2015/grid.module';
 import { UiSwitchModule } from 'angular2-ui-switch';
 import { SharedModule } from './../../shared/shared.module';
-import { IssuerGridService, IssuerService, IssuerResolveService } from './shared/issuer.service';
+import { IssuerGridService, IssuerResolveService } from './shared/issuer.service';
 import { IssuerListComponent } from './issuer-list/issuer-list.component';
 import { IssuerFormComponent } from './issuer-form/issuer-form.component';
 import { IssuerRoutingModule } from './issuer-routing.module';
@@ -13,6 +13,7 @@ import { IssuerRegisterFormComponent } from './issuer-register-form/issuer-regis
 import { IssuerViewComponent } from './issuer-view/issuer-view.component';
 import { IssuerDetailComponent } from './issuer-view/issuer-detail/issuer-detail.component';
 import { TextMaskModule } from 'angular2-text-mask';
+import { IssuerSharedModule } from './shared/issuer-shared.module';
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import { TextMaskModule } from 'angular2-text-mask';
         NDDTitlebarModule,
         NDDTabsbarModule,
         TextMaskModule,
+        IssuerSharedModule,
     ],
     exports: [],
     declarations: [
@@ -33,7 +35,7 @@ import { TextMaskModule } from 'angular2-text-mask';
         IssuerDetailComponent,
         IssuerEditFormComponent,
     ],
-    providers: [ IssuerGridService, IssuerService, IssuerResolveService ],
+    providers: [ IssuerGridService, IssuerResolveService ],
 })
 export class IssuerModule{
 

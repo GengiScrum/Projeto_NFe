@@ -2,6 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
 import { SelectionEvent } from '@progress/kendo-angular-grid/dist/es2015/selection/selection.service';
 import { DataStateChangeEvent } from '@progress/kendo-angular-grid/dist/es2015/data/change-event-args.interface';
+
 import { InvoiceGridService, InvoiceService } from './../shared/invoice.service';
 import { GridUtilsComponent } from './../../../shared/grid-utils/grid-utils-component';
 
@@ -15,6 +16,10 @@ export class InvoiceListComponent extends GridUtilsComponent {
         private route: ActivatedRoute) {
         super();
         this.gridService.query(this.createFormattedState());
+    }
+
+    public onClick(): void {
+        this.router.navigate(['./cadastrar'], { relativeTo: this.route });
     }
 
     public dataStateChange(state: DataStateChangeEvent): void {

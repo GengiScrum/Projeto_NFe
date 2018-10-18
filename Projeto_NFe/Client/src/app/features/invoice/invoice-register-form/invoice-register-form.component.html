@@ -1,0 +1,21 @@
+<div class="feature-view">
+    <ndd-ng-titlebar titlebarIcon="ndd-font ndd-font-box-check" titlebarTitle="Cadastrar Nota Fiscal" [titlebarRouterToReturnOnClose]="returnRoute"></ndd-ng-titlebar>
+    <ndd-ng-tabsbar>
+        <ndd-ng-tab tabId="ndd-ng-tab-issuer-info" [tabRoute]="'./'" tabTitle="Dados Cadastrais"></ndd-ng-tab>
+    </ndd-ng-tabsbar>
+    <form (ngSubmit)="onSubmit()" [formGroup]="formModel" class="feature-view__content">
+        <div class="row">
+            <div class="col-sm-12">
+                <ndd-invoice-form [returnRoute]="'./notas-fiscais'" [form]="formModel"></ndd-invoice-form>
+            </div>
+        </div>
+        <div class="feature-view-tab__footer">
+            <button class="ndd-ng-button ndd-ng-button--primary" type="submit" [disabled]="formModel.invalid">Salvar</button>
+            <button class="ndd-ng-button ndd-ng-button--cancel" type="button" (click)="redirect()">Voltar</button>
+        </div>
+    </form>
+</div>
+
+
+<div class="ndd-ng-spinner__spinner" *ngIf="isLoading"></div>
+<div class="ndd-ng-spinner__color" *ngIf="isLoading"></div>
