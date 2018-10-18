@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 import { CORE_CONFIG_TOKEN, ICoreConfig } from './../../../core/core.config';
 import { AbstractResolveService } from '../../../core/utils/abstract-resolve.service';
-import { Addressee, AddresseeRemoveCommand, AddresseeRegisterCommand, AddresseeListViewModel } from './addressee.model';
+import { Addressee, AddresseeRemoveCommand, AddresseeRegisterCommand, AddresseeListViewModel, AddresseeUpdateCommand } from './addressee.model';
 import { BaseService } from './../../../core/utils/base-service';
 import { NDDBreadcrumbService } from './../../../shared/ndd-ng-breadcrumb/component/ndd-ng-breadcrumb.service';
 
@@ -33,7 +33,7 @@ export class AddresseeGridService extends BehaviorSubject<GridDataResult>{
             .get(`${this.config.apiEndpoint}api/addressees?${queryStr}`)
             .map((response: any): GridDataResult => ({
                 data: AddresseeListViewModel.createArray(response.items),
-                total: parseInt(response.cound, 10),
+                total: parseInt(response.count, 10),
             }))
             .do(() => this.loading = false);
     }
@@ -63,6 +63,10 @@ export class AddresseeService extends BaseService {
 
     public register(addresseeCmd: AddresseeRegisterCommand): Observable<Boolean> {
         return this.http.post(`${this.api}`, addresseeCmd).map((response: boolean) => response);
+    }
+
+    public update(addresseeCmd: AddresseeUpdateCommand): Observable<Boolean> {
+        return this.http.put(`${this.api}`, addresseeCmd).map((response: boolean) => response);
     }
 }
 

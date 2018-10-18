@@ -1,0 +1,17 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="formModel" class="feature-view-tab__content">
+    <div class="row">
+        <div class="col-sm-6">
+            <ndd-addressee-form [returnRoute]="'./destinatarios'" [form]="formModel" [enterprise]="enterprise" [person]="person"></ndd-addressee-form>
+        </div>
+        <div class="col-sm-6">
+            <ndd-address-form [form]="formModel.get('address')"></ndd-address-form>
+        </div>
+    </div>
+</form>
+<div class="feature-view-tab__footer">
+    <button class="ndd-ng-button ndd-ng-button--primary" type="submit" [disabled]="formModel.invalid">Salvar</button>
+    <button class="ndd-ng-button ndd-ng-button--cancel" type="button" (click)="redirect()">Voltar</button>
+</div>
+
+<div class="ndd-ng-spinner__spinner" *ngIf="isLoading"></div>
+<div class="ndd-ng-spinner__color" *ngIf="isLoading"></div>

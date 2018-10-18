@@ -60,6 +60,31 @@ export class AddresseeRegisterCommand {
     }
 }
 
+export class AddresseeUpdateCommand {
+    public id: number;
+    public businessName: string;
+    public corporateName: string;
+    public cnpj: string;
+    public cpf: string;
+    public personType: string;
+    public stateRegistration: string;
+    public address: AddressCommand;
+
+    constructor(addressee: any, id: number) {
+        this.id = id;
+        this.businessName = addressee.businessName;
+        this.personType = addressee.personType;
+        this.address = addressee.address;
+        if (this.personType === PersonType.PERSON) {
+            this.cpf = addressee.person.cpf;
+        } else {
+            this.cnpj = addressee.enterprise.cnpj;
+            this.stateRegistration = addressee.enterprise.stateRegistration;
+            this.corporateName = addressee.enterprise.corporateName;
+        }
+    }
+}
+
 export class AddresseeRemoveCommand {
     public addresseesId: number[] = [];
 

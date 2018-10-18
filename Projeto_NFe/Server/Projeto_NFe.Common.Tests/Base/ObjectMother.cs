@@ -389,12 +389,7 @@ namespace Projeto_NFe.Common.Tests
             addressee.CorporateName = "NDDIGITAL S/A - SOFTWARE";
             addressee.Cnpj = "12.345.678/0009-09";
             addressee.StateRegistration = "12.234.5678-9";
-            addressee.StreetName = "Rua Avenida";
-            addressee.Number = 400;
-            addressee.Neighborhood = "Coral";
-            addressee.City = "Lages";
-            addressee.State = "SC";
-            addressee.Country = "Brasil";
+            addressee.Address = AddressCommandToRegister();
             return addressee;
         }
 
