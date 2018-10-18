@@ -54,7 +54,7 @@ export class AddresseeService extends BaseService {
     }
 
     public getAll(): Observable<Addressee[]> {
-        return this.http.get(`${this.api}`).map((response: Addressee[]) => response);
+        return this.http.get(`${this.api}`).map((response: any) => response.items);
     }
 
     public remove(addresseeCmd: AddresseeRemoveCommand): Observable<Boolean> {

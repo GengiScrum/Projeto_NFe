@@ -3,6 +3,7 @@ using Projeto_NFe.API.Controllers.Base;
 using Projeto_NFe.API.Filters;
 using Projeto_NFe.Application.Features.Issuers;
 using Projeto_NFe.Application.Features.Issuers.Commands;
+using Projeto_NFe.Application.Features.Issuers.Queries;
 using Projeto_NFe.Application.Features.Issuers.ViewModel;
 using Projeto_NFe.Domain.Features.Issuers;
 using System;
@@ -30,7 +31,18 @@ namespace Projeto_NFe.API.Controllers.Issuers
         [ODataQueryOptionsValidate]
         public IHttpActionResult GetAll(ODataQueryOptions<Issuer> queryOptions)
         {
-            var query = _issuerService.GetAll();
+            var queryString = Request.GetQueryNameValuePairs()
+                                                .Where(x => x.Key.Equals("size"))
+                                                .FirstOrDefault();
+
+            var query = default(IQueryable<Issuer>);
+            int size = 0;
+            if (queryString.Key != null && int.TryParse(queryString.Value, out size))
+            {
+                query = _issuerService.GetAll(new IssuerQuery(size));
+            }
+            else
+                query = _issuerService.GetAll();
 
             return HandleQueryable<Issuer, IssuerViewModel>(query, queryOptions);
         }

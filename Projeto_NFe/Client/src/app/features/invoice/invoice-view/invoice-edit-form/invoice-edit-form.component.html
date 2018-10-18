@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="formModel">
+        <div class="feature-view__content">
+            <div class="row">
+                <div class="col-sm-6">
+                    <ndd-invoice-form [returnRoute]="'./notas-fiscais'" [form]="formModel"></ndd-invoice-form>
+                </div>
+            </div>
+        </div>
+        <div class="feature-view-tab__footer">
+            <button class="ndd-ng-button ndd-ng-button--primary" type="submit" [disabled]="formModel.invalid">Salvar</button>
+            <button class="ndd-ng-button ndd-ng-button--cancel" type="button" (click)="redirect()">Voltar</button>
+        </div>
+    </form>
+    
+    <div class="ndd-ng-spinner__spinner" *ngIf="isLoading"></div>
+    <div class="ndd-ng-spinner__color" *ngIf="isLoading"></div>

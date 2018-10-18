@@ -16,13 +16,13 @@ namespace Projeto_NFe.Infra.ORM.Features.Invoices
 
             HasKey(invoice => invoice.Id);
 
-            Property(invoice => invoice.AcessKey).HasColumnType("varchar").HasColumnName("AccesKey").HasMaxLength(44); ;
-
             Property(invoice => invoice.OperationNature).HasColumnType("varchar").HasColumnName("OperationNature").IsOptional();
 
             Property(invoice => invoice.EntryDate).HasColumnType("datetime").HasColumnName("EntryDate");
 
-            Property(invoice => invoice.IssueDate).HasColumnType("datetime").HasColumnName("IssueDate");
+            Ignore(invoice => invoice.IssueDate);
+
+            Ignore(invoice => invoice.AcessKey);
 
             Property(invoice => invoice.AddresseeId).HasColumnName("AddresseeId");
             HasOptional(invoice => invoice.Addressee)

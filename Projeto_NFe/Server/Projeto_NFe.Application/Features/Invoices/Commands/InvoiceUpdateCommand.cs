@@ -15,12 +15,12 @@ namespace Projeto_NFe.Application.Features.Invoices.Commands
     public class InvoiceUpdateCommand
     {
         public virtual int Id { get; set; }
-        public int IssuerId { get; set; }
-        public int AddresseeId { get; set; }
-        public int ShippingCompanyId { get; set; }
+        public int? IssuerId { get; set; }
+        public int? AddresseeId { get; set; }
+        public int? ShippingCompanyId { get; set; }
         public DateTime EntryDate { get; set; }
         public string OperationNature { get; set; }
-        public List <ProductSoldUpdateCommand> ProductSolds { get; set; }
+        public IEnumerable <ProductSoldUpdateCommand> ProductSolds { get; set; }
 
         public virtual ValidationResult Validate()
         {

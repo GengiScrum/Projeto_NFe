@@ -15,9 +15,9 @@ namespace Projeto_NFe.Application.Features.Invoices.Commands
     [ExcludeFromCodeCoverage]
     public class InvoiceRegisterCommand
     {
-        public int IssuerId { get; set; }
-        public int AddresseeId { get; set; }
-        public int ShippingCompanyId { get; set; }
+        public int? IssuerId { get; set; }
+        public int? AddresseeId { get; set; }
+        public int? ShippingCompanyId { get; set; }
         public DateTime EntryDate { get; set; }
         public string OperationNature { get; set; }
         public List<ProductSoldRegisterCommand> ProductSolds { get; set; }

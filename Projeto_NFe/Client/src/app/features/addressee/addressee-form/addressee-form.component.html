@@ -9,8 +9,8 @@
             <div class="row feature-view__group">
                 <div class="col-sm-12 feature-view__body">
                     <div>
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('businessName')">{{
-                            nome }} *</span>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('businessName')">
+                            {{ nome }} *</span>
                     </div>
                     <input formControlName="businessName" class="form__input" type="text"
                         [class.form__input__border-red]="getFormError('businessName')">

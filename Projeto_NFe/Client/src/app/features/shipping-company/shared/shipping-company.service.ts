@@ -58,6 +58,10 @@ export class ShippingCompanyService extends BaseService {
         return this.http.get(`${this.api}/${id}`).map((response: ShippingCompany) => response);
     }
 
+    public getAll(): Observable<ShippingCompany[]> {
+        return this.http.get(`${this.api}`).map((response: any) => response.items);
+    }
+
     public remove(shippingCompanyCmd: ShippingCompanyRemoveCommand): Observable<Boolean> {
         return this.deleteRequestWithBody(`${this.api}`, shippingCompanyCmd);
     }

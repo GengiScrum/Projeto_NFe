@@ -54,7 +54,7 @@ export class IssuerService extends BaseService {
     }
 
     public getAll(): Observable<Issuer[]> {
-        return this.http.get(`${this.api}`).map((response: Issuer[]) => response);
+        return this.http.get(`${this.api}`).map((response: any) => response.items);
     }
 
     public getByName(filterValue: string): any {

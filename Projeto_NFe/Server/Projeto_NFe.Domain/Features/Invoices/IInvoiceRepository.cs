@@ -13,5 +13,6 @@ namespace Projeto_NFe.Domain.Features.Invoices
         bool Remove(int id);
         Invoice GetById(int id);
         IQueryable<Invoice> GetAll();
+        IQueryable<Invoice> GetAll(int quantity);
     }
 }
