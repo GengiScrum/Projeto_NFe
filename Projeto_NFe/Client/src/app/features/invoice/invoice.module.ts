@@ -16,6 +16,8 @@ import { AddresseeSharedModule } from '../addressee/shared/addressee-shared.modu
 import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 import { InvoiceDetailComponent } from './invoice-view/invoice-detail/invoice-detail.component';
 import { InvoiceEditFormComponent } from './invoice-view/invoice-edit-form/invoice-edit-form.component';
+import { InvoiceProductDetailComponent } from './invoice-view/invoice-product-detail/invoice-product-detail.component';
+import { ProductSharedModule } from './../product/shared/product-shared.module';
 
 @NgModule({
     imports: [
@@ -27,6 +29,7 @@ import { InvoiceEditFormComponent } from './invoice-view/invoice-edit-form/invoi
         ShippingCompanySharedModule,
         IssuerSharedModule,
         AddresseeSharedModule,
+        ProductSharedModule,
     ],
     exports: [],
     declarations: [
@@ -36,6 +39,7 @@ import { InvoiceEditFormComponent } from './invoice-view/invoice-edit-form/invoi
         InvoiceViewComponent,
         InvoiceDetailComponent,
         InvoiceEditFormComponent,
+        InvoiceProductDetailComponent,
     ],
     providers: [
         InvoiceGridService,

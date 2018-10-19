@@ -14,6 +14,7 @@ namespace Projeto_NFe.Application.Features.ProductSolds
         public MappingProfile()
         {
             CreateMap<ProductSoldRegisterCommand, ProductSold>();
+            CreateMap<ProductSoldUpdateCommand, ProductSold>();
         }
     }
 }

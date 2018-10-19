@@ -5,6 +5,7 @@ using Projeto_NFe.Application.Features.Invoices;
 using Projeto_NFe.Application.Features.Invoices.Commands;
 using Projeto_NFe.Application.Features.Invoices.Queries;
 using Projeto_NFe.Application.Features.Invoices.ViewModels;
+using Projeto_NFe.Application.Features.ProductSolds.Commands;
 using Projeto_NFe.Domain.Features.Invoices;
 using System;
 using System.Collections.Generic;
@@ -80,6 +81,17 @@ namespace Projeto_NFe.API.Controllers.Invoices
                 return HandleValidationFailure(validator.Errors);
 
             return HandleCallback(_invoiceService.Update(command));
+        }
+
+        [HttpPatch]
+        public IHttpActionResult UpdateSoldProducts(InvoiceUpdateProductsCommand command)
+        {
+            var validator = command.Validate();
+
+            if (!validator.IsValid)
+                return HandleValidationFailure(validator.Errors);
+
+            return HandleCallback(_invoiceService.UpdateProducts(command));
         }
 
         #endregion HttpPut

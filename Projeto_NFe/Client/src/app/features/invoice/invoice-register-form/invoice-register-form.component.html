@@ -1,5 +1,5 @@
 <div class="feature-view">
-    <ndd-ng-titlebar titlebarIcon="ndd-font ndd-font-box-check" titlebarTitle="Cadastrar Nota Fiscal"
+    <ndd-ng-titlebar titlebarIcon="ndd-font ndd-font-invoice" titlebarTitle="Cadastrar Nota Fiscal"
         [titlebarRouterToReturnOnClose]="returnRoute"></ndd-ng-titlebar>
     <ndd-ng-tabsbar>
         <ndd-ng-tab tabId="ndd-ng-tab-issuer-info" [tabRoute]="'./'" tabTitle="Dados Cadastrais"></ndd-ng-tab>
@@ -8,7 +8,8 @@
         <div class="feature-view-tab__content">
             <div class="row">
                 <div class="col-sm-8">
-                    <ndd-invoice-form [returnRoute]="'./notas-fiscais'" [form]="formModel"></ndd-invoice-form>
+                    <ndd-invoice-form [returnRoute]="'./notas-fiscais'" [form]="formModel"
+                        (addProduct)="createProductSold()" (removeProduct)="removeProductSold()"></ndd-invoice-form>
                 </div>
             </div>
         </div>

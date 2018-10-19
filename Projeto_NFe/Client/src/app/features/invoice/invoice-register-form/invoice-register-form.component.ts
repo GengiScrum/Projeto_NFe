@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { InvoiceRegisterCommand } from '../shared/invoice.model';
 import { InvoiceService } from '../shared/invoice.service';
+import { Product } from './../../product/shared/product.model';
 
 @Component({
     templateUrl: './invoice-register-form.component.html',
@@ -35,6 +36,17 @@ export class InvoiceRegisterFormComponent {
         this.router.navigate(['/notas-fiscais']);
     }
 
+    public createProductSold(product: Product, quantity: Number): FormGroup {
+        return this.fb.group({
+            quantity: [quantity],
+            product: this.fb.group({
+                code: [product.code],
+                description: [product.description],
+                unitaryValue: [product.unitaryValue],
+            }),
+        });
+    }
+
     private arrangeForm(): void {
         this.formModel = this.fb.group({
             issuerId: [''],
@@ -42,6 +54,8 @@ export class InvoiceRegisterFormComponent {
             addresseeId: [''],
             operationNature: [''],
             entryDate: [(new Date()).toISOString().split('T')[0]],
+            ProductSolds: this.fb.array([
+            ]),
         });
     }
 }

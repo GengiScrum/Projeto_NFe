@@ -1,5 +1,6 @@
 ﻿using Projeto_NFe.Application.Features.Invoices.Commands;
 using Projeto_NFe.Application.Features.Invoices.Queries;
+using Projeto_NFe.Application.Features.ProductSolds.Commands;
 using Projeto_NFe.Domain.Features.Invoices;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Projeto_NFe.Application.Features.Invoices
     {
         int Add(InvoiceRegisterCommand command);
         bool Update(InvoiceUpdateCommand command);
+        bool UpdateProducts(InvoiceUpdateProductsCommand command);
         bool Remove(InvoiceRemoveCommand command);
         Invoice GetById(int id);
         IQueryable<Invoice> GetAll();

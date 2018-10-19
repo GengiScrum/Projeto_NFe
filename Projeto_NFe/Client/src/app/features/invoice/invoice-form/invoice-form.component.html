@@ -54,6 +54,23 @@
                     </select>
                 </div>
             </div>
+
+
+            <div class="row feature-view__group">
+                <div class="col-sm-6 feature-view__body">
+                    <div>
+                        <span class="feature-view__label">Produtos</span>
+                    </div>
+                    <select name="product" class="form__input">
+                        <option *ngFor="let p of products" value="{{ p }}">{{ p.description }}</option>
+                    </select>
+                </div>                
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <i class="fa fa-plus" (click)="add()"></i>
+                </div>
+            </div>
             
 
         </form>

@@ -1,6 +1,7 @@
 import { GridModule } from '@progress/kendo-angular-grid';
 import { NgModule } from '@angular/core';
 import { TextMaskModule } from 'angular2-text-mask';
+import { RippleModule } from '@progress/kendo-angular-ripple'; 
 import { UiSwitchModule } from 'angular2-ui-switch';
 
 import { AddresseeRoutingModule } from './addressee.routing-module';

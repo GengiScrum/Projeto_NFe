@@ -15,6 +15,7 @@ namespace Projeto_NFe.Application.Features.Invoices
                 .ForMember(i => i.AddresseeBusinessName, m => m.MapFrom(v => v.Addressee != null ? v.Addressee.BusinessName : string.Empty))
                 .ForMember(i => i.ShippingCompanyBusinessName, m => m.MapFrom(v => v.ShippingCompany != null ? v.ShippingCompany.BusinessName : string.Empty));
             CreateMap<InvoiceUpdateCommand, Invoice>();
+            CreateMap<InvoiceUpdateProductsCommand, Invoice>();
         }
     }
 }

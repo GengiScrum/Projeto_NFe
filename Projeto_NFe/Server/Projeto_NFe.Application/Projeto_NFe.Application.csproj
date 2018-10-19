@@ -69,6 +69,7 @@
     <Compile Include="Features\Invoices\Commands\InvoiceRegisterCommand.cs" />
     <Compile Include="Features\Invoices\Commands\InvoiceRemoveCommand.cs" />
     <Compile Include="Features\Invoices\Commands\InvoiceUpdateCommand.cs" />
+    <Compile Include="Features\Invoices\Commands\InvoiceUpdateProductsCommand.cs" />
     <Compile Include="Features\Invoices\IInvoiceService.cs" />
     <Compile Include="Features\Invoices\MappingProfile.cs" />
     <Compile Include="Features\Invoices\Queries\InvoiceQuery.cs" />

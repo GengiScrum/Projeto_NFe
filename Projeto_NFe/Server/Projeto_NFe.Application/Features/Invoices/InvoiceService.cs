@@ -40,6 +40,15 @@ namespace Projeto_NFe.Application.Features.Invoices
             return _invoiceRepository.Update(invoice);
         }
 
+        public bool UpdateProducts(InvoiceUpdateProductsCommand command)
+        {
+            var invoice = _invoiceRepository.GetById(command.Id);
+            if (invoice == null)
+                throw new NotFoundException();
+            Mapper.Map(command, invoice);
+            return _invoiceRepository.Update(invoice);
+        }
+
         public bool Remove(InvoiceRemoveCommand command)
         {
             var isRemovedAll = true;

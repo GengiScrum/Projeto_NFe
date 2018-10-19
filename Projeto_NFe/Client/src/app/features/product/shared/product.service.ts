@@ -54,7 +54,7 @@ export class ProductService extends BaseService {
     }
 
     public getAll(): Observable<Product[]> {
-        return this.http.get(`${this.api}`).map((response: Product[]) => response);
+        return this.http.get(`${this.api}`).map((response: any) => response.items);
     }
 
     public remove(productCmd: ProductRemoveCommand): Observable<Boolean> {

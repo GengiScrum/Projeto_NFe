@@ -1,0 +1,24 @@
+<div class="feature-view-tab__content">
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="feature-view__title">Produtos</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <kendo-grid [style.height]="'100%'" [data]="gridService | async" [loading]="gridService.loading" [pageSize]="state.take"
+                    [selectable]="selectableSettings" [skip]="state.skip" [sort]="state.sort" [sortable]="true" [pageable]="pageableSettings"
+                    [scrollable]="'true'" (dataStateChange)="dataStateChange($event)" (selectionChange)="onSelectionChange($event)">
+
+                    <kendo-grid-checkbox-column width="10"></kendo-grid-checkbox-column>
+                    <kendo-grid-column field="id" title="ID" width="40"></kendo-grid-column>
+                    <kendo-grid-column field="code" title="Codigo" width="90"></kendo-grid-column>
+                    <kendo-grid-column field="description" title="Descrição" width="90"></kendo-grid-column>
+                    <kendo-grid-column field="unitaryValue" title="Valor Unitario" width="90"></kendo-grid-column>
+                </kendo-grid>
+            </div>
+        </div>
+    </div>
+
+</div>
