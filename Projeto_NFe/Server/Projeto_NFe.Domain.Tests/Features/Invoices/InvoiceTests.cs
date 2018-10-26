@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Projeto_NFe.Domain.Features.ProductsSold;
+using Projeto_NFe.Domain.Features.SoldProducts;
 
 namespace Projeto_NFe.Domain.Tests.Features.Invoices
 {
@@ -24,7 +24,7 @@ namespace Projeto_NFe.Domain.Tests.Features.Invoices
         Mock<Issuer> _mockIssuer;
         Mock<ShippingCompany> _mockShippingCompany;
         Mock<Addressee> _mockAddressee;
-        Mock<ProductSold> _mockProductSold;
+        Mock<SoldProduct> _mockSoldProduct;
         Mock<InvoiceTax> _mockInvoiceTax;
         Invoice _invoice;
 
@@ -34,7 +34,7 @@ namespace Projeto_NFe.Domain.Tests.Features.Invoices
             _mockIssuer = new Mock<Issuer>();
             _mockShippingCompany = new Mock<ShippingCompany>();
             _mockAddressee = new Mock<Addressee>();
-            _mockProductSold = new Mock<ProductSold>();
+            _mockSoldProduct = new Mock<SoldProduct>();
             _mockInvoiceTax = new Mock<InvoiceTax>();
             _invoice = new Invoice();
         }
@@ -44,15 +44,15 @@ namespace Projeto_NFe.Domain.Tests.Features.Invoices
         {
             //Arrange
             _invoice = ObjectMother.InvoiceWithoutIdNeedMock();
-            _invoice.ProductSolds = new List<ProductSold>() { _mockProductSold.Object };
-            _mockInvoiceTax.Setup(imnf => imnf.Calculate(_invoice.ProductSolds));
+            _invoice.SoldProducts = new List<SoldProduct>() { _mockSoldProduct.Object };
+            _mockInvoiceTax.Setup(imnf => imnf.Calculate(_invoice.SoldProducts));
             _invoice.InvoiceTax = _mockInvoiceTax.Object;
 
             //Action
             _invoice.CalculateTax();
 
             //Verificar
-            _mockInvoiceTax.Verify(imnf => imnf.Calculate(_invoice.ProductSolds));
+            _mockInvoiceTax.Verify(imnf => imnf.Calculate(_invoice.SoldProducts));
         }
 
         [Test]
@@ -64,9 +64,9 @@ namespace Projeto_NFe.Domain.Tests.Features.Invoices
             _invoice.Issuer = _mockIssuer.Object;
             _invoice.ShippingCompany = _mockShippingCompany.Object;
             _invoice.Addressee = _mockAddressee.Object;
-            _mockInvoiceTax.Setup(imnf => imnf.Calculate(_invoice.ProductSolds));
+            _mockInvoiceTax.Setup(imnf => imnf.Calculate(_invoice.SoldProducts));
             _invoice.InvoiceTax = _mockInvoiceTax.Object;
-            _invoice.ProductSolds = new List<ProductSold>() { _mockProductSold.Object };
+            _invoice.SoldProducts = new List<SoldProduct>() { _mockSoldProduct.Object };
 
             //Action
             _invoice.Issue();
@@ -84,7 +84,7 @@ namespace Projeto_NFe.Domain.Tests.Features.Invoices
             _mockIssuer = null;
             _mockShippingCompany = null;
             _mockAddressee = null;
-            _mockProductSold = null;
+            _mockSoldProduct = null;
             _invoice = null;
         }
     }

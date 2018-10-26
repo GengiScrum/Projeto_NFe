@@ -13,4 +13,8 @@ export class ProductFormComponent {
     public getFormError(formControlName: string): boolean {
         return this.form.get(formControlName).errors && this.form.get(formControlName).touched;
     }
+
+    public getTaxFormError(formControlName: string): boolean {
+        return this.form.get('tax').get(formControlName).errors && this.form.get('tax').get(formControlName).touched;
+    }
 }

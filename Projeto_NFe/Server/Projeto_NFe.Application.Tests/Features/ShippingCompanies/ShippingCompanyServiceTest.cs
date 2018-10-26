@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Projeto_NFe.Application.Features.ShippingCompanies;
+using Projeto_NFe.Application.Features.ShippingCompanies.Queries;
 
 namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
 {
@@ -107,14 +108,30 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
             //Arrange
             var shippingCompanyCmd = ObjectMother.ShippingCompanyCommandToRemove();
             var mockWasRemoved = true;
-            _mockShippingCompanyRepository.Setup(e => e.Remove(shippingCompanyCmd.Ids.First())).Returns(mockWasRemoved);
+            _mockShippingCompanyRepository.Setup(e => e.Remove(It.IsAny<int>())).Returns(mockWasRemoved);
 
             //Action
             var productRemoved = _shippingCompanyService.Remove(shippingCompanyCmd);
 
             //Verificar
-            _mockShippingCompanyRepository.Verify(e => e.Remove(shippingCompanyCmd.Ids.First()), Times.Once);
+            _mockShippingCompanyRepository.Verify(e => e.Remove(It.IsAny<int>()), Times.Once);
             productRemoved.Should().BeTrue();
+        }
+
+        [Test]
+        public void ShippingCompany_Service_Remove_ReturnFalse()
+        {
+            //Arrange
+            var shippingCompanyCmd = ObjectMother.ShippingCompanyCommandToRemove();
+            var mockWasRemoved = false;
+            _mockShippingCompanyRepository.Setup(e => e.Remove(It.IsAny<int>())).Returns(mockWasRemoved);
+
+            //Action
+            var removed = _shippingCompanyService.Remove(shippingCompanyCmd);
+
+            //Assert
+            _mockShippingCompanyRepository.Verify(e => e.Remove(It.IsAny<int>()), Times.Once);
+            removed.Should().BeFalse();
         }
 
         [Test]
@@ -184,6 +201,27 @@ namespace Projeto_NFe.Application.Tests.Features.ShippingCompanies
             shippingCompanysResultado.Should().NotBeNull();
             shippingCompanysResultado.First().Should().Be(shippingCompany);
             shippingCompanysResultado.Count().Should().Be(mockValueRepository.Count());
+        }
+
+        [Test]
+        public void ShippingCompany_Service_GetAllWithQuantity_Sucessfully()
+        {
+            //Arrange
+            int quantity = 2;
+            var shippingCompany = ObjectMother.ShippingCompanyValidWithIdWithAddress();
+            var shippingCompanyQuery = new Mock<ShippingCompanyQuery>();
+            shippingCompanyQuery.Object.Quantity = quantity;
+            var mockValueRepository = new List<ShippingCompany>() { shippingCompany, shippingCompany }.AsQueryable();
+            _mockShippingCompanyRepository.Setup(er => er.GetAll(It.IsAny<int>())).Returns(mockValueRepository);
+
+            //Action
+            var shippingCompanys = _shippingCompanyService.GetAll(shippingCompanyQuery.Object);
+
+            //Assert
+            _mockShippingCompanyRepository.Verify(er => er.GetAll(It.IsAny<int>()), Times.Once);
+            shippingCompanys.Should().NotBeNull();
+            shippingCompanys.First().Should().Be(shippingCompany);
+            shippingCompanys.Count().Should().Be(mockValueRepository.Count());
         }
 
         #endregion

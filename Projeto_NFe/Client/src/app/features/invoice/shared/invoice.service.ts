@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { NDDBreadcrumbService } from './../../../shared/ndd-ng-breadcrumb/component/ndd-ng-breadcrumb.service';
-import { Invoice, InvoiceRemoveCommand, InvoiceRegisterCommand, InvoiceUpdateCommand } from './invoice.model';
+import { Invoice, InvoiceRemoveCommand, InvoiceRegisterCommand,
+    InvoiceUpdateCommand, InvoiceAddProductCommand, InvoiceRemoveProductsCommand } from './invoice.model';
 import { BaseService } from './../../../core/utils/base-service';
 import { Observable } from 'rxjs/Observable';
 import { State, toODataString } from '@progress/kendo-data-query';
@@ -40,13 +41,42 @@ export class InvoiceGridService extends BehaviorSubject<GridDataResult>{
 }
 
 @Injectable()
+export class InvoiceProductGridService extends BehaviorSubject<GridDataResult>{
+    public loading: boolean;
+
+    constructor(private httpClient: HttpClient,
+        @Inject(CORE_CONFIG_TOKEN) private config: ICoreConfig) {
+        super(null);
+    }
+
+    public query(invoiceId: number, state: State): void {
+        this.fetch(invoiceId, state).subscribe((result: GridDataResult) => super.next(result));
+    }
+
+    protected fetch(invoiceId: number, state: any): Observable<GridDataResult> {
+        const queryStr: string = `${toODataString(state)}&$count=true`;
+        this.loading = true;
+
+        return this.httpClient
+            .get(`${this.config.apiEndpoint}api/invoices/${invoiceId}/soldproducts?${queryStr}`)
+            .map((response: any): GridDataResult => ({
+                data: response.items,
+                total: parseInt(response.count, 10),
+            }))
+            .do(() => this.loading = false);
+    }
+}
+
+@Injectable()
 export class InvoiceService extends BaseService {
     private api: string;
+    private soldProductsApi: string;
 
     constructor( @Inject(CORE_CONFIG_TOKEN) config: ICoreConfig,
         public http: HttpClient) {
         super(http);
         this.api = `${config.apiEndpoint}api/invoices`;
+        this.soldProductsApi = `${this.api}/soldproducts`;
     }
 
     public get(id: number): Observable<Invoice> {
@@ -54,7 +84,7 @@ export class InvoiceService extends BaseService {
     }
 
     public getAll(): Observable<Invoice[]> {
-        return this.http.get(`${this.api}`).map((response: Invoice[]) => response);
+        return this.http.get(`${this.api}`).map((response: any) => response.items);
     }
 
     public getByName(filterValue: string): any {
@@ -75,6 +105,14 @@ export class InvoiceService extends BaseService {
 
     public update(invoiceCmd: InvoiceUpdateCommand): Observable<Invoice> {
         return this.http.put(this.api, invoiceCmd).map((response: Invoice) => response);
+    }
+
+    public addProduct(invoiceCmd: InvoiceAddProductCommand): Observable<Invoice> {
+        return this.http.post(this.soldProductsApi, invoiceCmd).map((response: Invoice) => response);
+    }
+
+    public removeProducts(invoiceCmd: InvoiceRemoveProductsCommand): Observable<boolean> {
+        return this.deleteRequestWithBody(this.soldProductsApi, invoiceCmd);
     }
 }
 

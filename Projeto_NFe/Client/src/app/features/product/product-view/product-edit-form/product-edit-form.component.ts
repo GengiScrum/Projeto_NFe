@@ -6,10 +6,10 @@ import { Product, ProductUpdateCommand } from './../../shared/product.model';
 import { ProductService, ProductResolveService } from './../../shared/product.service';
 
 @Component({
-    templateUrl:'./product-edit-form.component.html',
+    templateUrl: './product-edit-form.component.html',
 })
 
-export class ProductEditFormComponent implements OnInit, OnDestroy{
+export class ProductEditFormComponent implements OnInit, OnDestroy {
     public product: Product;
     public isLoading: boolean;
     public form: FormGroup;
@@ -25,6 +25,10 @@ export class ProductEditFormComponent implements OnInit, OnDestroy{
             code: ['', Validators.required],
             description: ['', Validators.required],
             unitaryValue: ['', Validators.required],
+            tax: this.fb.group({
+                icmsAliquot: ['4', Validators.required],
+                ipiAliquot: ['10', Validators.required],
+            }),
         });
     }
 
@@ -51,12 +55,13 @@ export class ProductEditFormComponent implements OnInit, OnDestroy{
             .subscribe(() => {
                 this.isLoading = false;
                 this.resolver.resolveFromRouteAndNotify();
+                alert('Produto atualizado com sucesso.');
                 this.redirect();
             });
     }
 
     public redirect(): void {
-        this.router.navigate(['../'],  { relativeTo: this.route});
+        this.router.navigate(['../'], { relativeTo: this.route });
     }
 
     private populateForm(): void {
@@ -64,6 +69,10 @@ export class ProductEditFormComponent implements OnInit, OnDestroy{
             code: this.product.code,
             description: this.product.description,
             unitaryValue: this.product.unitaryValue,
+        });
+        this.form.get('tax').patchValue({
+            icmsAliquot: this.product.icmsAliquot,
+            ipiAliquot: this.product.ipiAliquot,
         });
     }
 }

@@ -13,12 +13,14 @@ namespace Projeto_NFe.Application.Features.IssuedInvoices
         IIssuedInvoiceXMLRepository _repositoryXML;
         IInvoicePDFRepository _repositoryPDF;
         IIssuedInvoiceRepository _issuedInvoiceRepository;
+        IInvoiceRepository _invoiceRepository;
 
-        public IssuedInvoiceService(IIssuedInvoiceXMLRepository repositoryXML, IInvoicePDFRepository repositoryPDF, IIssuedInvoiceRepository issuedInvoiceRepository)
+        public IssuedInvoiceService(IIssuedInvoiceXMLRepository repositoryXML, IInvoicePDFRepository repositoryPDF, IIssuedInvoiceRepository issuedInvoiceRepository, IInvoiceRepository invoiceRepository)
         {
             _repositoryXML = repositoryXML;
             _repositoryPDF = repositoryPDF;
             _issuedInvoiceRepository = issuedInvoiceRepository;
+            _invoiceRepository = invoiceRepository;
         }
 
         public void ExportToPDF(Invoice invoice, string file)
@@ -34,8 +36,6 @@ namespace Projeto_NFe.Application.Features.IssuedInvoices
 
         public Invoice GetById(int id)
         {
-            if (id == 0)
-                throw new IdentifierUndefinedException();
             return _issuedInvoiceRepository.GetById(id);
         }
 
@@ -43,18 +43,5 @@ namespace Projeto_NFe.Application.Features.IssuedInvoices
         {
             return _issuedInvoiceRepository.GetAll();
         }
-
-        public void Issue(IssuedInvoiceRegisterCommand IssuedInvoice)
-        {
-            //if (IssuedInvoice. == 0)
-            //    throw new IdentifierUndefinedException();
-
-            //invoice.Issue();
-            //if (_issuedInvoiceRepository.CheckAcessKey(invoice.AcessKey))
-            //    Issue(invoice);
-            //_issuedInvoiceRepository.Add(invoice);
-            //_invoiceRepository.Remove(invoice.Id);
-        }
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Projeto_NFe.Domain.Features.Invoices;
+using Projeto_NFe.Domain.Features.SoldProducts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
@@ -33,6 +34,8 @@ namespace Projeto_NFe.Infra.ORM.Features.Invoices
             HasOptional(invoice => invoice.InvoiceTax)
             .WithMany()
             .HasForeignKey(invoice => invoice.InvoiceTaxId);
+
+            HasMany(invoice => invoice.SoldProducts).WithRequired(p => p.Invoice).HasForeignKey(p => p.InvoiceId).WillCascadeOnDelete();
 
             Property(invoice => invoice.ShippingCompanyId).HasParameterName("ShippingCompanyId");
             HasOptional(invoice => invoice.ShippingCompany)

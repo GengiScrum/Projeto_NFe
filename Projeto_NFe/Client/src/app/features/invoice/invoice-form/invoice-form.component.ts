@@ -32,7 +32,9 @@ export class InvoiceFormComponent implements OnInit {
                     .subscribe((issuers: Issuer[]) => {
                         this.issuers = issuers;
                         this.shippingCompanyService.getAll().take(1)
-                            .subscribe((shippingCompanies: ShippingCompany[]) => this.shippingCompanies = shippingCompanies);
+                            .subscribe((shippingCompanies: ShippingCompany[]) => {
+                                this.shippingCompanies = shippingCompanies;
+                            });
                     });
             });
     }

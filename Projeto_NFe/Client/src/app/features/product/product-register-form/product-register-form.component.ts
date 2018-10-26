@@ -18,6 +18,10 @@ export class ProductRegisterFormComponent {
             code: ['', Validators.required],
             description: ['', Validators.required],
             unitaryValue: ['', Validators.required],
+            tax: this.fb.group({
+                icmsAliquot: ['4', Validators.required],
+                ipiAliquot: ['10', Validators.required],
+            }),
         });
     }
 
@@ -27,6 +31,7 @@ export class ProductRegisterFormComponent {
             = new ProductRegisterCommand(this.form.value);
         this.service.register(productRegisterCommand).take(1).subscribe(() => {
             this.isLoading = false;
+            alert('Produto registrado com sucesso.');
             this.redirect();
         });
     }

@@ -57,9 +57,9 @@
     <Compile Include="Features\InvoiceTaxes\InvoiceTaxModel.cs" />
     <Compile Include="Features\ProductTaxes\ProductTaxModel.cs" />
     <Compile Include="Features\Invoices\InvoiceModel.cs" />
-    <Compile Include="Features\ProductsSold\ProductSoldMapper.cs" />
+    <Compile Include="Features\SoldProducts\SoldProductMapper.cs" />
     <Compile Include="Features\Products\ProductModel.cs" />
-    <Compile Include="Features\ProductsSold\ProductSoldModel.cs" />
+    <Compile Include="Features\SoldProducts\SoldProductModel.cs" />
     <Compile Include="Features\ShippingCompanies\ShippingCompanyMapper.cs" />
     <Compile Include="Features\ShippingCompanies\ShippingCompanyModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

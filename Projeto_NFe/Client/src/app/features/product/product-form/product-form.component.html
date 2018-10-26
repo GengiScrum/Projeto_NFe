@@ -13,29 +13,62 @@
                     </div>
                     <input formControlName="code" class="form__input" type="text" [class.form__input__border-red]="getFormError('code')">
                     <div *ngIf="getFormError('code')">
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('code')">Campo requerido</span>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('code')">Campo
+                            requerido</span>
                     </div>
                 </div>
             </div>
             <div class="row feature-view__group">
                 <div class="col-sm-12 feature-view__body">
                     <div>
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('description')">Descrição *</span>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('description')">Descrição
+                            *</span>
                     </div>
-                    <input formControlName="description" class="form__input" type="text" [class.form__input__border-red]="getFormError('description')">
+                    <input formControlName="description" class="form__input" type="text"
+                        [class.form__input__border-red]="getFormError('description')">
                     <div *ngIf="getFormError('description')">
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('description')">Campo requerido</span>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('description')">Campo
+                            requerido</span>
                     </div>
                 </div>
             </div>
             <div class="row feature-view__group">
                 <div class="col-sm-6 feature-view__body">
                     <div>
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('unitaryValue')">Valor Unitário *</span>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('unitaryValue')">Valor
+                            Unitário *</span>
                     </div>
-                    <input formControlName="unitaryValue" class="form__input" type="number" [class.form__input__border-red]="getFormError('unitaryValue')">
+                    <input formControlName="unitaryValue" class="form__input" type="number"
+                        [class.form__input__border-red]="getFormError('unitaryValue')">
                     <div *ngIf="getFormError('unitaryValue')">
-                        <span class="feature-view__label" [class.form__color-red]="getFormError('unitaryValue')">Campo requerido</span>
+                        <span class="feature-view__label" [class.form__color-red]="getFormError('unitaryValue')">Campo
+                            requerido</span>
+                    </div>
+                </div>
+                <div formGroupName="tax">
+                    <div class="col-sm-3 feature-view__body">
+                        <div>
+                            <span class="feature-view__label" [class.form__color-red]="getTaxFormError('icmsAliquot')">Aliquota
+                                ICMS *</span>
+                        </div>
+                        <input formControlName="icmsAliquot" class="form__input" type="number"
+                            [class.form__input__border-red]="getTaxFormError('icmsAliquot')">
+                        <div *ngIf="getTaxFormError('icmsAliquot')">
+                            <span class="feature-view__label" [class.form__color-red]="getTaxFormError('icmsAliquot')">Campo
+                                requerido</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 feature-view__body">
+                        <div>
+                            <span class="feature-view__label" [class.form__color-red]="getTaxFormError('ipiAliquot')">Aliquota
+                                IPI *</span>
+                        </div>
+                        <input formControlName="ipiAliquot" class="form__input" type="number"
+                            [class.form__input__border-red]="getTaxFormError('ipiAliquot')">
+                        <div *ngIf="getTaxFormError('ipiAliquot')">
+                            <span class="feature-view__label" [class.form__color-red]="getTaxFormError('ipiAliquot')">Campo
+                                requerido</span>
+                        </div>
                     </div>
                 </div>
             </div>

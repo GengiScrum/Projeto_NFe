@@ -5,7 +5,11 @@ using Projeto_NFe.Application.Features.Invoices;
 using Projeto_NFe.Application.Features.Invoices.Commands;
 using Projeto_NFe.Application.Features.Invoices.Queries;
 using Projeto_NFe.Application.Features.Invoices.ViewModels;
+using Projeto_NFe.Application.Features.SoldProducts.Commands;
+using Projeto_NFe.Application.Features.SoldProducts.Queries;
+using Projeto_NFe.Application.Features.SoldProducts.ViewModels;
 using Projeto_NFe.Domain.Features.Invoices;
+using Projeto_NFe.Domain.Features.SoldProducts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +30,6 @@ namespace Projeto_NFe.API.Controllers.Invoices
         }
 
         #region HttpGet
-
         [HttpGet]
         [ODataQueryOptionsValidate]
         public IHttpActionResult GetAll(ODataQueryOptions<Invoice> queryOptions)
@@ -48,6 +51,29 @@ namespace Projeto_NFe.API.Controllers.Invoices
         }
 
         [HttpGet]
+        [Route("{id:int}/soldproducts")]
+        [ODataQueryOptionsValidate]
+        public IHttpActionResult GetSoldProductsByInvoiceId(ODataQueryOptions<SoldProduct> queryOptions, [FromUri]int id)
+        {
+            var queryStringSize = Request.GetQueryNameValuePairs()
+                                                .Where(x => x.Key.Equals("size"))
+                                                .FirstOrDefault();
+
+            var queryResult = default(IQueryable<SoldProduct>);
+            int size = 0;
+
+            if (queryStringSize.Key != null && int.TryParse(queryStringSize.Value, out size))
+            {
+                queryResult = _invoiceService.GetAllSoldProducts(new SoldProductQuery(size, id));
+            }
+            else
+                queryResult = _invoiceService.GetAllSoldProducts(id);
+
+
+            return HandleQueryable<SoldProduct, SoldProductViewModel>(queryResult, queryOptions);
+        }
+
+        [HttpGet]
         [Route("{id:int}")]
         public IHttpActionResult GetById(int id)
         {
@@ -60,12 +86,26 @@ namespace Projeto_NFe.API.Controllers.Invoices
         [HttpPost]
         public IHttpActionResult Add(InvoiceRegisterCommand invoiceCmd)
         {
-            /*var validator = invoiceCmd.Validate();
+            var validator = invoiceCmd.Validate();
             if (!validator.IsValid)
-                return HandleValidationFailure(validator.Errors);*/
+                return HandleValidationFailure(validator.Errors);
 
             return HandleCallback(_invoiceService.Add(invoiceCmd));
         }
+
+        #region HttpPost
+        [Route("soldproducts")]
+        [HttpPost]
+        public IHttpActionResult AddSoldProducts(InvoiceAddProductCommand command)
+        {
+            var validator = command.Validate();
+
+            if (!validator.IsValid)
+                return HandleValidationFailure(validator.Errors);
+
+            return HandleCallback(_invoiceService.AddProduct(command));
+        }
+        #endregion
 
         #endregion HttpPost
 
@@ -95,6 +135,18 @@ namespace Projeto_NFe.API.Controllers.Invoices
                 return HandleValidationFailure(validator.Errors);
 
             return HandleCallback(_invoiceService.Remove(command));
+        }
+
+        [Route("soldproducts")]
+        [HttpDelete]
+        public IHttpActionResult DeleteSoldProducts(InvoiceRemoveProductsCommand command)
+        {
+            var validator = command.Validate();
+
+            if (!validator.IsValid)
+                return HandleValidationFailure(validator.Errors);
+
+            return HandleCallback(_invoiceService.RemoveProducts(command));
         }
 
         #endregion HttpDelete

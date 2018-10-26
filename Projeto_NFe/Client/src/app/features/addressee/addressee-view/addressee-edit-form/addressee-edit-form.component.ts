@@ -59,7 +59,7 @@ export class AddresseeEditFormComponent implements OnInit, OnDestroy {
             .subscribe(() => {
                 this.isLoading = false;
                 this.resolver.resolveFromRouteAndNotify();
-                alert('Destinatario editado com sucesso');
+                alert('Destinatário editado com sucesso.');
                 this.redirect();
             });
     }

@@ -1,13 +1,16 @@
-﻿using Projeto_NFe.Domain.Features.InvoiceTaxes;
-using Projeto_NFe.Domain.Features.ProductsSold;
+﻿using Projeto_NFe.Application.Features.SoldProducts.ViewModels;
+using Projeto_NFe.Domain.Features.InvoiceTaxes;
+using Projeto_NFe.Domain.Features.SoldProducts;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Projeto_NFe.Application.Features.Invoices.ViewModels
 {
+    [ExcludeFromCodeCoverage]
     public class InvoiceViewModel
     {
         public int Id { get; set; }
@@ -17,7 +20,7 @@ namespace Projeto_NFe.Application.Features.Invoices.ViewModels
         public int ShippingCompanyId { get; set; }
         public string AddresseeBusinessName { get; set; }
         public int AddresseeId { get; set; }
-        public IEnumerable<ProductSold> ProductSolds { get; set; }
+        public IEnumerable<SoldProductViewModel> SoldProducts { get; set; }
         public InvoiceTax InvoiceTax { get; set; }
         public string OperationNature { get; set; }
         public DateTime IssueDate { get; set; }

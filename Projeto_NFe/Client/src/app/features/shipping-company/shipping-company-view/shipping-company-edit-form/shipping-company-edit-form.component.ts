@@ -73,7 +73,7 @@ export class ShippingCompanyEditFormComponent implements OnInit, OnDestroy {
             personType: ['1', Validators.required],
             address: this.fb.group({
                 streetName: ['', Validators.required],
-                number: ['', [Validators.required, Validators.pattern('[0-9]+')]],
+                number: ['', [Validators.required]],
                 neighborhood: ['', Validators.required],
                 city: ['', Validators.required],
                 state: ['', Validators.required],

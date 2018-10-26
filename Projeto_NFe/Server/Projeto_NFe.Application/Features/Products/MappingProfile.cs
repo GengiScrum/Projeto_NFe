@@ -12,7 +12,9 @@ namespace Projeto_NFe.Application.Features.Products
         {
             CreateMap<ProductRegisterCommand, Product>();
             CreateMap<ProductUpdateCommand, Product>();
-            CreateMap<Product, ProductViewModel>();
+            CreateMap<Product, ProductViewModel>()
+                .ForMember(p => p.IpiAliquot, m => m.MapFrom(pm => pm.Tax.IpiAliquot))
+                .ForMember(p => p.IcmsAliquot, m => m.MapFrom(pm => pm.Tax.IcmsAliquot));
         }
     }
 }

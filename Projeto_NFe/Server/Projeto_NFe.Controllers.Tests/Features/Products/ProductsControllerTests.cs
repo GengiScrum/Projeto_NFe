@@ -63,6 +63,7 @@ namespace Projeto_NFe.Controllers.Tests.Features.Products
         {
             // Arrange
             var product = ObjectMother.ProductValidWithId();
+            product.Tax = ObjectMother.ValidProductTax();
             var response = new List<Product>() { product }.AsQueryable();
             _productServiceMock.Setup(s => s.GetAll()).Returns(response);
             var id = 1;

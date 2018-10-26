@@ -61,6 +61,7 @@ export class IssuerEditFormComponent implements OnInit, OnDestroy {
             .subscribe(() => {
                 this.isLoading = false;
                 this.resolver.resolveFromRouteAndNotify();
+                alert('Emitente atualizado com sucesso.');
                 this.redirect();
             });
     }

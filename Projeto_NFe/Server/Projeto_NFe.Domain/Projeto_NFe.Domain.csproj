@@ -52,7 +52,7 @@
     <Compile Include="Features\Invoices\IInvoiceRepository.cs" />
     <Compile Include="Features\Invoices\Invoice.cs" />
     <Compile Include="Features\IssuedInvoices\IIssuedInvoiceRepository.cs" />
-    <Compile Include="Features\ProductsSold\ProductSold.cs" />
+    <Compile Include="Features\SoldProducts\SoldProduct.cs" />
     <Compile Include="Features\Products\IProductRepository.cs" />
     <Compile Include="Features\Products\Product.cs" />
     <Compile Include="Features\ShippingCompanies\IShippingCompanyRepository.cs" />

@@ -1,4 +1,4 @@
-﻿using Projeto_NFe.Domain.Features.ProductsSold;
+﻿using Projeto_NFe.Domain.Features.SoldProducts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,17 +16,17 @@ namespace Projeto_NFe.Domain.Features.InvoiceTaxes
         public double ProductAmount { get; set; }
         public double InvoiceAmount { get; set; }
 
-        public virtual void Calculate(IEnumerable<ProductSold> productsSold)
+        public virtual void Calculate(IEnumerable<SoldProduct> productsSold)
         {
             double ipiValue = 0;
             double icmsValue = 0;
             double amountProduct = 0;
 
-            foreach(ProductSold product in productsSold)
+            foreach(SoldProduct product in productsSold)
             {
                 product.CalculateTax();
-                ipiValue += product.Tax.IpiValue;
-                icmsValue += product.Tax.IcmsValue;
+                ipiValue += product.Product.Tax.IpiValue;
+                icmsValue += product.Product.Tax.IcmsValue;
                 amountProduct += product.Amount;
             }
 

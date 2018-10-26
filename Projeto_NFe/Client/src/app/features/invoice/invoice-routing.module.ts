@@ -7,6 +7,7 @@ import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 import { InvoiceDetailComponent } from './invoice-view/invoice-detail/invoice-detail.component';
 import { InvoiceEditFormComponent } from './invoice-view/invoice-edit-form/invoice-edit-form.component';
 import { InvoiceResolveService } from './shared/invoice.service';
+import { InvoiceProductListComponent } from './invoice-view/invoice-product-list/invoice-product-list.component';
 
 const invoicesRoutes: Routes = [
     {
@@ -54,6 +55,15 @@ const invoicesRoutes: Routes = [
                                 },
                             },
                         ],
+                    },
+                    {
+                        path: 'produto',
+                        component: InvoiceProductListComponent,
+                        data: {
+                            breadcrumbOptions: {
+                                breadcrumbLabel: 'Produto',
+                            },
+                        },
                     },
                 ],
             },

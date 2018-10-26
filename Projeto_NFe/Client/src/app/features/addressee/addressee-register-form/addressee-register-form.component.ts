@@ -36,7 +36,7 @@ export class AddresseeRegisterFormComponent {
             .take(1)
             .subscribe(() => {
                 this.isLoading = false;
-                alert('Destinatario cadastrado com sucesso.');
+                alert('Destinatário cadastrado com sucesso.');
                 this.redirect();
             });
     }

@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { State, toODataString } from '@progress/kendo-data-query';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { map } from 'rxjs/operators';
 import { CORE_CONFIG_TOKEN, ICoreConfig } from './../../../core/core.config';
 import { BaseService } from './../../../core/utils/base-service';
 import { Product, ProductRemoveCommand, ProductRegisterCommand, ProductUpdateCommand } from './product.model';
@@ -54,7 +53,7 @@ export class ProductService extends BaseService {
     }
 
     public getAll(): Observable<Product[]> {
-        return this.http.get(`${this.api}`).map((response: Product[]) => response);
+        return this.http.get(`${this.api}`).map((response: any) => response.items);
     }
 
     public remove(productCmd: ProductRemoveCommand): Observable<Boolean> {

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projeto_NFe.Application.Features.Products.Queries;
 
 namespace Projeto_NFe.Application.Tests.Features.Products
 {
@@ -110,14 +111,30 @@ namespace Projeto_NFe.Application.Tests.Features.Products
             //Arrange
             var productCmd = ObjectMother.ProductCommandToRemove();
             var mockWasRemoved = true;
-            _mockProductRepository.Setup(pr => pr.Remove(productCmd.ProductsId.First())).Returns(mockWasRemoved);
+            _mockProductRepository.Setup(pr => pr.Remove(It.IsAny<int>())).Returns(mockWasRemoved);
 
             //Action
             var productRemoved = _productService.Remove(productCmd);
 
             //Assert
-            _mockProductRepository.Verify(pr => pr.Remove(productCmd.ProductsId.First()), Times.Once);
+            _mockProductRepository.Verify(pr => pr.Remove(It.IsAny<int>()), Times.Once);
             productRemoved.Should().BeTrue();
+        }
+
+        [Test]
+        public void Product_Service_Remove_ReturnFalse()
+        {
+            //Arrange
+            var productCmd = ObjectMother.ProductCommandToRemove();
+            var mockWasRemoved = false;
+            _mockProductRepository.Setup(e => e.Remove(It.IsAny<int>())).Returns(mockWasRemoved);
+
+            //Action
+            var removed = _productService.Remove(productCmd);
+
+            //Assert
+            _mockProductRepository.Verify(e => e.Remove(It.IsAny<int>()), Times.Once);
+            removed.Should().BeFalse();
         }
 
         [Test]
@@ -125,14 +142,14 @@ namespace Projeto_NFe.Application.Tests.Features.Products
         {
             //Arrange
             var productCmd = ObjectMother.ProductCommandToRemove();
-            _mockProductRepository.Setup(pr => pr.Remove(productCmd.ProductsId.First())).Throws<NotFoundException>();
+            _mockProductRepository.Setup(pr => pr.Remove(It.IsAny<int>())).Throws<NotFoundException>();
 
             //Action
             Action act = () => _productService.Remove(productCmd);
 
             //Assert
             act.Should().Throw<NotFoundException>();
-            _mockProductRepository.Verify(pr => pr.Remove(productCmd.ProductsId.First()), Times.Once);
+            _mockProductRepository.Verify(pr => pr.Remove(It.IsAny<int>()), Times.Once);
         }
 
         #endregion
@@ -184,6 +201,27 @@ namespace Projeto_NFe.Application.Tests.Features.Products
 
             //Assert
             _mockProductRepository.Verify(pr => pr.GetAll(), Times.Once);
+            products.Should().NotBeNull();
+            products.First().Should().Be(product);
+            products.Count().Should().Be(mockValueRepository.Count());
+        }
+
+        [Test]
+        public void Product_Service_GetAllWithQuantity_Sucessfully()
+        {
+            //Arrange
+            int quantity = 2;
+            var product = ObjectMother.ProductValidWithId();
+            var productQuery = new Mock<ProductQuery>();
+            productQuery.Object.Quantity = quantity;
+            var mockValueRepository = new List<Product>() { product, product }.AsQueryable();
+            _mockProductRepository.Setup(er => er.GetAll(It.IsAny<int>())).Returns(mockValueRepository);
+
+            //Action
+            var products = _productService.GetAll(productQuery.Object);
+
+            //Assert
+            _mockProductRepository.Verify(er => er.GetAll(It.IsAny<int>()), Times.Once);
             products.Should().NotBeNull();
             products.First().Should().Be(product);
             products.Count().Should().Be(mockValueRepository.Count());

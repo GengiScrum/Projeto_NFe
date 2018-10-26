@@ -8,7 +8,7 @@
                     <span class="feature-view__title">Dados Cadastrais</span>
                 </div>
             </div>
-            <div class="row">
+            <div class="row feature-view__group">
                 <div class="col-sm-6 feature-view__body">
                     <div>
                         <span class="feature-view__label">Data de Entrada</span>
@@ -46,8 +46,7 @@
                                 <span class="feature-view__label">Nome Fantasia</span>
                             </div>
                             <div>
-                                <span title="{{ issuer?.businessName }}" class="feature-view__value">{{
-                                    issuer?.businessName }}</span>
+                                <span title="{{ issuer?.businessName }}" class="feature-view__value">{{ issuer?.businessName }}</span>
                             </div>
                         </div>
                         <div class="col-sm-6 feature-view__body">
@@ -55,8 +54,7 @@
                                 <span class="feature-view__label">Razão Social</span>
                             </div>
                             <div>
-                                <span title="{{ issuer?.corporateName }}" class="feature-view__value">{{
-                                    issuer?.corporateName }}</span>
+                                <span title="{{ issuer?.corporateName }}" class="feature-view__value">{{ issuer?.corporateName }}</span>
                             </div>
                         </div>
                     </div>
@@ -68,8 +66,7 @@
                                 <span class="feature-view__label">Inscrição Estadual</span>
                             </div>
                             <div>
-                                <span title="{{ issuer?.stateRegistration }}" class="feature-view__value">{{
-                                    issuer?.stateRegistration }}</span>
+                                <span title="{{ issuer?.stateRegistration }}" class="feature-view__value">{{ issuer?.stateRegistration }}</span>
                             </div>
                         </div>
                         <div class="col-sm-6 feature-view__body">
@@ -77,8 +74,7 @@
                                 <span class="feature-view__label">Inscrição Municipal</span>
                             </div>
                             <div>
-                                <span title="{{ issuer?.municipalRegistration }}" class="feature-view__value">{{
-                                    issuer?.municipalRegistration }}</span>
+                                <span title="{{ issuer?.municipalRegistration }}" class="feature-view__value">{{ issuer?.municipalRegistration }}</span>
                             </div>
                         </div>
                     </div>
@@ -98,6 +94,12 @@
             </div>
             <!-- #endregion -->
 
+
+        </div>
+        <!-- #endregion -->
+
+        <!-- #region Coluna 2 -->
+        <div class="col-sm-6">
             <!-- #region Destinatário -->
             <div class="row">
                 <div class="col-sm-12">
@@ -112,8 +114,7 @@
                                 <span class="feature-view__label">Nome</span>
                             </div>
                             <div>
-                                <span title="{{ addressee?.businessName }}" class="feature-view__value">{{
-                                    addressee?.businessName }}</span>
+                                <span title="{{ addressee?.businessName }}" class="feature-view__value">{{ addressee?.businessName }}</span>
                             </div>
                         </div>
                         <div class="col-sm-6 feature-view__body">
@@ -122,7 +123,7 @@
                             </div>
                             <div class="truncate feature-view__value">
                                 <span title="{{ documentNumberAddressee }}" class="feature-view__value">
-                                    {{ documentNumberAddressee}}
+                                    {{ documentNumberAddressee }}
                                 </span>
                             </div>
                         </div>
@@ -135,8 +136,7 @@
                                 <span class="feature-view__label">Inscrição Estadual</span>
                             </div>
                             <div>
-                                <span title="{{ addressee?.stateRegistration }}" class="feature-view__value">{{
-                                    addressee?.stateRegistration }}</span>
+                                <span title="{{ addressee?.stateRegistration }}" class="feature-view__value">{{ addressee?.stateRegistration }}</span>
                             </div>
                         </div>
                         <div class="col-sm-6 feature-view__body">
@@ -144,8 +144,7 @@
                                 <span class="feature-view__label">Razão Social</span>
                             </div>
                             <div>
-                                <span title="{{ addressee?.corporateName }}" class="feature-view__value">{{
-                                    addressee?.corporateName }}</span>
+                                <span title="{{ addressee?.corporateName }}" class="feature-view__value">{{ addressee?.corporateName }}</span>
                             </div>
                         </div>
                     </div>
@@ -206,16 +205,6 @@
                 </div>
             </div>
             <!-- #endregion -->
-        </div>
-        <!-- #endregion -->
-
-        <!-- #region Coluna 2 -->
-        <div class="col-sm-6">
-            <div class="row">
-                <div class="col-sm-12">
-                    <span class="feature-view__title">Produtos</span>
-                </div>
-            </div>
         </div>
         <!-- #endregion -->
     </div>

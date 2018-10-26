@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Projeto_NFe.Application.Tests.Initializer;
+using Projeto_NFe.Application.Features.Addressees.Queries;
 
 namespace Projeto_NFe.Application.Tests.Features.Addressees
 {
@@ -120,6 +121,22 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
         }
 
         [Test]
+        public void Addressee_Service_Remove_ReturnFalse()
+        {
+            //Arrange
+            var addresseeCmd = ObjectMother.AddresseeCommandToRemove();
+            var mockWasRemoved = false;
+            _mockAddresseeRepository.Setup(e => e.Remove(addresseeCmd.AddresseesId.First())).Returns(mockWasRemoved);
+
+            //Action
+            var removed = _addresseeService.Remove(addresseeCmd);
+
+            //Assert
+            _mockAddresseeRepository.Verify(e => e.Remove(addresseeCmd.AddresseesId.First()), Times.Once);
+            removed.Should().BeFalse();
+        }
+
+        [Test]
         public void Addressee_Service_Remove_ShouldHandlerNotFoundException()
         {
             //Arrange
@@ -183,6 +200,27 @@ namespace Projeto_NFe.Application.Tests.Features.Addressees
 
             //Assert
             _mockAddresseeRepository.Verify(er => er.GetAll(), Times.Once);
+            addressees.Should().NotBeNull();
+            addressees.First().Should().Be(addressee);
+            addressees.Count().Should().Be(mockValueRepository.Count());
+        }
+
+        [Test]
+        public void Addressee_Service_GetAllWithQuantity_Sucessfully()
+        {
+            //Arrange
+            int quantity = 2;
+            var addressee = ObjectMother.AddresseeValidWithIdWithAddress();
+            var addresseeQuery = new Mock<AddresseeQuery>();
+            addresseeQuery.Object.Quantity = quantity;
+            var mockValueRepository = new List<Addressee>() { addressee, addressee }.AsQueryable();
+            _mockAddresseeRepository.Setup(er => er.GetAll(It.IsAny<int>())).Returns(mockValueRepository);
+
+            //Action
+            var addressees = _addresseeService.GetAll(addresseeQuery.Object);
+
+            //Assert
+            _mockAddresseeRepository.Verify(er => er.GetAll(It.IsAny<int>()), Times.Once);
             addressees.Should().NotBeNull();
             addressees.First().Should().Be(addressee);
             addressees.Count().Should().Be(mockValueRepository.Count());

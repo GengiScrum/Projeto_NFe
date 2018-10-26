@@ -3,6 +3,7 @@ using Projeto_NFe.Domain.Features.Invoices;
 using Projeto_NFe.Domain.Features.InvoiceTaxes;
 using Projeto_NFe.Domain.Features.Issuers;
 using Projeto_NFe.Domain.Features.Products;
+using Projeto_NFe.Domain.Features.SoldProducts;
 using Projeto_NFe.Domain.Features.ShippingCompanies;
 using Projeto_NFe.Infra.ORM.Features.Invoices;
 using Projeto_NFe.Infra.ORM.Initializer;
@@ -53,6 +54,7 @@ namespace Projeto_NFe.Infra.ORM.Contexts
         public DbSet<Issuer> Issuers { get; set; }
         public DbSet<Addressee> Addressees { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<SoldProduct> SoldProducts { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceTax> InvoiceTaxes { get; set; }
 
