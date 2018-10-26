@@ -12,6 +12,8 @@ namespace Projeto_NFe.Application.Features.Addressees.Queries
     {
         public virtual int Quantity { get; set; }
 
+        public AddresseeQuery() { }
+
         public AddresseeQuery(int quantity)
         {
             Quantity = quantity;

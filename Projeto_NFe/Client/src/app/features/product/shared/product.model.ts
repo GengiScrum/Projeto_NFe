@@ -3,18 +3,27 @@ export class Product {
     public code: string;
     public description: string;
     public unitaryValue: number;
+    public ipiAliquot: number;
+    public icmsAliquot: number;
 }
 
 export class ProductRegisterCommand {
     public code: string;
     public description: string;
     public unitaryValue: number;
+    public tax: ProductTax;
 
-    constructor(product: Product) {
+    constructor(product: any) {
         this.code = product.code;
         this.description = product.description;
         this.unitaryValue = product.unitaryValue;
+        this.tax = product.tax;
     }
+}
+
+export class ProductTax {
+    public ipiAliquot: number;
+    public icmsAliquot: number;
 }
 
 export class ProductUpdateCommand {

@@ -14,9 +14,6 @@ $error-input-color: #ff4733;
             border: 1px solid $error-input-color;
         }
     }
-    &__input::-webkit-inner-spin-button {
-        display: none;
-    }
     &__input::-webkit-clear-button {
         display: none;
     }

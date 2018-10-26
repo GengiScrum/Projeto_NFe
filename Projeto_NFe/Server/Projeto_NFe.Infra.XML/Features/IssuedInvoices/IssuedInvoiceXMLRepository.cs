@@ -1,5 +1,4 @@
 ﻿using Projeto_NFe.Domain.Features.Invoices;
-using Projeto_NFe.Domain.Features.IssuedInvoices;
 using Projeto_NFe.Domain.Utils;
 using Projeto_NFe.Infra.XML.Base;
 using Projeto_NFe.Infra.XML.Features.Addressees;
@@ -8,7 +7,7 @@ using Projeto_NFe.Infra.XML.Features.Addresses;
 using Projeto_NFe.Infra.XML.Features.InvoiceTaxes;
 using Projeto_NFe.Infra.XML.Features.ProductTaxes;
 using Projeto_NFe.Infra.XML.Features.Invoices;
-using Projeto_NFe.Infra.XML.Features.ProductsSold;
+using Projeto_NFe.Infra.XML.Features.SoldProducts;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -82,13 +81,13 @@ namespace Projeto_NFe.Infra.XML.Features.IssuedInvoices
             };
         }
 
-        private List<ProductsSoldModel> preparaListaProductsSold(Invoice nf)
+        private List<SoldProductsModel> preparaListaProductsSold(Invoice nf)
         {
-            var listaDeProductDaNota = nf.ProductSolds.ToArray();
-            List<ProductsSoldModel> listaFinal = new List<ProductsSoldModel>();
+            var listaDeProductDaNota = nf.SoldProducts.ToArray();
+            List<SoldProductsModel> listaFinal = new List<SoldProductsModel>();
             for (int x = 0; x < listaDeProductDaNota.Count(); x++)
             {
-                ProductsSoldModel modelo = new ProductsSoldModel
+                SoldProductsModel modelo = new SoldProductsModel
                 {
                     nItemNumber = x + 1,
                     Tax = new TaxModel
@@ -97,18 +96,18 @@ namespace Projeto_NFe.Infra.XML.Features.IssuedInvoices
                         {
                             IcmsProduct = new IcmsProductModel
                             {
-                                IcmsAliquota = listaDeProductDaNota[x].Tax.IcmsAliquot,
-                                IcmsAmount = listaDeProductDaNota[x].Tax.IcmsValue
+                                IcmsAliquota = listaDeProductDaNota[x].Product.Tax.IcmsAliquot,
+                                IcmsAmount = listaDeProductDaNota[x].Product.Tax.IcmsValue
                             }
                         }
                     },
-                    Prod = new ProductSoldModel
+                    Prod = new SoldProductModel
                     {
-                        CodeProduct = listaDeProductDaNota[x].Code,
-                        DescriptionProduct = listaDeProductDaNota[x].Description,
+                        CodeProduct = listaDeProductDaNota[x].Product.Code,
+                        DescriptionProduct = listaDeProductDaNota[x].Product.Description,
                         Quantity = listaDeProductDaNota[x].Quantity,
                         Amount = listaDeProductDaNota[x].Amount,
-                        UnitaryValue = listaDeProductDaNota[x].UnitaryValue
+                        UnitaryValue = listaDeProductDaNota[x].Product.UnitaryValue
                     }
                 };
                 listaFinal.Add(modelo);

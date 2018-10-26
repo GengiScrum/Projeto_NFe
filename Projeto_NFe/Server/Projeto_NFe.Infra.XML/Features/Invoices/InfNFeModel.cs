@@ -1,7 +1,7 @@
 ﻿using Projeto_NFe.Infra.XML.Features.Addressees;
 using Projeto_NFe.Infra.XML.Features.Issuers;
 using Projeto_NFe.Infra.XML.Features.Invoices;
-using Projeto_NFe.Infra.XML.Features.ProductsSold;
+using Projeto_NFe.Infra.XML.Features.SoldProducts;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -31,7 +31,7 @@ namespace Projeto_NFe.Infra.XML.Features.Invoices
         public AddresseeModel dest { get; set; }
 
         [XmlArrayItem("det")]
-        public List<ProductsSoldModel> det { get; set; }
+        public List<SoldProductsModel> det { get; set; }
 
         [XmlElement(ElementName = "total")]
         public InvoiceAmountModel total { get; set; }

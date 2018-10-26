@@ -66,9 +66,12 @@
     <Compile Include="Features\Addressees\ViewModel\AddresseeViewModel.cs" />
     <Compile Include="Features\Addresses\Commands\AddressCommand.cs" />
     <Compile Include="Features\Addresses\MappingProfile.cs" />
+    <Compile Include="Features\Invoices\Commands\InvoiceIssueCommand.cs" />
     <Compile Include="Features\Invoices\Commands\InvoiceRegisterCommand.cs" />
     <Compile Include="Features\Invoices\Commands\InvoiceRemoveCommand.cs" />
+    <Compile Include="Features\Invoices\Commands\InvoiceRemoveProductsCommand.cs" />
     <Compile Include="Features\Invoices\Commands\InvoiceUpdateCommand.cs" />
+    <Compile Include="Features\Invoices\Commands\InvoiceAddProductCommand.cs" />
     <Compile Include="Features\Invoices\IInvoiceService.cs" />
     <Compile Include="Features\Invoices\MappingProfile.cs" />
     <Compile Include="Features\Invoices\Queries\InvoiceQuery.cs" />
@@ -84,9 +87,10 @@
     <Compile Include="Features\Issuers\MappingProfile.cs" />
     <Compile Include="Features\IssuedInvoices\IssuedInvoiceService.cs" />
     <Compile Include="Features\Invoices\InvoiceService.cs" />
-    <Compile Include="Features\ProductSolds\Commands\ProductSoldRegisterCommand.cs" />
-    <Compile Include="Features\ProductSolds\Commands\ProductSoldUpdateCommand.cs" />
-    <Compile Include="Features\ProductSolds\MappingProfile.cs" />
+    <Compile Include="Features\ProductTaxes\Commands\ProductTaxRegisterCommand.cs" />
+    <Compile Include="Features\ProductTaxes\MappingProfile.cs" />
+    <Compile Include="Features\SoldProducts\Commands\ProductSoldRegisterCommand.cs" />
+    <Compile Include="Features\SoldProducts\MappingProfile.cs" />
     <Compile Include="Features\Products\Commands\ProductRegisterCommand.cs" />
     <Compile Include="Features\Products\Commands\ProductRemoveCommand.cs" />
     <Compile Include="Features\Products\Commands\ProductUpdateCommand.cs" />
@@ -103,6 +107,8 @@
     <Compile Include="Features\ShippingCompanies\ViewModel\ShippingCompanyViewModel.cs" />
     <Compile Include="Features\ShippingCompanies\MappingProfile.cs" />
     <Compile Include="Features\ShippingCompanies\ShippingCompanyService.cs" />
+    <Compile Include="Features\SoldProducts\Queries\SoldProductQuery.cs" />
+    <Compile Include="Features\SoldProducts\ViewModels\SoldProductViewModel.cs" />
     <Compile Include="Mapping\AutoMapperInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

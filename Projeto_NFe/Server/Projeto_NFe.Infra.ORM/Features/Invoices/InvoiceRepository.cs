@@ -1,5 +1,6 @@
 ﻿using Projeto_NFe.Domain.Exceptions;
 using Projeto_NFe.Domain.Features.Invoices;
+using Projeto_NFe.Domain.Features.SoldProducts;
 using Projeto_NFe.Infra.ORM.Contexts;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,16 @@ namespace Projeto_NFe.Infra.ORM.Features.Invoices
             return _context.Invoices.Take(quantity);
         }
 
+        public IQueryable<SoldProduct> GetAllSoldProducts(int invoiceId)
+        {
+            return _context.SoldProducts.Where(sp => sp.InvoiceId == invoiceId);
+        }
+
+        public IQueryable<SoldProduct> GetAllSoldProducts(int quantity, int invoiceId)
+        {
+            return _context.SoldProducts.Where(sp => sp.InvoiceId == invoiceId).Take(quantity);
+        }
+
         public Invoice GetById(int id)
         {
             return _context.Invoices.FirstOrDefault(invoice => invoice.Id == id);
@@ -45,7 +56,21 @@ namespace Projeto_NFe.Infra.ORM.Features.Invoices
             var invoice = _context.Invoices.FirstOrDefault(invoiceFind => invoiceFind.Id == id);
             if (invoice == null)
                 throw new NotFoundException();
+            _context.SoldProducts.RemoveRange(invoice.SoldProducts);
             _context.Entry(invoice).State = EntityState.Deleted;
+            return _context.SaveChanges() > 0;
+        }
+
+        public bool RemoveSoldProducts(int invoiceId, int[] soldProductsIds)
+        {
+            var invoiceToUpdate = GetById(invoiceId);
+            foreach (var id in soldProductsIds)
+            {
+                var productToRemove = _context.SoldProducts.FirstOrDefault(sp => sp.Id == id);
+                invoiceToUpdate.SoldProducts.Remove(productToRemove);
+                _context.Entry(productToRemove).State = EntityState.Deleted;
+            }
+            _context.Entry(invoiceToUpdate).State = EntityState.Modified;
             return _context.SaveChanges() > 0;
         }
 

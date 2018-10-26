@@ -12,6 +12,7 @@ namespace Projeto_NFe.Infra.ORM.Features.Products
             Property(p => p.Code).IsRequired().HasMaxLength(40);
             Property(p => p.Description).IsRequired().HasMaxLength(40);
             Property(p => p.UnitaryValue).IsRequired();
+            HasOptional(p => p.Tax);
         }
     }
 }

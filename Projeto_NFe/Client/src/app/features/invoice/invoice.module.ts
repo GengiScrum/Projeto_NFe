@@ -7,7 +7,7 @@ import { NDDTitlebarModule } from './../../shared/ndd-ng-titlebar/component/ndd-
 
 import { InvoiceRoutingModule } from './invoice-routing.module';
 import { InvoiceListComponent } from './invoice-list/invoice-list.component';
-import { InvoiceGridService, InvoiceResolveService, InvoiceService } from './shared/invoice.service';
+import { InvoiceGridService, InvoiceResolveService, InvoiceService, InvoiceProductGridService } from './shared/invoice.service';
 import { InvoiceFormComponent } from './invoice-form/invoice-form.component';
 import { InvoiceRegisterFormComponent } from './invoice-register-form/invoice-register-form.component';
 import { ShippingCompanySharedModule } from '../shipping-company/shared/shipping-company-shared.module';
@@ -16,6 +16,8 @@ import { AddresseeSharedModule } from '../addressee/shared/addressee-shared.modu
 import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 import { InvoiceDetailComponent } from './invoice-view/invoice-detail/invoice-detail.component';
 import { InvoiceEditFormComponent } from './invoice-view/invoice-edit-form/invoice-edit-form.component';
+import { InvoiceProductListComponent } from './invoice-view/invoice-product-list/invoice-product-list.component';
+import { ProductSharedModule } from './../product/shared/product-shared.module';
 
 @NgModule({
     imports: [
@@ -27,6 +29,7 @@ import { InvoiceEditFormComponent } from './invoice-view/invoice-edit-form/invoi
         ShippingCompanySharedModule,
         IssuerSharedModule,
         AddresseeSharedModule,
+        ProductSharedModule,
     ],
     exports: [],
     declarations: [
@@ -36,11 +39,13 @@ import { InvoiceEditFormComponent } from './invoice-view/invoice-edit-form/invoi
         InvoiceViewComponent,
         InvoiceDetailComponent,
         InvoiceEditFormComponent,
+        InvoiceProductListComponent,
     ],
     providers: [
         InvoiceGridService,
         InvoiceResolveService,
         InvoiceService,
+        InvoiceProductGridService,
     ],
 })
 export class InvoiceModule {

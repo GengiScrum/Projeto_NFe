@@ -72,7 +72,7 @@
                     <div>
                         <span class="feature-view__label" [class.form__color-red]="getFormError('number')">Número *</span>
                     </div>
-                    <input formControlName="number" class="form__input" type="text" [class.form__input__border-red]="getFormError('number')">
+                    <input formControlName="number" class="form__input" type="number" [class.form__input__border-red]="getFormError('number')">
                     <div *ngIf="getFormError('number')">
                         <span class="feature-view__label" [class.form__color-red]="getFormError('number')">Campo
                             requerido</span>

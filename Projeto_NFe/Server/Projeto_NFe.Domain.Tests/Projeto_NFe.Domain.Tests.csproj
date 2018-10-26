@@ -77,7 +77,7 @@
     <Compile Include="Features\InvoiceTaxes\InvoiceTaxTests.cs" />
     <Compile Include="Features\ProductTaxes\ProductTaxTests.cs" />
     <Compile Include="Features\Invoices\InvoiceTests.cs" />
-    <Compile Include="Features\ProductsSold\ProductSoldTests.cs" />
+    <Compile Include="Features\ProductsSold\SoldProductTests.cs" />
     <Compile Include="Features\Products\ProductTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

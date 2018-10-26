@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using Projeto_NFe.Application.Features.ProductSolds;
-using Projeto_NFe.Application.Features.ProductSolds.Commands;
-using Projeto_NFe.Domain.Features.ProductsSold;
+using Projeto_NFe.Application.Features.SoldProducts;
+using Projeto_NFe.Application.Features.SoldProducts.Commands;
+using Projeto_NFe.Domain.Features.SoldProducts;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -20,7 +20,7 @@ namespace Projeto_NFe.Application.Features.Invoices.Commands
         public int? ShippingCompanyId { get; set; }
         public DateTime EntryDate { get; set; }
         public string OperationNature { get; set; }
-        public List<ProductSoldRegisterCommand> ProductSolds { get; set; }
+        public List<SoldProductRegisterCommand> SoldProducts { get; set; }
 
         public virtual ValidationResult Validate()
         {

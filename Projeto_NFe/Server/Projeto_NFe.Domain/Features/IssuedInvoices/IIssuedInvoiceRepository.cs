@@ -12,6 +12,6 @@ namespace Projeto_NFe.Domain.Features.IssuedInvoices
         Invoice Add(Invoice invoice);
         Invoice GetById(int id);
         IQueryable<Invoice> GetAll();
-        bool CheckAcessKey(string chave);
+        bool ValidAccessKey(string chave);
     }
 }

@@ -2,7 +2,7 @@
 using Projeto_NFe.Infra.PDF.Features.Addressees;
 using Projeto_NFe.Infra.PDF.Features.Issuers;
 using Projeto_NFe.Infra.PDF.Features.InvoiceTaxes;
-using Projeto_NFe.Infra.PDF.Features.ProductsSold;
+using Projeto_NFe.Infra.PDF.Features.SoldProducts;
 using Projeto_NFe.Infra.PDF.Features.ShippingCompanies;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace Projeto_NFe.Infra.PDF.Features.Invoices
         public IssuerModel Issuer { get; set; }
         public ShippingCompanyModel ShippingCompany { get; set; }
         public AddresseeModel Addressee { get; set; }
-        public IEnumerable<ProductSoldModel> Products { get; set; }
+        public IEnumerable<SoldProductModel> Products { get; set; }
         public InvoiceTaxModel Tax { get; set; }
         public string OperationNature { get; set; }
         public DateTime IssueDate { get; set; }
@@ -27,7 +27,7 @@ namespace Projeto_NFe.Infra.PDF.Features.Invoices
 
         public void Create(Invoice invoice)
         {
-            ProductSoldModel productSoldModel = new ProductSoldModel();
+            SoldProductModel soldProductModel = new SoldProductModel();
 
             Id = invoice.Id;
             AcessKey = invoice.AcessKey;
@@ -40,8 +40,8 @@ namespace Projeto_NFe.Infra.PDF.Features.Invoices
             Tax = new InvoiceTaxModel();
             Tax.Create(invoice.InvoiceTax);
             OperationNature = invoice.OperationNature;
-            Products = new List<ProductSoldModel>();
-            Products = productSoldModel.CreateLista(invoice.ProductSolds);
+            Products = new List<SoldProductModel>();
+            Products = soldProductModel.CreateList(invoice.SoldProducts);
             if (invoice.ShippingCompany != null)
             {
                 ShippingCompany = new ShippingCompanyModel();

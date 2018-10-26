@@ -57,32 +57,22 @@
     <Compile Include="Features\InvoiceTaxes\InvoiceTaxConfiguration.cs" />
     <Compile Include="Features\Issuers\IssuerConfiguration.cs" />
     <Compile Include="Features\Issuers\IssuerRepository.cs" />
+    <Compile Include="Features\ProductsTaxes\ProductTaxConfiguration.cs" />
     <Compile Include="Features\Products\ProductConfiguration.cs" />
     <Compile Include="Features\Products\ProductRepository.cs" />
     <Compile Include="Features\ShippingCompanies\ShippingCompanyConfiguration.cs" />
     <Compile Include="Features\ShippingCompanies\ShippingCompanyRepository.cs" />
     <Compile Include="Contexts\DbContextFactory.cs" />
     <Compile Include="Contexts\NFeContext.cs" />
+    <Compile Include="Features\SoldProducts\SoldProductConfiguration.cs" />
     <Compile Include="Initializer\DbInitializer.cs" />
-    <Compile Include="Migrations\201810051945380_NFeContext_V1.cs" />
-    <Compile Include="Migrations\201810051945380_NFeContext_V1.Designer.cs">
-      <DependentUpon>201810051945380_NFeContext_V1.cs</DependentUpon>
+    <Compile Include="Migrations\201810231808080_NFeContext_V1.cs" />
+    <Compile Include="Migrations\201810231808080_NFeContext_V1.Designer.cs">
+      <DependentUpon>201810231808080_NFeContext_V1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810082013086_NFeContext_V2.cs" />
-    <Compile Include="Migrations\201810082013086_NFeContext_V2.Designer.cs">
-      <DependentUpon>201810082013086_NFeContext_V2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810101741537_NFeContext_V3.cs" />
-    <Compile Include="Migrations\201810101741537_NFeContext_V3.Designer.cs">
-      <DependentUpon>201810101741537_NFeContext_V3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810101959197_NFeContext_V4.cs" />
-    <Compile Include="Migrations\201810101959197_NFeContext_V4.Designer.cs">
-      <DependentUpon>201810101959197_NFeContext_V4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810181539158_NFeContext_V5.cs" />
-    <Compile Include="Migrations\201810181539158_NFeContext_V5.Designer.cs">
-      <DependentUpon>201810181539158_NFeContext_V5.cs</DependentUpon>
+    <Compile Include="Migrations\201810231845387_NFeContext_V1.1.cs" />
+    <Compile Include="Migrations\201810231845387_NFeContext_V1.1.Designer.cs">
+      <DependentUpon>201810231845387_NFeContext_V1.1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,24 +88,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810051945380_NFeContext_V1.resx">
-      <DependentUpon>201810051945380_NFeContext_V1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810082013086_NFeContext_V2.resx">
-      <DependentUpon>201810082013086_NFeContext_V2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810101741537_NFeContext_V3.resx">
-      <DependentUpon>201810101741537_NFeContext_V3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810101959197_NFeContext_V4.resx">
-      <DependentUpon>201810101959197_NFeContext_V4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810181539158_NFeContext_V5.resx">
-      <DependentUpon>201810181539158_NFeContext_V5.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="Features\IssuedInvoices\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\IssuedInvoices\" />
+    <EmbeddedResource Include="Migrations\201810231808080_NFeContext_V1.resx">
+      <DependentUpon>201810231808080_NFeContext_V1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810231845387_NFeContext_V1.1.resx">
+      <DependentUpon>201810231845387_NFeContext_V1.1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

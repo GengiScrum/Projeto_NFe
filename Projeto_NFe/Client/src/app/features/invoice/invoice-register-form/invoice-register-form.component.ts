@@ -42,6 +42,8 @@ export class InvoiceRegisterFormComponent {
             addresseeId: [''],
             operationNature: [''],
             entryDate: [(new Date()).toISOString().split('T')[0]],
+            ProductSolds: this.fb.array([
+            ]),
         });
     }
 }

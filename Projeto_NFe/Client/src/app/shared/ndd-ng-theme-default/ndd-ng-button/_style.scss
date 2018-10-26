@@ -1,8 +1,8 @@
 @include exports('ndd-ng-button/style') {
     .ndd-ng-button {
         min-width: 100px;
-        height: 35px;
-        margin: 5px;
+        height: 33px;
+        margin: 2px;
         font-size: rem-calc(14px);
         font-weight: 600;
         cursor: pointer;
@@ -36,6 +36,7 @@
                 }
             }
         }
+        
         &--cancel {
             color: $ndd-ng-button-cancel-font-color;
             background-color: $ndd-ng-button-secondary-color;

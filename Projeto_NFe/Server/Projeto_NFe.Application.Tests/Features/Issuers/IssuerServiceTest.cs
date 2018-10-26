@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Projeto_NFe.Application.Tests.Initializer;
 using Projeto_NFe.Application.Features.Issuers;
+using Projeto_NFe.Application.Features.Issuers.Queries;
 
 namespace Projeto_NFe.Application.Tests.Features.Issuers
 {
@@ -108,14 +109,30 @@ namespace Projeto_NFe.Application.Tests.Features.Issuers
             //Arrange
             var issuerCmd = ObjectMother.IssuerCommandToRemove();
             var mockWasRemoved = true;
-            _mockIssuerRepository.Setup(e => e.Remove(issuerCmd.IssuersId.First())).Returns(mockWasRemoved);
+            _mockIssuerRepository.Setup(e => e.Remove(It.IsAny<int>())).Returns(mockWasRemoved);
 
             //Action
             var eProductRemovido = _issuerService.Remove(issuerCmd );
 
             //Verificar
-            _mockIssuerRepository.Verify(e => e.Remove(issuerCmd.IssuersId.First()), Times.Once);
+            _mockIssuerRepository.Verify(e => e.Remove(It.IsAny<int>()), Times.Once);
             eProductRemovido.Should().BeTrue();
+        }
+
+        [Test]
+        public void Issuer_Service_Remove_ReturnFalse()
+        {
+            //Arrange
+            var issuerCmd = ObjectMother.IssuerCommandToRemove();
+            var mockWasRemoved = false;
+            _mockIssuerRepository.Setup(e => e.Remove(It.IsAny<int>())).Returns(mockWasRemoved);
+
+            //Action
+            var removed = _issuerService.Remove(issuerCmd);
+
+            //Assert
+            _mockIssuerRepository.Verify(e => e.Remove(It.IsAny<int>()), Times.Once);
+            removed.Should().BeFalse();
         }
 
         [Test]
@@ -123,16 +140,15 @@ namespace Projeto_NFe.Application.Tests.Features.Issuers
         {
             //Arrange
             var issuerCmd = ObjectMother.IssuerCommandToRemove();
-            _mockIssuerRepository.Setup(e => e.Remove(issuerCmd.IssuersId.First())).Throws<NotFoundException>();
+            _mockIssuerRepository.Setup(e => e.Remove(It.IsAny<int>())).Throws<NotFoundException>();
 
             //Action
             Action act = () => _issuerService.Remove(issuerCmd);
 
             //Verificar
             act.Should().Throw<NotFoundException>();
-            _mockIssuerRepository.Verify(e => e.Remove(issuerCmd.IssuersId.First()), Times.Once);
+            _mockIssuerRepository.Verify(e => e.Remove(It.IsAny<int>()), Times.Once);
         }
-
         #endregion
 
         #region Get
@@ -181,6 +197,27 @@ namespace Projeto_NFe.Application.Tests.Features.Issuers
 
             //Verificar
             _mockIssuerRepository.Verify(er => er.GetAll(), Times.Once);
+            issuers.Should().NotBeNull();
+            issuers.First().Should().Be(issuer);
+            issuers.Count().Should().Be(mockValueRepository.Count());
+        }
+
+        [Test]
+        public void Issuer_Service_GetAllWithQuantity_Sucessfully()
+        {
+            //Arrange
+            int quantity = 2;
+            var issuer = ObjectMother.IssuerValidWithIdAndWithAddress();
+            var issuerQuery = new Mock<IssuerQuery>();
+            issuerQuery.Object.Quantity = quantity;
+            var mockValueRepository = new List<Issuer>() { issuer, issuer }.AsQueryable();
+            _mockIssuerRepository.Setup(er => er.GetAll(It.IsAny<int>())).Returns(mockValueRepository);
+
+            //Action
+            var issuers = _issuerService.GetAll(issuerQuery.Object);
+
+            //Assert
+            _mockIssuerRepository.Verify(er => er.GetAll(It.IsAny<int>()), Times.Once);
             issuers.Should().NotBeNull();
             issuers.First().Should().Be(issuer);
             issuers.Count().Should().Be(mockValueRepository.Count());

@@ -36,7 +36,12 @@ export class IssuerRegisterFormComponent {
         this.isLoading = true;
         const issuerRegisterCommand: IssuerRegisterCommand
             = new IssuerRegisterCommand(this.form.get('details').value, this.form.get('address').value);
-        this.service.register(issuerRegisterCommand).take(1).subscribe(() => { this.isLoading = false; alert('Cadastrado!'); this.redirect(); });
+        this.service.register(issuerRegisterCommand)
+            .take(1)
+            .subscribe(() => {
+                this.isLoading = false;
+                alert('Emitente cadastrado com sucesso.'); this.redirect();
+            });
     }
 
     public redirect(): void {

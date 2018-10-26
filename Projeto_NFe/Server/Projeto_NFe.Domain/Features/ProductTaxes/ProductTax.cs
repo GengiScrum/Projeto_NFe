@@ -11,8 +11,8 @@ namespace Projeto_NFe.Domain.Features.ProductTaxes
         public int Id { get; set; }
         public double IpiValue { get; set; }
         public double IcmsValue { get; set; }
-        public double IpiAliquot { get { return 10; } set { } }
-        public double IcmsAliquot { get { return 4; } set { } }
+        public double IpiAliquot { get; set; }
+        public double IcmsAliquot { get; set; }
 
         public void CalculateIpi(double amount)
         {

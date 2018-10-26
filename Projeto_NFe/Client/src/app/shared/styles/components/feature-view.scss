@@ -118,7 +118,10 @@ $view-entitled-title-height: rem-calc(45px);
         padding-bottom: rem-calc(10px);
         &--radio {
             padding-top: rem-calc(7px);
-         }     
+         }
+        &--without-label {            
+            padding-top: rem-calc(23px);
+        }     
     }
     .feature-view__title {
         display: block;

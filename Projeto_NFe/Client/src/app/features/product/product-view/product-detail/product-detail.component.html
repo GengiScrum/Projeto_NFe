@@ -22,7 +22,8 @@
                                 <span class="feature-view__label">Descrição</span>
                             </div>
                             <div>
-                                <span title="{{ product?.description }}" class="feature-view__value">{{ product?.description }}</span>
+                                <span title="{{ product?.description }}" class="feature-view__value">{{
+                                    product?.description }}</span>
                             </div>
                         </div>
                     </div>
@@ -34,9 +35,34 @@
                                 <span class="feature-view__label">Valor Unitário</span>
                             </div>
                             <div>
-                                <span title="{{ product?.unitaryValue }}" class="feature-view__value">R$ {{ product?.unitaryValue }}</span>
+                                <span title="{{ product?.unitaryValue }}" class="feature-view__value">R$ {{
+                                    product?.unitaryValue }}</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="feature-view__title">Taxas</div>
+                </div>
+            </div>
+            <div class="row feature-view__group">
+                <div class="col-sm-6 feature-view__body">
+                    <div>
+                        <span class="feature-view__label">IPI</span>
+                    </div>
+                    <div>
+                        <span title="{{ product?.ipiAliquot }}" class="feature-view__value">{{ product?.ipiAliquot }}%</span>
+                    </div>
+                </div>
+                <div class="col-sm-6 feature-view__body">
+                    <div>
+                        <span class="feature-view__label">ICMS</span>
+                    </div>
+                    <div>
+                        <span title="{{ product?.icmsAliquot }}" class="feature-view__value">{{ product?.icmsAliquot
+                            }}%</span>
                     </div>
                 </div>
             </div>

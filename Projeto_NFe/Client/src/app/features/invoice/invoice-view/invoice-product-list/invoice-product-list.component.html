@@ -1,0 +1,49 @@
+<div class="feature-view-tab__content feature-view-tab__content--without-footer">
+    <form [formGroup]="formSoldProduct" (ngSubmit)="onAdd()">
+        <div class="row">
+            <div class="col-sm-4 feature-view__body">
+                <label class="feature-view__label" for="product"> Produto </label>
+                <select id="product" formControlName="productId" class="form__input">
+                    <option *ngFor="let p of products" value="{{ p.id }}">{{ p.description }}</option>
+                </select>
+            </div>
+            <div class="col-sm-2 feature-view__body">
+                <label class="feature-view__label" for="quantity"> Quantidade </label><br>
+                <input id="quantity" type="number" autocomplete="off" min="1" formControlName="quantity" class="form__input" />
+            </div>
+            <div class="col-sm-2 feature-view__body feature-view__body--without-label">
+                <button type="submit" class="ndd-ng-button ndd-ng-button--secondary" [disabled]="formSoldProduct.invalid">Adicionar</button>
+            </div>
+        </div>
+    </form>
+    <kendo-grid [style.height]="'100%'" [data]="productGridService | async" [loading]="productGridService.loading"
+        [pageSize]="state.take" [selectable]="selectableSettings" [skip]="state.skip" [sort]="state.sort" [sortable]="true"
+        [pageable]="pageableSettings" [scrollable]="'true'" (dataStateChange)="dataStateChange($event)"
+        (selectionChange)="onSelectionChange($event)">
+
+        <ng-template kendoGridToolbarTemplate position="top">
+            <div class="projeto-nfe-grid__action-container">
+                <button (click)="deleteProducts()" class="projeto-nfe-grid__action" [disabled]="!selectedRows.length">
+                    <i class="ndd-font ndd-font-delete projeto-nfe-grid__action__icon"></i>
+                    <span class="projeto-nfe-grid__action__description">Remover</span>
+                </button>
+                <button (click)="redirectOpenProduct()" class="projeto-nfe-grid__action" [disabled]="selectedRows.length != 1">
+                    <i class="ndd-font ndd-font-open projeto-nfe-grid__action__icon"></i>
+                    <span class="projeto-nfe-grid__action__description">Abrir</span>
+                </button>
+            </div>
+        </ng-template>
+
+        <kendo-grid-checkbox-column width="20"></kendo-grid-checkbox-column>
+        <kendo-grid-column field="id" title="ID" width="20"></kendo-grid-column>
+        <kendo-grid-column field="quantity" title="Quantidade" width="30"></kendo-grid-column>
+        <kendo-grid-column field="unitaryValue" title="Valor Unitario" width="30"></kendo-grid-column>
+        <kendo-grid-column field="amount" title="Valor Total" width="30"></kendo-grid-column>
+        <kendo-grid-column field="code" title="Codigo" width="50"></kendo-grid-column>
+        <kendo-grid-column field="description" title="Descrição" width="90"></kendo-grid-column>
+    </kendo-grid>
+</div>
+
+
+<div class="ndd-ng-spinner__spinner" *ngIf="isLoading"></div>
+<div class="ndd-ng-spinner__color" *ngIf="isLoading"></div>

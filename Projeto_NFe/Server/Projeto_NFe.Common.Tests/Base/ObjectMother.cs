@@ -17,27 +17,16 @@ using Projeto_NFe.Application.Features.ShippingCompanies.Commands;
 using Projeto_NFe.Application.Features.Addressees.Commands;
 using Projeto_NFe.Domain.Features.Products;
 using Projeto_NFe.Application.Features.Products.Commands;
-using Projeto_NFe.Domain.Features.ProductsSold;
+using Projeto_NFe.Domain.Features.SoldProducts;
 using Projeto_NFe.Application.Features.Addresses.Commands;
 using Projeto_NFe.Application.Features.Invoices.Commands;
-using Projeto_NFe.Application.Features.ProductSolds.Commands;
+using Projeto_NFe.Application.Features.SoldProducts.Commands;
 
 namespace Projeto_NFe.Common.Tests
 {
     public static partial class ObjectMother
     {
         #region Issuer
-        public static Issuer IssuerValidWithoutIdAndWithoutAddress()
-        {
-            Issuer issuer = new Issuer();
-            issuer.BusinessName = "NDDIGITAL";
-            issuer.CorporateName = "NDDIGITAL S/A - SOFTWARE";
-            issuer.Cnpj = "12.345.678/0009-09";
-            issuer.StateRegistration = "12.234.5678-9";
-            issuer.MunicipalRegistration = "1234";
-            return issuer;
-        }
-
         public static IssuerRegisterCommand IssuerCommandToRegister()
         {
             IssuerRegisterCommand issuer = new IssuerRegisterCommand();
@@ -49,20 +38,6 @@ namespace Projeto_NFe.Common.Tests
             issuer.Address = AddressCommandToRegister();
             return issuer;
         }
-
-        public static Issuer IssuerValidWithIdEWithoutAddress()
-        {
-            Issuer issuer = new Issuer();
-            issuer.Id = 1;
-            issuer.BusinessName = "NDDIGITAL";
-            issuer.CorporateName = "NDDIGITAL S/A - SOFTWARE";
-            issuer.Cnpj = "12.345.678/0009-09";
-            issuer.StateRegistration = "12.234.5678-9";
-            issuer.MunicipalRegistration = "1234";
-            return issuer;
-        }
-
-
         public static IssuerRemoveCommand IssuerCommandToRemove()
         {
             return new IssuerRemoveCommand()
@@ -70,7 +45,6 @@ namespace Projeto_NFe.Common.Tests
                 IssuersId = new int[] { 1 },
             };
         }
-
         public static IssuerUpdateCommand IssuerCommandToUpdate()
         {
             IssuerUpdateCommand issuer = new IssuerUpdateCommand();
@@ -83,7 +57,6 @@ namespace Projeto_NFe.Common.Tests
             issuer.Address = AddressCommandToRegister();
             return issuer;
         }
-
         public static Issuer IssuerValidWithIdAndWithAddress()
         {
             Issuer issuer = new Issuer();
@@ -96,7 +69,6 @@ namespace Projeto_NFe.Common.Tests
             issuer.Address = AddressValid();
             return issuer;
         }
-
         public static Issuer IssuerValidWithoutIdAndWithAddress()
         {
             Issuer issuer = new Issuer();
@@ -108,62 +80,6 @@ namespace Projeto_NFe.Common.Tests
             issuer.Address = AddressValid();
             return issuer;
         }
-
-        public static Issuer IssuerBusinessNameInvalid()
-        {
-            Issuer issuer = new Issuer();
-            issuer.BusinessName = "ND";
-            issuer.CorporateName = "NDDIGITAL S/A - SOFTWARE";
-            issuer.Cnpj = "12.345.678/0009-09";
-            issuer.StateRegistration = "12.234.5678-9";
-            issuer.MunicipalRegistration = "1234";
-            return issuer;
-        }
-
-        public static Issuer IssuerCorporateNameInvalid()
-        {
-            Issuer issuer = new Issuer();
-            issuer.BusinessName = "NDDIGITAL";
-            issuer.CorporateName = "ND";
-            issuer.Cnpj = "12.345.678/0009-09";
-            issuer.StateRegistration = "12.234.5678-9";
-            issuer.MunicipalRegistration = "1234";
-            return issuer;
-        }
-
-        public static Issuer IssuerCnpjInvalid()
-        {
-            Issuer issuer = new Issuer();
-            issuer.BusinessName = "NDDIGITAL";
-            issuer.CorporateName = "NDDIGITAL S/A - SOFTWARE";
-            issuer.Cnpj = "12.345.678/0009";
-            issuer.StateRegistration = "12.234.5678-9";
-            issuer.MunicipalRegistration = "1234";
-            return issuer;
-        }
-
-        public static Issuer IssuerStateRegistrationInvalid()
-        {
-            Issuer issuer = new Issuer();
-            issuer.BusinessName = "NDDIGITAL";
-            issuer.CorporateName = "NDDIGITAL S/A - SOFTWARE";
-            issuer.Cnpj = "12.345.678/0009-09";
-            issuer.StateRegistration = "12";
-            issuer.MunicipalRegistration = "1234";
-            return issuer;
-        }
-
-        public static Issuer IssuerMunicipalRegistrationInvalid()
-        {
-            Issuer issuer = new Issuer();
-            issuer.BusinessName = "NDDIGITAL";
-            issuer.CorporateName = "NDDIGITAL S/A - SOFTWARE";
-            issuer.Cnpj = "12.345.678/0009-09";
-            issuer.StateRegistration = "12.234.5678-9";
-            issuer.MunicipalRegistration = "14";
-            return issuer;
-        }
-
         #endregion
 
         #region Address
@@ -188,78 +104,6 @@ namespace Projeto_NFe.Common.Tests
             address.City = "Lages";
             address.State = "SC";
             address.Country = "Brasil";
-            return address;
-        }
-
-        public static Address AddressStreetNameInvalid()
-        {
-            Address address = new Address();
-            address.StreetName = "Ru";
-            address.Number = 400;
-            address.Neighborhood = "Coral";
-            address.City = "Lages";
-            address.State = "SC";
-            address.Country = "Brasil";
-            return address;
-        }
-
-        public static Address AddressNumberInvalid()
-        {
-            Address address = new Address();
-            address.StreetName = "Rua Avenida";
-            address.Number = 0;
-            address.Neighborhood = "Coral";
-            address.City = "Lages";
-            address.State = "SC";
-            address.Country = "Brasil";
-            return address;
-        }
-
-        public static Address AddressNeighborhoodInvalid()
-        {
-            Address address = new Address();
-            address.StreetName = "Rua Avenida";
-            address.Number = 400;
-            address.Neighborhood = "Co";
-            address.City = "Lages";
-            address.State = "SC";
-            address.Country = "Brasil";
-            return address;
-        }
-
-        public static Address AddressCityInvalid()
-        {
-            Address address = new Address();
-            address.StreetName = "Rua Avenida";
-            address.Number = 400;
-            address.Neighborhood = "Coral";
-            address.City = "L";
-            address.State = "SC";
-            address.Country = "Brasil";
-            return address;
-        }
-
-        public static Address AddressStateInvalid()
-        {
-            Address address = new Address();
-            address.StreetName = "Rua Avenida";
-            address.Number = 400;
-            address.Neighborhood = "Coral";
-            address.City = "Lages";
-            address.State = "S";
-            address.Country = "Brasil";
-            return address;
-        }
-
-        public static Address AddressCountryInvalid()
-        {
-            Address address = new Address();
-            address.StreetName = "Rua Avenida";
-            address.Number = 400;
-            address.Neighborhood = "Coral";
-            address.City = "Lages";
-            address.State = "SC";
-            address.Country = "B";
             return address;
         }
         #endregion
@@ -453,116 +297,6 @@ namespace Projeto_NFe.Common.Tests
                 PersonType = EnumPersonType.PessoaFisica
             };
         }
-
-        public static Addressee AddresseePessoaFisicaComNameInvalid(Address address)
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "Let",
-                Address = address,
-                Cpf = "12345678901",
-                PersonType = EnumPersonType.PessoaFisica
-            };
-        }
-
-        public static Addressee AddresseePessoaFisicaComNameMaxCaracteres(Address address)
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                Address = address,
-                Cpf = "12345678901",
-                PersonType = EnumPersonType.PessoaFisica
-            };
-        }
-
-        public static Addressee AddresseePessoaFisicaWithIdInvalid(Address address)
-        {
-            return new Addressee
-            {
-                BusinessName = "Leticia",
-                Address = address,
-                Cpf = "12345678901",
-                PersonType = EnumPersonType.PessoaFisica
-            };
-        }
-
-        public static Addressee AddresseePessoaFisicaComCpfInvalid(Address address)
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "Letícia",
-                Address = address,
-                Cpf = "1234567",
-                PersonType = EnumPersonType.PessoaFisica
-            };
-        }
-
-        public static Addressee AddresseePessoaFisicaComCpfComCaractereInvalid(Address address)
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "Letícia",
-                Address = address,
-                Cpf = "123vfd456gyh90",
-                PersonType = EnumPersonType.PessoaFisica
-            };
-        }
-
-        public static Addressee AddresseePessoaFisicaWithAddressInvalid()
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "Letícia",
-                Cpf = "12345678901",
-                PersonType = EnumPersonType.PessoaFisica
-            };
-        }
-
-        public static Addressee AddresseePessoaFisicaComCnpj(Address address)
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "Letícia",
-                Address = address,
-                Cpf = "12345678901",
-                Cnpj = "12345678901234",
-                PersonType = EnumPersonType.PessoaFisica
-            };
-        }
-
-        public static Addressee AddresseePessoaFisicaComCorporateName(Address address)
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "Letícia",
-                CorporateName = "Empresa Ltda",
-                Address = address,
-                Cpf = "12345678901",
-                PersonType = EnumPersonType.PessoaFisica,
-            };
-        }
-
-        public static Addressee AddresseePessoaFisicaComStateRegistration(Address address)
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "Letícia",
-                Address = address,
-                StateRegistration = "123435235235324",
-                Cpf = "12345678901",
-                PersonType = EnumPersonType.PessoaFisica
-            };
-        }
-
         public static Addressee AddresseePessoaJuridicaValida(Address address)
         {
             return new Addressee
@@ -570,130 +304,6 @@ namespace Projeto_NFe.Common.Tests
                 Id = 1,
                 BusinessName = "Lenew",
                 CorporateName = "Notebooks",
-                StateRegistration = "128398213791",
-                Address = address,
-                Cnpj = "12345678901234",
-                PersonType = EnumPersonType.PessoaJuridica
-            };
-        }
-
-        public static Addressee AddresseePessoaJuridicaWithIdInvalid(Address address)
-        {
-            return new Addressee
-            {
-                BusinessName = "Name",
-                CorporateName = "Letícia Ltda",
-                StateRegistration = "128398213791",
-                Address = address,
-                Cnpj = "12345678901234",
-                PersonType = EnumPersonType.PessoaJuridica
-            };
-        }
-
-        public static Addressee AddresseePessoaJuridicaComCorporateNameInvalid(Address address)
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "Name",
-                CorporateName = "Le",
-                StateRegistration = "128398213791",
-                Address = address,
-                Cnpj = "12345678901234",
-                PersonType = EnumPersonType.PessoaJuridica,
-            };
-        }
-
-        public static Addressee AddresseePessoaJuridicaComCorporateNameMaxCaracteres(Address address)
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "Name",
-                CorporateName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                StateRegistration = "128398213791",
-                Address = address,
-                Cnpj = "12345678901234",
-                PersonType = EnumPersonType.PessoaJuridica,
-            };
-        }
-
-        public static Addressee AddresseePessoaJuridicaAddressInvalid()
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "Name",
-                CorporateName = "Letícia Ltda",
-                StateRegistration = "128398213791",
-                Cnpj = "12345678901234",
-                PersonType = EnumPersonType.PessoaJuridica
-            };
-        }
-
-        public static Addressee AddresseePessoaJuridicaComCnpjInvalid(Address address)
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "Name",
-                CorporateName = "Leticia Ltda",
-                StateRegistration = "128398213791",
-                Address = address,
-                Cnpj = "123456",
-                PersonType = EnumPersonType.PessoaJuridica
-            };
-        }
-
-        public static Addressee AddresseePessoaJuridicaComCnpjComCaractereInvalid(Address address)
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "Name",
-                CorporateName = "Leticia Ltda",
-                StateRegistration = "128398213791",
-                Address = address,
-                Cnpj = "123456ndj38nsk",
-                PersonType = EnumPersonType.PessoaJuridica
-            };
-        }
-
-        public static Addressee AddresseePessoaJuridicaComStateRegistrationInvalid(Address address)
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "Name",
-                CorporateName = "Letícia Ltda",
-                Address = address,
-                Cnpj = "12345678901234",
-                PersonType = EnumPersonType.PessoaJuridica
-            };
-        }
-
-        public static Addressee AddresseePessoaJuridicaComCpf(Address address)
-        {
-            return new Addressee
-            {
-                Id = 1,
-                BusinessName = "Name",
-                CorporateName = "Letícia Ltda",
-                StateRegistration = "128398213791",
-                Address = address,
-                Cnpj = "12345678901234",
-                Cpf = "12345678901",
-                PersonType = EnumPersonType.PessoaJuridica
-            };
-        }
-
-        public static Addressee AddresseePessoaJuridicaComName(Address address)
-        {
-            return new Addressee
-            {
-                Id = 1,
-                CorporateName = "Letícia Ltda",
-                BusinessName = "Leticia",
                 StateRegistration = "128398213791",
                 Address = address,
                 Cnpj = "12345678901234",
@@ -755,153 +365,48 @@ namespace Projeto_NFe.Common.Tests
 
             return product;
         }
-
-        public static Product ProductCodeInvalidWithoutId()
-        {
-            Product product = new Product();
-
-            product.Code = "";
-            product.Description = "Bolacha Negresco";
-            product.UnitaryValue = 2.00;
-
-            return product;
-        }
-
-        public static Product ProductDescriptionInvalidWithoutId()
-        {
-            Product product = new Product();
-
-            product.Code = "1A12312BC123";
-            product.Description = "";
-            product.UnitaryValue = 2.00;
-
-            return product;
-        }
-
-        public static Product ProductUnitaryValueInvalidWithoutId()
-        {
-            Product product = new Product();
-
-            product.Code = "1A12312BC123";
-            product.Description = "Bolacha Negresco";
-            product.UnitaryValue = 0;
-
-            return product;
-        }
-
-        public static Product ProductCodeInvalidWithId()
-        {
-            Product product = new Product();
-
-            product.Id = 1;
-            product.Code = "";
-            product.Description = "Bolacha Negresco";
-            product.UnitaryValue = 2.00;
-
-            return product;
-        }
-
-        public static Product ProductDescriptionInvalidWithId()
-        {
-            Product product = new Product();
-
-            product.Id = 1;
-            product.Code = "1A12312BC123";
-            product.Description = "";
-            product.UnitaryValue = 2.00;
-
-            return product;
-        }
-
-        public static Product ProductUnitaryValueInvalidWithId()
-        {
-            Product product = new Product();
-
-            product.Id = 1;
-            product.Code = "1A12312BC123";
-            product.Description = "Bolacha Negresco";
-            product.UnitaryValue = 0;
-
-            return product;
-        }
         #endregion
 
-        #region ProductSold
-        public static ProductSold ProductSoldValidWithId()
+        #region SoldProduct
+        public static SoldProduct SoldProductValidWithId()
         {
-            ProductSold productSold = new ProductSold();
+            SoldProduct soldProduct = new SoldProduct();
 
-            productSold.Id = 1;
-            productSold.Tax = new ProductTax();
-            productSold.Quantity = 2;
-            productSold.UnitaryValue = 2;
+            soldProduct.Id = 1;
+            soldProduct.Product = ProductValidWithId();
+            soldProduct.Quantity = 2;
 
-            return productSold;
+            return soldProduct;
         }
 
-        public static ProductSold ProductSoldValidWithoutId()
+        public static SoldProduct SoldProductValidWithoutId()
         {
-            ProductSold productSold = new ProductSold();
+            SoldProduct soldProduct = new SoldProduct();
 
-            productSold.Code = "24398012984";
-            productSold.Description = "Bolacha";
-            productSold.Tax = new ProductTax() { IcmsAliquot = 4, IpiAliquot = 10 };
-            productSold.Quantity = 2;
-            productSold.UnitaryValue = 2;
+            soldProduct.Product = ProductValidWithId();
+            soldProduct.Product.Tax = new ProductTax() { IcmsAliquot = 4, IpiAliquot = 10 };
+            soldProduct.Quantity = 2;
 
-            return productSold;
+            return soldProduct;
         }
 
-        public static ProductSoldRegisterCommand ProductSoldRegisterCommand(int invoiceId)
+        public static SoldProductRegisterCommand SoldProductRegisterCommand(int invoiceId)
         {
-            ProductSoldRegisterCommand productSold = new ProductSoldRegisterCommand();
+            SoldProductRegisterCommand soldProduct = new SoldProductRegisterCommand();
 
-            productSold.Quantity = 2;
-            productSold.Product = ProductValidWithId();
-            productSold.InvoiceId = invoiceId;
+            soldProduct.Quantity = 2;
+            soldProduct.ProductId = 1;
 
-            return productSold;
+            return soldProduct;
         }
 
-        public static ProductSoldUpdateCommand ProductSoldUpdateCommand(int invoiceId)
+        public static SoldProduct SoldProductFull(Product product)
         {
-            ProductSoldUpdateCommand productSold = new ProductSoldUpdateCommand();
-
-            productSold.Quantity = 2;
-            productSold.Code = "0012";
-            productSold.UnitaryValue = 2;
-            productSold.Description = "Bolacha Maria";
-            productSold.UnitaryValue = 2;
-            productSold.InvoiceId = invoiceId;
-
-            return productSold;
-        }
-
-        public static ProductSold ProductSoldFull(ProductTax tax)
-        {
-            return new ProductSold
+            return new SoldProduct
             {
                 Id = 1,
-                Code = "123132",
-                Description = "descricao",
-                IdProductSold = 1,
-                Tax = tax,
+                Product = product,
                 Quantity = 2,
-                UnitaryValue = 25
-            };
-        }
-
-        public static ProductSold ProductSoldQuantityInvalid(ProductTax tax)
-        {
-            return new ProductSold
-            {
-                Id = 1,
-                Code = "123132",
-                Description = "descricao",
-                IdProductSold = 1,
-                Tax = tax,
-                Quantity = 0,
-                UnitaryValue = 25
             };
         }
 
@@ -916,8 +421,30 @@ namespace Projeto_NFe.Common.Tests
             invoice.IssuerId = issuerId;
             invoice.AddresseeId = addresseeId;
             invoice.ShippingCompanyId = shippingCompanyId;
-            invoice.ProductSolds = new List<ProductSoldRegisterCommand>() { ProductSoldRegisterCommand(1) };
+            invoice.SoldProducts = new List<SoldProductRegisterCommand>() { SoldProductRegisterCommand(1) };
             return invoice;
+        }
+
+        public static InvoiceAddProductCommand InvoiceAddProductCommand()
+        {
+            return new InvoiceAddProductCommand
+            {
+                Id = 1,
+                SoldProduct = new SoldProductRegisterCommand
+                {
+                    ProductId = 1,
+                    Quantity = 2
+                }
+            };
+        }
+
+        public static InvoiceRemoveProductsCommand InvoiceRemoveProducstCommand()
+        {
+            return new InvoiceRemoveProductsCommand
+            {
+                Id = 1,
+                SoldProductsIds = new int[] {1, 2}
+            };
         }
 
         public static InvoiceUpdateCommand InvoiceCommandToUpdate(int issuerId, int addresseeId, int shippingCompanyId)
@@ -929,7 +456,6 @@ namespace Projeto_NFe.Common.Tests
             invoice.IssuerId = issuerId;
             invoice.AddresseeId = addresseeId;
             invoice.ShippingCompanyId = shippingCompanyId;
-            invoice.ProductSolds = new List<ProductSoldUpdateCommand>() { ProductSoldUpdateCommand(invoice.Id) };
             return invoice;
         }
 
@@ -960,7 +486,7 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.SoldProducts = new List<SoldProduct>() { SoldProductValidWithoutId() };
             invoice.InvoiceTax = new InvoiceTax();
             return invoice;
         }
@@ -975,25 +501,10 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithIdWithAddress();
-            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.SoldProducts = new List<SoldProduct>() { SoldProductValidWithoutId() };
             invoice.InvoiceTax = new InvoiceTax();
             return invoice;
         }
-
-        public static Invoice InvoiceValidaWithIdAndIssuerAddresseeShippingCompanyId()
-        {
-            Invoice invoice = new Invoice();
-            invoice.Id = 1;
-            invoice.OperationNature = "Venda";
-            invoice.EntryDate = DateTime.Now;
-            invoice.AcessKey = "BAJDSA0123IU43I249206954";
-            invoice.Issuer = IssuerValidWithIdAndWithAddress();
-            invoice.Addressee = AddresseeValidWithIdWithAddress();
-            invoice.ShippingCompany = ShippingCompanyValidWithIdWithAddress();
-            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            return invoice;
-        }
-
         public static Invoice InvoiceValidWithoutIdWithIssuerAddresseeShippingCompanyId(int issuerId, int addresseeId, int shippingCompanyId)
         {
             Invoice invoice = new Invoice();
@@ -1003,22 +514,8 @@ namespace Projeto_NFe.Common.Tests
             invoice.IssuerId = issuerId;
             invoice.AddresseeId = addresseeId;
             invoice.ShippingCompanyId = shippingCompanyId;
-            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithId() };
+            invoice.SoldProducts = new List<SoldProduct>() { SoldProductValidWithId() };
             return invoice;
-        }
-
-        public static Invoice InvoiceFull(Addressee addressee, Issuer issuer, InvoiceTax tax, ShippingCompany shippingCompany)
-        {
-            return new Invoice
-            {
-                EntryDate = DateTime.Now,
-                Addressee = addressee,
-                Issuer = issuer,
-                InvoiceTax = tax,
-                OperationNature = "Venda",
-                ProductSolds = new List<ProductSold> { ProductSoldValidWithId() },
-                ShippingCompany = shippingCompany
-            };
         }
         #endregion
 
@@ -1032,7 +529,7 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.SoldProducts = new List<SoldProduct>() { SoldProductValidWithoutId() };
             invoice.InvoiceTax = new InvoiceTax();
             return invoice;
         }
@@ -1047,7 +544,7 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
+            invoice.SoldProducts = new List<SoldProduct>() { SoldProductValidWithoutId() };
             invoice.InvoiceTax = new InvoiceTax();
             invoice.CalculateTax();
             invoice.InvoiceTax.ShippingValue = 10;
@@ -1065,14 +562,14 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyPessoaJuridicaValida(AddressValid());
-            List<ProductSold> productsSold = new List<ProductSold>();
+            List<SoldProduct> productsSold = new List<SoldProduct>();
             for (int i = 0; i < 20; i++)
             {
-                ProductSold productSold = ProductSoldValidWithoutId();
-                productSold.Code = i.ToString();
-                productsSold.Add(productSold);
+                SoldProduct soldProduct = SoldProductValidWithoutId();
+                soldProduct.Product.Code = i.ToString();
+                productsSold.Add(soldProduct);
             }
-            invoice.ProductSolds = productsSold;
+            invoice.SoldProducts = productsSold;
             invoice.InvoiceTax = new InvoiceTax();
             invoice.CalculateTax();
             invoice.InvoiceTax.ShippingValue = 10;
@@ -1090,14 +587,14 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseeValidWithoutIdWithAddress();
             invoice.ShippingCompany = ShippingCompanyPessoaFisicaValida(AddressValid());
-            List<ProductSold> productsSold = new List<ProductSold>();
+            List<SoldProduct> productsSold = new List<SoldProduct>();
             for (int i = 0; i < 20; i++)
             {
-                ProductSold productSold = ProductSoldValidWithoutId();
-                productSold.Code = i.ToString();
-                productsSold.Add(productSold);
+                SoldProduct soldProduct = SoldProductValidWithoutId();
+                soldProduct.Product.Code = i.ToString();
+                productsSold.Add(soldProduct);
             }
-            invoice.ProductSolds = productsSold;
+            invoice.SoldProducts = productsSold;
             invoice.InvoiceTax = new InvoiceTax();
             invoice.CalculateTax();
             invoice.InvoiceTax.ShippingValue = 10;
@@ -1115,14 +612,14 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseePessoaFisicaValida(AddressValid());
             invoice.ShippingCompany = null;
-            List<ProductSold> productsSold = new List<ProductSold>();
+            List<SoldProduct> productsSold = new List<SoldProduct>();
             for (int i = 0; i < 20; i++)
             {
-                ProductSold productSold = ProductSoldValidWithoutId();
-                productSold.Code = i.ToString();
-                productsSold.Add(productSold);
+                SoldProduct soldProduct = SoldProductValidWithoutId();
+                soldProduct.Product.Code = i.ToString();
+                productsSold.Add(soldProduct);
             }
-            invoice.ProductSolds = productsSold;
+            invoice.SoldProducts = productsSold;
             invoice.InvoiceTax = new InvoiceTax();
             invoice.CalculateTax();
             invoice.InvoiceTax.ShippingValue = 10;
@@ -1140,14 +637,14 @@ namespace Projeto_NFe.Common.Tests
             invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
             invoice.Addressee = AddresseePessoaJuridicaValida(AddressValid());
             invoice.ShippingCompany = null;
-            List<ProductSold> productsSold = new List<ProductSold>();
+            List<SoldProduct> productsSold = new List<SoldProduct>();
             for (int i = 0; i < 20; i++)
             {
-                ProductSold productSold = ProductSoldValidWithoutId();
-                productSold.Code = i.ToString();
-                productsSold.Add(productSold);
+                SoldProduct soldProduct = SoldProductValidWithoutId();
+                soldProduct.Product.Code = i.ToString();
+                productsSold.Add(soldProduct);
             }
-            invoice.ProductSolds = productsSold;
+            invoice.SoldProducts = productsSold;
             invoice.InvoiceTax = new InvoiceTax();
             invoice.CalculateTax();
             invoice.InvoiceTax.ShippingValue = 10;
@@ -1156,6 +653,8 @@ namespace Projeto_NFe.Common.Tests
 
         public static Invoice IssuedInvoiceFullToExport()
         {
+            var product = ProductValidWithId();
+            product.Tax = new ProductTax { IcmsAliquot = 10, IpiValue = 0.16, IcmsValue = 0.4, IpiAliquot = 4, Id = 1 };
             return new Invoice
             {
                 AcessKey = "BAJDSA0123IU43I249206954",
@@ -1166,7 +665,7 @@ namespace Projeto_NFe.Common.Tests
                 Addressee = AddresseeValidComCnpjWithIdWithAddress(),
                 Issuer = IssuerValidWithIdAndWithAddress(),
                 ShippingCompany = ShippingCompanyValidWithIdWithAddress(),
-                ProductSolds = new List<ProductSold> { ProductSoldFull(new ProductTax { IcmsAliquot = 10, IpiValue = 0.16, IcmsValue = 0.4, IpiAliquot = 4, Id = 1 }) },
+                SoldProducts = new List<SoldProduct> { SoldProductFull(product) },
                 InvoiceTax = new InvoiceTax
                 {
                     ShippingValue = 20,
@@ -1178,119 +677,10 @@ namespace Projeto_NFe.Common.Tests
                 }
             };
         }
-
-        public static Invoice IssuedInvoiceWithoutAcessKey()
-        {
-            Invoice invoice = new Invoice();
-            invoice.OperationNature = "Venda";
-            invoice.EntryDate = DateTime.Now;
-            invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
-            invoice.Addressee = AddresseeValidWithoutIdWithAddress();
-            invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.InvoiceTax = new InvoiceTax();
-            return invoice;
-        }
-
-        public static Invoice IssuedInvoiceWithoutIdWithoutIssuer()
-        {
-            Invoice invoice = new Invoice();
-            invoice.OperationNature = "Venda";
-            invoice.EntryDate = DateTime.Now;
-            invoice.AcessKey = "BAJDSA0123IU43I249206954";
-            invoice.Addressee = AddresseeValidWithoutIdWithAddress();
-            invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.InvoiceTax = new InvoiceTax();
-            return invoice;
-        }
-
-        public static Invoice IssuedInvoiceWithoutIdWithoutShippingCompany()
-        {
-            Invoice invoice = new Invoice();
-            invoice.OperationNature = "Venda";
-            invoice.EntryDate = DateTime.Now;
-            invoice.AcessKey = "BAJDSA0123IU43I249206954";
-            invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
-            invoice.Addressee = AddresseeValidWithoutIdWithAddress();
-            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.InvoiceTax = new InvoiceTax();
-            return invoice;
-        }
-
-        public static Invoice IssuedInvoiceWithoutIdWithoutAddressee()
-        {
-            Invoice invoice = new Invoice();
-            invoice.OperationNature = "Venda";
-            invoice.EntryDate = DateTime.Now;
-            invoice.AcessKey = "BAJDSA0123IU43I249206954";
-            invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
-            invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.InvoiceTax = new InvoiceTax();
-            return invoice;
-        }
-
-        public static Invoice IssuedInvoiceWithoutIdOperationNatureInvalid()
-        {
-            Invoice invoice = new Invoice();
-            invoice.EntryDate = DateTime.Now;
-            invoice.AcessKey = "BAJDSA0123IU43I249206954";
-            invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
-            invoice.Addressee = AddresseeValidWithoutIdWithAddress();
-            invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.InvoiceTax = new InvoiceTax();
-            return invoice;
-        }
-
-        public static Invoice IssuedInvoiceWithoutIdEntryDateInvalid()
-        {
-            Invoice invoice = new Invoice();
-            invoice.OperationNature = "Venda";
-            invoice.EntryDate = new DateTime();
-            invoice.AcessKey = "BAJDSA0123IU43I249206954";
-            invoice.IssueDate = DateTime.Now;
-            invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
-            invoice.Addressee = AddresseeValidWithoutIdWithAddress();
-            invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.InvoiceTax = new InvoiceTax();
-            return invoice;
-        }
-
-        public static Invoice IssuedInvoiceWithoutIdWithoutProducts()
-        {
-            Invoice invoice = new Invoice();
-            invoice.OperationNature = "Venda";
-            invoice.EntryDate = DateTime.Now;
-            invoice.AcessKey = "BAJDSA0123IU43I249206954";
-            invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
-            invoice.Addressee = AddresseeValidWithoutIdWithAddress();
-            invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.ProductSolds = new List<ProductSold>();
-            invoice.InvoiceTax = new InvoiceTax();
-            return invoice;
-        }
-
-        public static Invoice IssuedInvoiceWithoutIdComIssuerIgualAddressee()
-        {
-            Invoice invoice = new Invoice();
-            invoice.OperationNature = "Venda";
-            invoice.EntryDate = DateTime.Now;
-            invoice.AcessKey = "BAJDSA0123IU43I249206954";
-            invoice.Issuer = IssuerValidWithoutIdAndWithAddress();
-            invoice.Issuer.BusinessName = "Bruno Barba";
-            invoice.Addressee = AddresseeValidWithoutIdWithAddress();
-            invoice.ShippingCompany = ShippingCompanyValidWithoutIdWithAddress();
-            invoice.ProductSolds = new List<ProductSold>() { ProductSoldValidWithoutId() };
-            invoice.InvoiceTax = new InvoiceTax();
-            return invoice;
-        }
         #endregion
 
         #region Tax Product
-        public static ProductTax ProductTaxWithAliquotIcsmAndIpiAliquot()
+        public static ProductTax ValidProductTax()
         {
             return new ProductTax
             {

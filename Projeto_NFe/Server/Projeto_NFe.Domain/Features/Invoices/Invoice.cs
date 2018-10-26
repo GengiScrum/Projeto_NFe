@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Projeto_NFe.Domain.Features.ProductsSold;
+using Projeto_NFe.Domain.Features.SoldProducts;
 
 namespace Projeto_NFe.Domain.Features.Invoices
 {
@@ -21,7 +21,7 @@ namespace Projeto_NFe.Domain.Features.Invoices
         public ShippingCompany ShippingCompany { get; set; }
         public int? AddresseeId { get; set; }
         public Addressee Addressee { get; set; }
-        public virtual IEnumerable<ProductSold> ProductSolds { get; set; }
+        public virtual ICollection<SoldProduct> SoldProducts { get; set; }
         public int?  InvoiceTaxId { get; set; }
         public InvoiceTax InvoiceTax { get; set; }
         public string OperationNature { get; set; }
@@ -51,7 +51,7 @@ namespace Projeto_NFe.Domain.Features.Invoices
 
         public void CalculateTax()
         {
-            InvoiceTax.Calculate(ProductSolds);
+            InvoiceTax.Calculate(SoldProducts);
         }
     }
 }
